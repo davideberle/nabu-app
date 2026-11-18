@@ -329,16 +329,18 @@ describe("the map after each visit", () => {
   it("Isabel: from the start of Visit 5 the robins sit on the birdhouse in her roof color; the feeder shows her food", () => {
     for (const roof of ["red", "blue", "yellow"]) {
       const w = deriveHomeWorld(input("isabel", [done("v5"), { id: "v6", finishedAt: null }], "v6", { "IV10-ROOF": roof }));
-      equal(piece(w, "i-birdhouse")?.asset, `i-birdhouse-${roof}-birds-built`);
+      equal(piece(w, "i-birdhouse")?.asset, `i-birdhouse-tree-${roof}-birds-built`);
       deepEqual(w.effects, [], "they sit, so they no longer circle");
       equal(piece(w, "i-feeder")?.asset, "i-feeder-site");
     }
     equal(deriveHomeWorld(input("isabel", [done("v5")], "v6", { "IV10-ROOF": "blue" })).effects.length, 1, "before she starts, they still circle");
+    // Visit 4 stage (her real state today): the birdhouse hangs on the big tree, no birds yet — one piece per roof colour
+    for (const roof of ["red", "blue", "yellow"]) equal(piece(deriveHomeWorld(input("isabel", [done("v5")], "v6", { "IV10-ROOF": roof })), "i-birdhouse")?.asset, `i-birdhouse-tree-${roof}-built`);
     for (const f of ["seeds", "berries", "worms"]) equal(piece(deriveHomeWorld(input("isabel", [done("v5"), done("v6")], null, { "IV10-ROOF": "blue", "IF8-FOOD": f })), "i-feeder")?.asset, `i-feeder-${f}-built`);
   });
   it("every file the new stages can ask for is in the manifest, and no new piece sits on a path", () => {
     const have = new Set(ASSETS.map((a) => a.id));
-    for (const id of ["s-pond-water-built", "s-pump-built", "i-feeder-site", ...["red", "blue", "yellow"].map((c) => `i-birdhouse-${c}-birds-built`), ...["seeds", "berries", "worms"].map((f) => `i-feeder-${f}-built`)]) ok(have.has(id), id);
+    for (const id of ["s-pond-water-built", "s-pump-built", "i-feeder-site", ...["red", "blue", "yellow"].flatMap((c) => [`i-birdhouse-tree-${c}-built`, `i-birdhouse-tree-${c}-birds-built`]), ...["seeds", "berries", "worms"].map((f) => `i-feeder-${f}-built`)]) ok(have.has(id), id);
     for (const [child, id] of [["santiago", "s-pump"], ["isabel", "i-feeder"]] as const) {
       const p = WORLDS[child].pieces.find((x) => x.id === id)!;
       ok(!WORLDS[child].paths.some((t) => t.c === p.tile.c && t.r === p.tile.r), id);
@@ -346,3 +348,19 @@ describe("the map after each visit", () => {
   });
 });
 
+
+describe("Isabel Visit 5 end picture (Nov 18 build)", () => {
+  it("her food beside the birdhouse in her roof colour; red when no roof is stored; other pictures unchanged", async () => {
+    const { storyPicture, BIRD_FOODS } = await import("./family-learning-mission.ts");
+    const { readFileSync, existsSync } = await import("node:fs");
+    for (const roof of ["red", "blue", "yellow"]) for (const f of BIRD_FOODS) {
+      equal(storyPicture(`food-${f}`, { roofColor: { optionId: roof } }), `birds-${roof}-${f}`);
+      ok(existsSync(new URL(`../assets/family-learning/cozy/birds-${roof}-${f}.webp`, import.meta.url)), `${roof}-${f}`);
+    }
+    equal(storyPicture("food-seeds", {}), "birds-red-seeds");
+    equal(storyPicture("food-seagrass", { roofColor: { optionId: "blue" } }), "food-seagrass");
+    equal(storyPicture("roof-blue", { roofColor: { optionId: "blue" } }), "roof-blue");
+    const src = readFileSync(new URL("../components/family/learning/workshop-pictures.tsx", import.meta.url), "utf8");
+    for (const roof of ["red", "blue", "yellow"]) for (const f of BIRD_FOODS) ok(src.includes(`"birds-${roof}-${f}": cozy`), `${roof}-${f} wired`);
+  });
+});

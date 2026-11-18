@@ -37,6 +37,11 @@ import { plateFor, type PlateId } from "./harbor-island-plates";
 import cozyRosa from "@/assets/family-learning/cozy/portrait-rosa.webp";
 import cozyBaumann from "@/assets/family-learning/cozy/portrait-baumann.webp";
 import cozyJune from "@/assets/family-learning/cozy/portrait-june.webp";
+import cozyPondFlip from "@/assets/family-learning/cozy/pond-flip.webp";
+
+/** Nov 18 (Santiago Visit 11): the painted end picture of an outcome step — the turtle swimming in the filled pond, the pump
+ *  behind the rocks. Keyed by the outcome step id; outcomes without an entry show none (as before). */
+const OUTCOME_ART: Record<string, { src: string; width: number; height: number }> = { "F12-END": cozyPondFlip };
 import { HandsKeyboard } from "./hands-keyboard";
 import { MissionWorldChanges } from "./mission-world-changes";
 import type { WorldMarker } from "./expedition-world";
@@ -869,6 +874,10 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
       </h2>
       {active.kind !== "typing-block" && !focused ? <Lines lines={active.intro} mission={mission} /> : null}
       {custom && storyLike ? custom : null}
+      {active.kind === "outcome" && OUTCOME_ART[active.id] ? (
+        // eslint-disable-next-line @next/next/no-img-element -- a fixed painted scene, served from /_next/static/media like the portraits
+        <img src={OUTCOME_ART[active.id].src} width={OUTCOME_ART[active.id].width} height={OUTCOME_ART[active.id].height} alt="" className="h-auto w-full max-w-[360px] self-center" data-testid="outcome-art" data-art={active.id} />
+      ) : null}
       {storyLike ? <StoryTask active={active} busy={busy || saying} act={act} label={mission.presentation === "map" ? (active.kind === "outcome" ? "Fertig" : "Verstanden") : undefined} /> : null}
       {custom && !storyLike ? custom : null}
       {!custom && (active.kind === "read" || active.kind === "listen") ? <QuestionTask child={child} active={active} busy={busy} act={act} speech={speech} characters={mission.characters} /> : null}

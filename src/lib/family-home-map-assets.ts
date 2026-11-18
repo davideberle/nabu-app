@@ -89,9 +89,15 @@ export const ASSETS: AssetDef[] = [
   piece("i-birdhouse-site", "isabel", `Birdhouse site: ${SITE} A post in the ground with a small pile of sticks and a few nails.`, "site", 1, 1, 60),
   piece("i-birdhouse-red-built", "isabel", "A small wooden birdhouse with a round hole on a tall post, RED roof.", "built", 1, 1, 150, "Variant for the choice «Rot» (IV10-ROOF = red)."),
   piece("i-birdhouse-blue-built", "isabel", "A small wooden birdhouse with a round hole on a tall post, BLUE roof.", "built", 1, 1, 150, "Variant for «Blau» (IV10-ROOF = blue)."),
-  piece("i-birdhouse-red-birds-built", "isabel", "The same birdhouse with RED roof on its tall post, two robins (brown back, orange breast) sitting on the roof, a bit of moss in the round hole.", "built", 1, 1, 150, "Later stage from the start of Visit 5 (v6), variant «Rot» (IV10-ROOF = red)."),
-  piece("i-birdhouse-blue-birds-built", "isabel", "Same, BLUE roof, two robins sitting on it.", "built", 1, 1, 150, "Later stage, variant «Blau» (IV10-ROOF = blue)."),
-  piece("i-birdhouse-yellow-birds-built", "isabel", "Same, YELLOW roof, two robins sitting on it.", "built", 1, 1, 150, "Later stage, variant «Gelb» (IV10-ROOF = yellow)."),
+  // Nov 18 (David, Visit 4 feedback): the birdhouse hangs HIGH on the big tree, as in the end picture — the tree and the hung
+  // birdhouse are ONE taller piece on the birdhouse tile (c5 r3), so no path or other piece moves. The post versions above stay
+  // only as the roof-choice pictures of the finished Visit 4.
+  piece("i-birdhouse-tree-red-built", "isabel", "ONE piece: a big leafy tree on one grass tile, a small wooden birdhouse with a RED roof hung high on its trunk from a short rope (no birds).", "built", 1, 1, 216, "Visit 4 stage (IV10-ROOF = red); replaces i-birdhouse-red-built on the map."),
+  piece("i-birdhouse-tree-blue-built", "isabel", "Same tree and hung birdhouse, BLUE roof (no birds).", "built", 1, 1, 216, "Visit 4 stage (IV10-ROOF = blue)."),
+  piece("i-birdhouse-tree-yellow-built", "isabel", "Same tree and hung birdhouse, YELLOW roof (no birds).", "built", 1, 1, 216, "Visit 4 stage (IV10-ROOF = yellow)."),
+  piece("i-birdhouse-tree-red-birds-built", "isabel", "The same tree with the RED-roofed birdhouse hung high, two robins (brown back, orange breast) sitting on the roof, a bit of moss in the round hole.", "built", 1, 1, 216, "Later stage from the start of Visit 5 (v6), variant «Rot»."),
+  piece("i-birdhouse-tree-blue-birds-built", "isabel", "Same, BLUE roof, two robins sitting on it.", "built", 1, 1, 216, "Later stage, variant «Blau»."),
+  piece("i-birdhouse-tree-yellow-birds-built", "isabel", "Same, YELLOW roof, two robins sitting on it.", "built", 1, 1, 216, "Later stage, variant «Gelb»."),
   piece("i-feeder-site", "isabel", `Feeding board site: ${SITE} A short post with an empty wooden board leaning against it.`, "site", 1, 1, 60),
   piece("i-feeder-seeds-built", "isabel", "A small wooden feeding board on a post with a RED bowl full of seeds.", "built", 1, 1, 86, "Variant for «Körner» (IF8-FOOD = seeds)."),
   piece("i-feeder-berries-built", "isabel", "Same feeding board, the red bowl full of red berries.", "built", 1, 1, 86, "Variant for «Beeren» (IF8-FOOD = berries)."),

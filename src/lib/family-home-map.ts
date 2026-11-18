@@ -47,7 +47,8 @@ export type PieceDef = {
   variant?: { step: string; options: Record<string, string>; fallback: string };
   /** Nov 8 arcs: already standing as soon as its visit has started (the turtle arrives in the opening scene). */
   fromVisitStart?: boolean;
-  /** The built file when it is not `<id>-built` (the pond is first a dug pond; later stages get their own files). */
+  /** The built file when it is not `<id>-built` (the pond is first a dug pond; later stages get their own files). `{variant}` is
+   *  replaced by the chosen variant (Nov 18: the birdhouse hangs on the big tree — one taller piece per roof colour). */
   builtAsset?: string;
   /** The label follows a story choice (the turtle's name). */
   labelFrom?: "turtleName";
@@ -154,7 +155,7 @@ const ISABEL: WorldDef = {
     { id: "i-flower-garden", label: "Garten", builtBy: "v2", tile: { c: 9, r: 1 }, footprint: { w: 2, h: 2 }, place: null, partOf: "garden", variant: { step: "IG2-PLANT", options: { flowers: "flowers", vegetables: "vegetables", tree: "tree" }, fallback: "flowers" } },
     { id: "i-vegetable-patch", label: "Gemüsebeet", builtBy: "v4", tile: { c: 8, r: 4 }, footprint: { w: 2, h: 2 }, place: "patch" },
     { id: "i-harvest-table", label: "Erntetisch", builtBy: "v4", tile: { c: 2, r: 7 }, footprint: { w: 2, h: 1 }, place: "table", variant: { step: "IH2-PICK", options: { apples: "apples", carrots: "carrots", corn: "corn" }, fallback: "apples" } },
-    { id: "i-birdhouse", label: "Vogelhaus", builtBy: "v5", tile: { c: 5, r: 3 }, footprint: { w: 1, h: 1 }, place: "birdhouse", variant: { step: "IV10-ROOF", options: { red: "red", blue: "blue", yellow: "yellow" }, fallback: "red" }, effect: "i-robins", effectUntil: "v6", later: { visit: "v6", asset: "i-birdhouse-{variant}-birds-built", fromVisitStart: true } },
+    { id: "i-birdhouse", label: "Vogelhaus", builtBy: "v5", tile: { c: 5, r: 3 }, footprint: { w: 1, h: 1 }, place: "birdhouse", variant: { step: "IV10-ROOF", options: { red: "red", blue: "blue", yellow: "yellow" }, fallback: "red" }, builtAsset: "i-birdhouse-tree-{variant}-built", effect: "i-robins", effectUntil: "v6", later: { visit: "v6", asset: "i-birdhouse-tree-{variant}-birds-built", fromVisitStart: true } },
     { id: "i-feeder", label: "Futterbrett", builtBy: "v6", tile: { c: 4, r: 3 }, footprint: { w: 1, h: 1 }, place: null, partOf: "birdhouse", variant: { step: "IF8-FOOD", options: { seeds: "seeds", berries: "berries", worms: "worms" }, fallback: "seeds" } },
   ],
 };
@@ -215,7 +216,7 @@ export function deriveHomeWorld(input: HomeWorldInput): HomeWorld {
     const variant = p.variant ? (p.variant.options[input.choices[p.variant.step] ?? ""] ?? p.variant.fallback) : null;
     // A site is the same for every variant (the choice is made during that visit); a built piece shows the child's choice.
     const later = p.later && built && (finishedIds.has(p.later.visit) || (!!p.later.fromVisitStart && input.visits.some((v) => v.id === p.later!.visit))) ? p.later : null;
-    const asset = later ? later.asset.replace("{variant}", variant ?? "") : built ? p.builtAsset ?? `${p.id}${variant ? `-${variant}` : ""}-built` : `${p.id}-site`;
+    const asset = later ? later.asset.replace("{variant}", variant ?? "") : built ? (p.builtAsset ? p.builtAsset.replace("{variant}", variant ?? "") : `${p.id}${variant ? `-${variant}` : ""}-built`) : `${p.id}-site`;
     if (p.effect && started && !(p.effectUntil && input.visits.some((v) => v.id === p.effectUntil))) effects.push({ asset: p.effect, tile: p.tile, footprint: p.footprint });
     const laterName = later?.labelFrom ? input.story?.[later.labelFrom]?.value ?? null : null;
     pieces.push({ id: p.id, label: laterName ? `${p.label} · ${laterName}` : (p.labelFrom ? input.story?.[p.labelFrom]?.value : null) ?? p.label, stage: built ? "built" : "site", tile: p.tile, footprint: p.footprint, asset, place: p.place, partOf: p.partOf ?? null, builtBy: p.builtBy, arriving: false });

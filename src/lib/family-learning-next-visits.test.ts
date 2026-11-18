@@ -158,7 +158,7 @@ describe("The new map pieces", () => {
     equal(piece(deriveHomeWorld(input("santiago", [{ id: "v11", finishedAt: null }], "v11", {}, { turtleName: { value: "Kira" } })), "s-turtle-crate")?.label, "Kira");
   });
   it("the birdhouse follows her roof color and the robins circle it once the visit started", () => {
-    for (const c of ["red", "blue", "yellow"]) equal(piece(deriveHomeWorld(input("isabel", [{ id: "v5", finishedAt: "2026-11-14T12:00:00Z" }], null, { "IV10-ROOF": c })), "i-birdhouse")?.asset, `i-birdhouse-${c}-built`);
+    for (const c of ["red", "blue", "yellow"]) equal(piece(deriveHomeWorld(input("isabel", [{ id: "v5", finishedAt: "2026-11-14T12:00:00Z" }], null, { "IV10-ROOF": c })), "i-birdhouse")?.asset, `i-birdhouse-tree-${c}-built`); // Nov 18: the birdhouse hangs on the big tree on the map too
     equal(deriveHomeWorld(input("isabel", [], "v5")).effects.length, 0);
     deepEqual(deriveHomeWorld(input("isabel", [{ id: "v5", finishedAt: null }], "v5")).effects.map((e) => e.asset), ["i-robins"]);
   });

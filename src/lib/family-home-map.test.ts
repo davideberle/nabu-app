@@ -145,7 +145,11 @@ describe("sprite manifest", () => {
     const missing: string[] = [];
     for (const w of Object.values(WORLDS)) for (const p of w.pieces) {
       const vars = p.variant ? Object.values(p.variant.options) : [null];
-      for (const v of vars) if (!have.has(p.builtAsset ?? `${p.id}${v ? `-${v}` : ""}-built`)) missing.push(`${p.id}${v ? `-${v}` : ""}-built`);
+      for (const v of vars) {
+        const id = p.builtAsset ? p.builtAsset.replace("{variant}", v ?? "") : `${p.id}${v ? `-${v}` : ""}-built`;
+        if (!have.has(id)) missing.push(id);
+        if (p.later && !have.has(p.later.asset.replace("{variant}", v ?? ""))) missing.push(p.later.asset.replace("{variant}", v ?? ""));
+      }
     }
     deepStrictEqual(missing, []);
     // Sites exist for the visits still to come (Santiago v10, Isabel v4).
@@ -203,7 +207,7 @@ describe("child-device access to the sprites", () => {
     for (const a of ASSETS) ok(isTrackerAllowedPath(assetUrl(a)), assetUrl(a));
     ok(!isTrackerAllowedPath("/family/home-map/other.png"));
     ok(!isTrackerAllowedPath("/family/home-map/"));
-    equal(ASSETS.length, 50); // Nov 18: +9 for Visit 11 (pond water, pump) and Visit 5 (birdhouse with birds ×3, feeder ×3 + site)
+    equal(ASSETS.length, 53); // Nov 18: +12 for Visit 11 (pond water, pump) and Visit 5 (birdhouse on the tree ×3 and with birds ×3, feeder ×3 + site)
   });
 });
 
@@ -220,7 +224,7 @@ describe("1× ground for windows up to 1440 px", () => {
       deepStrictEqual([meta.width, meta.height], [a.size.w / 2, a.size.h / 2], a.id);
       ok(isTrackerAllowedPath(assetUrl1x(a)), assetUrl1x(a));
     }
-    equal(ALL_ASSET_URLS.length, 53);
+    equal(ALL_ASSET_URLS.length, 56);
     ok(!isTrackerAllowedPath("/family/home-map/s-dock-built@1x.png"));
   });
 });

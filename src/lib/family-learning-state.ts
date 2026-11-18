@@ -62,7 +62,7 @@ import { applyReasoningChoice, applyReasoningReply, applyReasoningTurn, childExp
 import { sha256Hex } from "./family-learning-hash.ts";
 import { liveTutorDeferred } from "./family-learning-deferral.ts";
 import { farewellScreenLines } from "./family-learning-narration.ts";
-import { applyMissionAction, buildMissionView, fillStoryTokens, chosenGrid, chosenOption, mapEnding, narratedWorkshopEnding, narratedWorkshopRecap, workshopEnding, workshopRecap, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
+import { applyMissionAction, buildMissionView, fillStoryTokens, chosenGrid, chosenOption, mapEnding, narratedWorkshopEnding, narratedWorkshopRecap, workshopEnding, workshopRecap, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, storyPicture, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
 import { applyNoktTalk, noktTalkView } from "./family-learning-nokt-talk.ts";
 import { originWithoutBinding, provenanceOf, receiptOrigin as bindReceipt, type InvalidReceipt, type ReceiptInput, type VerifiedReceipt } from "./family-learning-trust.ts";
 import {
@@ -3091,6 +3091,9 @@ function closingDimensions(content: LearningContent, def: import("./family-learn
   return liked ? [{ id: "liked", prompt: liked.prompt, options: liked.options, skipLabel: liked.skipLabel }] : (content.reflection.dimensions ?? []);
 }
 
+/** Nov 18 (Isabel Visit 5): the goodbye shows the same end picture as the outcome (her food beside the birdhouse in her roof colour). */
+const withStoryPicture = <T extends { picture: string | null }>(o: T | null, story: MissionState["story"]): T | null => (o ? { ...o, picture: storyPicture(o.picture, story) } : null);
+
 function closingView(state: MissionState, content: LearningContent, visit: VisitId): ClosingView | null {
   const def = missionDefFor(content, visit);
   if (!def || (def.presentation !== "map" && def.presentation !== "workshop")) return null;
@@ -3108,7 +3111,7 @@ function closingView(state: MissionState, content: LearningContent, visit: Visit
       // Isabel Visit 2 (narrated): the result was already shown and spoken on the outcome beat; the closing asks one question per
       // screen and ends with the spoken goodbye.
       const nEnding = narratedWorkshopEnding(def, run);
-      return { success: nEnding.success, next: nEnding.next, artifact: null, plan: null, feedback: fb, made: decideStep ? chosenOption(def, run, decideStep.id) : null, recap: narratedWorkshopRecap(def, run), farewell: farewellScreenLines(content, def), narrated: true };
+      return { success: nEnding.success, next: nEnding.next, artifact: null, plan: null, feedback: fb, made: decideStep ? withStoryPicture(chosenOption(def, run, decideStep.id), state.story) : null, recap: narratedWorkshopRecap(def, run), farewell: farewellScreenLines(content, def), narrated: true };
     }
     return { success: ending.success, next: ending.next, artifact: null, plan: null, feedback: fb, made: decideStep ? chosenOption(def, run, decideStep.id) : null, recap: workshopRecap(def, run) };
   }

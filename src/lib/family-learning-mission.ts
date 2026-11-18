@@ -2309,7 +2309,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     diagram: step.diagram ?? null,
     shipments: step.shipments ?? null,
     ending: step.kind === "outcome" && def.presentation === "scene" ? sceneEnding(def, run) : step.kind === "outcome" && def.presentation === "workshop" ? (def.narration ? narratedWorkshopEnding(def, run) : workshopEnding(def, run)) : null,
-    ...(def.presentation === "workshop" ? workshopActive(def, run, step, r) : {}),
+    ...(def.presentation === "workshop" ? workshopActive(def, run, step, r, state?.story) : {}),
     tutor: { available: !!tutorAvailable, offerPart: Object.entries(r.parts ?? {}).find(([, x]) => x.offer === "shown")?.[0] ?? null },
   };
 }
@@ -2495,7 +2495,20 @@ export function chosenOption(def: MissionDef, run: MissionRun, decideStep: strin
   return o ? { id: o.id, label: o.label, picture: o.picture ?? null, room: room! } : null;
 }
 
-function workshopActive(def: MissionDef, run: MissionRun, step: MissionStep, r: MissionStepRun): Partial<MissionActiveView> {
+/**
+ * Nov 18 (Isabel Visit 5): the end picture of her food choice also shows Visit 4's roof colour — the birdhouse in HER roof colour
+ * on the big tree, the bowl with her food on the board beside it. Picture id `birds-<roof>-<food>`; without a stored roof colour
+ * the map's fallback (red). Any other picture id is returned unchanged.
+ */
+export const BIRD_FOODS = ["seeds", "berries", "worms"] as const;
+export function storyPicture(picture: string | null, story: { roofColor?: { optionId?: string } } | null | undefined): string | null {
+  const food = /^food-([a-z]+)$/.exec(picture ?? "")?.[1];
+  if (!food || !(BIRD_FOODS as readonly string[]).includes(food)) return picture;
+  const roof = story?.roofColor?.optionId;
+  return `birds-${roof === "blue" || roof === "yellow" ? roof : "red"}-${food}`;
+}
+
+function workshopActive(def: MissionDef, run: MissionRun, step: MissionStep, r: MissionStepRun, story?: MissionState["story"]): Partial<MissionActiveView> {
   const out: Partial<MissionActiveView> = {};
   if (step.givenLine) out.givenLine = step.givenLine;
   if (step.kind === "read" && step.letters) {
@@ -2509,7 +2522,7 @@ function workshopActive(def: MissionDef, run: MissionRun, step: MissionStep, r: 
   }
   if (step.fromChoice) {
     const o = chosenOption(def, run, step.fromChoice);
-    out.picture = o && o.picture ? { id: o.picture, label: o.room } : null;
+    out.picture = o && o.picture ? { id: step.kind === "outcome" ? storyPicture(o.picture, story)! : o.picture, label: o.room } : null;
   } else if (step.picture) out.picture = { id: step.picture, label: step.title };
   if (step.kind === "outcome" && step.recap) out.recap = def.narration ? narratedWorkshopRecap(def, run) : workshopRecap(def, run);
   return out;

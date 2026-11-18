@@ -28,6 +28,39 @@ import cozyBirdhouseTreeRed from "@/assets/family-learning/cozy/birdhouse-tree-r
 import cozyBirdhouseTreeBlue from "@/assets/family-learning/cozy/birdhouse-tree-blue.webp";
 import cozyBirdhouseTreeYellow from "@/assets/family-learning/cozy/birdhouse-tree-yellow.webp";
 import cozyIda from "@/assets/family-learning/cozy/portrait-ida.webp";
+// Nov 18 (Isabel Visit 5, Santiago Visit 11): the new scene pictures in the same painted style.
+import cozyFoodSeeds from "@/assets/family-learning/cozy/food-seeds.webp";
+import cozyFoodBerries from "@/assets/family-learning/cozy/food-berries.webp";
+import cozyFoodWorms from "@/assets/family-learning/cozy/food-worms.webp";
+import cozyEgg from "@/assets/family-learning/cozy/egg.webp";
+import cozyIceCream from "@/assets/family-learning/cozy/ice-cream.webp";
+import cozyNextWool from "@/assets/family-learning/cozy/next-wool.webp";
+import cozyNextBush from "@/assets/family-learning/cozy/next-bush.webp";
+import cozyBowlRight from "@/assets/family-learning/cozy/bowl-right.webp";
+import cozyBowlBlue from "@/assets/family-learning/cozy/bowl-blue.webp";
+import cozyBowlGround from "@/assets/family-learning/cozy/bowl-ground.webp";
+import cozyBowlFar from "@/assets/family-learning/cozy/bowl-far.webp";
+import cozyFoodSeagrass from "@/assets/family-learning/cozy/food-seagrass.webp";
+import cozyFoodCrabs from "@/assets/family-learning/cozy/food-crabs.webp";
+import cozyFoodJellyfish from "@/assets/family-learning/cozy/food-jellyfish.webp";
+import cozyPumpBehind from "@/assets/family-learning/cozy/pump-behind.webp";
+import cozyPumpFront from "@/assets/family-learning/cozy/pump-front.webp";
+import cozyPumpOn from "@/assets/family-learning/cozy/pump-on.webp";
+import cozyNetFront from "@/assets/family-learning/cozy/net-front.webp";
+import cozyNetBehind from "@/assets/family-learning/cozy/net-behind.webp";
+import cozyNetNext from "@/assets/family-learning/cozy/net-next.webp";
+import cozyHoseOver from "@/assets/family-learning/cozy/hose-over.webp";
+import cozyHoseUnder from "@/assets/family-learning/cozy/hose-under.webp";
+import cozyHoseAround from "@/assets/family-learning/cozy/hose-around.webp";
+import cozyBirdsRedSeeds from "@/assets/family-learning/cozy/birds-red-seeds.webp";
+import cozyBirdsRedBerries from "@/assets/family-learning/cozy/birds-red-berries.webp";
+import cozyBirdsRedWorms from "@/assets/family-learning/cozy/birds-red-worms.webp";
+import cozyBirdsBlueSeeds from "@/assets/family-learning/cozy/birds-blue-seeds.webp";
+import cozyBirdsBlueBerries from "@/assets/family-learning/cozy/birds-blue-berries.webp";
+import cozyBirdsBlueWorms from "@/assets/family-learning/cozy/birds-blue-worms.webp";
+import cozyBirdsYellowSeeds from "@/assets/family-learning/cozy/birds-yellow-seeds.webp";
+import cozyBirdsYellowBerries from "@/assets/family-learning/cozy/birds-yellow-berries.webp";
+import cozyBirdsYellowWorms from "@/assets/family-learning/cozy/birds-yellow-worms.webp";
 
 const WOOD = "#b8793f";
 const WOOD_DARK = "#7a4a22";
@@ -858,6 +891,16 @@ const BIRDHOUSE_TREE_ART: Record<string, StaticImageData> = {
   "roof-red": cozyBirdhouseTreeRed,
   "roof-blue": cozyBirdhouseTreeBlue,
   "roof-yellow": cozyBirdhouseTreeYellow,
+  // Isabel Visit 5: the same scene with her food in the red bowl on the board beside the tree (`storyPicture`: roof × food).
+  "birds-red-seeds": cozyBirdsRedSeeds,
+  "birds-red-berries": cozyBirdsRedBerries,
+  "birds-red-worms": cozyBirdsRedWorms,
+  "birds-blue-seeds": cozyBirdsBlueSeeds,
+  "birds-blue-berries": cozyBirdsBlueBerries,
+  "birds-blue-worms": cozyBirdsBlueWorms,
+  "birds-yellow-seeds": cozyBirdsYellowSeeds,
+  "birds-yellow-berries": cozyBirdsYellowBerries,
+  "birds-yellow-worms": cozyBirdsYellowWorms,
 };
 
 /** The map's own harvest-table art for what she chose to harvest (the same picture she later sees on the island). */
@@ -891,6 +934,33 @@ const RASTER_PICTURES: Partial<Record<WorkshopPicture, StaticImageData | string>
   "turtle-pepe": cozyTurtlePepe,
   "turtle-flip": cozyTurtleFlip,
   "turtle-own": cozyTurtleOwn,
+  // Nov 18 — Isabel Visit 5 and Santiago Visit 11. The water-depth side views (side-10cm, side-20cm) stay drawn: measuring
+  // diagrams with labels, like side-50cm/1m/2m.
+  "food-seeds": cozyFoodSeeds,
+  "food-berries": cozyFoodBerries,
+  "food-worms": cozyFoodWorms,
+  "egg": cozyEgg,
+  "ice-cream": cozyIceCream,
+  "next-wool": cozyNextWool,
+  "next-bush": cozyNextBush,
+  "bowl-right": cozyBowlRight,
+  "bowl-blue": cozyBowlBlue,
+  "bowl-ground": cozyBowlGround,
+  "bowl-far": cozyBowlFar,
+  "food-seagrass": cozyFoodSeagrass,
+  "food-crabs": cozyFoodCrabs,
+  "food-jellyfish": cozyFoodJellyfish,
+  "pump-behind": cozyPumpBehind,
+  "pump-front": cozyPumpFront,
+  "pump-on": cozyPumpOn,
+  "net-front": cozyNetFront,
+  "net-behind": cozyNetBehind,
+  "net-next": cozyNetNext,
+  "hose-over": cozyHoseOver,
+  "hose-under": cozyHoseUnder,
+  "hose-around": cozyHoseAround,
+  "bird-food": cozyFoodSeeds,
+  "liked-seeds": cozyFoodSeeds,
 };
 const srcOf = (a: StaticImageData | string) => (typeof a === "string" ? a : a.src);
 
