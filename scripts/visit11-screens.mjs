@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-// Nov 18: render checks of Santiago Visit 11 «Den Teich füllen» and Isabel Visit 5 «Die Vögel ziehen ein» (copied from
-// next-visits-screens.mjs, the Nov 8 harness) at 1440 × 780 on `next build` + `next start` with
-// SYNTHETIC records, both paths (right first time / wrong first). The same standard as the last round:
-//  - every `svg[data-picture]` on every screen has drawn children and a non-zero box;
-//  - every narrated line must be a real recorded production clip or a line of the NEW catalogue (not recorded yet: a stand-in plays,
-//    counted separately). Anything else, or any device voice on a narrated screen, is a failure.
-// Audio really plays, muted (Audio muted, Chromium --mute-audio).
-//   node scripts/visit11-screens.mjs --base http://127.0.0.1:3611 --out <dir> --who santiago|isabel|map-s|map-i|fail [--path main|wrong] [--clips <dir>] [--index <json>] [--fresh <json>]
+// Nov 18: render checks of Santiago Visit 11 «Den Teich füllen» and Isabel Visit 5 «Die Vögel ziehen ein» at 1440 × 780 on
+// `next build` + `next start` with SYNTHETIC records (scripts/visit11-seed.mjs), both paths (right first time / wrong first).
+// t12 (release build): the same standard as next-visits-screens.mjs after the Nov 18 integration — per-screen narration
+// sequence recorder, painted pictures must load, no device voice, every clip a catalogued line (`--fresh` = the whole served
+// catalogue, a long `--standin` clip plays for each), Nokt v5 strict writing in the journal (with the v5 stub bridge), the
+// microphone check in the writing panel, the visit ends on the learning Home (the map with `--map`).
+//   node scripts/visit11-screens.mjs --base http://127.0.0.1:3831 --bridge http://127.0.0.1:3832 --out <dir>
+//     --who santiago|isabel|map-s|map-i|after-s|after-i [--path main|wrong] --fresh <catalogue.json> --standin <audio> --clips <dir>
+//     [--map] [--roof red|blue|yellow] [--food seeds|berries|worms]
 import fs from "node:fs";
 import path from "node:path";
 import { encode } from "@auth/core/jwt";
@@ -19,11 +20,18 @@ const CLIPS = opt("--clips", "/tmp/visit10/clips");
 const OUT = opt("--out", "/tmp/visit10/shots-v10");
 const WHO = opt("--who", "isabel");
 const PATH = opt("--path", "main");
-// --fresh: { lines: the NEW catalogue lines (not recorded yet), released: the lines already recorded on production }. Locally no real
-// clip exists, so a stand-in plays for both; each is counted against its own list, and anything outside both lists fails.
-const CAT = JSON.parse(fs.readFileSync(opt("--fresh", "/tmp/nov18/t9-tools/catalog-v11.json"), "utf8"));
-const FRESH = new Set(CAT.lines.map((l) => `${l.slot}/${l.id}`));
-const RELEASED = new Set((CAT.released ?? []).map((l) => `${l.slot}/${l.id}`));
+const FRESH_LINES = JSON.parse(fs.readFileSync(opt("--fresh", "/tmp/visit10/new-catalog.json"), "utf8")).lines;
+const FRESH = new Set(FRESH_LINES.map((l) => `${l.slot}/${l.id}`));
+const TEXT_OF = new Map(FRESH_LINES.map((l) => [`${l.slot}/${l.id}`, l.text]));
+const MAP_START = args.includes("--map");
+// --roof: roof colour override + end-picture colour check (t10-verify).
+const ROOF_OPT = opt("--roof", null);
+// Visit 5 (t12): the end picture is her roof colour (from Visit 4) × her food choice: `birds-<roof>-<food>`.
+const FOOD = opt("--food", "worms");
+const endArt = async (page, where) => { const ROOF = opt("--roof", "blue"); const r = await page.evaluate(() => [...document.querySelectorAll("img[data-testid='birdhouse-tree-art']")].map((i) => ({ src: i.getAttribute("src"), ok: i.complete && i.naturalWidth > 0 }))); check(`I.end-picture-${where}-is-${ROOF}-roof-with-${FOOD}`, r.length >= 1 && r.every((x) => x.ok && x.src.includes(`birds-${ROOF}-${FOOD}`)), r); };
+// The loopback STUB bridge (scripts/visit10-nokt-bridge.mjs) — never the real one.
+const BRIDGE = opt("--bridge", "http://127.0.0.1:3299");
+if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(BRIDGE)) throw new Error("loopback bridge only");
 const VIEWPORT = { width: 1440, height: 780 };
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(BASE)) throw new Error("loopback only");
 const SECRET = process.env.AUTH_SECRET ?? "fable-world-first-synthetic-secret-0123456789abcdef";
@@ -41,7 +49,8 @@ const check = (name, ok, detail) => {
 const pageErrors = [];
 const clipLog = { real: new Set(), fresh: new Set(), unknown: [] };
 const ttsLog = [];
-const standIn = fs.readdirSync(CLIPS).map((f) => path.join(CLIPS, f)).find((f) => f.includes("de-female"));
+const standIn = opt("--standin", null) ?? fs.readdirSync(CLIPS).map((f) => path.join(CLIPS, f)).find((f) => f.includes("de-female"));
+const standInType = standIn.endsWith(".wav") ? "audio/wav" : "audio/mpeg";
 const PROBE = `(() => {
   globalThis.__speech = [];
   const s = globalThis.speechSynthesis;
@@ -52,16 +61,86 @@ const PROBE = `(() => {
   }
   const proto = HTMLMediaElement.prototype;
   const play = proto.play;
-  proto.play = function () { this.muted = true; return play.call(this); };
+  // Nov 18: the per-screen sequence recorder.
+  const ev = (globalThis.__seq = []);
+  const now = () => Math.round(performance.now());
+  let lastClip = null;
+  let ttsN = 0;
+  const f = globalThis.fetch;
+  globalThis.fetch = function (input, init) {
+    const u = String(input && input.url ? input.url : input);
+    const pre = "/api/family/learning/narration/";
+    const at = u.indexOf(pre);
+    if (at >= 0) { lastClip = u.slice(at + pre.length).split("?")[0]; ev.push({ t: now(), e: "fetch", k: lastClip }); }
+    // Nokt's live voice (assistant TTS) also plays as a blob: tag it, so it is never counted as a catalogued line.
+    if (u.indexOf("/api/family/assistant/tts") >= 0) { lastClip = "tts:" + (++ttsN); ev.push({ t: now(), e: "fetch", k: lastClip }); }
+    return f.call(this, input, init);
+  };
+  let screen = "";
+  const screenOf = () => {
+    const w = document.querySelector("[data-testid='workshop-scene']");
+    if (w) return "scene:" + w.dataset.step + ":" + w.dataset.status;
+    const p = document.querySelector("[data-testid='scene-panel']");
+    if (p) return "scene:" + p.dataset.step + ":" + p.dataset.status;
+    const c = document.querySelector("[data-testid='workshop-closing']");
+    if (c) return "closing:" + c.dataset.step;
+    if (document.querySelector("[data-testid='workshop-farewell']")) return "farewell";
+    if (document.querySelector("[data-testid='debrief']")) return "debrief";
+    if (document.querySelector("[data-testid='home-map']")) return "map";
+    return location.pathname;
+  };
+  // Checked synchronously at every clip start and tap (and polled), so a clip is always attributed to the screen it plays on.
+  const sync = () => { const s = screenOf(); if (s !== screen) { screen = s; ev.push({ t: now(), e: "screen", k: s }); } };
+  proto.play = function () {
+    this.muted = true;
+    if (String(this.src).startsWith("blob:")) {
+      sync();
+      if (!this.__seqHooked) {
+        this.__seqHooked = true;
+        this.addEventListener("ended", () => ev.push({ t: now(), e: "end", k: this.__seqKey }));
+        this.addEventListener("pause", () => { if (!this.ended) ev.push({ t: now(), e: "pause", k: this.__seqKey }); });
+      }
+      this.__seqKey = lastClip;
+      ev.push({ t: now(), e: "start", k: lastClip });
+    }
+    return play.call(this);
+  };
+  const tap = (e) => { sync(); const el = e.target && e.target.closest ? e.target.closest("[data-testid]") : null; ev.push({ t: now(), e: "tap", k: el ? el.dataset.testid : "?" }); };
+  addEventListener("pointerdown", tap, true);
+  addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") tap(e); }, true);
+  setInterval(sync, 40);
+  // Nokt's microphone: when the recorder really started and first delivered audio, and when the child was told to speak.
+  globalThis.__mic = [];
+  const MR = globalThis.MediaRecorder;
+  if (MR) {
+    const mic = globalThis.__mic;
+    const start = MR.prototype.start;
+    MR.prototype.start = function (...a) {
+      mic.push({ t: performance.now(), e: "start-called", slice: a[0] ?? null });
+      this.addEventListener("start", () => mic.push({ t: performance.now(), e: "start-event" }));
+      let first = true;
+      this.addEventListener("dataavailable", (d) => { if (first && d.data && d.data.size > 0) { first = false; mic.push({ t: performance.now(), e: "first-data", size: d.data.size }); } });
+      return start.apply(this, a);
+    };
+    let shown = { wait: false, live: false };
+    setInterval(() => {
+      const w = !!document.querySelector("[data-testid='nokt-mic-wait']");
+      const l = !!document.querySelector("[data-testid='nokt-mic-live']");
+      if (w && !shown.wait) mic.push({ t: performance.now(), e: "ui-wait", text: document.querySelector("[data-testid='nokt-mic-wait']").innerText });
+      if (l && !shown.live) mic.push({ t: performance.now(), e: "ui-live", text: document.querySelector("[data-testid='nokt-mic-live']").innerText });
+      shown = { wait: w, live: l };
+    }, 5);
+  }
 })();`;
-const browser = await chromium.launch({ headless: true, args: ["--mute-audio"], ...(process.env.VISIT11_CHROMIUM ? { executablePath: process.env.VISIT11_CHROMIUM } : {}) });
+// PW_CHROMIUM: an already-installed browser binary when Playwright's expected build is not cached (nothing is downloaded).
+const browser = await chromium.launch({ headless: true, ...(process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {}), args: ["--mute-audio", "--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream", "--autoplay-policy=user-gesture-required"] });
 const external = [];
 async function ctx(who) {
   const c = await browser.newContext({ viewport: VIEWPORT, locale: "de-CH", timezoneId: "Europe/Zurich" });
   await c.addInitScript(PROBE);
   await c.route("**/*", async (r) => {
     const u = new URL(r.request().url());
-    if (u.origin !== BASE && !/^http:\/\/127\.0\.0\.1:3299$/.test(u.origin)) {
+    if (u.origin !== BASE && u.origin !== BRIDGE) {
       external.push(`${u.origin}${u.pathname}`);
       return r.abort("blockedbyclient");
     }
@@ -69,26 +148,91 @@ async function ctx(who) {
     if (clip) {
       const key = `${clip[1]}/${clip[2]}`;
       const real = path.join(CLIPS, `${clip[1]}_${clip[2]}.mp3`);
-      if (fs.existsSync(real) || RELEASED.has(key)) {
+      if (fs.existsSync(real)) {
         clipLog.real.add(key);
-        return r.fulfill({ status: 200, contentType: "audio/mpeg", body: fs.readFileSync(fs.existsSync(real) ? real : standIn), headers: { "cache-control": "private, no-cache" } });
+        return r.fulfill({ status: 200, contentType: "audio/mpeg", body: fs.readFileSync(real), headers: { "cache-control": "private, no-cache" } });
       }
       if (FRESH.has(key)) {
         clipLog.fresh.add(key);
-        return r.fulfill({ status: 200, contentType: "audio/mpeg", body: fs.readFileSync(standIn), headers: { "cache-control": "private, no-cache" } });
+        return r.fulfill({ status: 200, contentType: standInType, body: fs.readFileSync(standIn), headers: { "cache-control": "private, no-cache" } });
       }
       clipLog.unknown.push(key);
       return r.fulfill({ status: 404, contentType: "application/json", body: "{}" });
     }
     if (u.pathname === "/api/family/assistant/tts") {
       try { ttsLog.push(JSON.parse(r.request().postData() ?? "{}").text ?? ""); } catch {}
-      return r.fulfill({ status: 200, contentType: "audio/mpeg", body: fs.readFileSync(standIn) });
+      return r.fulfill({ status: 200, contentType: standInType, body: fs.readFileSync(standIn) });
     }
     return r.continue();
   });
   await c.addCookies([{ name: COOKIE, value: await mint(who), url: BASE }]);
+  await c.grantPermissions(["microphone"], { origin: BASE });
   return c;
 }
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Nov 18: the sequence checks over the recorded events of one page
+// ---------------------------------------------------------------------------------------------------------------------
+const seqEvents = [];
+const keepSeq = async (page) => { try { seqEvents.push(...(await page.evaluate(() => globalThis.__seq.splice(0)))); } catch { /* page gone */ } };
+function sequenceChecks(label, expect = {}) {
+  const ev = seqEvents;
+  const text = (k) => TEXT_OF.get(k) ?? k;
+  const cut = [];
+  const twice = [];
+  let playing = null; // { k, t, tapped }
+  let screen = "";
+  let screenStarts = new Map(); // key -> tapped since?
+  let tappedSinceScreen = false;
+  const perScreen = [];
+  let cur = { screen: "", starts: [] };
+  let starts = 0;
+  let ends = 0;
+  const interrupt = (why, t) => {
+    if (playing && !playing.tapped) cut.push(`${screen}: «${text(playing.k)}» cut by ${why} after ${t - playing.t} ms without a tap`);
+    playing = null;
+  };
+  for (const e of ev) {
+    if (e.e === "tap") {
+      if (playing) playing.tapped = true;
+      tappedSinceScreen = true;
+      for (const k of screenStarts.keys()) screenStarts.set(k, true);
+    } else if (e.e === "start") {
+      starts += 1;
+      if (playing) interrupt(`the next clip «${text(e.k)}»`, e.t);
+      if (!String(e.k).startsWith("tts:") && screenStarts.has(e.k) && screenStarts.get(e.k) === false) twice.push(`${screen}: «${text(e.k)}» started twice without a tap`);
+      screenStarts.set(e.k, false);
+      playing = { k: e.k, t: e.t, tapped: false };
+      cur.starts.push(e.k);
+    } else if (e.e === "end") {
+      ends += 1;
+      if (playing && playing.k === e.k) playing = null;
+    } else if (e.e === "pause") {
+      if (playing && playing.k === e.k) interrupt("a pause", e.t);
+    } else if (e.e === "screen") {
+      if (playing && !playing.tapped) cut.push(`«${text(playing.k)}» still playing when the screen changed ${screen} → ${e.k} without a tap`);
+      if (playing) playing.screenChanged = true;
+      screen = e.k;
+      screenStarts = new Map();
+      tappedSinceScreen = false;
+      cur = { screen: e.k, starts: [] };
+      perScreen.push(cur);
+    }
+  }
+  check(`${label}.SEQ.no-line-cut-without-a-tap`, cut.length === 0, cut.slice(0, 6));
+  check(`${label}.SEQ.each-line-once-per-screen`, twice.length === 0, twice.slice(0, 6));
+  const startedTexts = ev.filter((e) => e.e === "start").map((e) => text(e.k));
+  const endedTexts = ev.filter((e) => e.e === "end").map((e) => text(e.k));
+  for (const [step, first] of Object.entries(expect.opening ?? {})) {
+    const seg = perScreen.find((x) => x.screen === `scene:${step}:active` && x.starts.length);
+    check(`${label}.SEQ.opening-line-starts.${step}`, !!seg && text(seg.starts[0]) === first, seg ? text(seg.starts[0]) : "no clip on this screen");
+  }
+  for (const t of expect.heard ?? []) check(`${label}.SEQ.line-heard-to-its-end «${t}»`, startedTexts.includes(t) && endedTexts.includes(t), { started: startedTexts.filter((x) => x === t).length, ended: endedTexts.filter((x) => x === t).length });
+  for (const [t, n] of Object.entries(expect.exactly ?? {})) check(`${label}.SEQ.said-exactly-${n}x «${t}»`, startedTexts.filter((x) => x === t).length === n, startedTexts.filter((x) => x === t).length);
+  seqCounts[label] = { screens: perScreen.length, clipStarts: starts, clipEnds: ends, cut: cut.length, twice: twice.length };
+}
+const seqCounts = {};
+const micTimings = [];
 let n = 0;
 const shot = async (page, name) => { n += 1; await page.screenshot({ path: path.join(OUT, `${WHO}${PATH === "main" ? "" : "-" + PATH}-${String(n).padStart(2, "0")}-${name}.png`) }); };
 const saved = (page) => page.waitForResponse((r) => r.url().includes("/api/family/learning/mission") && r.request().method() === "PUT", { timeout: 20000 });
@@ -96,13 +240,25 @@ let picturesSeen = 0;
 async function pictures(page, label) {
   const r = await page.evaluate(() => ({
     out: [...document.querySelectorAll("svg[data-picture]")].map((e) => { const b = e.getBBox(); const c = e.getBoundingClientRect(); return { id: e.dataset.picture, kids: e.querySelectorAll("*").length, w: Math.round(b.width), h: Math.round(b.height), on: c.width > 0 && c.height > 0 }; }),
-    imgs: [...document.querySelectorAll("[data-testid='harvest-table-art'], [data-testid='scene-portrait'] img")].map((i) => ({ s: i.getAttribute("src"), n: i.naturalWidth })),
+    imgs: [...document.querySelectorAll("[data-testid='harvest-table-art'], [data-testid='scene-portrait'] img, img[data-art]")].map((i) => ({ s: i.getAttribute("src"), n: i.complete ? i.naturalWidth : 0 })),
   }));
+  // Nov 18: a painted picture is an `svg[data-picture]` with one `<image>`; its box exists even when the file is missing, so the
+  // file itself must load and decode (same session, same URL) or the picture counts as empty.
+  r.imgs.push(...(await rasterPictures(page)));
   picturesSeen += r.out.length;
   const bad = r.out.filter((p) => !p.kids || !p.w || !p.h || !p.on);
   const badI = r.imgs.filter((i) => !i.n);
   await scan(page, label);
   check(`PIC.${label}`, !bad.length && !badI.length, bad.length || badI.length ? { bad, badI } : { n: r.out.length });
+}
+async function rasterPictures(page) {
+  return page.evaluate(() => Promise.all([...document.querySelectorAll("svg[data-picture][data-raster]")].map((e) => new Promise((done) => {
+    const src = e.dataset.raster;
+    const img = new Image();
+    img.onload = () => done({ s: src, n: img.naturalWidth, id: e.dataset.picture });
+    img.onerror = () => done({ s: src, n: 0, id: e.dataset.picture });
+    img.src = src;
+  }))));
 }
 /** No tech word on any child screen (the fictional-mode banner of the test server is not a child line). */
 async function scan(page, label) {
@@ -129,6 +285,7 @@ const voiceChecks = async (page, who) => {
 };
 
 const sel = (page, s) => page.locator(s);
+const TURTLE = opt("--turtle", "Flip");
 async function santiago() {
   const wrong = PATH === "wrong";
   const c = await ctx("assistant");
@@ -353,16 +510,36 @@ async function santiago() {
     await shot(page, "F11-nokt-reads");
     if (await sel(page, "[data-testid='nokt-talk-input']").count()) { await sel(page, "[data-testid='nokt-talk-input']").fill("Das Wort Pumpe"); await sel(page, "[data-testid='nokt-talk-send']").click(); }
   }
-  check("S.note-nokt-writing-panel-opened", true, { noktWriting });
-  await page.waitForSelector("[data-testid='write-keep']", { timeout: 40000 });
-  { const d = saved(page); await sel(page, "[data-testid='write-keep']").click(); await d; await settle(400); }
+  check("S.nokt-writing-panel-opened", noktWriting);
+  await noModal(page, "writing");
+  // Nokt v5 strict writing (t8): no «So lassen»; he rewrites until it is right, then the step is done (as next-visits T10).
+  await page.waitForSelector("[data-testid='write-keep'], [data-testid='write-strict']", { timeout: 40000 });
+  check("S.strict-writing-step", (await sel(page, "[data-testid='write-strict']").count()) === 1 && (await sel(page, "[data-testid='write-keep']").count()) === 0);
+  if (await sel(page, "[data-testid='write-strict']").count()) {
+    await micCheck(page, "nokt-writing");
+    await page.waitForFunction(() => document.querySelector("[data-testid='nokt-writing']")?.dataset.waiting === "false" && document.querySelectorAll("[data-testid='nokt-writing'] li[data-role='nokt']").length >= 3, null, { timeout: 40000 });
+    await page.waitForSelector("[data-testid='write-strict'][data-pending='false']", { timeout: 40000 });
+    await settle(600);
+    await sel(page, "[data-testid='write-revise']").fill("Heute haben wir den Teich mit Meerwasser gefüllt. Die Pumpe hat 12 Minuten gebraucht.");
+    { const d = saved(page).catch(() => null); await sel(page, "[data-testid='write-revise-send']").click(); await d; }
+    await page.waitForSelector("[data-testid='write-done']", { timeout: 40000 });
+    check("S.strict-writing-done-after-the-right-version", true);
+    check("S.strict-writing-no-stale-notice", !(await page.locator("body").innerText()).includes("neuerer Stand"));
+    await settle(800);
+  }
+  for (let i = 0; i < 4 && (await sel(page, "[data-testid='write-keep']").count()); i += 1) {
+    const d = saved(page).catch(() => null); await sel(page, "[data-testid='write-keep']").click(); await d; await settle(1200);
+  }
+  await shot(page, "F11-after-writing");
   await leave();
 
   await goTo("F12-END");
-  check("S.name-in-the-end-line", (await textOf(page, "[data-testid='scene-banner']")).includes("Kira"), await textOf(page, "[data-testid='scene-banner']"));
+  check("S.name-in-the-end-line", (await textOf(page, "[data-testid='scene-banner']")).includes(TURTLE), await textOf(page, "[data-testid='scene-banner']"));
   await sel(page, "[data-testid='story-done']").click();
   await settle(500);
   check("S.home-task", (await textOf(page, "[data-testid='home-task']")).includes("Liter"));
+  { const r = await page.evaluate(() => [...document.querySelectorAll("img[data-testid='outcome-art']")].map((i) => ({ src: i.getAttribute("src"), ok: i.complete && i.naturalWidth > 0 })));
+    check("S.end-picture-flip-in-the-pond", r.length === 1 && r[0].ok && r[0].src.includes("pond-flip"), r); }
   await shot(page, "F12-water-in-the-pond");
   await leave();
 
@@ -397,9 +574,17 @@ async function santiago() {
   await scan(page, "S.end");
   await shot(page, "end-cliffhanger");
   await sel(page, "[data-testid='debrief-finish']").click();
-  await settle(2500);
+  await page.waitForURL((u) => u.pathname !== "/family/learn/mission", { timeout: 25000 });
+  const endUrl = new URL(page.url());
+  check("S.MIC.checked-once-at-least", micTimings.length >= 1, micTimings.length);
+  check("S.end-lands-on-the-learning-home", endUrl.pathname === "/family/learn" && endUrl.searchParams.get("child") === "santiago", endUrl.pathname + endUrl.search);
+  await page.waitForSelector("[data-testid='home-map'], [data-testid='world-screen'], [data-testid='start-visit']", { timeout: 40000 }).catch(() => null);
+  await settle(1500);
+  await shot(page, "end-on-the-map");
   check("S.visit-finished", true, page.url());
+  await keepSeq(page);
   await voiceChecks(page, "S");
+  sequenceChecks("S");
   await c.close();
 }
 
@@ -408,22 +593,37 @@ async function isabel() {
   const c = await ctx("assistant");
   const page = await c.newPage();
   page.on("pageerror", (e) => pageErrors.push(String(e)));
-  // The home map leads into the visit: enter at the birdhouse (the map's current place).
-  await page.goto(`${BASE}/family/learn/mission?child=isabel&enter=birdhouse`);
-  const idle = () => page.waitForFunction(() => document.querySelector("[data-testid='workshop-scene']")?.dataset.narration !== "speaking", null, { timeout: 60000 });
+  // The home map leads into the visit (`--map`): the tap on the map is the deliberate start, then the scene opens by itself.
+  await page.goto(`${BASE}/family/learn?child=isabel`);
+  if (MAP_START) {
+    await page.waitForSelector("[data-testid='home-map']", { timeout: 40000 });
+    await settle(1500);
+    await page.mouse.click(5, 300);
+    await page.goto(`${BASE}/family/learn/mission?child=isabel&enter=birdhouse`).catch(() => null);
+  } else {
+    await page.waitForSelector("[data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 30000 });
+    if (await sel(page, "[data-testid='cockpit-start']").count()) await sel(page, "[data-testid='cockpit-start']").click();
+    await page.waitForSelector("[data-testid='start-visit']", { timeout: 15000 });
+    await sel(page, "[data-testid='start-visit']").click();
+  }
+  const idle = () => page.waitForFunction(() => document.querySelector("[data-testid='workshop-scene']")?.dataset.narration !== "speaking", null, { timeout: 90000 });
   const onStep = async (s) => {
     await page.waitForSelector(`[data-testid='workshop-scene'][data-step='${s}']`, { timeout: 30000 });
     await settle(250);
     await pictures(page, `${s}.open`);
     check(`B.${s}.robins-and-ida`, (await sel(page, "[data-testid='scene-companion']").count()) === 1 && (await sel(page, "[data-testid='gardener-portrait']").count()) >= 1);
   };
+  // t6: a story/outcome beat takes two taps (finish it — its done line is said — then leave): tap until the wanted beat is open.
   const next = async (step) => {
-    await idle();
-    await page.waitForFunction(() => { const b = document.querySelector("[data-testid='workshop-next']"); return b && !b.disabled; }, null, { timeout: 60000 });
-    const d = saved(page);
-    await sel(page, "[data-testid='workshop-next']").first().click();
-    await d;
-    await settle(400);
+    for (let i = 0; i < 3; i += 1) {
+      await idle();
+      await page.waitForFunction(() => { const b = document.querySelector("[data-testid='workshop-next']"); return b && !b.disabled; }, null, { timeout: 90000 });
+      const d = saved(page);
+      await sel(page, "[data-testid='workshop-next']").first().click();
+      await d;
+      await settle(600);
+      if (!step || (await sel(page, `[data-testid='workshop-scene'][data-step='${step}']`).count())) break;
+    }
     if (step) await onStep(step);
   };
   const ipart = async (v) => {
@@ -486,7 +686,7 @@ async function isabel() {
   await pick("show", "Rote Schale, auf dem Brett, beim Haus");
   await next("IF8-FOOD");
   await shot(page, "IF8-food-choice");
-  { await idle(); const d = saved(page); await sel(page, "[data-testid='make-worms']").click(); await d; await settle(350); }
+  { await idle(); const d = saved(page); await sel(page, `[data-testid='make-${FOOD}']`).click(); await d; await settle(350); }
   await next("IF9-EI");
   await shot(page, "IF9-read-EI");
   if (wrong) await pick("word", "Eis");
@@ -494,13 +694,14 @@ async function isabel() {
   await next("IF10-HOME");
   await idle();
   check("I.home-task", (await textOf(page, "[data-testid='home-task']")).includes("Vögel"));
+  await endArt(page, "IF10");
   await shot(page, "IF10-birds-at-home");
   await next(null);
   if (await sel(page, "[data-testid='workshop-next']").count()) await next(null);
   await page.waitForSelector("[data-testid='workshop-closing']", { timeout: 30000 });
   const cidle = () => page.waitForFunction(() => document.querySelector("[data-testid='workshop-closing']")?.dataset.narration !== "speaking", null, { timeout: 60000 });
   await cidle();
-  check("I.end-asks-how-easy", (await textOf(page, "[data-testid='closing-question']")).includes("Wie leicht war es?"));
+  check("I.end-asks-wie-war-es-heute", (await textOf(page, "[data-testid='closing-question']")).includes("Wie war es heute?"), await textOf(page, "[data-testid='closing-question']"));
   await sel(page, "[data-testid='difficulty-easy']").click();
   await settle(500);
   await cidle();
@@ -520,11 +721,31 @@ async function isabel() {
   await sel(page, "[data-testid='closing-finish']").click();
   await page.waitForSelector("[data-testid='workshop-farewell']", { timeout: 20000 });
   await page.waitForFunction(() => document.querySelector("[data-testid='workshop-farewell']")?.dataset.narration !== "speaking", null, { timeout: 40000 });
-  check("I.cliffhanger", (await textOf(page, "[data-testid='workshop-farewell']")).includes("Ob bald noch mehr kommen?"));
+  // t6: the cliffhanger is said on the outcome beat only; the goodbye says only the visit's own line.
+  check("I.farewell-without-a-second-cliffhanger", !(await textOf(page, "[data-testid='workshop-farewell']")).includes("Ob bald noch mehr kommen?"));
   check("I.farewell-wording", (await textOf(page, "[data-testid='workshop-farewell']")).includes("Die Vögel haben jetzt Futter. Bis bald!"));
   await pictures(page, "farewell");
-  await shot(page, "farewell-cliffhanger");
+  await endArt(page, "farewell");
+  await shot(page, "farewell");
+  await page.waitForFunction(() => { const b = document.querySelector("[data-testid='farewell-home']"); return b && !b.disabled; }, null, { timeout: 30000 });
+  await sel(page, "[data-testid='farewell-home']").click();
+  await page.waitForURL((u) => u.pathname !== "/family/learn/mission", { timeout: 25000 });
+  const endUrl = new URL(page.url());
+  check("I.end-lands-on-the-learning-home", endUrl.pathname === "/family/learn" && endUrl.searchParams.get("child") === "isabel", endUrl.pathname + endUrl.search);
+  if (MAP_START) await page.waitForSelector("[data-testid='home-map']", { timeout: 40000 }).catch(() => null);
+  check("I.end-shows-the-map", MAP_START ? (await sel(page, "[data-testid='home-map']").count()) === 1 : true);
+  await settle(1500);
+  await shot(page, "end-on-the-map");
+  await keepSeq(page);
   await voiceChecks(page, "I");
+  const v6 = JSON.parse(fs.readFileSync(new URL("../src/data/family-learning/content/isabel-workshop-v5.json", import.meta.url), "utf8")).missions.find((m) => m.visit === "v6");
+  const opening = Object.fromEntries(v6.steps.filter((st) => st.intro?.length).map((st) => [st.id, st.intro[0].text.normalize("NFC").replace(/\s+/g, " ").trim()]));
+  const visited = new Set(seqEvents.filter((e) => e.e === "screen").map((e) => e.k.split(":")[1]));
+  sequenceChecks("I", {
+    opening: Object.fromEntries(Object.entries(opening).filter(([id]) => visited.has(id))),
+    heard: ["Jetzt haben sie bestimmt Hunger.", "Ein Ei im Nest. Ob bald noch mehr kommen?", "Die Vögel haben jetzt Futter. Bis bald!", "Wie war es heute?"],
+    exactly: { "Ein Ei im Nest. Ob bald noch mehr kommen?": 1 },
+  });
   check("I.pictures-actually-checked", picturesSeen >= 15, picturesSeen);
   await c.close();
 }
@@ -535,29 +756,69 @@ const labels = async (page, label) => {
   return r;
 };
 /** The map: the pieces it shows now, every requested file loads, labels clear. */
-async function map(child, wanted, label) {
+async function map(child, wanted, label, expect = {}) {
   const c = await ctx("assistant");
   const page = await c.newPage();
   page.on("pageerror", (e) => pageErrors.push(String(e)));
   const missing = [];
-  page.on("response", (r) => { if (r.url().includes("/family/home-map/") && r.status() >= 400) missing.push(r.url()); });
+  const files = new Set();
+  page.on("response", (r) => {
+    if (!r.url().includes("/family/home-map/")) return;
+    files.add(r.url().split("/family/home-map/")[1].replace(/\.(png|webp)$/, ""));
+    if (r.status() >= 400) missing.push(r.url());
+  });
   await page.goto(`${BASE}/family/learn?child=${child}`);
-  await page.waitForSelector("[data-testid='home-map'][data-ready='true'], [data-testid='home-map']", { timeout: 40000 });
+  await page.waitForSelector("[data-testid='home-map'][data-ready='true']", { timeout: 40000 });
   await settle(3000);
   const r = await labels(page, `${child}.${label}`);
   check(`M.${child}.${label}.pieces`, wanted.every((w) => (r.pieces ?? "").includes(w)), r.pieces);
+  for (const g of expect.gone ?? []) check(`M.${child}.${label}.gone.${g}`, !(r.pieces ?? "").includes(`${g}:`), r.pieces);
+  for (const f of expect.files ?? []) check(`M.${child}.${label}.draws.${f}`, files.has(f), [...files].filter((x) => /birdhouse|feeder|pond|pump|crate|robins/.test(x)));
+  for (const f of expect.absent ?? []) check(`M.${child}.${label}.not-drawn.${f}`, !files.has(f));
+  const text = await page.locator("[data-testid='home-map']").innerText();
+  for (const [, l] of Object.entries(expect.label ?? {})) check(`M.${child}.${label}.label «${l}»`, text.includes(l), text.replace(/\s+/g, " ").slice(0, 200));
   check(`M.${child}.${label}.no-missing-file`, missing.length === 0, missing.slice(0, 4));
   await shot(page, `map-${child}-${label}`);
   await c.close();
 }
 
+// Nov 18: the microphone once (fake media stream + fake recognizer): «Jetzt sprechen!» only after the recorder really records.
+// t10 integration: callable on any Nokt panel (the look-back has no talk in v5 for this visit; the writing panel has the mic).
+async function micCheck(page, SCOPE) {
+
+    await page.waitForFunction((SCOPE) => { const d = document.querySelector(`[data-testid='${SCOPE}']`); return d?.dataset.waiting === "false" && d.querySelector("[data-testid='nokt-mic-start']") && d.querySelectorAll("[data-role='nokt']").length >= 1; }, SCOPE, { timeout: 40000 });
+    await settle(400);
+    await page.evaluate(() => globalThis.__mic.splice(0));
+    const t0 = await page.evaluate(() => performance.now());
+    await page.locator(`[data-testid='${SCOPE}'] [data-testid='nokt-mic-start']`).click();
+    await page.waitForSelector("[data-testid='nokt-mic-live']", { timeout: 15000 });
+    await settle(1200);
+    await shot(page, "mic-jetzt-sprechen");
+    await page.locator(`[data-testid='${SCOPE}'] [data-testid='nokt-mic-stop']`).click();
+    await page.waitForFunction((SCOPE) => (document.querySelector(`[data-testid='${SCOPE}'] [data-testid='nokt-talk-input']`)?.value ?? "").trim().length > 0 || document.querySelector("[data-testid='nokt-mic-trouble']"), SCOPE, { timeout: 20000 });
+    const mic = await page.evaluate(() => globalThis.__mic.slice());
+    const at = (e) => mic.find((x) => x.e === e)?.t ?? null;
+    const r = { tap: Math.round(t0), startCalled: at("start-called"), startEvent: at("start-event"), firstData: at("first-data"), uiWait: at("ui-wait"), uiLive: at("ui-live"), waitText: mic.find((x) => x.e === "ui-wait")?.text ?? null, liveText: mic.find((x) => x.e === "ui-live")?.text ?? null, slice: mic.find((x) => x.e === "start-called")?.slice ?? null };
+    for (const k of ["startCalled", "startEvent", "firstData", "uiWait", "uiLive"]) if (r[k] !== null) r[k] = Math.round(r[k] - t0);
+    micTimings.push(r);
+    check("S.MIC.wait-text-before-live", r.uiWait !== null && (r.waitText ?? "").includes("Mikrofon startet") && r.uiWait <= (r.uiLive ?? Infinity), r);
+    check("S.MIC.jetzt-sprechen-only-after-the-recorder-start-event", r.uiLive !== null && r.startEvent !== null && r.uiLive >= r.startEvent, r);
+    check("S.MIC.jetzt-sprechen-only-after-the-first-captured-audio", r.uiLive !== null && r.firstData !== null && r.uiLive >= r.firstData, r);
+    check("S.MIC.transcript-from-the-fake-recognizer", (await page.locator(`[data-testid='${SCOPE}'] [data-testid='nokt-talk-input']`).inputValue()).trim().length > 0);
+    await page.locator(`[data-testid='${SCOPE}'] [data-testid='nokt-talk-send']`).click();
+    await settle(300);
+  
+}
+
 try {
+  const ROOF = opt("--roof", "blue");
+  const T = opt("--turtle", "Flip");
   if (WHO === "santiago") await santiago();
   else if (WHO === "isabel") await isabel();
-  else if (WHO === "map-s") await map("santiago", ["s-pond:built", "s-turtle-crate:built"], opt("--label", "before"));
-  else if (WHO === "map-i") await map("isabel", ["i-birdhouse:built"], opt("--label", "before"));
-  else if (WHO === "after-s") await map("santiago", ["s-pond:built", "s-pump:built"], "after");
-  else if (WHO === "after-i") await map("isabel", ["i-birdhouse:built", "i-feeder:built"], "after");
+  else if (WHO === "map-s") await map("santiago", ["s-pond:built", "s-turtle-crate:built"], opt("--label", "before"), { files: ["s-pond-dug-built", "s-turtle-crate-built"], absent: ["s-pump-built", "s-pond-water-built"], label: { "s-turtle-crate": T } });
+  else if (WHO === "map-i") await map("isabel", ["i-birdhouse:built"], opt("--label", "before"), { files: [`i-birdhouse-tree-${ROOF}-built`, "i-robins"], absent: [`i-birdhouse-${ROOF}-built`, "i-feeder-site"] });
+  else if (WHO === "after-s") await map("santiago", ["s-pond:built", "s-pump:built"], "after", { files: ["s-pond-water-built", "s-pump-built"], absent: ["s-turtle-crate-built", "s-pond-dug-built"], label: { "s-pond": `Teich · ${T}` }, gone: ["s-turtle-crate"] });
+  else if (WHO === "after-i") await map("isabel", ["i-birdhouse:built", "i-feeder:built"], "after", { files: [`i-birdhouse-tree-${ROOF}-birds-built`, `i-feeder-${opt("--food", "worms")}-built`], absent: ["i-robins", `i-birdhouse-tree-${ROOF}-built`] });
 } catch (error) {
   check("harness-completed", false, String(error).slice(0, 500));
   const p = browser.contexts()[0]?.pages()[0];
@@ -566,7 +827,8 @@ try {
 check("no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 4));
 check("no-external-requests", external.length === 0, external.slice(0, 4));
 await browser.close();
-fs.writeFileSync(path.join(OUT, `results-${WHO}-${PATH}.json`), JSON.stringify({ results, clips: { released: clipLog.real.size, newLines: clipLog.fresh.size, unknown: clipLog.unknown }, tts: ttsLog.length }, null, 1));
+fs.writeFileSync(path.join(OUT, `results-${WHO}-${PATH}${MAP_START ? "-map" : ""}.json`), JSON.stringify({ results, clips: { real: clipLog.real.size, catalogued: clipLog.fresh.size, unknown: clipLog.unknown }, tts: ttsLog.length, sequence: seqCounts, mic: micTimings, events: seqEvents.length, eventLog: seqEvents }, null, 1));
+if (Object.keys(seqCounts).length) console.log("sequence", JSON.stringify(seqCounts), "mic", JSON.stringify(micTimings));
 const failed = results.filter((r) => !r.ok);
 console.log(`\n${WHO}/${PATH}: ${results.length - failed.length}/${results.length} passed`);
 process.exit(failed.length ? 1 : 0);
