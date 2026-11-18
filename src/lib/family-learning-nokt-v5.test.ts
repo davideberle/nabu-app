@@ -59,6 +59,10 @@ describe("guard — task help (purpose visit): helper, not quizmaster", () => {
     deepStrictEqual(check("visit", "begleiten", [kid("hilf mir")], r("Rosa fragt, was wir brauchen. Was siehst du auf dem Bild?", "respond")), { ok: false, reason: "question-when-stuck" });
     deepStrictEqual(check("visit", "begleiten", stuck, r("Rosa fragt auf Deutsch: Was brauchen wir für das Wasser? Probier es einfach.")), { ok: true });
   });
+  it("what a character asked, quoted as a hint, is not Nokt's question", () => {
+    deepStrictEqual(check("visit", "begleiten", [kid("weiss nicht")], r("Rosa braucht etwas für den Teich. Was könnte das sein?")), { ok: false, reason: "question-when-stuck" }, "an unquoted question still counts");
+    deepStrictEqual(check("visit", "begleiten", [kid("weiss nicht")], r("Rosa fragt auf Deutsch: «Was brauchen wir für den Teich?» Probier es einfach.")), { ok: true });
+  });
   it("never two question lines in a row", () => {
     const asked = [nokt("Was denkst du, was Rosa will?"), kid("Wasser")];
     deepStrictEqual(check("visit", "begleiten", asked, r("Und womit holt man Wasser?", "ask")), { ok: false, reason: "question-in-a-row" });

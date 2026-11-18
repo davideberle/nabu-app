@@ -434,12 +434,12 @@ function StrictWrite({ active, busy, act, reading, noktReads }: { active: Missio
         <>
           {st.shown ? (
             <div className="rounded-2xl px-4 py-3" style={{ background: "#edf4e6" }} data-testid="write-shown">
-              <p className="text-base font-semibold">So ist der Satz richtig:</p>
+              <p className="text-base font-semibold">{w.plural ? "So sind die Sätze richtig:" : "So ist der Satz richtig:"}</p>
               <p className="text-xl">«{st.shown.text}»</p>
             </div>
           ) : null}
           <label htmlFor="map-revise" className="text-lg font-semibold">
-            {st.shown ? "Tipp den Satz jetzt selbst ab:" : "Schreib deinen Satz noch einmal:"}
+            {st.shown ? (w.plural ? "Tipp die Sätze jetzt selbst ab:" : "Tipp den Satz jetzt selbst ab:") : w.plural ? "Schreib deine Sätze noch einmal:" : "Schreib deinen Satz noch einmal:"}
           </label>
           <textarea {...NO_TYPING_HELP} id="map-revise" value={text} onChange={(e) => setText(e.target.value.slice(0, 300))} rows={2} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-revise" data-fold="input" />
           <div className="flex flex-wrap gap-3">
