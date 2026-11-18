@@ -32,8 +32,15 @@ export const AUDITION_LINES: readonly { readonly line: 1 | 2; readonly text: str
   Object.freeze({ line: 2 as const, text: "Wie viele Körner sind das? Zähl mit mir: zehn, zwanzig, dreissig …" }),
 ]);
 
-/** Characters one full audition sends (each line once per voice): the cost basis. */
-export const AUDITION_CHARACTERS = AUDITION_VOICES.length * AUDITION_LINES.reduce((n, l) => n + l.text.length, 0);
+/**
+ * Nov 18, afternoon (David picked Sabrina, "but slower"): ONE extra fixed clip — Sabrina, line 1, with the provider's own speed
+ * setting 0.85 (played at 1.0) — to compare with the app's 0.85 playback of her normal clip. Fixed like the rest: nothing from the
+ * request selects it. Her stored voice settings are read first (free) so only the speed differs from her normal clip.
+ */
+export const AUDITION_SLOW = Object.freeze({ key: "sabrina-speed085", label: "Sabrina (Tempo 0.85)", voiceId: "cqPdIo76zSHFDcSZpFov", line: 1 as const, speed: 0.85 });
+
+/** Characters one full audition sends (each line once per voice, plus the one slow clip): the cost basis. */
+export const AUDITION_CHARACTERS = AUDITION_VOICES.length * AUDITION_LINES.reduce((n, l) => n + l.text.length, 0) + AUDITION_LINES[0].text.length;
 
 export const auditionClipPathname = (voiceKey: string, line: number) => `family-narration/${AUDITION_ID}/${voiceKey}/line${line}.mp3`;
 
@@ -86,7 +93,10 @@ export async function recordAudition(maxCharacters: number, deps: StoreDeps = {}
   const token = env.BLOB_READ_WRITE_TOKEN;
   const key = env[NARRATION_KEY_ENV];
   const cap = Math.max(0, Math.min(maxCharacters, MAX_PREPARE_CHARACTERS));
-  const plan = AUDITION_VOICES.flatMap((v) => AUDITION_LINES.map((l) => ({ voice: v, line: l.line, text: l.text, path: auditionClipPathname(v.key, l.line) })));
+  const plan: { voice: { key: string; label: string; voiceId: string }; line: number; text: string; path: string; speed?: number }[] = [
+    ...AUDITION_VOICES.flatMap((v) => AUDITION_LINES.map((l) => ({ voice: v, line: l.line, text: l.text, path: auditionClipPathname(v.key, l.line) }))),
+    { voice: AUDITION_SLOW, line: AUDITION_SLOW.line, text: AUDITION_LINES[0].text, path: auditionClipPathname(AUDITION_SLOW.key, AUDITION_SLOW.line), speed: AUDITION_SLOW.speed },
+  ];
   const clips: AuditionClip[] = plan.map((p) => ({ label: p.voice.label, line: p.line, characters: p.text.length, status: "not-recorded" }));
   const base = { recorded: 0, existing: 0, charactersSent: 0, clips };
   // Defence in depth: the fixed lines are public-safe by construction (a test pins it).
@@ -124,10 +134,17 @@ export async function recordAudition(maxCharacters: number, deps: StoreDeps = {}
       sent += p.text.length;
       let res: Response;
       try {
+        // The slow clip: the voice's own stored settings (free read) with only the speed changed.
+        let voiceSettings: Record<string, unknown> | undefined;
+        if (p.speed !== undefined) {
+          const vs = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/voices/${p.voice.voiceId}/settings`, { headers: { "xi-api-key": key, Accept: "application/json" } });
+          if (!vs.ok) return out("upstream-failed", { failedStatus: vs.status });
+          voiceSettings = { ...((await vs.json()) as Record<string, unknown>), speed: p.speed };
+        }
         res = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/text-to-speech/${p.voice.voiceId}?output_format=${NARRATION_OUTPUT_FORMAT}`, {
           method: "POST",
           headers: { "xi-api-key": key, "Content-Type": "application/json", Accept: "audio/mpeg" },
-          body: JSON.stringify({ text: p.text, model_id: NARRATION_TTS_MODEL_ID }),
+          body: JSON.stringify({ text: p.text, model_id: NARRATION_TTS_MODEL_ID, ...(voiceSettings ? { voice_settings: voiceSettings } : {}) }),
         });
       } catch {
         return out("upstream-failed", { failedStatus: 0 });

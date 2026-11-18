@@ -3,7 +3,7 @@ import { deepStrictEqual, equal, ok } from "node:assert/strict";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { AUDITION_CHARACTERS, AUDITION_LINES, AUDITION_VOICES, auditionClipPathname, parseNarrationPost, recordAudition } from "./family-narration-audition.ts";
+import { AUDITION_CHARACTERS, AUDITION_LINES, AUDITION_SLOW, AUDITION_VOICES, auditionClipPathname, parseNarrationPost, recordAudition } from "./family-narration-audition.ts";
 import { budgetSpent, clipPathname, isPublicSafeScript, prepareNarration, PREPARE_LOCK } from "./family-narration-store.ts";
 import { guardWithReleaseKey, resetReleaseKeyLimit } from "./family-learning-release-key.ts";
 import { narrationCatalog } from "./family-learning-narration.ts";
@@ -16,11 +16,13 @@ import { VOICE_SLOTS, resolveSlotVoiceId } from "./family-voice-registry.ts";
 function fakeStore(initial: string[] = [], lockAgeMs: number | null = null) {
   const stored = new Map<string, { at: number; body: Uint8Array }>(initial.map((p) => [p, { at: Date.now(), body: new Uint8Array([9, 9]) }]));
   if (lockAgeMs !== null) stored.set(PREPARE_LOCK, { at: Date.now() - lockAgeMs, body: new Uint8Array([1]) });
-  const sent: { url: string; key: string; body: { text: string; model_id: string } }[] = [];
+  const sent: { url: string; key: string; body: { text: string; model_id: string; voice_settings?: Record<string, unknown> } }[] = [];
+  const settingsReads: string[] = [];
   const order: string[] = [];
   return {
     stored,
     sent,
+    settingsReads,
     order,
     deps(env: Record<string, string>, fetchOk: (n: number) => boolean | "throw" = () => true) {
       return {
@@ -38,6 +40,7 @@ function fakeStore(initial: string[] = [], lockAgeMs: number | null = null) {
         delImpl: (async (p: string) => { stored.delete(p); }) as never,
         listImpl: (async ({ prefix }: { prefix: string }) => ({ blobs: [...stored.keys()].filter((k) => k.startsWith(prefix)).map((pathname) => ({ pathname })), hasMore: false })) as never,
         fetchImpl: (async (url: string, init: RequestInit) => {
+          if (url.endsWith("/settings")) { settingsReads.push(url); return Response.json({ stability: 0.5, similarity_boost: 0.75, style: 0, use_speaker_boost: true, speed: 1 }); }
           order.push("send");
           sent.push({ url, key: (init.headers as Record<string, string>)["xi-api-key"], body: JSON.parse(String(init.body)) });
           const v = fetchOk(sent.length);
@@ -50,7 +53,7 @@ function fakeStore(initial: string[] = [], lockAgeMs: number | null = null) {
 }
 
 const ENV = { ELEVENLABS_NARRATION_API_KEY: "rec-key", ELEVENLABS_API_KEY: "shared-key", BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_FEMALE_ID: "AnvlJBAqSLDzEevYr9Ap", FAMILY_NARRATION_BUDGET: "test-approval:5000" };
-const TOTAL = AUDITION_VOICES.length * AUDITION_LINES.length;
+const TOTAL = AUDITION_VOICES.length * AUDITION_LINES.length + 1;
 
 describe("voice audition — the fixed list", () => {
   it("four native German candidates × two fixed Ida lines; no Ava, no Hannah, no child name, Swiss spelling, ≤ 160 characters", () => {
@@ -62,7 +65,9 @@ describe("voice audition — the fixed list", () => {
     ok(AUDITION_LINES.every((l) => isPublicSafeScript(l.text) && !/ß/.test(l.text)));
     const perVoice = AUDITION_LINES.reduce((n, l) => n + l.text.length, 0);
     ok(perVoice <= 160, `${perVoice}`);
-    equal(AUDITION_CHARACTERS, perVoice * 4);
+    equal(AUDITION_CHARACTERS, perVoice * 4 + AUDITION_LINES[0].text.length);
+    equal(AUDITION_SLOW.voiceId, AUDITION_VOICES.find((v) => v.key === "sabrina")!.voiceId);
+    equal(AUDITION_SLOW.speed, 0.85);
     ok(AUDITION_CHARACTERS * 0.08 / 1000 < 1, "well under $1 at $0.08 per 1,000 characters");
     ok(Object.isFrozen(AUDITION_VOICES) && AUDITION_VOICES.every((v) => Object.isFrozen(v)) && Object.isFrozen(AUDITION_LINES));
   });
@@ -129,7 +134,7 @@ describe("voice audition — access (release key like the existing recording)", 
 });
 
 describe("voice audition — the paid run (mocked)", () => {
-  it("records the 8 fixed clips with the recording key, multilingual_v2 and the fixed voices; returns label, line, base64", async () => {
+  it("records the 8 fixed clips plus Sabrina's slow line 1 with the recording key, multilingual_v2 and the fixed voices; returns label, line, base64", async () => {
     const st = fakeStore();
     const r = await recordAudition(5000, st.deps(ENV));
     equal(r.status, "recorded");
@@ -137,10 +142,13 @@ describe("voice audition — the paid run (mocked)", () => {
     equal(r.charactersSent, AUDITION_CHARACTERS);
     equal(st.sent.length, TOTAL);
     ok(st.sent.every((x) => x.key === "rec-key" && x.body.model_id === "eleven_multilingual_v2" && x.url.endsWith("?output_format=mp3_44100_128")));
-    deepStrictEqual(st.sent.map((x) => x.url.split("/text-to-speech/")[1].split("?")[0]), AUDITION_VOICES.flatMap((v) => [v.voiceId, v.voiceId]));
-    deepStrictEqual(st.sent.map((x) => x.body.text), AUDITION_VOICES.flatMap(() => AUDITION_LINES.map((l) => l.text)));
+    deepStrictEqual(st.sent.map((x) => x.url.split("/text-to-speech/")[1].split("?")[0]), [...AUDITION_VOICES.flatMap((v) => [v.voiceId, v.voiceId]), AUDITION_SLOW.voiceId]);
+    deepStrictEqual(st.sent.map((x) => x.body.text), [...AUDITION_VOICES.flatMap(() => AUDITION_LINES.map((l) => l.text)), AUDITION_LINES[0].text]);
+    ok(st.sent.slice(0, -1).every((x) => x.body.voice_settings === undefined), "normal clips keep the voice's stored settings");
+    deepStrictEqual(st.sent.at(-1)!.body.voice_settings, { stability: 0.5, similarity_boost: 0.75, style: 0, use_speaker_boost: true, speed: 0.85 });
+    equal(st.settingsReads.length, 1);
     ok(!st.sent.some((x) => x.url.includes("AnvlJBAqSLDzEevYr9Ap")), "the configured slot voice is never used");
-    deepStrictEqual(r.clips.map((c) => `${c.label}-${c.line}-${c.status}`), AUDITION_VOICES.flatMap((v) => [`${v.label}-1-recorded`, `${v.label}-2-recorded`]));
+    deepStrictEqual(r.clips.map((c) => `${c.label}-${c.line}-${c.status}`), [...AUDITION_VOICES.flatMap((v) => [`${v.label}-1-recorded`, `${v.label}-2-recorded`]), `${AUDITION_SLOW.label}-1-recorded`]);
     ok(r.clips.every((c) => typeof c.audioBase64 === "string" && Buffer.from(c.audioBase64, "base64")[0] === 0xff));
     for (const v of AUDITION_VOICES) for (const l of AUDITION_LINES) ok(st.stored.has(auditionClipPathname(v.key, l.line)));
     const json = JSON.stringify(r);
