@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { NO_STORE, refuse, requireOwnerOrReleaseKey, requireParentOwner } from "@/lib/family-learning-auth";
 import { servedNarrationCatalog } from "@/lib/family-narration-catalog-server";
 import { parseNarrationPost, recordAudition } from "@/lib/family-narration-audition";
-import { budgetSpent, isPublicSafeScript, narrationBudget, narrationReadiness, prepareNarration } from "@/lib/family-narration-store";
+import { budgetSpent, isPublicSafeScript, narrationBudget, narrationReadiness, planNarration, prepareNarration } from "@/lib/family-narration-store";
 
 /**
  * Owner only (Isabel Visit 2, I2-06): the prerecorded German narration.
@@ -13,6 +13,9 @@ import { budgetSpent, isPublicSafeScript, narrationBudget, narrationReadiness, p
  *        configured voice, never more than `maxCharacters` characters in this call; existing clips are skipped; the first
  *        upstream failure stops it (no retries). Only reviewed catalogue text is sent — never a child's answer or record.
  *        Needs the owner budget `FAMILY_NARRATION_BUDGET`; every request counts against it across calls (failed ones too).
+ * POST `{ confirm: "plan-narration" }` — FREE dry run of prepare-narration (owner/release key, Nov 18): which lines a paid run would
+ *        send now, as counts per slot and resolved voice (current / previous, provider speed). No provider call, no ledger entry,
+ *        no lock; no text and no ids in the answer.
  * POST `{ confirm: "record-audition", maxCharacters }` — PAID, explicit, owner/release key (Nov 18): records the FIXED voice
  *        audition (`family-narration-audition.ts`: 4 compiled voices × 2 compiled lines) under its own store prefix, with the
  *        same key, lock and budget ledger; existing clips are skipped. Returns label + line + base64 MP3 per clip, never a key.
@@ -44,6 +47,11 @@ export async function POST(request: Request) {
   }
   const parsed = parseNarrationPost(body);
   if (!parsed.ok) return refuse(400, parsed.error);
+  if (parsed.value.mode === "plan-narration") {
+    const plan = await planNarration(servedNarrationCatalog());
+    console.info(`[family/learning/parent/narration] plan by ${access.via}: ${plan.status}, missing ${plan.missing} lines, ${plan.missingCharacters} characters`);
+    return NextResponse.json({ plan }, { status: plan.status === "planned" ? 200 : 503, headers: NO_STORE });
+  }
   const { mode, maxCharacters } = parsed.value;
   const status = { "not-configured": 503, "no-budget": 503, "budget-unavailable": 503, "upstream-failed": 502, "store-failed": 502, busy: 409 } as Record<string, number>;
   if (mode === "record-audition") {

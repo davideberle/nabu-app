@@ -57,8 +57,9 @@ type SynthLike = { cancel: () => void; speak: (u: UtteranceLike) => void; getVoi
 type AudioLike = { src: string; play: () => Promise<void> | void; pause: () => void; onended: (() => void) | null; onerror: (() => void) | null; playbackRate?: number; defaultPlaybackRate?: number; preservesPitch?: boolean; webkitPreservesPitch?: boolean; paused?: boolean; ended?: boolean };
 
 export type NarrationPlayerDeps = {
-  /** Fetch the prerecorded clip of one line, or null when none is recorded (404/503/network). */
-  fetchClip?: (line: NarrationLine, signal: AbortSignal) => Promise<Blob | null>;
+  /** Fetch the prerecorded clip of one line, or null when none is recorded (404/503/network). A `{ blob, rate }` answer carries
+   *  the clip's own playback rate (a clip recorded at a provider speed plays at 1.0, see `clipRateFromHeader`). */
+  fetchClip?: (line: NarrationLine, signal: AbortSignal) => Promise<Blob | ClipWithRate | null>;
   createAudio?: () => AudioLike | null;
   createObjectUrl?: (b: Blob) => string;
   revokeObjectUrl?: (u: string) => void;
@@ -109,13 +110,24 @@ export function pickGermanVoice(voices: readonly VoiceLike[]): VoiceLike | null 
   return pickNativeVoice(voices, "de");
 }
 
-const defaultFetchClip = async (l: NarrationLine, signal: AbortSignal): Promise<Blob | null> => {
+export type ClipWithRate = { blob: Blob; rate: number | null };
+
+/**
+ * Nov 18: the clip route says `X-Narration-Rate: 1` for a clip the provider already recorded slower (a slot with a provider
+ * speed); every other clip plays at the slot's default (`playbackRateFor`). Only a sane rate is accepted.
+ */
+export function clipRateFromHeader(v: string | null | undefined): number | null {
+  const n = v == null || v.trim() === "" ? NaN : Number(v);
+  return Number.isFinite(n) && n >= 0.5 && n <= 1.5 ? n : null;
+}
+
+const defaultFetchClip = async (l: NarrationLine, signal: AbortSignal): Promise<ClipWithRate | null> => {
   if (!l.slot) return null;
   try {
     const r = await fetch(`${NARRATION_CLIP_PATH}/${encodeURIComponent(l.slot)}/${encodeURIComponent(l.id)}`, { cache: "no-cache", signal, credentials: "same-origin" });
     if (!r.ok) return null;
     const type = r.headers.get("content-type") ?? "";
-    return type.startsWith("audio/") ? await r.blob() : null;
+    return type.startsWith("audio/") ? { blob: await r.blob(), rate: clipRateFromHeader(r.headers.get("x-narration-rate")) } : null;
   } catch {
     return null;
   }
@@ -233,7 +245,9 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
 
   async function speakLine(l: NarrationLine, mySeq: number): Promise<LineOutcome | "cancelled"> {
     abort = new AbortController();
-    const blob = await fetchClip(l, abort.signal);
+    const got = await fetchClip(l, abort.signal);
+    const blob = got && !(got instanceof Blob) && "blob" in got ? got.blob : (got as Blob | null);
+    const clipRate = got && !(got instanceof Blob) && "blob" in got ? got.rate : null;
     if (seq !== mySeq) return "cancelled";
     const el = blob ? ensureAudio() : null;
     if (blob && el) {
@@ -244,7 +258,7 @@ export function createNarrationPlayer(deps: NarrationPlayerDeps = {}): Narration
         url = null;
       }
       if (url) {
-        const rate = playbackRateFor(l.slot);
+        const rate = clipRate ?? playbackRateFor(l.slot);
         const r = await waitLine(l.text, () => {
           el.onended = () => finishLine?.("ended");
           el.onerror = () => finishLine?.("error");

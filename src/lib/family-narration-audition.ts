@@ -48,10 +48,12 @@ export const auditionClipPathname = (voiceKey: string, line: number) => `family-
 // The POST body of the owner narration route, strict: exactly `confirm` and `maxCharacters`, nothing else (no text, no voice).
 // ---------------------------------------------------------------------------------------------------------------------
 
-export type NarrationPost = { mode: "prepare-narration" | "record-audition"; maxCharacters: number };
+export type NarrationPost = { mode: "prepare-narration" | "record-audition"; maxCharacters: number } | { mode: "plan-narration" };
 export function parseNarrationPost(body: unknown): { ok: true; value: NarrationPost } | { ok: false; error: string } {
   if (typeof body !== "object" || body === null || Array.isArray(body) || Object.keys(body).some((k) => k !== "confirm" && k !== "maxCharacters")) return { ok: false, error: "Body accepts exactly confirm and maxCharacters (no text: only the reviewed catalogue is ever recorded)" };
   const { confirm, maxCharacters } = body as Record<string, unknown>;
+  // The FREE dry run (Nov 18): exactly `{ confirm: "plan-narration" }` — no cap, since nothing is sent.
+  if (confirm === "plan-narration") return Object.keys(body).length === 1 ? { ok: true, value: { mode: "plan-narration" } } : { ok: false, error: "plan-narration accepts only confirm" };
   if (confirm !== "prepare-narration" && confirm !== "record-audition") return { ok: false, error: "confirm must be \"prepare-narration\"" };
   if (typeof maxCharacters !== "number" || !Number.isInteger(maxCharacters) || maxCharacters < 1 || maxCharacters > MAX_PREPARE_CHARACTERS) return { ok: false, error: `maxCharacters must be an integer between 1 and ${MAX_PREPARE_CHARACTERS}` };
   return { ok: true, value: { mode: confirm, maxCharacters } };

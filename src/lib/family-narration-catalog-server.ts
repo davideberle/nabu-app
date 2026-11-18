@@ -12,13 +12,15 @@ import { withChessLines } from "./family-chess-narration";
 import { asLearningContent } from "./family-learning-content";
 import { asIsabelContent } from "./family-learning-isabel";
 import { narrationCatalog, storyCatalog, type NarrationLine } from "./family-learning-narration";
+import { pinPreviousVoices } from "./family-narration-voices";
 
 let cached: NarrationLine[] | null = null;
 export function servedNarrationCatalog(): NarrationLine[] {
   if (!cached) {
     const isabel = narrationCatalog(asIsabelContent(isabelWorkshopV5)).map((l) => ({ ...l, child: "isabel" as const }));
     const santiago = storyCatalog(asLearningContent(santiagoExpeditionV10), "santiago");
-    cached = withChessLines([...isabel, ...santiago], ADAPTIVE_CHESS_COACH_LINES_DE);
+    // Nov 18: Ida's new voice starts with Isabel's Visit 5 — lines only the finished visits (and chess) speak keep the previous one.
+    cached = pinPreviousVoices(withChessLines([...isabel, ...santiago], ADAPTIVE_CHESS_COACH_LINES_DE), asIsabelContent(isabelWorkshopV5));
   }
   return cached;
 }

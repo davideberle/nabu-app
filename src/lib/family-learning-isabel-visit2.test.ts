@@ -790,10 +790,10 @@ describe("six-slot story voice registry", () => {
   it("a clip is read with its slot's voice only; an unconfigured or unknown slot has none", async () => {
     let asked = "";
     const deps = { env: { BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_FEMALE_ID: "VoiceAbc12345" }, getImpl: (async (p: string) => { asked = p; return null; }) as never };
-    await readNarrationClip("de-female", narrationCatalog(v2)[0].id, deps);
+    await readNarrationClip({ slot: "de-female", id: narrationCatalog(v2)[0].id }, deps);
     equal(asked, clipPathname("VoiceAbc12345", narrationCatalog(v2)[0].id));
-    equal(await readNarrationClip("de-male", narrationCatalog(v2)[0].id, deps), null);
-    equal(await readNarrationClip("xx-female", narrationCatalog(v2)[0].id, deps), null);
+    equal(await readNarrationClip({ slot: "de-male", id: narrationCatalog(v2)[0].id }, deps), null);
+    equal(await readNarrationClip({ slot: "xx-female", id: narrationCatalog(v2)[0].id }, deps), null);
   });
   it("preparation records only lines whose slot has a voice; other slots are reported, never filled with another voice", async () => {
     const r = await narrationReadiness(narrationCatalog(v2), { env: { BLOB_READ_WRITE_TOKEN: "t", ELEVENLABS_VOICE_DE_MALE_ID: "VoiceMale12345" }, headImpl: (async () => { throw new Error("none"); }) as never });

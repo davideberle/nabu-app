@@ -82,12 +82,12 @@ describe("A3 — slower narration, pitch preserved, nothing cut off", () => {
 describe("A2 — a device can never replay another voice's clip", () => {
   const env = (id: string) => ({ ELEVENLABS_VOICE_DE_FEMALE_ID: id });
   it("the validator changes with the voice and is stable for the same voice", () => {
-    const hannah = clipEtag("de-female", "abc12345", env("hannahVoice123"));
-    const ava = clipEtag("de-female", "abc12345", env("avaVoice456789"));
+    const hannah = clipEtag({ slot: "de-female", id: "abc12345" }, env("hannahVoice123"));
+    const ava = clipEtag({ slot: "de-female", id: "abc12345" }, env("avaVoice456789"));
     ok(hannah && ava && hannah !== ava);
-    equal(clipEtag("de-female", "abc12345", env("avaVoice456789")), ava);
+    equal(clipEtag({ slot: "de-female", id: "abc12345" }, env("avaVoice456789")), ava);
   });
-  it("no voice id leaks into it", () => ok(!clipEtag("de-female", "abc12345", env("avaVoice456789"))!.includes("avaVoice")));
+  it("no voice id leaks into it", () => ok(!clipEtag({ slot: "de-female", id: "abc12345" }, env("avaVoice456789"))!.includes("avaVoice")));
   it("the route revalidates and the player asks it to", () => {
     const route = readFileSync(here("../app/api/family/learning/narration/[slot]/[id]/route.ts"), "utf8");
     ok(route.includes('"private, no-cache"') && !route.includes("max-age=86400"));

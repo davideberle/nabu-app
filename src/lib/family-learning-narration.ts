@@ -36,6 +36,8 @@ export type NarrationLine = {
   child?: "isabel" | "santiago";
   /** Catalogue only: ids of the DISPLAYED source lines this recording speaks for, when the spoken text is a reviewed variant (`SPOKEN_VARIANTS`). */
   sources?: string[];
+  /** Served catalogue only (Nov 18): the line keeps its slot's PREVIOUS voice (finished visits, chess); see `resolveLineVoice`. */
+  voice?: "previous";
 };
 /** One screen's narration: `key` changes exactly when something new should be said (a new beat, a new answer, a new hint). */
 export type NarrationScript = { key: string; lines: NarrationLine[] };

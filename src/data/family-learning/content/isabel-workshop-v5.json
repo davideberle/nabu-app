@@ -4797,7 +4797,7 @@
     "frames": 4
    },
    "closing": {
-    "prompt": "Wie leicht war es?",
+    "prompt": "Wie war es heute?",
     "liked": {
      "prompt": "Was war am schönsten?",
      "skipLabel": "Lieber nicht sagen",

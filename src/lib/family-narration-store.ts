@@ -26,24 +26,85 @@ const LINE_ID_PATTERN = /^n[0-9a-f]{28}$/;
 
 export type Env = Record<string, string | undefined>;
 
-/** The configured voice of the line's story slot (six-slot registry), or null — a line without a slot is never recorded. */
-export function lineVoiceId(l: { slot?: VoiceSlot }, env: Env = process.env): string | null {
-  return l.slot ? resolveSlotVoiceId(l.slot, env) : null;
+// ---------------------------------------------------------------------------------------------------------------------
+// Voice per line (Nov 18, Isabel Visit 5: David picked a new Ida voice, «but slower»). A slot's voice can change between visits
+// without re-recording the finished ones: a catalogue line marked `voice: "previous"` (the lines only Isabel's finished visits
+// speak, and the chess coach's lines) keeps resolving to the slot's PREVIOUS voice (`ELEVENLABS_VOICE_<SLOT>_PREVIOUS_ID`);
+// every other line of the slot resolves to the slot's current voice. Unset previous id = the slot's current voice (no change).
+// Optional provider speed per slot (`FAMILY_NARRATION_SPEED_<SLOT>`, 0.7–1.2): lines of the CURRENT slot voice are then
+// recorded with the voice's stored settings and only `speed` changed, under their own clip key (voice + speed), and played at
+// 1.0 (the clip route says so); pinned lines never get a provider speed.
+// ---------------------------------------------------------------------------------------------------------------------
+
+export const previousVoiceEnv = (slot: VoiceSlot) => VOICE_SLOT_INFO[slot].env.replace(/_ID$/, "_PREVIOUS_ID");
+export const slotSpeedEnv = (slot: VoiceSlot) => `FAMILY_NARRATION_SPEED_${slot.replace("-", "_").toUpperCase()}`;
+const VOICE_ID_PATTERN = /^[A-Za-z0-9]{8,64}$/;
+
+/** The provider speed configured for a slot's current voice, or null (unset, malformed or outside the provider's 0.7–1.2). */
+export function slotSpeed(slot: VoiceSlot, env: Env = process.env): number | null {
+  const raw = env[slotSpeedEnv(slot)]?.trim();
+  if (!raw || !/^[01](\.[0-9]{1,2})?$/.test(raw)) return null;
+  const v = Number(raw);
+  return v >= 0.7 && v <= 1.2 && v !== 1 ? v : null;
 }
+
+export type ResolvedVoice = {
+  voiceId: string;
+  /** Provider speed the clip is recorded with (null = the voice's normal speed). */
+  speed: number | null;
+  /** Which of the slot's voices: the current one, or the previous one a finished visit keeps. */
+  era: "current" | "previous";
+  /** First 12 hex of sha256(voice id [+ speed]): the clip folder and the ETag stem. Never the voice id itself. */
+  key: string;
+};
+
+const voiceKeyOf = (voiceId: string, speed: number | null) => createHash("sha256").update(speed === null ? voiceId : `${voiceId}|speed=${speed}`).digest("hex").slice(0, 12);
+
+/** The voice a catalogued line is recorded and played in, or null (no slot, or the slot has no voice configured). */
+export function resolveLineVoice(l: { slot?: VoiceSlot | string | null; voice?: "previous" }, env: Env = process.env): ResolvedVoice | null {
+  if (!l.slot || !isVoiceSlot(l.slot)) return null;
+  const current = resolveSlotVoiceId(l.slot, env);
+  if (l.voice === "previous") {
+    const prev = env[previousVoiceEnv(l.slot)]?.trim();
+    const voiceId = prev && VOICE_ID_PATTERN.test(prev) ? prev : current;
+    return voiceId ? { voiceId, speed: null, era: prev && voiceId === prev ? "previous" : "current", key: voiceKeyOf(voiceId, null) } : null;
+  }
+  if (!current) return null;
+  const speed = slotSpeed(l.slot, env);
+  return { voiceId: current, speed, era: "current", key: voiceKeyOf(current, speed) };
+}
+
+/** The voice id of a line (see `resolveLineVoice`), or null — a line without a slot is never recorded. */
+export function lineVoiceId(l: { slot?: VoiceSlot; voice?: "previous" }, env: Env = process.env): string | null {
+  return resolveLineVoice(l, env)?.voiceId ?? null;
+}
+
+/** The playback rate a clip of this voice needs, when it differs from the player's per-language default: a clip recorded at a
+ *  provider speed is already slow and plays at 1.0 (never slowed twice). Null = the player's default for the slot. */
+export const clipPlaybackRate = (v: ResolvedVoice | null): number | null => (v && v.speed !== null ? 1 : null);
+export const NARRATION_RATE_HEADER = "X-Narration-Rate";
 
 export const isNarrationLineId = (id: string) => LINE_ID_PATTERN.test(id);
 
-export function clipPathname(voiceId: string, lineId: string): string {
+function pathFor(voiceKey: string, lineId: string): string {
   if (!isNarrationLineId(lineId)) throw new Error("not a narration line id");
-  const voiceKey = createHash("sha256").update(voiceId).digest("hex").slice(0, 12);
   return `family-narration/${voiceKey}/${lineId}.mp3`;
 }
 
-/** The validator of one clip: changes when the slot's voice changes, so a device can never replay another voice's recording. */
-export function clipEtag(slot: VoiceSlot, lineId: string, env: Env = process.env): string | null {
-  const voiceId = resolveSlotVoiceId(slot, env);
-  if (!voiceId) return null;
-  return `"${createHash("sha256").update(voiceId).digest("hex").slice(0, 12)}-${lineId}"`;
+/** The clip of a line in a voice at its normal speed (the layout every clip recorded before Nov 18 uses). */
+export function clipPathname(voiceId: string, lineId: string): string {
+  return pathFor(voiceKeyOf(voiceId, null), lineId);
+}
+
+/** The clip of a line in its resolved voice (voice + provider speed). */
+export function lineClipPathname(v: ResolvedVoice, lineId: string): string {
+  return pathFor(v.key, lineId);
+}
+
+/** The validator of one clip: changes when the line's resolved voice (or its speed) changes, so a device never replays another voice. */
+export function clipEtag(l: { slot?: VoiceSlot | string | null; id: string; voice?: "previous" }, env: Env = process.env): string | null {
+  const v = resolveLineVoice(l, env);
+  return v ? `"${v.key}-${l.id}"` : null;
 }
 
 export type StoreDeps = {
@@ -109,14 +170,14 @@ export async function budgetSpent(approval: string, token: string, deps: StoreDe
   }
 }
 
-/** The stored clip of one catalogued line for the configured voice, or null (no voice, no store, not recorded). */
-export async function readNarrationClip(slot: string, lineId: string, deps: StoreDeps = {}): Promise<ReadableStream<Uint8Array> | null> {
+/** The stored clip of one catalogued line in its resolved voice, or null (no voice, no store, not recorded). */
+export async function readNarrationClip(l: { slot?: VoiceSlot | string | null; id: string; voice?: "previous" }, deps: StoreDeps = {}): Promise<ReadableStream<Uint8Array> | null> {
   const env = deps.env ?? process.env;
-  const voice = isVoiceSlot(slot) ? resolveSlotVoiceId(slot, env) : null;
+  const voice = resolveLineVoice(l, env);
   const token = env.BLOB_READ_WRITE_TOKEN;
-  if (!voice || !token || !isNarrationLineId(lineId)) return null;
+  if (!voice || !token || !isNarrationLineId(l.id)) return null;
   try {
-    const res = await (deps.getImpl ?? get)(clipPathname(voice, lineId), { access: "public", token });
+    const res = await (deps.getImpl ?? get)(lineClipPathname(voice, l.id), { access: "public", token });
     return res && "stream" in res && res.stream ? (res.stream as ReadableStream<Uint8Array>) : null;
   } catch {
     return null;
@@ -156,8 +217,8 @@ export async function narrationReadiness(catalog: NarrationLine[], deps: StoreDe
   const token = env.BLOB_READ_WRITE_TOKEN ?? null;
   const missingLines: NarrationLine[] = [];
   for (const l of catalog) {
-    const voice = lineVoiceId(l, env);
-    if (!voice || !token || !(await exists(clipPathname(voice, l.id), token, deps.headImpl ?? head))) missingLines.push(l);
+    const voice = resolveLineVoice(l, env);
+    if (!voice || !token || !(await exists(lineClipPathname(voice, l.id), token, deps.headImpl ?? head))) missingLines.push(l);
   }
   const missing = new Set(missingLines);
   const chars = (ls: NarrationLine[]) => ls.reduce((n, l) => n + l.text.length, 0);
@@ -174,6 +235,60 @@ export async function narrationReadiness(catalog: NarrationLine[], deps: StoreDe
     return { child: c, ready: miss.length === 0 && slotsOk, lines: ls.length, characters: chars(ls), recorded: ls.length - miss.length, missing: miss.length, missingCharacters: chars(miss), personal: ls.filter((l) => !isPublicSafeScript(l.text)).length };
   });
   return { ready: missingLines.length === 0 && slots.every((x) => x.configured), slots, children, providerKeyConfigured: !!env[NARRATION_KEY_ENV], storeConfigured: !!token, model: NARRATION_TTS_MODEL_ID, lines: catalog.length, characters: chars(catalog), recorded: catalog.length - missingLines.length, missing: missingLines.length, missingCharacters: chars(missingLines), missingLines };
+}
+
+/** Characters per 1,000 the provider bills on the narration model (≈ $0.08, the rate the owner's cost estimates use). */
+export const NARRATION_USD_PER_1000_CHARACTERS = 0.08;
+
+export type NarrationPlan = {
+  status: "planned" | "store-unavailable";
+  /** Lines and characters a `prepare-narration` run would send now (public-safe lines with a configured voice, still missing). */
+  missing: number;
+  missingCharacters: number;
+  /** Per slot × resolved voice («current» or «previous», with the provider speed if any): counts only, no text, no ids. */
+  groups: { slot: VoiceSlot; voice: "current" | "previous"; speed: number | null; lines: number; missing: number; missingCharacters: number }[];
+  /** Lines whose slot has no voice configured (never recorded) and lines naming a child (never sent). */
+  unconfigured: number;
+  personalSkipped: number;
+  estimatedUsd: number;
+  budget: { approval: string; limit: number; spent: number | null; requests: number | null } | null;
+  providerKeyConfigured: boolean;
+};
+
+/**
+ * FREE dry run of `prepareNarration` (owner/release key, `confirm: "plan-narration"`): reads which clips exist (store HEAD calls
+ * and the ledger listing only) and reports what a paid run would send — no provider call, no ledger entry, no lock, no write.
+ */
+export async function planNarration(fullCatalog: NarrationLine[], deps: StoreDeps = {}): Promise<NarrationPlan> {
+  const env = deps.env ?? process.env;
+  const token = env.BLOB_READ_WRITE_TOKEN;
+  const personalSkipped = fullCatalog.filter((l) => !isPublicSafeScript(l.text)).length;
+  const catalog = fullCatalog.filter((l) => isPublicSafeScript(l.text));
+  const b = narrationBudget(env);
+  const spent = b && token ? await budgetSpent(b.approval, token, deps) : null;
+  const budget = b ? { approval: b.approval, limit: b.characters, spent: spent?.characters ?? null, requests: spent?.requests ?? null } : null;
+  const base = { personalSkipped, budget, providerKeyConfigured: !!env[NARRATION_KEY_ENV] };
+  if (!token) return { status: "store-unavailable", missing: 0, missingCharacters: 0, groups: [], unconfigured: catalog.length, estimatedUsd: 0, ...base };
+  const groups = new Map<string, NarrationPlan["groups"][number]>();
+  let unconfigured = 0;
+  for (const l of catalog) {
+    const v = resolveLineVoice(l, env);
+    if (!v || !l.slot) {
+      unconfigured += 1;
+      continue;
+    }
+    const k = `${l.slot}|${v.era}|${v.speed ?? ""}`;
+    const g = groups.get(k) ?? { slot: l.slot, voice: v.era, speed: v.speed, lines: 0, missing: 0, missingCharacters: 0 };
+    g.lines += 1;
+    if (!(await exists(lineClipPathname(v, l.id), token, deps.headImpl ?? head))) {
+      g.missing += 1;
+      g.missingCharacters += l.text.length;
+    }
+    groups.set(k, g);
+  }
+  const list = [...groups.values()].sort((x, y) => (`${x.slot}|${x.voice}` < `${y.slot}|${y.voice}` ? -1 : 1));
+  const missingCharacters = list.reduce((n, g) => n + g.missingCharacters, 0);
+  return { status: "planned", missing: list.reduce((n, g) => n + g.missing, 0), missingCharacters, groups: list, unconfigured, estimatedUsd: Math.round(missingCharacters * NARRATION_USD_PER_1000_CHARACTERS * 10) / 10000, ...base };
 }
 
 export type PrepareResult = {
@@ -242,12 +357,13 @@ export async function prepareNarration(fullCatalog: NarrationLine[], maxCharacte
     const ready = await narrationReadiness(catalog, deps);
     let recorded = 0;
     let sent = 0;
+    const settings = new Map<string, Record<string, unknown>>();
     for (const l of ready.missingLines) {
-      const voice = lineVoiceId(l, env);
+      const voice = resolveLineVoice(l, env);
       if (!voice) continue;
       if (sent + l.text.length > cap) return { status: "cap-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
       if (spent + l.text.length > budget.characters) return { status: "budget-reached", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
-      if (await exists(clipPathname(voice, l.id), token, deps.headImpl ?? head)) continue;
+      if (await exists(lineClipPathname(voice, l.id), token, deps.headImpl ?? head)) continue;
       // Reserve BEFORE sending: whatever happens to the request, it is counted.
       try {
         await (deps.putImpl ?? put)(`${ledgerPrefix(budget.approval)}${String((deps.now ?? Date.now)()).padStart(14, "0")}-${randomBytes(4).toString("hex")}-${l.id}-${l.text.length}.txt`, String(l.text.length), { access: "public", contentType: "text/plain", allowOverwrite: false, addRandomSuffix: false, token });
@@ -259,10 +375,20 @@ export async function prepareNarration(fullCatalog: NarrationLine[], maxCharacte
       sent += l.text.length;
       let res: Response;
       try {
-        res = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/text-to-speech/${voice}?output_format=${NARRATION_OUTPUT_FORMAT}`, {
+        // A provider speed: the voice's own stored settings (a free read, once per voice) with only `speed` changed.
+        let voiceSettings: Record<string, unknown> | undefined;
+        if (voice.speed !== null) {
+          if (!settings.has(voice.voiceId)) {
+            const vs = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/voices/${voice.voiceId}/settings`, { headers: { "xi-api-key": key, Accept: "application/json" } });
+            if (!vs.ok) return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: vs.status, personalSkipped, budget: report() };
+            settings.set(voice.voiceId, (await vs.json()) as Record<string, unknown>);
+          }
+          voiceSettings = { ...settings.get(voice.voiceId), speed: voice.speed };
+        }
+        res = await (deps.fetchImpl ?? fetch)(`https://api.elevenlabs.io/v1/text-to-speech/${voice.voiceId}?output_format=${NARRATION_OUTPUT_FORMAT}`, {
           method: "POST",
           headers: { "xi-api-key": key, "Content-Type": "application/json", Accept: "audio/mpeg" },
-          body: JSON.stringify({ text: l.text, model_id: NARRATION_TTS_MODEL_ID }),
+          body: JSON.stringify({ text: l.text, model_id: NARRATION_TTS_MODEL_ID, ...(voiceSettings ? { voice_settings: voiceSettings } : {}) }),
         });
       } catch {
         // No answer (network): the request may have been billed — it stays reserved, and the run stops.
@@ -271,7 +397,7 @@ export async function prepareNarration(fullCatalog: NarrationLine[], maxCharacte
       if (!res.ok) return { status: "upstream-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, failedStatus: res.status, personalSkipped, budget: report() };
       try {
         const bytes = await res.arrayBuffer();
-        await (deps.putImpl ?? put)(clipPathname(voice, l.id), Buffer.from(bytes), { access: "public", contentType: "audio/mpeg", allowOverwrite: true, addRandomSuffix: false, token });
+        await (deps.putImpl ?? put)(lineClipPathname(voice, l.id), Buffer.from(bytes), { access: "public", contentType: "audio/mpeg", allowOverwrite: true, addRandomSuffix: false, token });
       } catch {
         return { status: "store-failed", recorded, charactersSent: sent, remaining: ready.missing - recorded, personalSkipped, budget: report() };
       }
