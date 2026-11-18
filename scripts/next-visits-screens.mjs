@@ -5,7 +5,21 @@
 //  - every narrated line must be a real recorded production clip or a line of the NEW catalogue (not recorded yet: a stand-in plays,
 //    counted separately). Anything else, or any device voice on a narrated screen, is a failure.
 // Audio really plays, muted (Audio muted, Chromium --mute-audio).
-//   node scripts/next-visits-screens.mjs --base http://127.0.0.1:3611 --out <dir> --who santiago|isabel|map-s|map-i|fail [--path main|wrong] [--clips <dir>] [--index <json>] [--fresh <json>]
+//   node scripts/next-visits-screens.mjs --base http://127.0.0.1:3611 --out <dir> --who santiago|isabel|map-s|map-i|fail [--path main|wrong] [--clips <dir>] [--index <json>] [--fresh <json>] [--standin <audio>] [--map]
+//
+// Nov 18 additions (visit flow):
+//  - `--standin <file>`: the stand-in clip for catalogue lines without a real recording. Use a LONG one (4–6 s) so an early
+//    advance is caught. `--fresh` may list the WHOLE catalogue of both children (each line still counted against it).
+//  - Per-screen sequence recorder: every clip fetch/start/end/interruption, every child tap and every screen change is logged
+//    in the page. Fails when (a) a clip is interrupted (pause, another clip, a screen change) without a child tap since it
+//    started, (b) the same line starts twice on one screen without a tap in between, (c) the opening line of a narrated beat is
+//    not the first line started there, (d) a done line of Isabel's story/outcome beats never starts or never ends,
+//    (e) the cliffhanger starts more than once. Counts per run go into the results file.
+//  - Santiago's look back uses Nokt's microphone once (Chromium fake media stream, fake recognizer FAMILY_NOKT_STT_FAKE=1):
+//    «Jetzt sprechen!» must appear only after the MediaRecorder `start` event AND its first non-empty `dataavailable`.
+//  - The end of each visit must land on the learning Home screen (/family/learn, the map with FAMILY_HOME_MAP), never /family/home.
+//  - `--map` (Isabel): start the visit from the home map (`?enter=<place>`), as on the children's device, and end on the map.
+//    Santiago's map-mode mission is walked on the island (no quest buttons), which this walk does not drive: use `--who map-s`.
 import fs from "node:fs";
 import path from "node:path";
 import { encode } from "@auth/core/jwt";
@@ -18,7 +32,13 @@ const CLIPS = opt("--clips", "/tmp/visit10/clips");
 const OUT = opt("--out", "/tmp/visit10/shots-v10");
 const WHO = opt("--who", "isabel");
 const PATH = opt("--path", "main");
-const FRESH = new Set(JSON.parse(fs.readFileSync(opt("--fresh", "/tmp/visit10/new-catalog.json"), "utf8")).lines.map((l) => `${l.slot}/${l.id}`));
+const FRESH_LINES = JSON.parse(fs.readFileSync(opt("--fresh", "/tmp/visit10/new-catalog.json"), "utf8")).lines;
+const FRESH = new Set(FRESH_LINES.map((l) => `${l.slot}/${l.id}`));
+const TEXT_OF = new Map(FRESH_LINES.map((l) => [`${l.slot}/${l.id}`, l.text]));
+const MAP_START = args.includes("--map");
+// The loopback STUB bridge (scripts/visit10-nokt-bridge.mjs) — never the real one.
+const BRIDGE = opt("--bridge", "http://127.0.0.1:3299");
+if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(BRIDGE)) throw new Error("loopback bridge only");
 const VIEWPORT = { width: 1440, height: 780 };
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(BASE)) throw new Error("loopback only");
 const SECRET = process.env.AUTH_SECRET ?? "fable-world-first-synthetic-secret-0123456789abcdef";
@@ -36,7 +56,8 @@ const check = (name, ok, detail) => {
 const pageErrors = [];
 const clipLog = { real: new Set(), fresh: new Set(), unknown: [] };
 const ttsLog = [];
-const standIn = fs.readdirSync(CLIPS).map((f) => path.join(CLIPS, f)).find((f) => f.includes("de-female"));
+const standIn = opt("--standin", null) ?? fs.readdirSync(CLIPS).map((f) => path.join(CLIPS, f)).find((f) => f.includes("de-female"));
+const standInType = standIn.endsWith(".wav") ? "audio/wav" : "audio/mpeg";
 const PROBE = `(() => {
   globalThis.__speech = [];
   const s = globalThis.speechSynthesis;
@@ -47,16 +68,86 @@ const PROBE = `(() => {
   }
   const proto = HTMLMediaElement.prototype;
   const play = proto.play;
-  proto.play = function () { this.muted = true; return play.call(this); };
+  // Nov 18: the per-screen sequence recorder.
+  const ev = (globalThis.__seq = []);
+  const now = () => Math.round(performance.now());
+  let lastClip = null;
+  let ttsN = 0;
+  const f = globalThis.fetch;
+  globalThis.fetch = function (input, init) {
+    const u = String(input && input.url ? input.url : input);
+    const pre = "/api/family/learning/narration/";
+    const at = u.indexOf(pre);
+    if (at >= 0) { lastClip = u.slice(at + pre.length).split("?")[0]; ev.push({ t: now(), e: "fetch", k: lastClip }); }
+    // Nokt's live voice (assistant TTS) also plays as a blob: tag it, so it is never counted as a catalogued line.
+    if (u.indexOf("/api/family/assistant/tts") >= 0) { lastClip = "tts:" + (++ttsN); ev.push({ t: now(), e: "fetch", k: lastClip }); }
+    return f.call(this, input, init);
+  };
+  let screen = "";
+  const screenOf = () => {
+    const w = document.querySelector("[data-testid='workshop-scene']");
+    if (w) return "scene:" + w.dataset.step + ":" + w.dataset.status;
+    const p = document.querySelector("[data-testid='scene-panel']");
+    if (p) return "scene:" + p.dataset.step + ":" + p.dataset.status;
+    const c = document.querySelector("[data-testid='workshop-closing']");
+    if (c) return "closing:" + c.dataset.step;
+    if (document.querySelector("[data-testid='workshop-farewell']")) return "farewell";
+    if (document.querySelector("[data-testid='debrief']")) return "debrief";
+    if (document.querySelector("[data-testid='home-map']")) return "map";
+    return location.pathname;
+  };
+  // Checked synchronously at every clip start and tap (and polled), so a clip is always attributed to the screen it plays on.
+  const sync = () => { const s = screenOf(); if (s !== screen) { screen = s; ev.push({ t: now(), e: "screen", k: s }); } };
+  proto.play = function () {
+    this.muted = true;
+    if (String(this.src).startsWith("blob:")) {
+      sync();
+      if (!this.__seqHooked) {
+        this.__seqHooked = true;
+        this.addEventListener("ended", () => ev.push({ t: now(), e: "end", k: this.__seqKey }));
+        this.addEventListener("pause", () => { if (!this.ended) ev.push({ t: now(), e: "pause", k: this.__seqKey }); });
+      }
+      this.__seqKey = lastClip;
+      ev.push({ t: now(), e: "start", k: lastClip });
+    }
+    return play.call(this);
+  };
+  const tap = (e) => { sync(); const el = e.target && e.target.closest ? e.target.closest("[data-testid]") : null; ev.push({ t: now(), e: "tap", k: el ? el.dataset.testid : "?" }); };
+  addEventListener("pointerdown", tap, true);
+  addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") tap(e); }, true);
+  setInterval(sync, 40);
+  // Nokt's microphone: when the recorder really started and first delivered audio, and when the child was told to speak.
+  globalThis.__mic = [];
+  const MR = globalThis.MediaRecorder;
+  if (MR) {
+    const mic = globalThis.__mic;
+    const start = MR.prototype.start;
+    MR.prototype.start = function (...a) {
+      mic.push({ t: performance.now(), e: "start-called", slice: a[0] ?? null });
+      this.addEventListener("start", () => mic.push({ t: performance.now(), e: "start-event" }));
+      let first = true;
+      this.addEventListener("dataavailable", (d) => { if (first && d.data && d.data.size > 0) { first = false; mic.push({ t: performance.now(), e: "first-data", size: d.data.size }); } });
+      return start.apply(this, a);
+    };
+    let shown = { wait: false, live: false };
+    setInterval(() => {
+      const w = !!document.querySelector("[data-testid='nokt-mic-wait']");
+      const l = !!document.querySelector("[data-testid='nokt-mic-live']");
+      if (w && !shown.wait) mic.push({ t: performance.now(), e: "ui-wait", text: document.querySelector("[data-testid='nokt-mic-wait']").innerText });
+      if (l && !shown.live) mic.push({ t: performance.now(), e: "ui-live", text: document.querySelector("[data-testid='nokt-mic-live']").innerText });
+      shown = { wait: w, live: l };
+    }, 5);
+  }
 })();`;
-const browser = await chromium.launch({ headless: true, args: ["--mute-audio"] });
+// PW_CHROMIUM: an already-installed browser binary when Playwright's expected build is not cached (nothing is downloaded).
+const browser = await chromium.launch({ headless: true, ...(process.env.PW_CHROMIUM ? { executablePath: process.env.PW_CHROMIUM } : {}), args: ["--mute-audio", "--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream", "--autoplay-policy=user-gesture-required"] });
 const external = [];
 async function ctx(who) {
   const c = await browser.newContext({ viewport: VIEWPORT, locale: "de-CH", timezoneId: "Europe/Zurich" });
   await c.addInitScript(PROBE);
   await c.route("**/*", async (r) => {
     const u = new URL(r.request().url());
-    if (u.origin !== BASE && !/^http:\/\/127\.0\.0\.1:3299$/.test(u.origin)) {
+    if (u.origin !== BASE && u.origin !== BRIDGE) {
       external.push(`${u.origin}${u.pathname}`);
       return r.abort("blockedbyclient");
     }
@@ -70,20 +161,85 @@ async function ctx(who) {
       }
       if (FRESH.has(key)) {
         clipLog.fresh.add(key);
-        return r.fulfill({ status: 200, contentType: "audio/mpeg", body: fs.readFileSync(standIn), headers: { "cache-control": "private, no-cache" } });
+        return r.fulfill({ status: 200, contentType: standInType, body: fs.readFileSync(standIn), headers: { "cache-control": "private, no-cache" } });
       }
       clipLog.unknown.push(key);
       return r.fulfill({ status: 404, contentType: "application/json", body: "{}" });
     }
     if (u.pathname === "/api/family/assistant/tts") {
       try { ttsLog.push(JSON.parse(r.request().postData() ?? "{}").text ?? ""); } catch {}
-      return r.fulfill({ status: 200, contentType: "audio/mpeg", body: fs.readFileSync(standIn) });
+      return r.fulfill({ status: 200, contentType: standInType, body: fs.readFileSync(standIn) });
     }
     return r.continue();
   });
   await c.addCookies([{ name: COOKIE, value: await mint(who), url: BASE }]);
+  await c.grantPermissions(["microphone"], { origin: BASE });
   return c;
 }
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Nov 18: the sequence checks over the recorded events of one page
+// ---------------------------------------------------------------------------------------------------------------------
+const seqEvents = [];
+const keepSeq = async (page) => { try { seqEvents.push(...(await page.evaluate(() => globalThis.__seq.splice(0)))); } catch { /* page gone */ } };
+function sequenceChecks(label, expect = {}) {
+  const ev = seqEvents;
+  const text = (k) => TEXT_OF.get(k) ?? k;
+  const cut = [];
+  const twice = [];
+  let playing = null; // { k, t, tapped }
+  let screen = "";
+  let screenStarts = new Map(); // key -> tapped since?
+  let tappedSinceScreen = false;
+  const perScreen = [];
+  let cur = { screen: "", starts: [] };
+  let starts = 0;
+  let ends = 0;
+  const interrupt = (why, t) => {
+    if (playing && !playing.tapped) cut.push(`${screen}: «${text(playing.k)}» cut by ${why} after ${t - playing.t} ms without a tap`);
+    playing = null;
+  };
+  for (const e of ev) {
+    if (e.e === "tap") {
+      if (playing) playing.tapped = true;
+      tappedSinceScreen = true;
+      for (const k of screenStarts.keys()) screenStarts.set(k, true);
+    } else if (e.e === "start") {
+      starts += 1;
+      if (playing) interrupt(`the next clip «${text(e.k)}»`, e.t);
+      if (!String(e.k).startsWith("tts:") && screenStarts.has(e.k) && screenStarts.get(e.k) === false) twice.push(`${screen}: «${text(e.k)}» started twice without a tap`);
+      screenStarts.set(e.k, false);
+      playing = { k: e.k, t: e.t, tapped: false };
+      cur.starts.push(e.k);
+    } else if (e.e === "end") {
+      ends += 1;
+      if (playing && playing.k === e.k) playing = null;
+    } else if (e.e === "pause") {
+      if (playing && playing.k === e.k) interrupt("a pause", e.t);
+    } else if (e.e === "screen") {
+      if (playing && !playing.tapped) cut.push(`«${text(playing.k)}» still playing when the screen changed ${screen} → ${e.k} without a tap`);
+      if (playing) playing.screenChanged = true;
+      screen = e.k;
+      screenStarts = new Map();
+      tappedSinceScreen = false;
+      cur = { screen: e.k, starts: [] };
+      perScreen.push(cur);
+    }
+  }
+  check(`${label}.SEQ.no-line-cut-without-a-tap`, cut.length === 0, cut.slice(0, 6));
+  check(`${label}.SEQ.each-line-once-per-screen`, twice.length === 0, twice.slice(0, 6));
+  const startedTexts = ev.filter((e) => e.e === "start").map((e) => text(e.k));
+  const endedTexts = ev.filter((e) => e.e === "end").map((e) => text(e.k));
+  for (const [step, first] of Object.entries(expect.opening ?? {})) {
+    const seg = perScreen.find((x) => x.screen === `scene:${step}:active` && x.starts.length);
+    check(`${label}.SEQ.opening-line-starts.${step}`, !!seg && text(seg.starts[0]) === first, seg ? text(seg.starts[0]) : "no clip on this screen");
+  }
+  for (const t of expect.heard ?? []) check(`${label}.SEQ.line-heard-to-its-end «${t}»`, startedTexts.includes(t) && endedTexts.includes(t), { started: startedTexts.filter((x) => x === t).length, ended: endedTexts.filter((x) => x === t).length });
+  for (const [t, n] of Object.entries(expect.exactly ?? {})) check(`${label}.SEQ.said-exactly-${n}x «${t}»`, startedTexts.filter((x) => x === t).length === n, startedTexts.filter((x) => x === t).length);
+  seqCounts[label] = { screens: perScreen.length, clipStarts: starts, clipEnds: ends, cut: cut.length, twice: twice.length };
+}
+const seqCounts = {};
+const micTimings = [];
 let n = 0;
 const shot = async (page, name) => { n += 1; await page.screenshot({ path: path.join(OUT, `${WHO}${PATH === "main" ? "" : "-" + PATH}-${String(n).padStart(2, "0")}-${name}.png`) }); };
 const saved = (page) => page.waitForResponse((r) => r.url().includes("/api/family/learning/mission") && r.request().method() === "PUT", { timeout: 20000 });
@@ -133,6 +289,13 @@ async function santiago() {
     check(`B.${label}`, r.banner && r.portrait > 0 && r.turtle, r);
   };
   const goTo = async (step) => {
+    // --map: the map start already walked into the first scene.
+    if (await page.locator(`[data-testid='scene-panel'][data-step='${step}']`).count()) {
+      await settle(350);
+      await pictures(page, `${step}.open`);
+      if (step !== "T9-TYPING") await banner(step);
+      return;
+    }
     await page.waitForSelector(`[data-testid='go-${step}']`, { timeout: 25000 });
     const b = page.locator(`[data-testid='go-${step}']`);
     if ((await b.innerText()).includes("Hingehen")) {
@@ -355,7 +518,17 @@ async function santiago() {
   await page.locator("[data-testid='nokt-talk-input']").fill("Das Wort Teich");
   await page.locator("[data-testid='nokt-talk-send']").click();
   await page.waitForSelector("[data-testid='write-keep']", { timeout: 40000 });
-  { const d = saved(page); await page.locator("[data-testid='write-keep']").click(); await d; await settle(400); }
+  // Nov 14 journal flow: the second-try field shows beside the talk; «So lassen» may need the talk's last reply first. Tap it
+  // until the scene accepts it (bounded), then leave.
+  for (let i = 0; i < 4 && (await page.locator("[data-testid='write-keep']").count()); i += 1) {
+    await page.waitForFunction(() => { const b = document.querySelector("[data-testid='write-keep']"); return !b || !b.disabled; }, null, { timeout: 20000 });
+    if (!(await page.locator("[data-testid='write-keep']").count())) break;
+    const d = saved(page).catch(() => null);
+    await page.locator("[data-testid='write-keep']").click();
+    await d;
+    await settle(1200);
+  }
+  await shot(page, "T10-after-keep");
   await leave();
 
   await goTo("T11-NAME");
@@ -395,7 +568,30 @@ async function santiago() {
     await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-send']").click();
     await settle(300);
   };
-  await answer("Das Rohr");
+  // Nov 18: the microphone once (fake media stream + fake recognizer): «Jetzt sprechen!» only after the recorder really records.
+  {
+    await page.waitForFunction(() => { const d = document.querySelector("[data-testid='nokt-debrief']"); return d?.dataset.waiting === "false" && d.querySelector("[data-testid='nokt-mic-start']") && d.querySelectorAll("[data-role='nokt']").length >= 1; }, null, { timeout: 40000 });
+    await settle(400);
+    await page.evaluate(() => globalThis.__mic.splice(0));
+    const t0 = await page.evaluate(() => performance.now());
+    await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-mic-start']").click();
+    await page.waitForSelector("[data-testid='nokt-mic-live']", { timeout: 15000 });
+    await settle(1200);
+    await shot(page, "mic-jetzt-sprechen");
+    await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-mic-stop']").click();
+    await page.waitForFunction(() => (document.querySelector("[data-testid='nokt-debrief'] [data-testid='nokt-talk-input']")?.value ?? "").trim().length > 0 || document.querySelector("[data-testid='nokt-mic-trouble']"), null, { timeout: 20000 });
+    const mic = await page.evaluate(() => globalThis.__mic.slice());
+    const at = (e) => mic.find((x) => x.e === e)?.t ?? null;
+    const r = { tap: Math.round(t0), startCalled: at("start-called"), startEvent: at("start-event"), firstData: at("first-data"), uiWait: at("ui-wait"), uiLive: at("ui-live"), waitText: mic.find((x) => x.e === "ui-wait")?.text ?? null, liveText: mic.find((x) => x.e === "ui-live")?.text ?? null, slice: mic.find((x) => x.e === "start-called")?.slice ?? null };
+    for (const k of ["startCalled", "startEvent", "firstData", "uiWait", "uiLive"]) if (r[k] !== null) r[k] = Math.round(r[k] - t0);
+    micTimings.push(r);
+    check("S.MIC.wait-text-before-live", r.uiWait !== null && (r.waitText ?? "").includes("Mikrofon startet") && r.uiWait <= (r.uiLive ?? Infinity), r);
+    check("S.MIC.jetzt-sprechen-only-after-the-recorder-start-event", r.uiLive !== null && r.startEvent !== null && r.uiLive >= r.startEvent, r);
+    check("S.MIC.jetzt-sprechen-only-after-the-first-captured-audio", r.uiLive !== null && r.firstData !== null && r.uiLive >= r.firstData, r);
+    check("S.MIC.transcript-from-the-fake-recognizer", (await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-input']").inputValue()).trim().length > 0);
+    await page.locator("[data-testid='nokt-debrief'] [data-testid='nokt-talk-send']").click();
+    await settle(300);
+  }
   await answer("Die Steine");
   await page.waitForSelector("[data-testid='debrief-finish']", { timeout: 45000 });
   await settle(400);
@@ -404,9 +600,19 @@ async function santiago() {
   await scan(page, "S.end");
   await shot(page, "end-cliffhanger");
   await page.locator("[data-testid='debrief-finish']").click();
-  await page.waitForURL(/\/family\/home/, { timeout: 25000 });
+  // Nov 18: the end of the visit lands on the learning Home screen (the map), never on Family Home.
+  await page.waitForURL((u) => u.pathname !== "/family/learn/mission", { timeout: 25000 });
+  const endUrl = new URL(page.url());
+  check("S.end-lands-on-the-learning-home", endUrl.pathname === "/family/learn" && endUrl.searchParams.get("child") === "santiago", endUrl.pathname + endUrl.search);
+  await page.waitForSelector("[data-testid='home-map'], [data-testid='world-screen'], [data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 40000 });
+  if (MAP_START) await page.waitForSelector("[data-testid='home-map']", { timeout: 40000 }).catch(() => null);
+  check("S.end-shows-the-map", MAP_START ? (await page.locator("[data-testid='home-map']").count()) === 1 : true);
+  await settle(1500);
+  await shot(page, "end-on-the-map");
   check("S.visit-finished", true);
+  await keepSeq(page);
   await voiceChecks(page, "S");
+  sequenceChecks("S");
   await c.close();
 }
 
@@ -416,13 +622,21 @@ async function isabel() {
   const page = await c.newPage();
   page.on("pageerror", (e) => pageErrors.push(String(e)));
   await page.goto(`${BASE}/family/learn?child=isabel`);
-  await page.waitForSelector("[data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 30000 });
-  if (await page.locator("[data-testid='cockpit-start']").count()) await page.locator("[data-testid='cockpit-start']").click();
-  await page.waitForSelector("[data-testid='start-visit']", { timeout: 15000 });
-  await page.locator("[data-testid='start-visit']").click();
+  if (MAP_START) {
+    await page.waitForSelector("[data-testid='home-map']", { timeout: 40000 });
+    await settle(1500);
+    // The tap on the map is the deliberate start (sticky user activation), then the scene opens by itself.
+    await page.mouse.click(5, 300);
+    await page.goto(`${BASE}/family/learn/mission?child=isabel&enter=birdhouse`).catch(() => null);
+  } else {
+    await page.waitForSelector("[data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 30000 });
+    if (await page.locator("[data-testid='cockpit-start']").count()) await page.locator("[data-testid='cockpit-start']").click();
+    await page.waitForSelector("[data-testid='start-visit']", { timeout: 15000 });
+    await page.locator("[data-testid='start-visit']").click();
+  }
   let gateSeen = false;
   let stopSeen = false;
-  const idle = () => page.waitForFunction(() => document.querySelector("[data-testid='workshop-scene']")?.dataset.narration !== "speaking", null, { timeout: 60000 });
+  const idle = () => page.waitForFunction(() => document.querySelector("[data-testid='workshop-scene']")?.dataset.narration !== "speaking", null, { timeout: 90000 });
   const onStep = async (s) => {
     await page.waitForSelector(`[data-testid='workshop-scene'][data-step='${s}']`, { timeout: 30000 });
     await settle(250);
@@ -433,13 +647,18 @@ async function isabel() {
     await pictures(page, `${s}.open`);
     check(`B.${s}.robins-and-ida`, (await page.locator("[data-testid='scene-companion']").count()) === 1 && (await page.locator("[data-testid='gardener-portrait']").count()) >= 1);
   };
+  // Nov 18: a story/outcome beat takes two taps (finish it — its done line is said — then leave), so tap «Weiter» until the
+  // wanted beat is open.
   const next = async (step) => {
-    await idle();
-    await page.waitForFunction(() => { const b = document.querySelector("[data-testid='workshop-next']"); return b && !b.disabled; }, null, { timeout: 60000 });
-    const d = saved(page);
-    await page.locator("[data-testid='workshop-next']").first().click();
-    await d;
-    await settle(400);
+    for (let i = 0; i < 3; i += 1) {
+      await idle();
+      await page.waitForFunction(() => { const b = document.querySelector("[data-testid='workshop-next']"); return b && !b.disabled; }, null, { timeout: 90000 });
+      const d = saved(page);
+      await page.locator("[data-testid='workshop-next']").first().click();
+      await d;
+      await settle(600);
+      if (!step || (await page.locator(`[data-testid='workshop-scene'][data-step='${step}']`).count())) break;
+    }
     if (step) await onStep(step);
   };
   const ipart = async (v) => {
@@ -508,6 +727,7 @@ async function isabel() {
   await settle(700);
   await idle();
   await page.waitForFunction(() => { const b = document.querySelector("[data-testid='listen-play']"); return b && !b.disabled; }, null, { timeout: 40000 });
+  check("I.no-kein-ton-link-after-a-normal-play", (await page.locator("[data-testid='listen-adult-open']").count()) === 0 && !(await textOf(page, "[data-testid='workshop-task']")).includes("Kein Ton"));
   await pictures(page, "IV9.after-play");
   await shot(page, "IV9-listen-four-pictures");
   if (wrong) {
@@ -553,12 +773,32 @@ async function isabel() {
   await page.waitForFunction(() => { const b = document.querySelector("[data-testid='closing-finish']"); return b && !b.disabled; }, null, { timeout: 40000 });
   await page.locator("[data-testid='closing-finish']").click();
   await page.waitForSelector("[data-testid='workshop-farewell']", { timeout: 20000 });
-  await page.waitForFunction(() => document.querySelector("[data-testid='workshop-farewell']")?.dataset.narration !== "speaking", null, { timeout: 40000 });
-  check("I.cliffhanger", (await textOf(page, "[data-testid='workshop-farewell']")).includes("Ob sie einziehen?"));
+  await page.waitForFunction(() => document.querySelector("[data-testid='workshop-farewell']")?.dataset.narration !== "speaking", null, { timeout: 60000 });
+  // Nov 18: the cliffhanger was said on the outcome beat; the goodbye says only the visit's own line (no second cliffhanger).
+  check("I.farewell-without-a-second-cliffhanger", !(await textOf(page, "[data-testid='workshop-farewell']")).includes("Ob sie einziehen?"));
   check("I.farewell-wording", (await textOf(page, "[data-testid='workshop-farewell']")).includes("Dein Vogelhaus steht jetzt im Garten. Bis bald!"));
   await pictures(page, "farewell");
-  await shot(page, "farewell-cliffhanger");
+  await shot(page, "farewell");
+  await page.waitForFunction(() => { const b = document.querySelector("[data-testid='farewell-home']"); return b && !b.disabled; }, null, { timeout: 30000 });
+  await page.locator("[data-testid='farewell-home']").click();
+  await page.waitForURL((u) => u.pathname !== "/family/learn/mission", { timeout: 25000 });
+  const endUrl = new URL(page.url());
+  check("I.end-lands-on-the-learning-home", endUrl.pathname === "/family/learn" && endUrl.searchParams.get("child") === "isabel", endUrl.pathname + endUrl.search);
+  await page.waitForSelector("[data-testid='home-map'], [data-testid='workshop-hub'], [data-testid='world-screen'], [data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 40000 });
+  if (MAP_START) await page.waitForSelector("[data-testid='home-map']", { timeout: 40000 }).catch(() => null);
+  check("I.end-shows-the-map", MAP_START ? (await page.locator("[data-testid='home-map']").count()) === 1 : true);
+  await settle(1500);
+  await shot(page, "end-on-the-map");
+  await keepSeq(page);
   await voiceChecks(page, "I");
+  const v5 = JSON.parse(fs.readFileSync(new URL("../src/data/family-learning/content/isabel-workshop-v4.json", import.meta.url), "utf8")).missions.find((m) => m.visit === "v5");
+  const opening = Object.fromEntries(v5.steps.filter((st) => st.intro?.length).map((st) => [st.id, st.intro[0].text.normalize("NFC").replace(/\s+/g, " ").trim()]));
+  const visited = new Set(seqEvents.filter((e) => e.e === "screen").map((e) => e.k.split(":")[1]));
+  sequenceChecks("I", {
+    opening: Object.fromEntries(Object.entries(opening).filter(([id]) => visited.has(id))),
+    heard: ["Bauen wir ihnen ein Haus?", "Ob sie einziehen?", "Schau! Die zwei Vögel landen auf dem Dach.", "Dein Vogelhaus steht jetzt im Garten. Bis bald!"],
+    exactly: { "Ob sie einziehen?": 1, "Schau! Die zwei Vögel landen auf dem Dach.": 1 },
+  });
   check("I.pictures-actually-checked", picturesSeen >= 15, picturesSeen);
   await c.close();
 }
@@ -633,7 +873,8 @@ try {
 check("no-page-errors", pageErrors.length === 0, pageErrors.slice(0, 4));
 check("no-external-requests", external.length === 0, external.slice(0, 4));
 await browser.close();
-fs.writeFileSync(path.join(OUT, `results-${WHO}-${PATH}.json`), JSON.stringify({ results, clips: { real: clipLog.real.size, newLines: clipLog.fresh.size, unknown: clipLog.unknown }, tts: ttsLog.length }, null, 1));
+fs.writeFileSync(path.join(OUT, `results-${WHO}-${PATH}${MAP_START ? "-map" : ""}.json`), JSON.stringify({ results, clips: { real: clipLog.real.size, newLines: clipLog.fresh.size, unknown: clipLog.unknown }, tts: ttsLog.length, sequence: seqCounts, mic: micTimings, events: seqEvents.length, eventLog: seqEvents }, null, 1));
+if (Object.keys(seqCounts).length) console.log("sequence", JSON.stringify(seqCounts), "mic", JSON.stringify(micTimings));
 const failed = results.filter((r) => !r.ok);
 console.log(`\n${WHO}/${PATH}: ${results.length - failed.length}/${results.length} passed`);
 process.exit(failed.length ? 1 : 0);
