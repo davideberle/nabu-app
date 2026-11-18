@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Visit 10 (Nov 8) render checks at the Mac mini's real Chrome viewport (1440 × 780), on `next build` + `next start` with SYNTHETIC
 // records. The two classes of failure that passed earlier checks are checked for here, not mocked away:
-//  - pictures: EVERY `svg[data-picture]` on EVERY screen must contain drawn children and have a non-zero box;
+//  - pictures: EVERY `svg[data-picture]` on EVERY screen must contain drawn children and have a non-zero box; a painted one
+//    (`data-raster`) and every `img[data-art]` must really load (Nov 18);
 //  - voice: the clip route answers with the REAL recorded production clips (GET-only download, kept outside the repo); a line the
 //    store does not hold is a failure, and any device voice (speechSynthesis) on a narrated screen is a failure.
 // Audio really plays (that is what proves speed and end-of-line timing) but is muted: Audio elements are muted and Chromium runs
@@ -107,9 +108,16 @@ async function pictures(page, label) {
       const rect = e.getBoundingClientRect();
       return { id: e.dataset.picture, children: e.querySelectorAll("*").length, w: Math.round(box.width), h: Math.round(box.height), onScreen: rect.width > 0 && rect.height > 0 };
     });
-    const imgs = [...document.querySelectorAll("[data-testid='harvest-table-art'], [data-testid='scene-portrait'] img")].map((i) => ({ src: i.getAttribute("src"), natural: i.naturalWidth }));
+    const imgs = [...document.querySelectorAll("[data-testid='harvest-table-art'], [data-testid='scene-portrait'] img, img[data-art]")].map((i) => ({ src: i.getAttribute("src"), natural: i.complete ? i.naturalWidth : 0 }));
     return { out, imgs };
   });
+  // Nov 18: a painted picture (`svg[data-picture][data-raster]`) has a box even when its file is missing: the file must load.
+  r.imgs.push(...(await page.evaluate(() => Promise.all([...document.querySelectorAll("svg[data-picture][data-raster]")].map((e) => new Promise((done) => {
+    const img = new Image();
+    img.onload = () => done({ src: e.dataset.raster, natural: img.naturalWidth });
+    img.onerror = () => done({ src: e.dataset.raster, natural: 0 });
+    img.src = e.dataset.raster;
+  }))))));
   picturesSeen += r.out.length;
   const bad = r.out.filter((p) => p.children === 0 || p.w === 0 || p.h === 0 || !p.onScreen);
   const badImg = r.imgs.filter((i) => !i.natural);

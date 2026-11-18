@@ -9,6 +9,25 @@
 // ---------------------------------------------------------------------------
 
 import type { MissionCounters, WorkshopPicture } from "@/lib/family-learning-mission-spec";
+import type { StaticImageData } from "next/image";
+import cozyRobin from "@/assets/family-learning/cozy/robin.webp";
+import cozyNest from "@/assets/family-learning/cozy/obj-nest.webp";
+import cozyHouse from "@/assets/family-learning/cozy/obj-house.webp";
+import cozyFood from "@/assets/family-learning/cozy/obj-food.webp";
+import cozyBath from "@/assets/family-learning/cozy/obj-bath.webp";
+import cozySticks from "@/assets/family-learning/cozy/obj-sticks.webp";
+import cozyHangRight from "@/assets/family-learning/cozy/hang-right.webp";
+import cozyHangLow from "@/assets/family-learning/cozy/hang-low.webp";
+import cozyHangSmallTree from "@/assets/family-learning/cozy/hang-small-tree.webp";
+import cozyHangFar from "@/assets/family-learning/cozy/hang-far.webp";
+import cozyTurtleTula from "@/assets/family-learning/cozy/turtle-tula.webp";
+import cozyTurtlePepe from "@/assets/family-learning/cozy/turtle-pepe.webp";
+import cozyTurtleFlip from "@/assets/family-learning/cozy/turtle-flip.webp";
+import cozyTurtleOwn from "@/assets/family-learning/cozy/turtle-own.webp";
+import cozyBirdhouseTreeRed from "@/assets/family-learning/cozy/birdhouse-tree-red.webp";
+import cozyBirdhouseTreeBlue from "@/assets/family-learning/cozy/birdhouse-tree-blue.webp";
+import cozyBirdhouseTreeYellow from "@/assets/family-learning/cozy/birdhouse-tree-yellow.webp";
+import cozyIda from "@/assets/family-learning/cozy/portrait-ida.webp";
 
 const WOOD = "#b8793f";
 const WOOD_DARK = "#7a4a22";
@@ -734,6 +753,13 @@ function Shape({ id }: { id: WorkshopPicture }) {
   }
 }
 
+/** Isabel Visit 4: the birdhouse on the big tree beside the garden-house window, per roof colour (her IV10-ROOF choice). */
+const BIRDHOUSE_TREE_ART: Record<string, StaticImageData> = {
+  "roof-red": cozyBirdhouseTreeRed,
+  "roof-blue": cozyBirdhouseTreeBlue,
+  "roof-yellow": cozyBirdhouseTreeYellow,
+};
+
 /** The map's own harvest-table art for what she chose to harvest (the same picture she later sees on the island). */
 const HARVEST_TABLE_ART: Record<string, string> = {
   "harvest-apples": "/family/home-map/i-harvest-table-apples-built.png",
@@ -741,11 +767,40 @@ const HARVEST_TABLE_ART: Record<string, string> = {
   "harvest-corn": "/family/home-map/i-harvest-table-corn-built.png",
 };
 
-/** One reviewed picture, 80 × 80, with its spoken-free label left to the caller. */
+// Nov 18 (one art style): the characters and scenes of the current arcs are painted in the map's cozy 3D style (style B),
+// with the map's own sprites where one exists. Static imports (content-hashed under /_next/static/media/, outside the auth
+// middleware) or a map-manifest file (already allowed for the child device). Ids not listed here keep their vector drawing.
+const MAP = "/family/home-map/";
+const RASTER_PICTURES: Partial<Record<WorkshopPicture, StaticImageData | string>> = {
+  bird: cozyRobin,
+  nest: cozyNest,
+  house: cozyHouse,
+  "next-birdhouse": `${MAP}i-birdhouse-red-built.png`,
+  "roof-red": `${MAP}i-birdhouse-red-built.png`,
+  "roof-blue": `${MAP}i-birdhouse-blue-built.png`,
+  "roof-yellow": `${MAP}i-birdhouse-yellow-built.png`,
+  "liked-roof": `${MAP}i-birdhouse-yellow-built.png`,
+  "liked-sticks": cozySticks,
+  "next-food": cozyFood,
+  "next-bath": cozyBath,
+  "hang-right": cozyHangRight,
+  "hang-low": cozyHangLow,
+  "hang-small-tree": cozyHangSmallTree,
+  "hang-far": cozyHangFar,
+  "turtle-tula": cozyTurtleTula,
+  "turtle-pepe": cozyTurtlePepe,
+  "turtle-flip": cozyTurtleFlip,
+  "turtle-own": cozyTurtleOwn,
+};
+const srcOf = (a: StaticImageData | string) => (typeof a === "string" ? a : a.src);
+
+/** One reviewed picture, 80 × 80, with its spoken-free label left to the caller. A painted picture stays an `svg[data-picture]`
+ *  (one `<image>` inside, `data-raster` = its file) so every check that counts or measures pictures keeps working. */
 export function WorkshopPictureView({ id, className = "h-20 w-20", title }: { id: string; className?: string; title?: string }) {
+  const art = RASTER_PICTURES[id as WorkshopPicture];
   return (
-    <svg viewBox="0 0 80 80" className={className} role={title ? "img" : undefined} aria-hidden={title ? undefined : true} aria-label={title} data-picture={id}>
-      <Shape id={id as WorkshopPicture} />
+    <svg viewBox="0 0 80 80" className={className} role={title ? "img" : undefined} aria-hidden={title ? undefined : true} aria-label={title} data-picture={id} data-raster={art ? srcOf(art) : undefined}>
+      {art ? <image href={srcOf(art)} x={0} y={0} width={80} height={80} preserveAspectRatio="xMidYMid meet" /> : <Shape id={id as WorkshopPicture} />}
     </svg>
   );
 }
@@ -966,6 +1021,18 @@ function CounterIcon({ icon }: { icon?: string }) {
 
 /** Visit 2: her garden with what she chose to grow (the visible consequence of her own choice). */
 export function WorkshopGarden({ grown, label, compact = false }: { grown: string | null; label: string; /** Step 1 (review): smaller on the focused screen so «Weiter» stays above the fold. */ compact?: boolean }) {
+  const birdhouse = grown ? BIRDHOUSE_TREE_ART[grown] : undefined;
+  if (birdhouse) {
+    // Isabel Visit 4: the end picture as Ida said it in step 6 — on the big tree, high up, next to the window, in the roof colour
+    // she chose, the two robins sitting on the roof.
+    return (
+      <figure className="grid justify-items-start gap-2" data-testid="workshop-garden" data-grown={grown ?? ""} data-art="birdhouse-tree">
+        {/* eslint-disable-next-line @next/next/no-img-element -- a fixed painted scene; next/image would route it through the optimizer the child's device may not reach */}
+        <img src={birdhouse.src} width={birdhouse.width} height={birdhouse.height} alt={label} className="h-auto w-full max-w-[400px]" data-testid="birdhouse-tree-art" data-art={grown ?? ""} />
+        <figcaption className="text-base font-semibold">{label}</figcaption>
+      </figure>
+    );
+  }
   const art = grown ? HARVEST_TABLE_ART[grown] : undefined;
   if (art) {
     return (
@@ -993,21 +1060,12 @@ export function WorkshopGarden({ grown, label, compact = false }: { grown: strin
   );
 }
 
-/** The gardener of Visit 2 — a story character, drawn plainly; deliberately NOT Isabel's assistant portrait (Old Lila). */
+/** Gärtnerin Ida (Visits 2–4) — a story character in the map's cozy 3D style; deliberately NOT Isabel's assistant portrait (Old Lila). */
 export function GardenerPortrait({ className = "h-20 w-20", name }: { className?: string; name: string }) {
   return (
-    <svg viewBox="0 0 80 80" className={className} role="img" aria-label={name} data-testid="gardener-portrait">
-      <circle cx={40} cy={40} r={38} fill="#e7f2dc" />
-      <path d="M18 78q0-22 22-22t22 22z" fill="#4f8f3a" />
-      <rect x={30} y={58} width={20} height={20} rx={3} fill="#3d6e2c" />
-      <circle cx={40} cy={40} r={14} fill="#e8b98f" />
-      <path d="M27 40q-2 10 4 14M53 40q2 10-4 14" stroke="#7a4a22" strokeWidth={4} strokeLinecap="round" />
-      <ellipse cx={40} cy={28} rx={24} ry={6} fill="#e9c46a" />
-      <path d="M28 28q12-20 24 0z" fill="#e9c46a" />
-      <path d="M28 27h24" stroke="#c0504d" strokeWidth={3} />
-      <circle cx={35} cy={40} r={1.8} fill="#333" />
-      <circle cx={45} cy={40} r={1.8} fill="#333" />
-      <path d="M35 47q5 4 10 0" stroke="#7a4a22" strokeWidth={2} fill="none" strokeLinecap="round" />
-    </svg>
+    <span className={`relative block shrink-0 overflow-hidden rounded-full ${className}`} style={{ background: "#e7f2dc" }} role="img" aria-label={name} data-testid="gardener-portrait">
+      {/* eslint-disable-next-line @next/next/no-img-element -- a small fixed portrait */}
+      <img src={cozyIda.src} width={cozyIda.width} height={cozyIda.height} alt="" className="absolute inset-0 h-full w-full object-cover" data-art="portrait-ida" />
+    </span>
   );
 }
