@@ -176,6 +176,8 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
   const writingAnswered = writingAnsweredFor === writePage || !!writingSession?.lines.some((l) => l.role !== "child");
   // Nov 18 (strict): the revision field waits only while Nokt reads his latest version.
   const writingWaits = strict ? writingLive && strict.pending : writingLive && !writingAnswered;
+  // Nov 18 (t11): while Nokt answers a line in the writing talk, «Neu ins Gartenbuch» waits (his tap would hit a stale revision).
+  const [writingAnswering, setWritingAnswering] = useState(false);
   const writingOpened = useRef<string | null>(null);
   useEffect(() => {
     if (writingLive && writePage && writingOpened.current !== writePage) {
@@ -204,7 +206,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
   const welcomeGate = open === "welcome";
   const dock: ReactNode = writingLive && writePage ? (
     <aside className="order-first grid max-h-[calc(100dvh-2rem)] content-start gap-3 overflow-y-auto md:sticky md:top-4 md:order-none" data-testid="nokt-sidebar" data-dock="writing">
-      <NoktTalk key={writePage} child={child} purpose="writing" sessionId={writingSession && !writingSession.closed ? writingSession.id : null} initialLines={writingSession?.lines ?? []} opener={!writingSession} ended={!!writingSession?.ended} blocking waitingLine="Gib mir ein paar Sekunden …" speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn!} title={active?.write?.plural ? "Nokt liest deine Sätze" : "Nokt liest deinen Satz"} testId="nokt-writing" onEnded={endWriting} onLine={(l) => { if (l.role !== "child") { setWritingAnsweredFor(writePage); if (strict) setWritingHold(writePage); } }} telemetry={nokt.telemetry ?? null} sentenceKey={strict?.unsent && (strict.versions > 1 || !!writingSession) ? `v${strict.versions}` : null} />
+      <NoktTalk key={writePage} child={child} purpose="writing" sessionId={writingSession && !writingSession.closed ? writingSession.id : null} initialLines={writingSession?.lines ?? []} opener={!writingSession} ended={!!writingSession?.ended} blocking waitingLine="Gib mir ein paar Sekunden …" speech={speech} transcribe={nokt.transcribe} turn={nokt.talkTurn!} title={active?.write?.plural ? "Nokt liest deine Sätze" : "Nokt liest deinen Satz"} testId="nokt-writing" onEnded={endWriting} onLine={(l) => { if (l.role !== "child") { setWritingAnsweredFor(writePage); if (strict) setWritingHold(writePage); } }} telemetry={nokt.telemetry ?? null} sentenceKey={strict?.unsent && (strict.versions > 1 || !!writingSession) ? `v${strict.versions}` : null} onWaitingChange={setWritingAnswering} />
     </aside>
   ) : open === "none" ? null : (
     <aside className="order-first grid max-h-[calc(100dvh-2rem)] content-start gap-3 overflow-y-auto md:sticky md:top-4 md:order-none" data-testid="nokt-sidebar" data-dock={open === "welcome" ? "welcome" : solvePart ? "task" : "visit"}>
@@ -241,7 +243,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
         speech={speech}
         onWalk={onWalk}
         act={act}
-        renderTask={(a) => MapTask({ child, view, active: a, busy, act, speech, telemetry, nokt, writingLive: writingWaits, noktOnTask: open === "page" && !!solvePart, noktReads: writingLive })}
+        renderTask={(a) => MapTask({ child, view, active: a, busy, act, speech, telemetry, nokt, writingLive: writingWaits, noktOnTask: open === "page" && !!solvePart, noktReads: writingLive, noktAnswering: writingLive && writingAnswering })}
         sceneLocked={writingLive || (!!strict && active?.status === "active")}
       />
       {welcomeGate ? (
@@ -259,7 +261,7 @@ export function MapMission({ child, view, mission, markers, busy, act, speech, n
 }
 
 /** The body of a Visit 8 scene for the kinds that use the clearer task components; null = MissionWorld's own body. */
-export function MapTask({ child, view, active, busy, act, speech, telemetry, nokt, writingLive = false, noktOnTask = false, noktReads = false }: { child: ChildId; view: ChildView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; nokt: MapNokt; writingLive?: boolean; noktOnTask?: boolean; /** Nov 18: Nokt's writing talk is live (it reads each new version). */ noktReads?: boolean }): ReactNode | null {
+export function MapTask({ child, view, active, busy, act, speech, telemetry, nokt, writingLive = false, noktOnTask = false, noktReads = false, noktAnswering = false }: { child: ChildId; view: ChildView; active: MissionActiveView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; nokt: MapNokt; writingLive?: boolean; noktOnTask?: boolean; /** Nov 18: Nokt's writing talk is live (it reads each new version). */ noktReads?: boolean; /** Nov 18 (t11): Nokt's reply in the writing talk is on its way. */ noktAnswering?: boolean }): ReactNode | null {
   switch (active.kind) {
     case "solve": {
       // Step 1 (S1-01): on the focused screen a fact already said by the story line or the question is not repeated in a box.
@@ -316,7 +318,7 @@ export function MapTask({ child, view, active, busy, act, speech, telemetry, nok
       return <RequestTask active={active} busy={busy} act={act} telemetry={telemetry} />;
     case "write":
       return active.write?.strict && active.status === "active" && active.write.original !== null ? (
-        <StrictWrite key={`${active.id}:${active.write.strict.versions}:${active.write.strict.shown ? "shown" : "own"}`} active={active} busy={busy} act={act} reading={writingLive} noktReads={noktReads} />
+        <StrictWrite key={`${active.id}:${active.write.strict.versions}:${active.write.strict.shown ? "shown" : "own"}`} active={active} busy={busy} act={act} reading={writingLive} noktReads={noktReads} answering={noktAnswering} />
       ) : (
         <WriteWithNokt active={active} busy={busy} act={act} nokt={nokt} talkRunning={writingLive} tipEarly={view.mission?.screen === "focused"} />
       );
@@ -404,7 +406,7 @@ const FOUND_DE: Record<string, string> = { spacing: "Zwischen zwei Wörtern fehl
  * limit the right sentence is shown and he types it himself (empty field — he copies, it is not filled in for him). When Nokt
  * cannot react, the app's own findings are shown and the app's check alone decides (`nokt: false`).
  */
-function StrictWrite({ active, busy, act, reading, noktReads }: { active: MissionActiveView; busy: boolean; act: Act; reading: boolean; noktReads: boolean }) {
+function StrictWrite({ active, busy, act, reading, noktReads, answering }: { active: MissionActiveView; busy: boolean; act: Act; reading: boolean; noktReads: boolean; answering: boolean }) {
   const w = active.write!;
   const st = w.strict!;
   const [text, setText] = useState(st.shown ? "" : st.lastText);
@@ -443,9 +445,10 @@ function StrictWrite({ active, busy, act, reading, noktReads }: { active: Missio
           </label>
           <textarea {...NO_TYPING_HELP} id="map-revise" value={text} onChange={(e) => setText(e.target.value.slice(0, 300))} rows={2} className="w-full rounded-xl border-2 px-3 py-2 text-xl" style={{ borderColor: "#8ba8a4" }} data-testid="write-revise" data-fold="input" />
           <div className="flex flex-wrap gap-3">
-            <button type="button" className={btn} style={primary} disabled={busy || !text.trim()} onClick={() => void act({ a: "revise", step: active.id, text, nokt: noktReads })} data-testid="write-revise-send" data-fold="primary">
+            <button type="button" className={btn} style={primary} disabled={busy || answering || !text.trim()} onClick={() => void act({ a: "revise", step: active.id, text, nokt: noktReads })} data-testid="write-revise-send" data-fold="primary">
               Neu ins Gartenbuch
             </button>
+            {answering ? <p className="self-center text-lg italic" data-testid="write-wait-nokt">Warte kurz, Nokt antwortet …</p> : null}
           </div>
         </>
       )}

@@ -68,6 +68,7 @@ export function NoktTalk({
   telemetry = null,
   activity = null,
   sentenceKey = null,
+  onWaitingChange,
 }: {
   child: ChildId;
   purpose: NoktTalkPurpose;
@@ -105,6 +106,8 @@ export function NoktTalk({
    * number). When it changes, Nokt reads it (the server takes the text from its own copy). Null = nothing waiting.
    */
   sentenceKey?: string | null;
+  /** Nov 18 (t11): Nokt's reply is on its way (true) or shown / failed (false) — the strict writing step waits meanwhile. */
+  onWaitingChange?: (waiting: boolean) => void;
 }) {
   const sessionId = useMemo(() => persistedSession ?? newId("s"), [persistedSession]);
   const tPurpose: NoktTelemetryPurpose | undefined = purpose === "home" ? undefined : purpose;
@@ -115,6 +118,12 @@ export function NoktTalk({
   const [draft, setDraft] = useState("");
   const [via, setVia] = useState<"voice" | "typed">("typed");
   const [waiting, setWaiting] = useState(false);
+  const waitingChange = useRef(onWaitingChange);
+  waitingChange.current = onWaitingChange;
+  useEffect(() => {
+    waitingChange.current?.(waiting);
+  }, [waiting]);
+  useEffect(() => () => waitingChange.current?.(false), []);
   const [over, setOver] = useState(ended);
   const endedRef = useRef(false);
   const finish = (why: "closed" | "failed") => {
