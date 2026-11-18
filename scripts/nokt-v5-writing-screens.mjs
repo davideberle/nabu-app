@@ -18,6 +18,9 @@ const BRIDGE = opt("--bridge", "http://127.0.0.1:3789");
 /** The bridge URL the server was given (https, as the app requires); the browser's calls to it are answered by the loopback stub. */
 const BRIDGE_PUBLIC = opt("--bridge-public", "https://nokt-bridge.invalid:8787");
 const OUT = opt("--out", "/tmp/nov18/shots/nokt-v5/writing");
+/** Nov 18 (t11): how long the chat reply in step 2 is held back, so «Neu ins Gartenbuch» can be tapped while Nokt answers. */
+const SLOW_MS = Number(opt("--slow-ms", "1800"));
+let bridgeDelay = 0;
 if (!/^http:\/\/127\.0\.0\.1:\d+$/.test(BASE)) throw new Error("loopback only");
 fs.mkdirSync(OUT, { recursive: true });
 const SECRET = process.env.AUTH_SECRET ?? "fable-world-first-synthetic-secret-0123456789abcdef";
@@ -57,6 +60,7 @@ await c.route("**/*", async (r) => {
   if (u.origin === BRIDGE_PUBLIC) {
     const cors = { "access-control-allow-origin": BASE, "access-control-allow-methods": "POST, OPTIONS", "access-control-allow-headers": "authorization, content-type", vary: "Origin" };
     if (r.request().method() === "OPTIONS") return r.fulfill({ status: 204, headers: cors });
+    if (bridgeDelay) await settle(bridgeDelay);
     const res = await fetch(`${BRIDGE}${u.pathname}`, { method: "POST", headers: { origin: BASE, authorization: r.request().headers()["authorization"] ?? "", "content-type": "application/json" }, body: r.request().postData() ?? "" });
     return r.fulfill({ status: res.status, headers: { ...cors, "content-type": "application/json" }, body: await res.text() });
   }
@@ -100,20 +104,57 @@ const first = (await page.locator("[data-testid='nokt-writing'] li[data-role='no
 check("W.guided-question", /Ende eines Satzes\?/.test(first), first);
 check("W.field-prefilled-with-his-version", (await page.locator("[data-testid='write-revise']").inputValue()) === "Die Schildkröte schwimmt im Teich");
 await shot("writing-first-reaction");
-// 2) He answers Nokt; Nokt asks the next small question (two questions in a row are allowed here).
+// 2) He answers Nokt (the reply is slow); Nokt asks the next small question (two questions in a row are allowed here).
+//    Nov 18 (t11 write race): while Nokt answers he already has the right version in the field and reaches for
+//    «Neu ins Gartenbuch». The button must wait (disabled, «Warte kurz, Nokt antwortet …»); a tap that does get through is
+//    recorded (the base build showed the stale notice). After the reply the rewrite saves on the next tap, without a notice.
+const notices = async () => (await page.locator("[data-testid='notice']").allInnerTexts()).map((t) => t.replace(/\s+/g, " "));
+const race = { slowMs: SLOW_MS };
+bridgeDelay = SLOW_MS;
 await page.locator("[data-testid='nokt-talk-input']").fill("ein Punkt");
 const k = await page.locator("[data-testid='nokt-writing'] li[data-role='nokt']").count();
 await page.locator("[data-testid='nokt-talk-send']").click();
+await page.waitForSelector("[data-testid='nokt-writing'][data-waiting='true']", { timeout: 5000 });
+await page.locator("[data-testid='write-revise']").fill("Die Schildkröte schwimmt im Teich.");
+await settle(250);
+const sendBtn = page.locator("[data-testid='write-revise-send']");
+race.during = { waiting: (await page.locator("[data-testid='nokt-writing']").getAttribute("data-waiting")) === "true", disabled: await sendBtn.isDisabled(), waitLine: (await page.locator("[data-testid='write-wait-nokt']").allInnerTexts()).join(" ") };
+await shot("writing-revise-while-nokt-answers");
+check("R.revise-disabled-while-nokt-answers", race.during.waiting && race.during.disabled && /Warte kurz, Nokt antwortet/.test(race.during.waitLine), race.during);
+if (!race.during.disabled) {
+  // What a child can do on a build without the wait: tap while the reply is in flight.
+  const v0 = await page.locator("[data-testid='write-strict']").getAttribute("data-versions");
+  await sendBtn.click();
+  await page.waitForFunction(() => !document.querySelector("[data-testid='write-revise-send']")?.disabled || !!document.querySelector("[data-testid='write-done']"), null, { timeout: 15000 }).catch(() => {});
+  await settle(300);
+  race.tapDuring = { notice: await notices(), versionsBefore: v0, versionsAfter: await page.locator("[data-testid='write-strict']").getAttribute("data-versions").catch(() => null), done: await page.locator("[data-testid='write-done']").count(), field: await page.locator("[data-testid='write-revise']").inputValue().catch(() => null), stillWaiting: (await page.locator("[data-testid='nokt-writing']").getAttribute("data-waiting")) === "true" };
+  console.log("TAP DURING REPLY", JSON.stringify(race.tapDuring));
+  await shot("writing-tap-during-reply");
+}
 await page.waitForFunction((n) => document.querySelectorAll("[data-testid='nokt-writing'] li[data-role='nokt']").length > n, k, { timeout: 30000 });
+bridgeDelay = 0;
+await page.waitForSelector("[data-testid='nokt-writing'][data-waiting='false']", { timeout: 5000 });
 const second = (await page.locator("[data-testid='nokt-writing'] li[data-role='nokt']").last().innerText()).replace(/\s+/g, " ");
 check("W.second-guided-question", /\?/.test(second.replace(/Nochmal anhören/, "")), second);
+race.afterReply = { disabled: await sendBtn.isDisabled().catch(() => null), waitLine: await page.locator("[data-testid='write-wait-nokt']").count(), notice: await notices(), field: await page.locator("[data-testid='write-revise']").inputValue().catch(() => null) };
+check("R.revise-enabled-after-reply", race.afterReply.disabled === false && race.afterReply.waitLine === 0, race.afterReply);
 await shot("writing-guided");
-// 3) He rewrites it; Nokt reads the new version; the app's check and Nokt's close finish the step.
-await page.locator("[data-testid='write-revise']").fill("Die Schildkröte schwimmt im Teich.");
-await page.locator("[data-testid='write-revise-send']").click();
-await page.waitForSelector("[data-testid='write-done']", { timeout: 40000 });
+// 3) He taps «Neu ins Gartenbuch» (the right version); Nokt reads it; the app's check and Nokt's close finish the step.
+if (race.afterReply.field !== "Die Schildkröte schwimmt im Teich.") await page.locator("[data-testid='write-revise']").fill("Die Schildkröte schwimmt im Teich.");
+await sendBtn.click();
+await Promise.race([
+  page.waitForSelector("[data-testid='write-done']", { timeout: 40000 }),
+  page.waitForSelector("[data-testid='notice']", { timeout: 40000 }),
+]).catch(() => {});
+race.tapAfter = { notice: await notices(), done: await page.locator("[data-testid='write-done']").count() };
+if (!race.tapAfter.done && !race.tapAfter.notice.length) await page.waitForSelector("[data-testid='write-done']", { timeout: 40000 }).catch(() => {});
+race.tapAfter.done = await page.locator("[data-testid='write-done']").count();
+race.tapAfter.versions = await page.locator("[data-testid='write-strict']").getAttribute("data-versions", { timeout: 500 }).catch(() => null);
+console.log("TAP AFTER REPLY", JSON.stringify(race.tapAfter));
+check("R.saved-on-first-tap-after-reply", race.tapAfter.done === 1 && race.tapAfter.notice.length === 0, race.tapAfter);
 await settle(800);
 await shot("writing-done");
+fs.writeFileSync(path.join(OUT, "write-race.json"), JSON.stringify(race, null, 2));
 check("W.done-after-the-right-version", (await page.locator("[data-testid='write-done']").count()) === 1);
 await settle(23000);
 const events = batches.flatMap((b) => b.events ?? []).filter((e) => e.kind === "nokt").sort((a, b) => a.t - b.t);
