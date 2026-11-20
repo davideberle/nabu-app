@@ -72,7 +72,7 @@ const SPECS: readonly WorkshopSpec[] = [
   { id: ISABEL_GARDEN_MISSION_ID, visit: "v2", steps: EXPECTED_GARDEN_STEPS, character: { id: "ida", name: null }, place: "garden", decide: "IG2-PLANT", tens: "IG3-STICKS", tensAgain: "IG4-STICKS-AGAIN", easier: ["IG6-PLANTING-EASIER", "IG5-PLANTING"], worldProp: "garden", narrated: true },
   { id: ISABEL_HARVEST_MISSION_ID, visit: "v4", steps: EXPECTED_HARVEST_STEPS, character: { id: "ida", name: null }, place: "garden", decide: "IH2-PICK", tens: "IH4-TENS", tensAgain: "IH5-TENS-AGAIN", easier: ["IH6E-SMALL", "IH6-PLUS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
   { id: ISABEL_BIRDS_MISSION_ID, visit: "v5", steps: EXPECTED_BIRD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IV10-ROOF", tens: "IV2-WARM", tensAgain: "IV2E-WARM-EASY", easier: ["IV3E-WALLS-EASY", "IV3-WALLS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
-  { id: ISABEL_FOOD_MISSION_ID, visit: "v6", steps: EXPECTED_FOOD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IF8-FOOD", tens: "IF2-WARM", tensAgain: "IF2E-WARM-EASY", easier: ["IF3E-SEEDS-EASY", "IF3-SEEDS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
+  { id: ISABEL_FOOD_MISSION_ID, visit: "v6", steps: EXPECTED_FOOD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IF8-FOOD", tens: "IF2-WARM", tensAgain: "IF2E-WARM-EASY", easier: ["IF3E-SEEDS-EASY", "IF3-SEEDS"], worldProp: "garden", narrated: true, phrases: true, homeTask: false },
 ];
 
 const FORBIDDEN_KINDS = new Set(["typing-block", "write", "produce", "recall", "calc", "choice"]);
@@ -242,6 +242,11 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
   for (const n of bundleAnswers(m)) if (before.has(n)) problems.push(`${label}: the ten-bundle quantity ${n} was already asked in an earlier visit (not fresh)`);
   const outcome = steps.filter((s) => s.kind === "outcome");
   if (outcome.length !== 1 || outcome[0].recap !== true || outcome[0].fromChoice !== spec.decide) problems.push(`${label}: one outcome showing her chosen element and a factual recap`);
+  // From Visit 5 (v6) on: no home task (David, 2026-11-20: real-world tasks become their own project).
+  if (spec.homeTask === false) {
+    if (steps.some((x) => x.kind === "craft")) problems.push(`${label}: no craft inside the visit`);
+    if (outcome[0] && outcome[0].home !== undefined) problems.push(`${label}: no home task (real-world tasks are their own project from Visit 5 on)`);
+  }
   if (spec.homeTask) {
     if (steps.some((x) => x.kind === "craft")) problems.push(`${label}: no craft inside the visit (a home task at the end instead)`);
     const home = outcome[0] && isRecord(outcome[0].home) ? outcome[0].home : null;

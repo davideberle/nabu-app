@@ -538,7 +538,7 @@ async function santiago() {
   check("S.name-in-the-end-line", (await textOf(page, "[data-testid='scene-banner']")).includes(TURTLE), await textOf(page, "[data-testid='scene-banner']"));
   await sel(page, "[data-testid='story-done']").click();
   await settle(500);
-  check("S.home-task", (await textOf(page, "[data-testid='home-task']")).includes("Liter"));
+  check("S.no-home-task", !(await page.$("[data-testid='home-task']")));
   { const r = await page.evaluate(() => [...document.querySelectorAll("img[data-testid='outcome-art']")].map((i) => ({ src: i.getAttribute("src"), ok: i.complete && i.naturalWidth > 0 })));
     check("S.end-picture-flip-in-the-pond", r.length === 1 && r[0].ok && r[0].src.includes("pond-flip"), r); }
   await shot(page, "F12-water-in-the-pond");

@@ -6202,11 +6202,7 @@
       }
      ],
      "fromChoice": "IF8-FOOD",
-     "recap": true,
-     "home": {
-      "text": "Für zuhause: Schau mit Mama oder Papa, welche Vögel draussen fressen. Wie viele siehst du?",
-      "parentNote": "Home task from Visit 5 (watch birds feeding outside for a few minutes and count them; tell Nabu how many, photo welcome). Nothing in the app depends on it."
-     }
+     "recap": true
     }
    ],
    "world": [

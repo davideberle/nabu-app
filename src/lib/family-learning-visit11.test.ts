@@ -125,12 +125,12 @@ describe("Santiago Visit 11 — every number recomputed from what he sees", () =
     equal(fill.characters.find((c) => c.id === "vet")!.voice, "es-male");
     equal(fill.companion?.id, "turtle");
   });
-  it("ends on a picture choice with one word each; cliffhanger once; home task; no craft", () => {
+  it("ends on a picture choice with one word each; cliffhanger once; no home task; no craft", () => {
     equal(fill.noNextChoice, undefined);
     deepEqual(fill.nextAdventure!.choices.map((c) => c.label), ["Seegras", "Krebse", "Quallen"]);
     for (const c of fill.nextAdventure!.choices) { ok(!/\s/.test(c.label)); ok((WORKSHOP_PICTURES as readonly string[]).includes(c.picture), c.picture); }
     equal(fill.closing?.cliffhanger, "{Turtle} schwimmt. Aber was frisst eine Meeresschildkröte?");
-    ok(/Liter/.test(st(fill, "F12-END").home!.text));
+    equal(st(fill, "F12-END").home, undefined, "no home task (David, 2026-11-20)");
     ok(!fill.steps.some((s) => s.kind === "craft"));
   });
   it("typing lesson 9 (w, o): only keys he has met", () => {
@@ -192,9 +192,9 @@ describe("Isabel Visit 5 — every number recomputed from what she sees", () => 
     deepEqual(food.nextAdventure!.choices.map((x) => x.label), ["Wasser", "Wolle", "Busch"]);
     deepEqual(food.closing?.liked?.options.map((x) => x.label), ["Körner", "Lesen", "Vögel"]);
   });
-  it("the cliffhanger is one line; a home task; no craft", () => {
+  it("the cliffhanger is one line; no home task; no craft", () => {
     deepEqual(st(food, "IF10-HOME").done.map((l) => l.text), ["Ein Ei im Nest. Ob bald noch mehr kommen?"]);
-    ok(st(food, "IF10-HOME").home && !food.steps.some((s) => s.kind === "craft"));
+    ok(st(food, "IF10-HOME").home === undefined && !food.steps.some((s) => s.kind === "craft"));
   });
 });
 
