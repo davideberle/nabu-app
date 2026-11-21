@@ -26,7 +26,7 @@ import { checkAdaptiveBudget, COUNTER_ICONS, WORKSHOP_PICTURES, type MissionDef,
 import { ASSISTANT_IDENTITIES, slotFitsCharacter } from "./family-voice-registry.ts";
 
 export const ISABEL_CONTENT_ID = "isabel-workshop";
-export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5];
+export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5, 6];
 export const ISABEL_MISSION_ID = "MISSION-OLD-LILA-WORKSHOP";
 export const ISABEL_GARDEN_MISSION_ID = "MISSION-IDA-GARDEN";
 /** Step 1 (content v3): Isabel Visit 3 «Ernten und probieren» (internal visit id v4, learner-facing «Besuch 3»). */
@@ -37,13 +37,16 @@ export const ISABEL_COMPANION = "Old Lila";
 export const ISABEL_BIRDS_MISSION_ID = "MISSION-IDA-BIRDS";
 /** Content v5 (Nov 18): Isabel Visit 5 «Die Vögel ziehen ein» (internal visit id v6, learner-facing «Besuch 5»). */
 export const ISABEL_FOOD_MISSION_ID = "MISSION-IDA-FOOD";
+/** Content v6 (Nov 21): Isabel Visit 6 «Das Küken schlüpft» (internal visit id v7, learner-facing «Besuch 6»), arc «Mein Küken». */
+export const ISABEL_CHICK_MISSION_ID = "MISSION-IDA-CHICK";
 export const EXPECTED_WORKSHOP_STEPS: readonly string[] = ["W1-HELLO", "W2-MAKE", "W3-MATERIALS", "W4-COUNT", "W5-TENS", "W6-TENS-AGAIN", "W7-EASIER", "W8-READ", "W9-LISTEN", "W10-CRAFT", "W11-ROOM"];
 export const EXPECTED_GARDEN_STEPS: readonly string[] = ["IG1-HELLO", "IG2-PLANT", "IG3-STICKS", "IG4-STICKS-AGAIN", "IG5-PLANTING", "IG6-PLANTING-EASIER", "IG7-READ", "IG8-LISTEN", "IG9-CRAFT", "IG10-GARDEN"];
 export const EXPECTED_HARVEST_STEPS: readonly string[] = ["IH1-HELLO", "IH2-PICK", "IH3-BUNDLE", "IH4-TENS", "IH5-TENS-AGAIN", "IH6-PLUS", "IH6H-BRIDGE", "IH6E-SMALL", "IH7-READ", "IH8-READ", "IH9-PHRASE", "IH10-LISTEN", "IH11-HARVEST"];
 /** Every Isabel mission step id (telemetry vocabulary). */
 export const EXPECTED_BIRD_STEPS: readonly string[] = ["IV1-HELLO", "IV2-WARM", "IV2E-WARM-EASY", "IV2N-NEST", "IV3-WALLS", "IV3E-WALLS-EASY", "IV4-ENOUGH", "IV4E-ENOUGH-EASY", "IV4H-ENOUGH-MORE", "IV5-NAILS", "IV5E-NAILS-EASY", "IV5H-NAILS-MORE", "IV6-VOGEL", "IV7-HAUS", "IV8-PHRASE", "IV9-LISTEN", "IV10-ROOF", "IV11-HOME"];
 export const EXPECTED_FOOD_STEPS: readonly string[] = ["IF1-HELLO", "IF2-WARM", "IF2E-WARM-EASY", "IF2N-NEST", "IF3-SEEDS", "IF3E-SEEDS-EASY", "IF4-MORE", "IF4E-MORE-EASY", "IF4H-MORE-HARD", "IF5-AWAY", "IF5E-AWAY-EASY", "IF5H-AWAY-MORE", "IF6-FUTTER", "IF7-LISTEN", "IF8-FOOD", "IF9-EI", "IF10-HOME"];
-export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS, ...EXPECTED_HARVEST_STEPS, ...EXPECTED_BIRD_STEPS, ...EXPECTED_FOOD_STEPS];
+export const EXPECTED_CHICK_STEPS: readonly string[] = ["I61-PSST", "I62-FLIP", "I62E-FLIP-EASY", "I62H-FLIP-HARD", "I63-EGGS", "I64-MAMA", "I65-DAYS", "I65E-DAYS-EASY", "I65H-DAYS-LEFT", "I66-FOOD", "I66E-FOOD-EASY", "I66H-FOOD-HARD", "I67-KNACK", "I68-KUEKEN", "I69-NAME", "I610-FEED", "I611-FLIGHTS", "I611E-FLIGHTS-EASY", "I611H-FLIGHTS-MORE", "I612-WATER", "I613-BOOK", "I614-END"];
+export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS, ...EXPECTED_HARVEST_STEPS, ...EXPECTED_BIRD_STEPS, ...EXPECTED_FOOD_STEPS, ...EXPECTED_CHICK_STEPS];
 
 /** What each of Isabel's missions must be (by visit). The generic rules below apply to all of them. */
 type WorkshopSpec = {
@@ -66,6 +69,14 @@ type WorkshopSpec = {
   phrases?: boolean;
   /** Step 1 (Visit 3): no in-visit craft; the outcome carries a home task. */
   homeTask?: boolean;
+  /** Nov 21 (Visit 6): a reading step may be a short sentence (≤ 24 characters, ≤ 5 words) with word-by-word support. */
+  sentences?: boolean;
+  /** Nov 21 (Visit 6): the step where she names her chick (one own option; letters only; never spoken). */
+  nameStep?: string;
+  /** Nov 21 (Visit 6): the care decision (exactly one right option; each wrong one has its reviewed explanation). */
+  care?: string;
+  /** Nov 21 (Visit 6): content first — the reviewed robin facts are checked (no blue eggs, no season stated). */
+  facts?: boolean;
 };
 const SPECS: readonly WorkshopSpec[] = [
   { id: ISABEL_MISSION_ID, visit: "v1", steps: EXPECTED_WORKSHOP_STEPS, character: { id: "lila", name: ISABEL_COMPANION }, place: "workshop", decide: "W2-MAKE", tens: "W5-TENS", tensAgain: "W6-TENS-AGAIN", easier: ["W7-EASIER", "W6-TENS-AGAIN"], worldProp: "room", narrated: false },
@@ -73,7 +84,11 @@ const SPECS: readonly WorkshopSpec[] = [
   { id: ISABEL_HARVEST_MISSION_ID, visit: "v4", steps: EXPECTED_HARVEST_STEPS, character: { id: "ida", name: null }, place: "garden", decide: "IH2-PICK", tens: "IH4-TENS", tensAgain: "IH5-TENS-AGAIN", easier: ["IH6E-SMALL", "IH6-PLUS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
   { id: ISABEL_BIRDS_MISSION_ID, visit: "v5", steps: EXPECTED_BIRD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IV10-ROOF", tens: "IV2-WARM", tensAgain: "IV2E-WARM-EASY", easier: ["IV3E-WALLS-EASY", "IV3-WALLS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
   { id: ISABEL_FOOD_MISSION_ID, visit: "v6", steps: EXPECTED_FOOD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IF8-FOOD", tens: "IF2-WARM", tensAgain: "IF2E-WARM-EASY", easier: ["IF3E-SEEDS-EASY", "IF3-SEEDS"], worldProp: "garden", narrated: true, phrases: true, homeTask: false },
+  { id: ISABEL_CHICK_MISSION_ID, visit: "v7", steps: EXPECTED_CHICK_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "I610-FEED", tens: "I62-FLIP", tensAgain: "I62E-FLIP-EASY", easier: ["I66E-FOOD-EASY", "I66-FOOD"], worldProp: "garden", narrated: true, phrases: true, homeTask: false, sentences: true, nameStep: "I69-NAME", care: "I610-FEED", facts: true },
 ];
+/** Nov 21: what a robin visit must never say (the draft's correction: Rotkehlchen eggs are not blue; the island's season stays open). */
+const BLUE_EGGS = /\bEier?\b[^.!?]*\bblau|\bblaue?n?\s+Eier?\b/i;
+const SEASON = /\b(Frühling|Frühjahr|Sommer|Herbst|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember|Januar|Februar)\b/i;
 
 const FORBIDDEN_KINDS = new Set(["typing-block", "write", "produce", "recall", "calc", "choice"]);
 const MAX_LINES = 2;
@@ -189,16 +204,21 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
     if (s.kind === "read") {
       const body = isRecord(s.text) ? String(s.text.body ?? "") : "";
       const phrase = !!spec.phrases && /^\S+ \S+ \S+$|^\S+ \S+$/.test(body) && body.length <= 14;
-      if (!body || (body.length > 8 && !phrase)) problems.push(`${sl}: one short word to read${spec.phrases ? " (or a first short phrase)" : ""}`);
+      // Nov 21 (Visit 6): a first short sentence, marked as such, with word-by-word support.
+      const sentence = !!spec.sentences && s.sentence === true && body.length <= 24 && body.split(" ").length <= 5;
+      if (s.sentence !== undefined && !sentence) problems.push(`${sl}: a sentence to read is at most 24 characters and 5 words (from Visit 6 on)`);
+      if (!body || (body.length > 8 && !phrase && !sentence)) problems.push(`${sl}: one short word to read${spec.phrases ? " (or a first short phrase)" : ""}`);
       const readWords = steps.filter((o) => o !== s && o.kind === "read" && isRecord(o.text)).map((o) => String((o.text as Record<string, unknown>).body).toUpperCase());
       const compoundOfRead = (w: string) => readWords.some((a) => readWords.some((b) => a + b === w.toUpperCase()));
-      if (phrase) for (const w of body.split(" ").filter((x) => x.length > 3 && !compoundOfRead(x))) if (!steps.some((o) => o !== s && o.kind === "read" && isRecord(o.text) && String(o.text.body).toUpperCase() === w.toUpperCase())) problems.push(`${sl}: every longer word of a phrase is read on its own first (${w})`);
+      if (phrase && !sentence) for (const w of body.split(" ").filter((x) => x.length > 3 && !compoundOfRead(x))) if (!steps.some((o) => o !== s && o.kind === "read" && isRecord(o.text) && String(o.text.body).toUpperCase() === w.toUpperCase())) problems.push(`${sl}: every longer word of a phrase is read on its own first (${w})`);
       const spoken = linesOf(s).filter((l) => (Array.isArray(s.intro) ? s.intro : []).includes(l));
       if (body && spoken.some((l) => new RegExp(`\\b${body}\\b`, "i").test(String(l.text)))) problems.push(`${sl}: the instruction must not say the word before the reading attempt`);
       const q0 = Array.isArray(s.questions) && isRecord(s.questions[0]) ? s.questions[0] : null;
       if (body && q0 && new RegExp(`\\b${body}\\b`, "i").test(String(q0.prompt ?? ""))) problems.push(`${sl}: the question must not say the word before the reading attempt`);
       const letters = isRecord(s.letters) ? s.letters : null;
-      if (!letters || String(letters.word).toUpperCase() !== body.toUpperCase() || !Array.isArray(letters.letters) || letters.letters.length !== body.replace(/ /g, "").length || !str(letters.spoken) || !str(letters.teach)) problems.push(`${sl}: supported letter/word learning for the same word`);
+      const units = sentence ? body.split(" ").length : body.replace(/ /g, "").length;
+      if (!letters || String(letters.word).toUpperCase() !== body.toUpperCase() || !Array.isArray(letters.letters) || letters.letters.length !== units || !str(letters.spoken) || !str(letters.teach)) problems.push(`${sl}: supported ${sentence ? "word-by-word reading of the same sentence" : "letter/word learning for the same word"}`);
+      if (sentence && letters && Array.isArray(letters.letters) && letters.letters.map((l) => (isRecord(l) ? String(l.letter) : "")).join(" ") !== body) problems.push(`${sl}: the word-by-word support shows the sentence's own words`);
       for (const e of earlier) if (body && !isRecord(s.warmup) && String(readWord(e) ?? "").toUpperCase() === body.toUpperCase()) problems.push(`${sl}: the reading word ${body} was already read in ${String(e.visit)} (a new word is required)`);
     }
     if (s.kind === "listen") {
@@ -207,8 +227,19 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
       for (const e of earlier) for (const es of (Array.isArray(e.steps) ? (e.steps as unknown[]).filter(isRecord) : []).filter((x) => x.kind === "listen")) if (isRecord(es.text) && t && es.text.body === t.body) problems.push(`${sl}: the listening instruction repeats ${String(e.visit)}`);
     }
     if (s.kind === "decide") {
-      const opts = isRecord(s.decide) && Array.isArray(s.decide.options) ? s.decide.options.filter(isRecord) : [];
-      if (opts.length < 3 || opts.some((o) => o.viable !== true || !picture(o.picture) || !str(o.feedback))) problems.push(`${sl}: at least three pictured, equally valid things to make`);
+      const d = isRecord(s.decide) ? s.decide : null;
+      const opts = d && Array.isArray(d.options) ? d.options.filter(isRecord) : [];
+      if (spec.nameStep === s.id) {
+        // Nov 21: her chick's name — one own option, letters only (the engine refuses anything else), kept as a story choice.
+        const n = d && isRecord(d.name) ? d.name : null;
+        if (opts.length !== 1 || opts[0].own !== true || opts[0].viable !== true || !str(opts[0].feedback) || d?.storyKey !== "chickName" || !n || !Number.isInteger(n.pick) || (n.pick as number) < 2 || !picture(n.picture) || n.max !== 12) problems.push(`${sl}: the name step has one own option (letters only, at most 12), a picture to tap and the story key chickName`);
+      } else if (spec.care === s.id) {
+        // Nov 21: a care decision with consequences — exactly one right option; each wrong one explains why (spoken), she picks again.
+        if (opts.length < 3 || opts.filter((o) => o.viable === true).length !== 1 || d?.singleViable !== true || !isRecord(d?.care) || !picture((d!.care as Record<string, unknown>).picture) || opts.some((o) => !picture(o.picture) || !str(o.feedback) || String(o.feedback).length > MAX_LINE_CHARS || /ß/.test(String(o.feedback)))) problems.push(`${sl}: a care decision has at least three pictured options, exactly one right, and a short explanation for each`);
+      } else if (opts.length < 3 || opts.some((o) => o.viable !== true || !picture(o.picture) || !str(o.feedback))) problems.push(`${sl}: at least three pictured, equally valid things to make`);
+      if (d && "name" in d && spec.nameStep !== s.id) problems.push(`${sl}: only the name step asks for a name`);
+      // Every option feedback is a recorded line: never a placeholder (a child's own name is never spoken).
+      for (const o of opts) if (/[{}]/.test(String(o.feedback))) problems.push(`${sl}: an option's feedback is recorded, so it never carries a placeholder`);
     }
     if (s.kind === "craft") {
       const c = isRecord(s.craft) ? s.craft : null;
@@ -260,6 +291,26 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
   if (!r || !Number.isInteger(r.maxPartAttempts) || (r.maxPartAttempts as number) < 3 || !Number.isInteger(r.maxPracticeAttempts) || !Number.isInteger(r.maxQuestionAttempts) || (r.maxQuestionAttempts as number) < 2) problems.push(`${label}: rules.maxPartAttempts (≥ 3), maxPracticeAttempts and maxQuestionAttempts (≥ 2) required`);
   const world = Array.isArray(m.world) ? m.world.filter(isRecord) : [];
   for (const w of world) if (w.prop !== spec.worldProp || !isRecord(w.choice) || w.choice.step !== spec.decide) problems.push(`${label}: a world change shows the ${spec.worldProp} element she chose`);
+  if (spec.facts) {
+    // Nov 21 (content first): every spoken or shown sentence of the visit, checked against the reviewed robin facts.
+    const texts: string[] = [];
+    for (const st of steps) {
+      for (const l of linesOf(st)) texts.push(String(l.text));
+      if (isRecord(st.text)) texts.push(String(st.text.body));
+      if (isRecord(st.decide)) for (const o of Array.isArray(st.decide.options) ? st.decide.options.filter(isRecord) : []) texts.push(String(o.feedback));
+      if (str(st.givenLine)) texts.push(String(st.givenLine));
+      for (const p of isRecord(st.solve) && Array.isArray(st.solve.parts) ? st.solve.parts.filter(isRecord) : []) texts.push(String(p.question), String(p.recheck), String(p.teach));
+    }
+    for (const w of world) texts.push(String(w.label));
+    for (const t of texts) {
+      if (BLUE_EGGS.test(t)) problems.push(`${label}: «${t}» — robin eggs are cream-white with reddish-brown dots, never blue`);
+      if (SEASON.test(t)) problems.push(`${label}: «${t}» — the visit states no season or month`);
+      if (/[{}]/.test(t)) problems.push(`${label}: «${t}» — a spoken or shown content line never carries a placeholder`);
+    }
+    // The name is the child's own: it is shown as text only, so the outcome names the story key it shows.
+    const outcomeStep = steps.find((x) => x.kind === "outcome");
+    if (spec.nameStep && outcomeStep?.storyName !== "chickName") problems.push(`${label}: the end picture shows her chick's name (storyName chickName)`);
+  }
 }
 
 /** Reconciles Isabel's content by its own rules (never Santiago's version inventory). */

@@ -258,6 +258,22 @@ const ISABEL_MAP: Record<string, ObjectiveMapping> = {
   "listening-recognition-german": row("i-listen"),
   "listening-recognition-german-two-details": row("i-listen", "fresh"),
   "listening-recognition-german-three-details": row("i-listen", "fresh"),
+  // Nov 21 (Visit 6 «Das Küken schlüpft»): the number flip by ear, doubling, counting in tens, first sentences, a listening fact.
+  "tens-ones-number-words": row("i-tens", "warmup"),
+  "tens-ones-number-words-harder": row("i-tens", "fresh"),
+  "count-in-tens": row("i-tens"),
+  "count-in-tens-easier": row("i-tens", "easier"),
+  "count-in-tens-harder": row("i-tens", "fresh"),
+  "doubling-within-20": row("i-sums"),
+  "count-within-20-easier": row("i-sums", "easier"),
+  "complete-to-target-within-20": row("i-sums", "fresh"),
+  "early-reading-sentence-picture": row("i-read", "fresh"),
+  "listening-recognition-german-fact": row("i-listen", "fresh"),
+  // Not mapped on purpose (Nov 21): the robin facts are NMG (Natur, Mensch, Gesellschaft — animals and their habitats), outside
+  // the four strands of this report, and no exact Lehrplan 21 Basel-Stadt NMG code was verified on bs.lehrplan.ch for this
+  // build. The answers stay in her record; a content row can be added once the code is verified.
+  "robin-facts-chick-food": notASkill("Knowing facts about robins (what a chick eats) — NMG content, outside the four strands of this report; not mapped on purpose until an exact Lehrplan 21 NMG code is verified."),
+  "own-writing-sample-not-scored": notASkill("Her chick's name — her own writing, kept as a sample; never scored (any spelling is accepted)."),
   "materials-matching": notASkill("Matching materials (wood, glass, brick) — a science (NMG) task, outside the four strands of this report."),
   "own-choice-not-scored": notASkill("The child's own choice in the story — not scored by design."),
   "real-world-craft-parent-observed": notASkill("Real-world craft — the parent's observation, not a child answer."),

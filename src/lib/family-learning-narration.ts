@@ -147,8 +147,11 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
     case "decide": {
       const d = a.decide;
       const chosen = d?.picked.find((p) => p.viable) ?? null;
+      // Nov 21 (Isabel Visit 6, care decision): after a wrong pick its reviewed explanation is said; she then picks again.
+      const last = d?.picked[d.picked.length - 1] ?? null;
       keyParts.push(d?.chosen ?? "");
-      out = chosen ? lines([chosen.feedback, ...(finished ? a.done.map((l) => l.text) : [])]) : lines(a.intro.map((l) => l.text));
+      if (d?.care) keyParts.push(d.picked.length);
+      out = chosen ? lines([chosen.feedback, ...(finished ? a.done.map((l) => l.text) : [])]) : d?.care && last && !last.viable ? lines([last.feedback]) : lines(a.intro.map((l) => l.text));
       break;
     }
     case "solve": {

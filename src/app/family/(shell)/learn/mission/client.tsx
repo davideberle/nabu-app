@@ -157,7 +157,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
     [tutorClient, child],
   );
   const speech = useMemo(() => createChildSpeechPlayer(), []);
-  const [farewell, setFarewell] = useState<{ who: string; lines: string[]; grown: string | null; label: string; voice: import("@/lib/family-voice-registry").VoiceSlot | null } | null>(null);
+  const [farewell, setFarewell] = useState<{ who: string; lines: string[]; grown: string | null; label: string; voice: import("@/lib/family-voice-registry").VoiceSlot | null; name?: string | null } | null>(null);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -527,6 +527,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
         lines={farewell.lines}
         grown={farewell.grown}
         label={farewell.label}
+        name={farewell.name ?? null}
         voice={farewell.voice}
         narrator={narrator}
         telemetry={(name) => {
@@ -923,7 +924,7 @@ function WorkspaceBody({ child, narrator, configuredRef, narrationTelemetryRef }
                       const ok = !!outcome && outcome.ok && (outcome.status === "applied" || outcome.status === "replayed");
                       if (ok) {
                         flushTelemetry(true, identity, `ui-${idempotencyKey}`);
-                        setFarewell({ who: view.visitText?.character ?? "", lines: closing?.farewell ?? [], grown: closing?.made?.picture ?? null, label: closing?.recap ?? closing?.made?.room ?? "", voice: view.visitText?.voice ?? null });
+                        setFarewell({ who: view.visitText?.character ?? "", lines: closing?.farewell ?? [], grown: closing?.made?.picture ?? null, label: closing?.recap ?? closing?.made?.room ?? "", voice: view.visitText?.voice ?? null, name: closing?.storyName ?? null });
                       }
                       return ok;
                     }}

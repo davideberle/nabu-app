@@ -156,6 +156,10 @@ export type MissionPart = {
   calculation?: { factors: [number, number] };
   /** Step 1 (S1-15): a comparison of two shown numbers (e.g. 23 or 32) — not a fresh tens retrieval of that quantity. */
   compare?: boolean;
+  /** Nov 21 (Isabel Visit 6): the answer is a tap on one of these numbers (the German number flip by ear: 42 or 24), not typed. */
+  choices?: number[];
+  /** Nov 21: the counters picture appears only after a first miss (the spoken number word is the stimulus). */
+  countersAfterMiss?: boolean;
 };
 
 /**
@@ -165,14 +169,14 @@ export type MissionPart = {
  * place-value mastery.
  */
 /** Isabel Visit 2: what one counter looks like (a garden thing); absent = the plain wooden block of Visit 1. */
-export const COUNTER_ICONS = ["block", "tulip", "strawberry", "pot", "seed", "apple", "carrot", "stick", "nail"] as const;
+export const COUNTER_ICONS = ["block", "tulip", "strawberry", "pot", "seed", "apple", "carrot", "stick", "nail", "feather", "day", "caterpillar", "flight"] as const;
 export type CounterIcon = (typeof COUNTER_ICONS)[number];
 /**
  * Exact visible quantities of one question. Visit 2 additions (never used by Visit 1): `icon`; `actor` (who takes away, for a
  * subtraction caption — Visit 1's caption keeps «Old Lila»); `frame` + `ask: "missing"` = a full frame of `frame` places with
  * `a` filled and `b` empty, asking for the missing part (`b`).
  */
-export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean; icon?: CounterIcon; actor?: string; frame?: number; ask?: "missing"; /** Step 1 (S1-15): full tens drawn as closed bundles (or bags of 10) marked «10» — not every piece. */ closed?: boolean };
+export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean; icon?: CounterIcon; actor?: string; frame?: number; ask?: "missing"; /** Step 1 (S1-15): full tens drawn as closed bundles (or bags of 10) marked «10» — not every piece. */ closed?: boolean; /** Nov 21 (Isabel Visit 6): `weeks` = days drawn as week strips of 7; `rows` = rows of ten (one row per hour). */ layout?: "weeks" | "rows" };
 
 /** Content v6: a reviewed problem with one question per part. */
 export type MissionSolve = {
@@ -223,7 +227,11 @@ export type MissionDecide = {
   /** `guard`: a short word that gives this right option away; Nokt may not say it while the choice is open. `own`: his own word instead of a preset. */
   options: { id: string; label: string; viable: boolean; feedback: string; grid?: MissionGrid | null; picture?: string; guard?: string; own?: boolean; word?: string }[];
   /** Nov 8 arcs: the choice is kept for later visits (`state.story`), e.g. the turtle's name or the roof color. */
-  storyKey?: "turtleName" | "roofColor" | "birdFood";
+  storyKey?: "turtleName" | "roofColor" | "birdFood" | "chickName";
+  /** Nov 21 (Isabel Visit 6): she taps one of `pick` pictures, then writes a name (letters only, at most `max`); kept as a writing sample, never scored, never spoken. */
+  name?: { pick: number; picture: string; max: number };
+  /** Nov 21: a care decision — a wrong pick turns the animal away (this picture), the reviewed explanation is spoken, she picks again (supported). */
+  care?: { picture: string };
   /** Exactly one option keeps the rules: a judgment with stated rules, reviewed as such (the default asks for two viable options). */
   singleViable?: boolean;
   /** Nokt asks about his reason, but only after this many wrong picks. */
@@ -271,6 +279,10 @@ export const WORKSHOP_PICTURES = [
   // Nov 18 — Santiago Visit 11 «Den Teich füllen»
   "side-10cm", "side-20cm", "pump-behind", "pump-front", "pump-on", "hose-over", "hose-under", "hose-around", "net-front", "net-behind", "net-next",
   "food-seagrass", "food-crabs", "food-jellyfish",
+  // Nov 21 — Isabel Visit 6 «Das Küken schlüpft» (painted in the map style; scenes 800 × 600, choices 240 × 240)
+  "eggs-five", "egg-dots", "egg-blue", "egg-white", "mama-on-eggs", "papa-on-eggs", "both-on-eggs", "chicks-hatch",
+  "chick-naked", "chick-fluffy", "chick-redbreast", "food-caterpillars", "food-bread", "cake", "box",
+  "water-flat-bush", "water-deep-bush", "water-flat-grass", "water-deep-grass", "next-eyes", "next-feathers", "next-fly",
 ] as const;
 export type WorkshopPicture = (typeof WORKSHOP_PICTURES)[number];
 
@@ -372,6 +384,12 @@ export type MissionStep = {
   picture?: string;
   /** Isabel's workshop: a short factual recap of the visit shown on the outcome step (computed from her actual results). */
   recap?: boolean;
+  /** Nov 21 (Isabel Visit 6): a short sentence to read (word-by-word support instead of letters). */
+  sentence?: boolean;
+  /** Nov 21: a page of her growth book (her chick's name shows as text above the page). */
+  book?: { page: number };
+  /** Nov 21: the outcome shows this story name as text on the end picture (never in a spoken line). */
+  storyName?: "chickName";
   /** Supplies granted when the step ends (any outcome that lets the mission continue). */
   supplies?: Record<string, number>;
 };

@@ -62,7 +62,7 @@ import { applyReasoningChoice, applyReasoningReply, applyReasoningTurn, childExp
 import { sha256Hex } from "./family-learning-hash.ts";
 import { liveTutorDeferred } from "./family-learning-deferral.ts";
 import { farewellScreenLines } from "./family-learning-narration.ts";
-import { applyMissionAction, buildMissionView, fillStoryTokens, chosenGrid, chosenOption, mapEnding, narratedWorkshopEnding, narratedWorkshopRecap, workshopEnding, workshopRecap, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, storyPicture, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
+import { applyMissionAction, buildMissionView, fillStoryTokens, chosenGrid, chosenOption, madeStep, mapEnding, narratedWorkshopEnding, narratedWorkshopRecap, workshopEnding, workshopRecap, missionDefFor, MissionOpError, newMissionRun, pendingInterest, recordInterest, stepStatuses, storyPicture, visibleWorld, type InterestRecord, type MissionAction, type MissionRun, type MissionView } from "./family-learning-mission.ts";
 import { applyNoktTalk, noktTalkView } from "./family-learning-nokt-talk.ts";
 import { originWithoutBinding, provenanceOf, receiptOrigin as bindReceipt, type InvalidReceipt, type ReceiptInput, type VerifiedReceipt } from "./family-learning-trust.ts";
 import {
@@ -444,7 +444,7 @@ export type LogReviewRecord = {
 };
 
 export type StoryChoice = { value: string; optionId: string; kind: "preset" | "own"; visit: string; at: string };
-export type StoryChoices = { turtleName?: StoryChoice; roofColor?: StoryChoice; birdFood?: StoryChoice };
+export type StoryChoices = { turtleName?: StoryChoice; roofColor?: StoryChoice; birdFood?: StoryChoice; /** Nov 21 (Isabel Visit 6): the name she wrote for her chick (text only, never spoken). */ chickName?: StoryChoice };
 
 export type MissionState = {
   missionId: string;
@@ -736,7 +736,7 @@ export type SampleRow = {
   id: string;
   visitId: VisitId;
   taskId: string | null;
-  kind: "explanation" | "expedition_log" | "expedition_log_revision" | "writing_transfer" | "typed_label" | "language_response" | "typing_practice" | "typing_burst" | "typing_retry" | "writing_retry" | "language_retry" | "reasoning_turn" | "writing_review" | "writing_clarification" | "next_interest" | "self_report";
+  kind: "explanation" | "expedition_log" | "expedition_log_revision" | "writing_transfer" | "typed_label" | "language_response" | "typing_practice" | "typing_burst" | "typing_retry" | "writing_retry" | "language_retry" | "reasoning_turn" | "writing_review" | "writing_clarification" | "next_interest" | "self_report" | "story_name";
   language: string | null;
   modality: string;
   text: string;
@@ -2918,7 +2918,7 @@ export type LogReviewView = {
 };
 
 /** Content v7: what the look back shows before Nokt speaks — the visible result (his own plan), one evidenced success, one next step, his button answers so far. */
-export type ClosingView = { cliffhanger?: string; success: string | null; next: string; artifact: string | null; plan: import("./family-learning-mission-spec.ts").MissionGrid | null; feedback: Record<string, string | null>; made?: { id: string; label: string; picture: string | null; room: string } | null; recap?: string | null; /** Isabel Visit 2+ (narrated): the spoken goodbye after the closing questions (the outcome's reviewed done lines + the visit's saved line). */ farewell?: string[] | null; narrated?: boolean };
+export type ClosingView = { cliffhanger?: string; success: string | null; next: string; artifact: string | null; plan: import("./family-learning-mission-spec.ts").MissionGrid | null; feedback: Record<string, string | null>; made?: { id: string; label: string; picture: string | null; room: string } | null; recap?: string | null; /** Isabel Visit 2+ (narrated): the spoken goodbye after the closing questions (the outcome's reviewed done lines + the visit's saved line). */ farewell?: string[] | null; narrated?: boolean; /** Nov 21: her chick's name on the end picture (text only). */ storyName?: string | null };
 
 /** Isabel Visit 2+: the running (else the next) visit's own reviewed wording and its mission's story character; null for Visit 1. */
 export type VisitText = { visit: string; title: string; hub: string; mission: string; done: string; start: string; character: string | null; narrated: boolean; /** The story character's voice slot (six-slot registry), or null. */ voice: import("./family-voice-registry.ts").VoiceSlot | null };
@@ -3101,7 +3101,8 @@ function closingView(state: MissionState, content: LearningContent, visit: Visit
   if (!run) return null;
   if (def.presentation === "workshop") {
     // Isabel's workshop: her chosen room element, one honest success (or none), one factual recap; her button answers.
-    const decideStep = def.steps.find((s) => s.kind === "decide");
+    // Nov 21: the step whose choice the end picture shows (Visit 6 has two decide steps; its outcome names the care choice).
+    const decideStep = madeStep(def);
     const ending = workshopEnding(def, run);
     const vw = state.visits.find((x) => x.id === visit && x.finishedAt === null);
     const fb: Record<string, string | null> = {};
@@ -3111,7 +3112,7 @@ function closingView(state: MissionState, content: LearningContent, visit: Visit
       // Isabel Visit 2 (narrated): the result was already shown and spoken on the outcome beat; the closing asks one question per
       // screen and ends with the spoken goodbye.
       const nEnding = narratedWorkshopEnding(def, run);
-      return { success: nEnding.success, next: nEnding.next, artifact: null, plan: null, feedback: fb, made: decideStep ? withStoryPicture(chosenOption(def, run, decideStep.id), state.story) : null, recap: narratedWorkshopRecap(def, run), farewell: farewellScreenLines(content, def), narrated: true };
+      return { success: nEnding.success, next: nEnding.next, artifact: null, plan: null, feedback: fb, made: decideStep ? withStoryPicture(chosenOption(def, run, decideStep.id), state.story) : null, recap: narratedWorkshopRecap(def, run), farewell: farewellScreenLines(content, def), narrated: true, ...(def.steps.some((x) => x.storyName === "chickName") ? { storyName: state.story?.chickName?.value ?? null } : {}) };
     }
     return { success: ending.success, next: ending.next, artifact: null, plan: null, feedback: fb, made: decideStep ? chosenOption(def, run, decideStep.id) : null, recap: workshopRecap(def, run) };
   }

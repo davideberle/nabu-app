@@ -23,6 +23,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/components/ui/nabu";
 import type { MissionActiveView, MissionView } from "@/lib/family-learning-mission";
+import { cleanStoryNameInput } from "@/lib/family-learning-story-name";
 import type { ChildId } from "@/lib/family-assistant-turn";
 import type { ChildSpeechPlayer } from "@/lib/family-speech";
 import { browserSpeech, playListening } from "@/lib/family-learning-listening";
@@ -43,6 +44,9 @@ const btn = "inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl 
 const primary = { background: ACTION, color: "white" } as const;
 const secondary = { background: "#f1e6d6", color: "#4a3420" } as const;
 const pictureButton = "grid min-h-36 w-40 place-items-center gap-1 rounded-3xl border-4 bg-white p-2 text-lg font-semibold disabled:opacity-50";
+
+/** Nov 21 (Isabel Visit 6): painted 800 × 600 scenes on story beats are shown large, not as an 80 px object. */
+const SCENE_PICTURES = new Set(["eggs-five", "chicks-hatch"]);
 
 export type WorkshopSceneProps = { child: ChildId; mission: MissionView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; /** Isabel Visit 2: the page's narration player (required for a narrated mission). */ narrator?: NarrationPlayer | null };
 
@@ -515,9 +519,9 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
     return (
       <div className={cn("grid gap-4", active.kind === "outcome" && mission.screen === "focused" && "items-start md:grid-cols-[minmax(0,400px)_minmax(0,1fr)]")} data-testid="workshop-story">
         {active.kind === "outcome" ? (
-          <WorkshopGarden grown={active.picture?.id ?? null} label={active.recap ?? active.picture?.label ?? mission.title} compact={mission.screen === "focused"} />
+          <WorkshopGarden grown={active.picture?.id ?? null} label={active.recap ?? active.picture?.label ?? mission.title} compact={mission.screen === "focused"} name={active.storyName ?? null} />
         ) : active.picture ? (
-          <WorkshopPictureView id={active.picture.id} className={mission.screen === "focused" ? "h-28 w-28" : "h-40 w-40"} />
+          <WorkshopPictureView id={active.picture.id} className={SCENE_PICTURES.has(active.picture.id) ? "h-56 w-72" : mission.screen === "focused" ? "h-28 w-28" : "h-40 w-40"} />
         ) : null}
         <div className="grid gap-4">
         {active.ending ? (
@@ -540,7 +544,7 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
   }
   return (
     <div className="grid gap-5">
-      {active.kind === "decide" && active.decide ? <NarratedDecide active={active} busy={busy} act={act} /> : null}
+      {active.kind === "decide" && active.decide ? (active.decide.name ? <NameDecide active={active} busy={busy} act={act} /> : <NarratedDecide active={active} busy={busy} act={act} />) : null}
       {active.kind === "solve" && active.solve ? <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} quiet onSeen={seen} /> : null}
       {active.kind === "read" ? <NarratedReadTask active={active} busy={busy} act={act} /> : null}
       {active.kind === "listen" ? <NarratedListen active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} who={mission.characters[0]?.name ?? ""} slot={missionSlot(mission)} /> : null}
@@ -554,11 +558,21 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
 function NarratedDecide({ active, busy, act }: { active: MissionActiveView; busy: boolean; act: Act }) {
   const d = active.decide!;
   const chosen = d.picked.find((p) => p.viable) ?? null;
+  // Nov 21 (care decision): a wrong pick turns her chick away and its explanation is said; she picks again (supported).
+  const last = d.picked[d.picked.length - 1] ?? null;
+  const turned = d.care && last && !last.viable ? last : null;
+  const tried = new Set(d.picked.filter((p) => !p.viable).map((p) => p.id));
   return (
-    <div className="grid gap-3" data-testid="workshop-decide" data-chosen={d.chosen ?? ""}>
+    <div className="grid gap-3" data-testid="workshop-decide" data-chosen={d.chosen ?? ""} data-care={d.care ? (chosen ? "fed" : turned ? "turned-away" : "open") : undefined}>
+      {d.care ? (
+        <div className="flex items-center gap-4" data-testid="care-animal" data-state={chosen ? "fed" : turned ? "turned-away" : "waiting"}>
+          <WorkshopPictureView id={d.care.picture} className={cn("h-28 w-28 transition-transform duration-500 motion-reduce:transition-none", turned ? "-scale-x-100 rotate-12" : "")} />
+          {turned ? <Feedback tone="retry" text={turned.feedback} /> : null}
+        </div>
+      ) : null}
       <div className="flex flex-wrap gap-3" role="group" aria-label={d.prompt}>
         {d.options.map((o) => (
-          <button key={o.id} type="button" className={pictureButton} style={{ borderColor: d.chosen === o.id ? "#3f7a3a" : "#d9c6aa" }} aria-pressed={d.chosen === o.id} disabled={busy || active.status !== "active"} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`make-${o.id}`} data-fold="input">
+          <button key={o.id} type="button" className={pictureButton} style={{ borderColor: d.chosen === o.id ? "#3f7a3a" : tried.has(o.id) ? "#c77c14" : "#d9c6aa" }} aria-pressed={d.chosen === o.id} disabled={busy || active.status !== "active" || tried.has(o.id)} onClick={() => void act({ a: "decide", step: active.id, option: o.id })} data-testid={`make-${o.id}`} data-fold="input">
             {o.picture ? <WorkshopPictureView id={o.picture} /> : null}
             {o.label}
           </button>
@@ -569,20 +583,85 @@ function NarratedDecide({ active, busy, act }: { active: MissionActiveView; busy
   );
 }
 
+/** Nov 21 (Isabel Visit 6): she taps one chick (it becomes hers), then writes its name herself — letters only, at most 12. The
+ *  name is her own writing (a sample, never scored), shown as text and never spoken. */
+const cleanNameInput = cleanStoryNameInput;
+function NameDecide({ active, busy, act }: { active: MissionActiveView; busy: boolean; act: Act }) {
+  const d = active.decide!;
+  const n = d.name!;
+  const own = d.options.find((o) => o.own) ?? d.options[0];
+  const chosen = d.picked.find((p) => p.viable) ?? null;
+  const [picked, setPicked] = useState<number | null>(null);
+  const [value, setValue] = useState("");
+  const [notice, setNotice] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  useEffect(() => {
+    if (picked !== null) inputRef.current?.focus({ preventScroll: true });
+  }, [picked]);
+  const done = active.status !== "active" || !!chosen;
+  const send = async () => {
+    const name = cleanNameInput(value, n.max);
+    if (name.length < 2) return setNotice("Schreib mindestens zwei Buchstaben.");
+    setNotice(null);
+    const res = await act({ a: "decide", step: active.id, option: own.id, name });
+    if (!res) setNotice("Das ging nicht. Versuch es noch einmal.");
+  };
+  return (
+    <div className="grid gap-4" data-testid="workshop-decide" data-chosen={d.chosen ?? ""} data-name-step="true">
+      <div className="flex flex-wrap gap-3" role="group" aria-label="Tipp auf ein Küken" data-fold="input">
+        {Array.from({ length: n.pick }, (_, i) => (
+          <button key={i} type="button" className={pictureButton} style={{ borderColor: picked === i ? "#3f7a3a" : "#d9c6aa", minHeight: "8rem", width: "8rem" }} aria-pressed={picked === i} disabled={busy || done} onClick={() => setPicked(i)} data-testid={`chick-${i + 1}`}>
+            <WorkshopPictureView id={n.picture} className="h-24 w-24" />
+          </button>
+        ))}
+      </div>
+      {picked !== null && !done ? (
+        <form className="flex flex-wrap items-center gap-3" onSubmit={(e) => { e.preventDefault(); if (!busy) void send(); }}>
+          <label htmlFor="chick-name" className="sr-only">{d.prompt}</label>
+          <input id="chick-name" ref={inputRef} value={value} onChange={(e) => { setNotice(null); setValue(cleanNameInput(e.target.value, n.max)); }} autoComplete="off" autoCorrect="off" autoCapitalize="words" spellCheck={false} lang="de" className="h-16 w-80 rounded-2xl border-4 px-4 text-3xl font-semibold" style={{ borderColor: "#d9c6aa" }} data-testid="chick-name-input" data-fold="input" />
+          <button type="submit" className={btn} style={primary} disabled={busy || cleanNameInput(value, n.max).length < 2} data-testid="chick-name-save" data-fold="primary">
+            <span aria-hidden>✓</span> Fertig
+          </button>
+        </form>
+      ) : null}
+      {notice ? <Feedback tone="retry" text={notice} /> : null}
+      {chosen ? <Feedback tone="success" text={chosen.feedback} /> : null}
+    </div>
+  );
+}
+
 /** Reading (narrated): the word is SHOWN; the narration never says it, its letters or the options before her attempt. */
 function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; busy: boolean; act: Act }) {
   const q = active.questions[0];
   const letters = active.letters;
   const open = q?.status === "open";
+  // Nov 21 (Isabel Visit 6): a short sentence (smaller letters, word tiles as support); a growth-book page shows her chick's name
+  // as text and fills its empty photo frame with the picture she picked.
+  const sentence = !!active.sentence;
+  const page = active.book ?? null;
+  const placed = page && q && q.status !== "open" && q.resolved ? q.pictures?.[q.resolved] ?? null : null;
+  const word = (
+    <p className={cn("justify-self-start rounded-3xl border-4 font-mono font-bold", sentence ? "px-6 py-3 text-5xl tracking-[0.12em]" : "px-8 py-4 text-6xl tracking-[0.3em]")} style={{ borderColor: "#d9c6aa", background: "white" }} lang="de" data-testid="read-word" data-sentence={sentence ? "true" : undefined}>
+      {active.readText}
+    </p>
+  );
   return (
     <div className="grid gap-4" data-testid="workshop-read" data-letters={letters?.shown ? "shown" : "no"}>
-      <p className="justify-self-start rounded-3xl border-4 px-8 py-4 font-mono text-6xl font-bold tracking-[0.3em]" style={{ borderColor: "#d9c6aa", background: "white" }} lang="de" data-testid="read-word">
-        {active.readText}
-      </p>
+      {page ? (
+        <div className="flex flex-wrap items-center gap-5 justify-self-start rounded-3xl border-4 p-4" style={{ borderColor: "#c9a26b", background: "#fffaf0" }} data-testid="growth-book" data-page={page.page}>
+          <div className="grid h-36 w-36 place-items-center rounded-2xl border-4 border-dashed" style={{ borderColor: "#c9b28c" }} data-testid="growth-book-photo" data-filled={placed ? "true" : "false"}>
+            {placed ? <WorkshopPictureView id={placed} className="h-32 w-32" /> : <span className="text-5xl" aria-hidden>📷</span>}
+          </div>
+          <div className="grid gap-2">
+            <p className="text-lg font-semibold" style={{ color: "#7a4a22" }} data-testid="growth-book-title">Wachstumsbuch{active.storyName ? ` · ${active.storyName}` : ""} · Seite {page.page}</p>
+            {word}
+          </div>
+        </div>
+      ) : word}
       {letters?.shown ? (
         <div className="flex flex-wrap gap-3 rounded-2xl p-4" style={{ background: "#edf4e6" }} data-testid="read-letters">
           {letters.shown.letters.map((l, i) => (
-            <span key={i} className="grid h-16 w-16 place-items-center rounded-2xl bg-white text-4xl font-bold">
+            <span key={i} className={cn("grid h-16 place-items-center rounded-2xl bg-white text-4xl font-bold", sentence ? "min-w-16 px-4" : "w-16")}>
               {l.letter}
             </span>
           ))}
@@ -605,8 +684,8 @@ function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; bu
         </div>
       ) : null}
       {open && letters?.offered && !letters.shown && !(letters.afterMiss && !q?.tries) ? (
-        <button type="button" className={cn(btn, "justify-self-start", q?.tries ? "ring-4 ring-amber-400" : "")} style={secondary} disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "letters" })} data-testid="read-letters-open" aria-label="Das ist schwer — Buchstaben zusammen anschauen">
-          <span aria-hidden>🔤</span> Buchstaben
+        <button type="button" className={cn(btn, "justify-self-start", q?.tries ? "ring-4 ring-amber-400" : "")} style={secondary} disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "letters" })} data-testid="read-letters-open" aria-label={sentence ? "Das ist schwer — Wort für Wort zusammen lesen" : "Das ist schwer — Buchstaben zusammen anschauen"}>
+          <span aria-hidden>🔤</span> {sentence ? "Wort für Wort" : "Buchstaben"}
         </button>
       ) : null}
     </div>

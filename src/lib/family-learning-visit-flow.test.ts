@@ -135,7 +135,11 @@ function walk(content: LearningContent, visit: string, seed: number | "first-try
     if (a.kind === "craft") {
       if (r() < 0.5 && a.craft?.find) tryM({ a: "craft-found", step: a.id, items: a.craft.find.options.slice(0, 1).map((o) => o.id) });
       weiter();
-    } else if (a.kind === "decide") tryM({ a: "decide", step: a.id, option: pick(a.decide!.options).id });
+    } else if (a.kind === "decide") {
+      // Nov 21 (Isabel Visit 6): an own option (her chick's name) is answered with a typed name.
+      const o = pick(a.decide!.options);
+      tryM({ a: "decide", step: a.id, option: o.id, ...(o.own ? { name: "Testname" } : {}) });
+    }
     else if (a.kind === "solve") {
       const p = a.solve!.parts.find((x) => x.status === "open");
       const pd = sd.solve?.parts.find((x) => x.id === p?.id);

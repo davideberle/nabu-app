@@ -148,7 +148,7 @@ describe("sprite manifest", () => {
       for (const v of vars) {
         const id = p.builtAsset ? p.builtAsset.replace("{variant}", v ?? "") : `${p.id}${v ? `-${v}` : ""}-built`;
         if (!have.has(id)) missing.push(id);
-        if (p.later && !have.has(p.later.asset.replace("{variant}", v ?? ""))) missing.push(p.later.asset.replace("{variant}", v ?? ""));
+        for (const l of p.later ? (Array.isArray(p.later) ? p.later : [p.later]) : []) if (!have.has(l.asset.replace("{variant}", v ?? ""))) missing.push(l.asset.replace("{variant}", v ?? ""));
       }
     }
     deepStrictEqual(missing, []);
@@ -210,7 +210,7 @@ describe("child-device access to the sprites", () => {
     for (const a of ASSETS) ok(isTrackerAllowedPath(assetUrl(a)), assetUrl(a));
     ok(!isTrackerAllowedPath("/family/home-map/other.png"));
     ok(!isTrackerAllowedPath("/family/home-map/"));
-    equal(ASSETS.length, 53); // Nov 18: +12 for Visit 11 (pond water, pump) and Visit 5 (birdhouse on the tree ×3 and with birds ×3, feeder ×3 + site)
+    equal(ASSETS.length, 57); // Nov 18: +12 for Visit 11 (pond water, pump) and Visit 5 (birdhouse on the tree ×3 and with birds ×3, feeder ×3 + site); Nov 21: +4 for Visit 6 (chicks ×3, water bowl)
   });
 });
 
@@ -227,7 +227,7 @@ describe("1× ground for windows up to 1440 px", () => {
       deepStrictEqual([meta.width, meta.height], [a.size.w / 2, a.size.h / 2], a.id);
       ok(isTrackerAllowedPath(assetUrl1x(a)), assetUrl1x(a));
     }
-    equal(ALL_ASSET_URLS.length, 56);
+    equal(ALL_ASSET_URLS.length, 60);
     ok(!isTrackerAllowedPath("/family/home-map/s-dock-built@1x.png"));
   });
 });

@@ -131,7 +131,7 @@ export function WorkshopClosing({ view, busy, narrator, telemetry, onFeedback, o
 }
 
 /** The spoken goodbye after the closing (her garden, the reviewed goodbye lines, one way home). */
-export function WorkshopFarewell({ who, lines, grown, label, voice, narrator, telemetry, onHome }: { who: string; lines: string[]; grown: string | null; label: string; voice: VoiceSlot | null; narrator: NarrationPlayer; telemetry: NarrationTelemetry; onHome: () => void }) {
+export function WorkshopFarewell({ who, lines, grown, label, name = null, voice, narrator, telemetry, onHome }: { who: string; lines: string[]; grown: string | null; label: string; /** Nov 21: her chick's name on the end picture (text only). */ name?: string | null; voice: VoiceSlot | null; narrator: NarrationPlayer; telemetry: NarrationTelemetry; onHome: () => void }) {
   const script = useMemo(() => closingNarration("farewell", { lines }, voice), [lines, voice]);
   const narration = useNarration(narrator, script, telemetry);
   return (
@@ -145,7 +145,7 @@ export function WorkshopFarewell({ who, lines, grown, label, voice, narrator, te
         </div>
         <NarrationControl status={narration.status} onReplay={narration.replay} />
       </figure>
-      <WorkshopGarden grown={grown} label={label} />
+      <WorkshopGarden grown={grown} label={label} name={name} />
       <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={narration.speaking} onClick={() => { narrator.stop(); onHome(); }} data-testid="farewell-home">
         <span aria-hidden>🏠</span> Nach Hause
       </button>

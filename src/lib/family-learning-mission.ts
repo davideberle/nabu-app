@@ -1642,6 +1642,8 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       // Nov 8 arcs: his own word instead of a preset. Sanitized on the server; an unusable name is refused and he can try again.
       const ownName = option.own ? sanitizeStoryName(action.name) : null;
       if (option.own && !ownName) throw new MissionOpError("invalid", "a name is 2 to 12 letters");
+      // Nov 21 (Isabel Visit 6): her chick's name is her first own writing — kept verbatim as a sample, never scored, never spoken.
+      if (ownName && step.decide.name) records.samples.push({ id: env.newId(), visitId: env.visit, taskId: taskId(def, step), kind: "story_name" as const, language: "de", modality: "typed", text: String(action.name).normalize("NFC").trim(), metrics: { mission: def.id, step: step.id, storyKey: step.decide.storyKey ?? null, shown: ownName, scored: false, spellingJudged: false, meaningJudged: false }, at: env.nowIso });
       const prior = r.attempts.length;
       // A viable plan is a legitimate choice — the preference itself is never scored. What IS observed: whether the chosen plan
       // keeps the stated rule (first pick, without the feedback of an earlier non-viable pick → independent).
@@ -2088,7 +2090,7 @@ export type MissionActiveView = {
   /** Reading tasks: the text to read (never audio). Listening: the text ONLY after the transcript support was recorded. */
   readText: string | null;
   listen: { language: string; plays: number; completedPlays: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean; noPictures?: boolean } | null;
-  questions: { id: string; prompt: string; kind: "pick" | "number"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null; picture?: string | null; pictures?: Record<string, string> | null }[];
+  questions: { id: string; prompt: string; kind: "pick" | "number"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null; picture?: string | null; pictures?: Record<string, string> | null; /** Nov 21: the right option once the question is resolved (her answer or the shown one) — never before. */ resolved?: string | null }[];
   calc: { prompt: string; fields: { key: string; label: string; correct: boolean | null; last: number | null }[]; clarification: string | null; representation: { text: string; total: number; perGroup: number; unit: string } | null; teach: string | null; tries: number } | null;
   choice: { prompt: string; options: { id: string; label: string }[]; picked: { id: string; feedback: string; best: boolean }[]; teach: string | null } | null;
   produce: { language: string; frame: string; instruction: string; wordBank: string[] | null; bankLocked: boolean; feedback: string | null; repairLine: string | null; askMeaning: { given: string; options: { word: string; meaningDe: string }[] } | null; shownSentence: string | null; tries: number; maxTries: number; lastResponse: string | null; practiceFeedback?: string | null; practiceLeft?: number } | null;
@@ -2121,9 +2123,15 @@ export type MissionActiveView = {
   home?: string | null;
   /** Step 1 (S1-12): a «Weisst du noch?» warm-up task. */
   warmup?: boolean;
+  /** Nov 21 (Isabel Visit 6): the reading text is a short sentence (word-by-word support). */
+  sentence?: boolean;
+  /** Nov 21: a page of her growth book. */
+  book?: { page: number } | null;
+  /** Nov 21: her chick's name, shown as TEXT only (end picture, growth book) — never in a spoken line. */
+  storyName?: string | null;
 };
 
-export type DecideView = { prompt: string; rule: string; options: { id: string; label: string; grid: MissionGrid | null; picture?: string | null; own?: boolean }[]; wrongPicks: number; noktAfterWrong: number | null; picked: { id: string; viable: boolean; feedback: string }[]; chosen: string | null; reflect: string | null };
+export type DecideView = { prompt: string; rule: string; options: { id: string; label: string; grid: MissionGrid | null; picture?: string | null; own?: boolean }[]; wrongPicks: number; noktAfterWrong: number | null; picked: { id: string; viable: boolean; feedback: string }[]; chosen: string | null; reflect: string | null; /** Nov 21: the name step (tap a picture, write a name). */ name?: { pick: number; picture: string; max: number } | null; /** Nov 21: a care decision (a wrong pick turns the animal away). */ care?: { picture: string } | null };
 
 export type SolvePartView = {
   id: string;
@@ -2153,6 +2161,8 @@ export type SolvePartView = {
   counters?: MissionCounters | null;
   /** Step 1 (S1-09): the child writes the calculation (text input); the factors are never sent. */
   calculation?: boolean;
+  /** Nov 21 (Isabel Visit 6): the answer is a tap on one of these numbers. */
+  choices?: number[];
 };
 export type SolveView = { facts: string[]; current: string | null; parts: SolvePartView[]; diagram: MissionDiagram | null; application: { of: string; kind: string } | null; total: number; grids?: MissionGrid[]; /** Step 1 (S1-09): the ways side by side, after the named part is solved. */ methods?: { prompt: string; options: { id: string; label: string }[]; chosen: string | null } };
 export type WriteView = {
@@ -2250,7 +2260,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     const qs = r.questions[q.id];
     const tries = r.attempts.filter((a) => a.questionId === q.id);
     const last = tries[tries.length - 1];
-    return { id: q.id, prompt: q.prompt, kind: q.kind, options: q.options ?? null, status: qs?.status ?? "open", tries: tries.length, hint: qs?.status === "open" && last && last.correct === false ? q.retryHint : null, shownAnswer: qs?.status === "given" ? q.answer : null, lastWrong: last && last.correct === false ? last.raw : null, ...(q.picture || q.pictures ? { picture: q.picture ?? null, pictures: q.pictures ?? null } : {}) };
+    return { id: q.id, prompt: q.prompt, kind: q.kind, options: q.options ?? null, status: qs?.status ?? "open", tries: tries.length, hint: qs?.status === "open" && last && last.correct === false ? q.retryHint : null, shownAnswer: qs?.status === "given" ? q.answer : null, lastWrong: last && last.correct === false ? last.raw : null, ...(q.picture || q.pictures ? { picture: q.picture ?? null, pictures: q.pictures ?? null } : {}), ...(step.book && qs && qs.status !== "open" ? { resolved: q.answer } : {}) };
   });
   const answers = r.attempts.filter((a) => a.kind === "answer");
   const lastAnswer = answers[answers.length - 1];
@@ -2380,8 +2390,10 @@ function solveView(def: MissionDef, step: MissionStep, r: MissionStepRun, tutorA
         const lastHint = pr.hints.length ? part.hints.find((h) => h.id === pr.hints[pr.hints.length - 1].id) : null;
         return !!lastHint?.check && !pr.checks[lastHint.id];
       })(),
-      ...(part.counters ? { counters: part.counters } : {}),
+      // Nov 21: with `countersAfterMiss` the picture comes only after a first miss (or with the teaching): the spoken word is the task.
+      ...(part.counters && (!part.countersAfterMiss || mains.length > 0 || taughtShown || pr.status !== "open") ? { counters: part.counters } : {}),
       ...(part.calculation ? { calculation: true } : {}),
+      ...(part.choices ? { choices: part.choices } : {}),
     });
   }
   const resolved = r.status !== "active";
@@ -2426,6 +2438,8 @@ function decideView(d: MissionDecide, r: MissionStepRun): DecideView {
     wrongPicks: picked.filter((o) => !o.viable).length,
     noktAfterWrong: d.noktAfterWrong ?? null,
     reflect: chosen ? d.reflect?.prompt ?? null : null,
+    ...(d.name ? { name: d.name } : {}),
+    ...(d.care ? { care: d.care } : {}),
   };
 }
 
@@ -2501,7 +2515,14 @@ export function chosenOption(def: MissionDef, run: MissionRun, decideStep: strin
  * the map's fallback (red). Any other picture id is returned unchanged.
  */
 export const BIRD_FOODS = ["seeds", "berries", "worms"] as const;
-export function storyPicture(picture: string | null, story: { roofColor?: { optionId?: string } } | null | undefined): string | null {
+export function storyPicture(picture: string | null, story: { roofColor?: { optionId?: string }; birdFood?: { optionId?: string } } | null | undefined): string | null {
+  // Nov 21 (Isabel Visit 6): her chicks in the birdhouse — in HER roof colour (Visit 4) with HER bowl food (Visit 5) on the board:
+  // `chicks-<roof>-<food>`, read from her stored choices, never fixed. Without a stored choice, the map's fallbacks (red, seeds).
+  if (picture === "food-caterpillars") {
+    const roof = story?.roofColor?.optionId;
+    const food = story?.birdFood?.optionId;
+    return `chicks-${roof === "blue" || roof === "yellow" ? roof : "red"}-${food && (BIRD_FOODS as readonly string[]).includes(food) ? food : "seeds"}`;
+  }
   const food = /^food-([a-z]+)$/.exec(picture ?? "")?.[1];
   if (!food || !(BIRD_FOODS as readonly string[]).includes(food)) return picture;
   const roof = story?.roofColor?.optionId;
@@ -2525,6 +2546,10 @@ function workshopActive(def: MissionDef, run: MissionRun, step: MissionStep, r: 
     out.picture = o && o.picture ? { id: step.kind === "outcome" ? storyPicture(o.picture, story)! : o.picture, label: o.room } : null;
   } else if (step.picture) out.picture = { id: step.picture, label: step.title };
   if (step.kind === "outcome" && step.recap) out.recap = def.narration ? narratedWorkshopRecap(def, run) : workshopRecap(def, run);
+  if (step.sentence) out.sentence = true;
+  if (step.book) out.book = step.book;
+  // Nov 21: her chick's name as text (growth book page, end picture) — the stored story choice, never a recorded line.
+  if (step.storyName || step.book) out.storyName = story?.chickName?.value ?? null;
   return out;
 }
 
@@ -2593,11 +2618,20 @@ export function workshopEnding(def: MissionDef, run: MissionRun): { success: str
 }
 
 /**
+ * The decide step whose choice the outcome shows: the outcome's `fromChoice` (Nov 21: Visit 6 has two decide steps — her chick's
+ * name and the care decision; the end picture shows the care choice), else the visit's one decide step (every earlier visit).
+ */
+export function madeStep(def: MissionDef): MissionStep | null {
+  const from = def.steps.find((s) => s.kind === "outcome")?.fromChoice;
+  return (from ? def.steps.find((s) => s.id === from && s.kind === "decide") : null) ?? def.steps.find((s) => s.kind === "decide") ?? null;
+}
+
+/**
  * Isabel Visit 2 (narrated workshop): the recap is ONE short sentence about what she made — the reviewed world line of her own
  * choice («Im Garten wachsen Blumen.»). Task results stay in the parent view; nothing here is praise or a mastery claim.
  */
 export function narratedWorkshopRecap(def: MissionDef, run: MissionRun): string | null {
-  const decide = def.steps.find((s) => s.kind === "decide");
+  const decide = madeStep(def);
   const chosen = decide ? chosenOption(def, run, decide.id) : null;
   return chosen ? chosen.room : null;
 }

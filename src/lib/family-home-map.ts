@@ -51,19 +51,22 @@ export type PieceDef = {
    *  replaced by the chosen variant (Nov 18: the birdhouse hangs on the big tree — one taller piece per roof colour). */
   builtAsset?: string;
   /** The label follows a story choice (the turtle's name). */
-  labelFrom?: "turtleName";
+  labelFrom?: "turtleName" | "chickName";
   /** A small animated effect around this piece once its visit has started (the two robins). */
   effect?: string;
   /** Nov 18: the effect stops once this visit has started (the robins sit on their house instead of circling). */
   effectUntil?: string;
   /** Nov 18: a later stage of the same piece once this visit is finished (or started, with `fromVisitStart`). `{variant}` in the
    *  asset is the child's earlier choice (the roof color). `labelFrom`: the label then also names the story choice. */
-  later?: { visit: string; asset: string; fromVisitStart?: boolean; labelFrom?: "turtleName" };
+  later?: LaterStage | LaterStage[];
   /** Nov 18: gone once this visit is finished (the turtle's crate, once she swims in the pond). */
   removedBy?: string;
   /** Nov 18: no site stage; the piece appears only when built (the pump arrives finished). */
   noSite?: boolean;
 };
+
+/** Nov 18: a later stage of a piece. Nov 21: a piece may have several (in visit order; the latest that applies is drawn). */
+export type LaterStage = { visit: string; asset: string; fromVisitStart?: boolean; labelFrom?: "turtleName" | "chickName" };
 
 export type WorldDef = {
   child: ChildId;
@@ -155,8 +158,11 @@ const ISABEL: WorldDef = {
     { id: "i-flower-garden", label: "Garten", builtBy: "v2", tile: { c: 9, r: 1 }, footprint: { w: 2, h: 2 }, place: null, partOf: "garden", variant: { step: "IG2-PLANT", options: { flowers: "flowers", vegetables: "vegetables", tree: "tree" }, fallback: "flowers" } },
     { id: "i-vegetable-patch", label: "Gemüsebeet", builtBy: "v4", tile: { c: 8, r: 4 }, footprint: { w: 2, h: 2 }, place: "patch" },
     { id: "i-harvest-table", label: "Erntetisch", builtBy: "v4", tile: { c: 2, r: 7 }, footprint: { w: 2, h: 1 }, place: "table", variant: { step: "IH2-PICK", options: { apples: "apples", carrots: "carrots", corn: "corn" }, fallback: "apples" } },
-    { id: "i-birdhouse", label: "Vogelhaus", builtBy: "v5", tile: { c: 5, r: 3 }, footprint: { w: 1, h: 1 }, place: "birdhouse", variant: { step: "IV10-ROOF", options: { red: "red", blue: "blue", yellow: "yellow" }, fallback: "red" }, builtAsset: "i-birdhouse-tree-{variant}-built", effect: "i-robins", effectUntil: "v6", later: { visit: "v6", asset: "i-birdhouse-tree-{variant}-birds-built", fromVisitStart: true } },
+    { id: "i-birdhouse", label: "Vogelhaus", builtBy: "v5", tile: { c: 5, r: 3 }, footprint: { w: 1, h: 1 }, place: "birdhouse", variant: { step: "IV10-ROOF", options: { red: "red", blue: "blue", yellow: "yellow" }, fallback: "red" }, builtAsset: "i-birdhouse-tree-{variant}-built", effect: "i-robins", effectUntil: "v6", later: [{ visit: "v6", asset: "i-birdhouse-tree-{variant}-birds-built", fromVisitStart: true }, { visit: "v7", asset: "i-birdhouse-tree-{variant}-chicks-built", labelFrom: "chickName" }] },
     { id: "i-feeder", label: "Futterbrett", builtBy: "v6", tile: { c: 4, r: 3 }, footprint: { w: 1, h: 1 }, place: null, partOf: "birdhouse", variant: { step: "IF8-FOOD", options: { seeds: "seeds", berries: "berries", worms: "worms" }, fallback: "seeds" } },
+    // Nov 21 (Visit 6 «Das Küken schlüpft»): the flat water bowl under the bush, on the free tile beside the birdhouse tree; it
+    // arrives finished after the visit (no site stage).
+    { id: "i-water-bowl", label: "Wasserschale", builtBy: "v7", tile: { c: 4, r: 2 }, footprint: { w: 1, h: 1 }, place: null, partOf: "birdhouse", noSite: true },
   ],
 };
 
@@ -177,7 +183,7 @@ export type HomeWorldInput = {
   /** Built piece ids this device has already shown; null = this device never opened the map. */
   seen: string[] | null;
   /** Story choices across visits (the turtle's name). */
-  story?: { turtleName?: { value: string } };
+  story?: { turtleName?: { value: string }; chickName?: { value: string } };
   /** Where the child last left the map (a place id), e.g. after «back» from a scene. */
   lastPlace?: string | null;
 };
@@ -215,7 +221,8 @@ export function deriveHomeWorld(input: HomeWorldInput): HomeWorld {
     if (p.removedBy && finishedIds.has(p.removedBy)) continue;
     const variant = p.variant ? (p.variant.options[input.choices[p.variant.step] ?? ""] ?? p.variant.fallback) : null;
     // A site is the same for every variant (the choice is made during that visit); a built piece shows the child's choice.
-    const later = p.later && built && (finishedIds.has(p.later.visit) || (!!p.later.fromVisitStart && input.visits.some((v) => v.id === p.later!.visit))) ? p.later : null;
+    const stages = p.later ? (Array.isArray(p.later) ? p.later : [p.later]) : [];
+    const later = built ? [...stages].reverse().find((l) => finishedIds.has(l.visit) || (!!l.fromVisitStart && input.visits.some((v) => v.id === l.visit))) ?? null : null;
     const asset = later ? later.asset.replace("{variant}", variant ?? "") : built ? (p.builtAsset ? p.builtAsset.replace("{variant}", variant ?? "") : `${p.id}${variant ? `-${variant}` : ""}-built`) : `${p.id}-site`;
     if (p.effect && started && !(p.effectUntil && input.visits.some((v) => v.id === p.effectUntil))) effects.push({ asset: p.effect, tile: p.tile, footprint: p.footprint });
     const laterName = later?.labelFrom ? input.story?.[later.labelFrom]?.value ?? null : null;

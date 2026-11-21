@@ -28,6 +28,39 @@ import cozyBirdhouseTreeRed from "@/assets/family-learning/cozy/birdhouse-tree-r
 import cozyBirdhouseTreeBlue from "@/assets/family-learning/cozy/birdhouse-tree-blue.webp";
 import cozyBirdhouseTreeYellow from "@/assets/family-learning/cozy/birdhouse-tree-yellow.webp";
 import cozyIda from "@/assets/family-learning/cozy/portrait-ida.webp";
+import cozyEggBlue from "@/assets/family-learning/cozy/egg-blue.webp";
+import cozyEggDots from "@/assets/family-learning/cozy/egg-dots.webp";
+import cozyEggWhite from "@/assets/family-learning/cozy/egg-white.webp";
+import cozyMamaOnEggs from "@/assets/family-learning/cozy/mama-on-eggs.webp";
+import cozyPapaOnEggs from "@/assets/family-learning/cozy/papa-on-eggs.webp";
+import cozyBothOnEggs from "@/assets/family-learning/cozy/both-on-eggs.webp";
+import cozyChickNaked from "@/assets/family-learning/cozy/chick-naked.webp";
+import cozyChickFluffy from "@/assets/family-learning/cozy/chick-fluffy.webp";
+import cozyChickRedbreast from "@/assets/family-learning/cozy/chick-redbreast.webp";
+import cozyFoodCaterpillars from "@/assets/family-learning/cozy/food-caterpillars.webp";
+import cozyFoodBread from "@/assets/family-learning/cozy/food-bread.webp";
+import cozyCake from "@/assets/family-learning/cozy/cake.webp";
+import cozyBox from "@/assets/family-learning/cozy/box.webp";
+import cozyNextFeathers from "@/assets/family-learning/cozy/next-feathers.webp";
+import cozyNextEyes from "@/assets/family-learning/cozy/next-eyes.webp";
+import cozyNextFly from "@/assets/family-learning/cozy/next-fly.webp";
+import cozyWaterFlatBush from "@/assets/family-learning/cozy/water-flat-bush.webp";
+import cozyWaterDeepBush from "@/assets/family-learning/cozy/water-deep-bush.webp";
+import cozyWaterFlatGrass from "@/assets/family-learning/cozy/water-flat-grass.webp";
+import cozyWaterDeepGrass from "@/assets/family-learning/cozy/water-deep-grass.webp";
+import cozyEggsFive from "@/assets/family-learning/cozy/eggs-five.webp";
+import cozyChicksHatch from "@/assets/family-learning/cozy/chicks-hatch.webp";
+// Nov 21 (Isabel Visit 6): the end picture per roof × bowl food. Only blue × worms is painted yet; the other eight are PLACEHOLDERS
+// (Visit 5's end picture of the same roof and food) until Nabu paints them.
+import cozyChicksRedSeeds from "@/assets/family-learning/cozy/chicks-red-seeds.webp";
+import cozyChicksRedBerries from "@/assets/family-learning/cozy/chicks-red-berries.webp";
+import cozyChicksRedWorms from "@/assets/family-learning/cozy/chicks-red-worms.webp";
+import cozyChicksBlueSeeds from "@/assets/family-learning/cozy/chicks-blue-seeds.webp";
+import cozyChicksBlueBerries from "@/assets/family-learning/cozy/chicks-blue-berries.webp";
+import cozyChicksBlueWorms from "@/assets/family-learning/cozy/chicks-blue-worms.webp";
+import cozyChicksYellowSeeds from "@/assets/family-learning/cozy/chicks-yellow-seeds.webp";
+import cozyChicksYellowBerries from "@/assets/family-learning/cozy/chicks-yellow-berries.webp";
+import cozyChicksYellowWorms from "@/assets/family-learning/cozy/chicks-yellow-worms.webp";
 // Nov 18 (Isabel Visit 5, Santiago Visit 11): the new scene pictures in the same painted style.
 import cozyFoodSeeds from "@/assets/family-learning/cozy/food-seeds.webp";
 import cozyFoodBerries from "@/assets/family-learning/cozy/food-berries.webp";
@@ -878,6 +911,30 @@ function Shape({ id }: { id: WorkshopPicture }) {
       return <g><circle cx={40} cy={44} r={18} fill="#e8a0b4" stroke="#a85a72" strokeWidth={2} /><path d="M26 36q14 10 28 0M24 46q16 10 32 0M28 56q12 6 24 0" stroke="#a85a72" strokeWidth={1.5} fill="none" /></g>;
     case "next-bush":
       return <g><circle cx={28} cy={50} r={16} fill={LEAF} /><circle cx={50} cy={46} r={18} fill="#5ea24a" /><circle cx={40} cy={36} r={14} fill={LEAF} />{[[30, 44], [48, 40], [42, 54]].map(([x, y]) => <Berry key={`${x}-${y}`} x={x} y={y} />)}</g>;
+    // Nov 21 — Isabel Visit 6: painted (RASTER_PICTURES); this vector stand-in only draws if a file were missing.
+    case "egg-blue":
+    case "egg-dots":
+    case "egg-white":
+    case "mama-on-eggs":
+    case "papa-on-eggs":
+    case "both-on-eggs":
+    case "chick-naked":
+    case "chick-fluffy":
+    case "chick-redbreast":
+    case "food-caterpillars":
+    case "food-bread":
+    case "cake":
+    case "box":
+    case "next-feathers":
+    case "next-eyes":
+    case "next-fly":
+    case "water-flat-bush":
+    case "water-deep-bush":
+    case "water-flat-grass":
+    case "water-deep-grass":
+    case "eggs-five":
+    case "chicks-hatch":
+      return <g><rect x={8} y={8} width={64} height={64} rx={12} fill="#f3ead8" stroke="#c9b28c" strokeWidth={2} /><ellipse cx={40} cy={44} rx={14} ry={18} fill="#f4efe2" stroke="#b9ad8f" strokeWidth={2} /></g>;
     default: {
       // Exhaustive on purpose: a picture id in WORKSHOP_PICTURES without a drawing no longer compiles. It used to draw nothing.
       const missing: never = id;
@@ -888,6 +945,16 @@ function Shape({ id }: { id: WorkshopPicture }) {
 
 /** Isabel Visit 4: the birdhouse on the big tree beside the garden-house window, per roof colour (her IV10-ROOF choice). */
 const BIRDHOUSE_TREE_ART: Record<string, StaticImageData> = {
+  // Isabel Visit 6: the chicks peek out of the birdhouse in her roof colour, her Visit 5 bowl on the board, water under the bush.
+  "chicks-red-seeds": cozyChicksRedSeeds,
+  "chicks-red-berries": cozyChicksRedBerries,
+  "chicks-red-worms": cozyChicksRedWorms,
+  "chicks-blue-seeds": cozyChicksBlueSeeds,
+  "chicks-blue-berries": cozyChicksBlueBerries,
+  "chicks-blue-worms": cozyChicksBlueWorms,
+  "chicks-yellow-seeds": cozyChicksYellowSeeds,
+  "chicks-yellow-berries": cozyChicksYellowBerries,
+  "chicks-yellow-worms": cozyChicksYellowWorms,
   "roof-red": cozyBirdhouseTreeRed,
   "roof-blue": cozyBirdhouseTreeBlue,
   "roof-yellow": cozyBirdhouseTreeYellow,
@@ -915,6 +982,29 @@ const HARVEST_TABLE_ART: Record<string, string> = {
 // middleware) or a map-manifest file (already allowed for the child device). Ids not listed here keep their vector drawing.
 const MAP = "/family/home-map/";
 const RASTER_PICTURES: Partial<Record<WorkshopPicture, StaticImageData | string>> = {
+  // Nov 21 — Isabel Visit 6 «Das Küken schlüpft» (Nabu's art, trimmed and fitted: choices 240 × 240, scenes 800 × 600).
+  "egg-blue": cozyEggBlue,
+  "egg-dots": cozyEggDots,
+  "egg-white": cozyEggWhite,
+  "mama-on-eggs": cozyMamaOnEggs,
+  "papa-on-eggs": cozyPapaOnEggs,
+  "both-on-eggs": cozyBothOnEggs,
+  "chick-naked": cozyChickNaked,
+  "chick-fluffy": cozyChickFluffy,
+  "chick-redbreast": cozyChickRedbreast,
+  "food-caterpillars": cozyFoodCaterpillars,
+  "food-bread": cozyFoodBread,
+  "cake": cozyCake,
+  "box": cozyBox,
+  "next-feathers": cozyNextFeathers,
+  "next-eyes": cozyNextEyes,
+  "next-fly": cozyNextFly,
+  "water-flat-bush": cozyWaterFlatBush,
+  "water-deep-bush": cozyWaterDeepBush,
+  "water-flat-grass": cozyWaterFlatGrass,
+  "water-deep-grass": cozyWaterDeepGrass,
+  "eggs-five": cozyEggsFive,
+  "chicks-hatch": cozyChicksHatch,
   bird: cozyRobin,
   nest: cozyNest,
   house: cozyHouse,
@@ -999,13 +1089,15 @@ export function WorkshopRoom({ made, label }: { made: string | null; label: stri
  */
 export function Counters({ counters, caption = true }: { counters: MissionCounters; /** Isabel Visit 2 (narrated): the question says it — no caption to read. */ caption?: boolean }) {
   const { a, b, op, unit, bundles } = counters;
+  if (counters.layout === "weeks") return <WeekStrips counters={counters} caption={caption} />;
+  if (counters.layout === "rows") return <TenRows counters={counters} caption={caption} />;
   // Nov 18: a missing-part question with closed bundles has its own picture below (what is there, then the empty places).
   if (bundles && counters.closed && !(counters.ask === "missing" && counters.frame)) {
     // Step 1 (S1-15): after counting one bundle, a bundle is drawn closed with its «10» — not every stick (or apple) again.
     const tens = Math.floor(a / 10);
     const loose = a % 10;
     // Nov 18: seeds come in small bags of ten, like the apples (Isabel Visit 5).
-    const bag = counters.icon === "apple" || counters.icon === "seed";
+    const bag = counters.icon === "apple" || counters.icon === "seed" || counters.icon === "feather";
     return (
       <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={b} data-op={op} data-bundles="closed">
         <div className="flex flex-wrap items-end gap-3" role="img" aria-label={`${tens} ${bag ? "Säcke" : "Bündel"} mit je 10 ${unit}${loose ? ` und ${loose} einzelne` : ""} und ${b} einzelne`}>
@@ -1020,7 +1112,7 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
           {Array.from({ length: loose + (op === "+" ? b : 0) }, (_, i) =>
             bag ? (
               <svg key={`l${i}`} viewBox="0 0 40 40" className="h-12 w-12" aria-hidden data-part="loose">
-                <CounterIcon icon={counters.icon === "seed" ? "seed" : "apple"} />
+                <CounterIcon icon={counters.icon === "seed" || counters.icon === "feather" ? counters.icon : "apple"} />
               </svg>
             ) : (
               <svg key={`l${i}`} viewBox="0 0 10 80" className="h-20 w-2.5" aria-hidden data-part="loose">
@@ -1165,6 +1257,61 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
   );
 }
 
+/**
+ * Nov 21 (Isabel Visit 6): days as week strips of 7 (two weeks = two strips). `a` days are marked, `b` more are added (a second
+ * strip in another colour) — or, with `ask: "missing"`, the days still to come up to `frame` are empty. Exact counts, no numbers.
+ */
+function WeekStrips({ counters, caption }: { counters: MissionCounters; caption: boolean }) {
+  const { a, b, unit } = counters;
+  const total = counters.ask === "missing" && counters.frame ? counters.frame : a + b;
+  const weeks = Math.ceil(total / 7);
+  const label = counters.ask === "missing" ? `${total} ${unit} in ${weeks} Wochen: ${a} sind vorbei, die anderen sind leer` : b ? `Zwei Streifen: ${a} ${unit} und ${b} ${unit}` : `${a} ${unit} in ${weeks} Streifen`;
+  return (
+    <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={b} data-op={counters.op} data-layout="weeks" {...(counters.frame ? { "data-frame": counters.frame } : {})}>
+      <div className="grid gap-2" role="img" aria-label={label}>
+        {Array.from({ length: weeks }, (_, w) => (
+          <div key={w} className="flex gap-1.5 rounded-2xl border-4 p-1.5 w-max" style={{ borderColor: "#c9a26b", background: "#fffaf0" }} data-part="week">
+            {Array.from({ length: 7 }, (_, d) => {
+              const i = w * 7 + d;
+              if (i >= total) return null;
+              const filled = counters.ask === "missing" ? i < a : true;
+              const second = counters.ask !== "missing" && b > 0 && i >= a;
+              return (
+                <svg key={d} viewBox="0 0 40 40" className="h-12 w-12" aria-hidden data-part={filled ? (second ? "added" : "day") : "empty"}>
+                  {filled ? <g>{second ? <rect x={1} y={1} width={38} height={38} rx={8} fill="#dceaf7" /> : null}<CounterIcon icon="day" /></g> : <rect x={5} y={5} width={30} height={30} rx={6} fill="none" stroke="#b9a582" strokeWidth={2} strokeDasharray="4 4" />}
+                </svg>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+      <figcaption className={caption ? "text-base" : "sr-only"}>{label}</figcaption>
+    </figure>
+  );
+}
+
+/** Nov 21 (Isabel Visit 6): rows of ten (one row = one hour of about 10 flights). Exact count from the data; no numbers drawn. */
+function TenRows({ counters, caption }: { counters: MissionCounters; caption: boolean }) {
+  const { a, unit } = counters;
+  const rows = Math.ceil(a / 10);
+  return (
+    <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={counters.b} data-op={counters.op} data-layout="rows">
+      <div className="grid gap-1.5" role="img" aria-label={`${rows} Reihen mit je 10 ${unit}`}>
+        {Array.from({ length: rows }, (_, r) => (
+          <div key={r} className="flex w-max gap-1 rounded-xl px-1.5 py-0.5" style={{ background: r % 2 ? "#f3efe6" : "#eef5e4" }} data-part="row">
+            {Array.from({ length: Math.min(10, a - r * 10) }, (_, k) => (
+              <svg key={k} viewBox="0 0 40 40" className="h-9 w-9" aria-hidden data-part="flight">
+                <CounterIcon icon={counters.icon ?? "flight"} />
+              </svg>
+            ))}
+          </div>
+        ))}
+      </div>
+      <figcaption className={caption ? "text-base" : "sr-only"}>{rows} Reihen mit je 10 {unit}</figcaption>
+    </figure>
+  );
+}
+
 /** Visit 2: one counter drawn as a garden thing (40 × 40). */
 function CounterIcon({ icon }: { icon?: string }) {
   switch (icon) {
@@ -1201,14 +1348,37 @@ function CounterIcon({ icon }: { icon?: string }) {
       return <g><rect x={18} y={12} width={4} height={22} fill="#8a8f96" /><rect x={13} y={8} width={14} height={5} rx={1} fill="#6b7077" /></g>;
     case "stick":
       return <rect x={17} y={2} width={6} height={36} rx={2} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={1} />;
+    // Nov 21 — Isabel Visit 6
+    case "feather":
+      return <g><path d="M12 34q4-20 20-28q-2 18-20 28z" fill="#b36a3a" stroke="#6e3d1e" strokeWidth={1.2} /><path d="M12 34L28 10" stroke="#6e3d1e" strokeWidth={1.2} /></g>;
+    case "caterpillar":
+      return <g>{[8, 15, 22, 29].map((x, i) => <circle key={x} cx={x} cy={i === 3 ? 18 : 24} r={i === 3 ? 6.5 : 5.5} fill={i === 3 ? "#8cc152" : "#9fd062"} stroke="#4f7a2a" strokeWidth={1} />)}<circle cx={31} cy={17} r={1.2} fill="#222" /></g>;
+    case "day":
+      return <g><rect x={4} y={4} width={32} height={32} rx={6} fill="#fff6dc" stroke="#c9a26b" strokeWidth={2} /><circle cx={20} cy={20} r={6} fill="#f7c948" /></g>;
+    case "flight":
+      return <g><path d="M6 22q7-10 14-2q7-8 14 2q-7-3-14 3q-7-6-14-3z" fill="#8a5a3b" stroke="#5a3a24" strokeWidth={1} /><circle cx={20} cy={21} r={3.5} fill="#e8743b" /></g>;
     default:
       return <rect x={6} y={6} width={28} height={28} rx={4} fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={1.5} />;
   }
 }
 
 /** Visit 2: her garden with what she chose to grow (the visible consequence of her own choice). */
-export function WorkshopGarden({ grown, label, compact = false }: { grown: string | null; label: string; /** Step 1 (review): smaller on the focused screen so «Weiter» stays above the fold. */ compact?: boolean }) {
+export function WorkshopGarden({ grown, label, compact = false, name = null }: { grown: string | null; label: string; /** Step 1 (review): smaller on the focused screen so «Weiter» stays above the fold. */ compact?: boolean; /** Nov 21 (Isabel Visit 6): her chick's name, shown as a TEXT tag on the end picture (never spoken). */ name?: string | null }) {
   const birdhouse = grown ? BIRDHOUSE_TREE_ART[grown] : undefined;
+  if (birdhouse && name) {
+    return (
+      <figure className="grid justify-items-start gap-2" data-testid="workshop-garden" data-grown={grown ?? ""} data-art="birdhouse-tree">
+        <div className="relative w-full max-w-[400px]">
+          {/* eslint-disable-next-line @next/next/no-img-element -- a fixed painted scene; next/image would route it through the optimizer the child's device may not reach */}
+          <img src={birdhouse.src} width={birdhouse.width} height={birdhouse.height} alt={label} className="h-auto w-full" data-testid="birdhouse-tree-art" data-art={grown ?? ""} />
+          <span className="absolute right-[6%] top-[8%] rounded-full border-2 px-3 py-1 text-xl font-bold shadow-sm" style={{ background: "#fffaf0", borderColor: "#c9a26b", color: "#5a3a1a" }} data-testid="story-name-tag">
+            🐣 {name}
+          </span>
+        </div>
+        <figcaption className="text-base font-semibold">{label}</figcaption>
+      </figure>
+    );
+  }
   if (birdhouse) {
     // Isabel Visit 4: the end picture as Ida said it in step 6 — on the big tree, high up, next to the window, in the roof colour
     // she chose, the two robins sitting on the roof.

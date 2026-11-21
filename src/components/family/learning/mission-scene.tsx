@@ -422,13 +422,32 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false, focused = f
     <div className="grid gap-4">
       {/* Isabel's workshop: the exact quantities of this question, drawn from the data (absent for every Santiago question). */}
       {part.counters ? <Counters counters={part.counters} caption={!quiet} /> : null}
-      {taught ? <p className="text-xl font-semibold leading-snug">{part.question}</p> : null}
+      {taught && !part.choices ? <p className="text-xl font-semibold leading-snug">{part.question}</p> : null}
       {taught && part.teach ? (
         <div className="rounded-2xl px-4 py-3 text-lg" style={{ background: "#eef1e8", borderLeft: `5px solid ${ACTION}` }} data-testid="part-teach">
           <p className="font-semibold">So rechnet man es:</p>
           <p className="mt-1">{part.teach}</p>
         </div>
       ) : null}
+      {part.choices ? (
+        // Nov 21 (Isabel Visit 6): the number word is heard; she taps one of two written numbers (42 or 24). One tap = one answer.
+        <div className="grid gap-3" data-testid="part-choices">
+          <p className="text-2xl font-semibold leading-snug" data-testid="part-question" data-fold="question">{part.question}</p>
+          <div className="flex flex-wrap gap-4" role="group" aria-label={part.question} data-fold="input">
+            {part.choices.map((n) => (
+              <button key={n} type="button" className="grid min-h-28 min-w-36 place-items-center rounded-3xl border-4 bg-white px-6 font-mono text-6xl font-bold disabled:opacity-50" style={{ borderColor: part.lastWrong === n ? "#c77c14" : "#d9c6aa", color: INK }} disabled={busy || part.lastWrong === n || sending.current} onClick={async () => {
+                if (sending.current) return;
+                sending.current = true;
+                const key = typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `part-${Date.now()}`;
+                await act(taught ? { a: "practice-part", step, part: part.id, value: String(n) } : { a: "answer-part", step, part: part.id, value: String(n) }, { idempotencyKey: key });
+                sending.current = false;
+              }} data-testid={`part-choice-${n}`}>
+                {n}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : (
       <form
         className="grid gap-3"
         onSubmit={(e) => {
@@ -460,6 +479,7 @@ function PartTask({ part, step, busy, act, telemetry, quiet = false, focused = f
           </button>
         </div>
       </form>
+      )}
       {notice ? <Feedback tone="retry" text={notice} /> : part.feedback ? <Feedback tone={part.feedback.tone} text={noktOpen && (part.feedback.tone === "retry" || part.feedback.tone === "stuck") ? "Noch nicht richtig." : part.feedback.text} /> : null}
       {taught && part.status === "open" && part.practiceLeft === 0 ? (
         <button type="button" className={cn(btn, "justify-self-start")} style={secondary} disabled={busy} onClick={() => void act({ a: "later-part", step, part: part.id })} data-testid="part-later">
