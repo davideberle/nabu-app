@@ -6495,7 +6495,7 @@
         },
         "compare": true,
         "hintsAfterFirstAttempt": true,
-        "recheck": "Noch nicht. Wir sagen die Zwei zuerst, aber wir schreiben die Vierzig zuerst.",
+        "recheck": "Noch nicht. Wir sagen zuerst die Zwei, aber wir schreiben zuerst die Vier.",
         "teach": "Zweiundvierzig: 4 Säckchen sind 40, dazu 2. Man schreibt zuerst die 4, dann die 2.",
         "stuck": "Noch nicht richtig. Zähl langsam — oder tipp unten auf den Hinweis."
        }
@@ -6685,7 +6685,7 @@
         },
         "compare": true,
         "hintsAfterFirstAttempt": true,
-        "recheck": "Noch nicht. Wir sagen die Fünf zuerst, aber wir schreiben die Dreissig zuerst.",
+        "recheck": "Noch nicht. Wir sagen zuerst die Fünf, aber wir schreiben zuerst die Drei.",
         "teach": "Fünfunddreissig: 3 Säckchen sind 30, dazu 5. Man schreibt zuerst die 3, dann die 5.",
         "stuck": "Noch nicht richtig. Zähl langsam — oder tipp unten auf den Hinweis."
        }

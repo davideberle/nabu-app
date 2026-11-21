@@ -394,7 +394,7 @@ async function isabel() {
   if (wrong) {
     await choose(24);
     check("I.I62.bags-after-the-miss", (await sel(page, "[data-part='closed-bundle']").count()) === 4, await sel(page, "[data-part='closed-bundle']").count());
-    check("I.I62.flip-explained", (await page.locator("[data-testid='solve-task']").innerText()).includes("Vierzig zuerst"));
+    check("I.I62.flip-explained", (await page.locator("[data-testid='solve-task']").innerText()).includes("schreiben zuerst die Vier"));
     await shot(page, "I62-after-a-miss-bags-appear");
     await choose(42);
     await next("I62E-FLIP-EASY", "I62E-easier-12-or-21");
