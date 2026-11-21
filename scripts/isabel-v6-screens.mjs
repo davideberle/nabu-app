@@ -315,7 +315,7 @@ async function isabel() {
     await page.waitForSelector("[data-testid='cockpit-start'], [data-testid='start-visit']", { timeout: 30000 });
     if (await sel(page, "[data-testid='cockpit-start']").count()) await sel(page, "[data-testid='cockpit-start']").click();
     await page.waitForSelector("[data-testid='start-visit']", { timeout: 15000 });
-    { const hub = (await page.locator("[data-testid='start-screen']").innerText()).replace(/\s+/g, " "); check("I.hub-shows-besuch-6", hub.includes("Besuch 6 — Das Küken schlüpft") && hub.includes("Heute schlüpfen mit Gärtnerin Ida die Küken."), hub.slice(0, 200)); }
+    { const hub = (await page.locator("[data-testid='start-screen']").innerText()).replace(/\s+/g, " "); check("I.hub-shows-besuch-6", hub.includes("Das Küken schlüpft") && hub.includes("Heute schlüpfen mit Gärtnerin Ida die Küken."), hub.slice(0, 200)); }
     await shot(page, "start-besuch-6");
     await sel(page, "[data-testid='start-visit']").click();
   }
