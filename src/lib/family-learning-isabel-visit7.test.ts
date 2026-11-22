@@ -11,7 +11,7 @@ import { deriveHomeWorld } from "./family-home-map.ts";
 import { ASSETS } from "./family-home-map-assets.ts";
 import { buildMissionView, canonicalAnswer, checkedAnswer, retentionClass, stepStatuses, storyPicture, type MissionAction } from "./family-learning-mission.ts";
 import { COUNTER_ICONS, WORKSHOP_PICTURES, type MissionQuestion } from "./family-learning-mission-spec.ts";
-import { catalogKey, feedbackLock, missionNarration, narrationCatalog, type NarrationLine } from "./family-learning-narration.ts";
+import { bubbleLine, catalogKey, feedbackLock, missionNarration, narrationCatalog, type NarrationLine } from "./family-learning-narration.ts";
 import { createNarrationPlayer } from "./family-narration-player.ts";
 import { resolveObjective } from "./family-learning-skill-map.ts";
 import { applyLearningOp, buildChildView, EMPTY_PARENT_SETTINGS, newMissionState, nextVisitAvailability, type LearningOp, type MissionState, type OpEnv, type ParentSettings } from "./family-learning-state.ts";
@@ -378,6 +378,62 @@ describe("walks through Visit 7 (synthetic)", () => {
     s = m(s, { a: "answer-question", step: "I74-HATCH", question: "order", value: "Loch|Riss|Raus" });
     equal(s.missions![eyes.id].steps["I74-HATCH"].outcome, "independent", "right first time after the explanation");
     deepEqual(attempts.filter((a) => a.answer.step === "I74-HATCH").map((a) => [a.objective, a.correct]), [["sequencing-pictures-prior-knowledge", false], ["sequencing-pictures", true]]);
+  });
+});
+
+describe("Ida's bubble shows the current item's line (Nabu's review, Nov 22)", () => {
+  it("every narrated counting step with several items: after «Nächste Frage» the bubble is that item's question, the same line that is said", () => {
+    const checked: string[] = [];
+    for (const [file, content] of [["v7", i7]] as const) {
+      for (const m of content.missions!.filter((x) => x.narration?.mode === "auto")) {
+        for (const sd of m.steps.filter((x) => (x.solve?.parts.length ?? 0) > 1)) {
+          const order = content.visits.map((v) => v.id);
+          let s = newMissionState(content, "isabel", "2026-10-28T16:00:00.000Z");
+          s.visits = finishedV(order.slice(0, order.indexOf(m.visit as never)) as string[]);
+          let t = Date.UTC(2026, 10, 29, 10);
+          const env = { content, settings: { ...EMPTY_PARENT_SETTINGS }, now: () => new Date((t += 4_000)), newId: () => `b${t}`, tutorAvailable: false };
+          const mm = (a: MissionAction) => (s = applyLearningOp(s, { op: "mission", action: a }, env).state);
+          s = applyLearningOp(s, { op: "start-visit" }, env).state;
+          // Walk straight to this step (earlier steps finished by the engine's own «not needed»/answers is not required: open it directly).
+          (s.missions as Record<string, unknown>) = { ...(s.missions ?? {}) };
+          const run = (s.missions as Record<string, { steps: Record<string, unknown>; position: string }>)[m.id] ?? null;
+          void run;
+          for (const st of m.steps) {
+            if (st.id === sd.id) break;
+            const done = { status: "done", openedAt: "2026-11-29T09:00:00.000Z", finishedAt: "2026-11-29T09:00:00.000Z", attempts: [], support: [], plays: 0, questions: {}, phase: "finished", outcome: "independent" };
+            const ms = (s.missions as Record<string, { steps: Record<string, unknown> }>);
+            ms[m.id] = ms[m.id] ?? ({ missionId: m.id, version: 1, visit: m.visit, startedAt: "2026-11-29T09:00:00.000Z", position: sd.place, visited: [], active: null, steps: {}, facts: {}, shownWords: [], typing: null, finishedAt: null } as never);
+            ms[m.id].steps[st.id] = done;
+          }
+          (s.missions as Record<string, { position: string }>)[m.id].position = sd.place;
+          mm({ a: "open", step: sd.id });
+          const v0 = buildMissionView(s, content, m.visit as never)!;
+          equal(bubbleLine(v0.active), sd.intro[0].text, `${m.visit}/${sd.id}: the first item shows the opening line`);
+          const parts = sd.solve!.parts;
+          for (let k = 0; k < parts.length - 1; k += 1) {
+            mm({ a: "answer-part", step: sd.id, part: parts[k].id, value: String(parts[k].answer) });
+            const seen = parts.slice(0, k + 1).map((p) => p.id);
+            const v = buildMissionView(s, content, m.visit as never)!;
+            const shown = bubbleLine(v.active, seen);
+            equal(shown, parts[k + 1].question, `${m.visit}/${sd.id}: item ${k + 2}`);
+            equal(missionNarration(v, seen)!.lines[0].text, shown, `${m.visit}/${sd.id}: the bubble is what is said`);
+          }
+          checked.push(`${m.visit}/${sd.id}`);
+        }
+      }
+      void file;
+    }
+    deepEqual(checked, ["v2/IG5-PLANTING", "v4/IH4-TENS", "v4/IH6-PLUS", "v4/IH6H-BRIDGE", "v8/I73-FLIP"]);
+  });
+  it("Visit 7, I73: «Siebenundvierzig …» in the bubble while the correction plays (the reviewed screenshot)", () => {
+    const st73 = st(eyes, "I73-FLIP");
+    const a = { kind: "solve", status: "active", intro: st73.intro, done: [], solve: { parts: [{ id: "teach", status: "correct", question: st73.solve!.parts[0].question }, { id: "ear", status: "open", question: st73.solve!.parts[1].question }] } } as never;
+    equal(bubbleLine(a, ["teach"]), "Siebenundvierzig Federn. Welche Zahl ist das?");
+    equal(bubbleLine(a, []), "Hör gut zu: Dreiundsechzig.", "while 63's «Richtig!» waits for «Nächste Frage», the bubble stays on 63");
+  });
+  it("the narrated scene renders `bubbleLine`", () => {
+    const ws = readFileSync(new URL("../components/family/learning/workshop-scene.tsx", import.meta.url), "utf8");
+    ok(ws.includes("const bubble = bubbleLine(active, seenParts)"));
   });
 });
 

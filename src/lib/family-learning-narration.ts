@@ -234,6 +234,26 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
 }
 
 /**
+ * Nov 22 (Nabu's review of Visit 7): the ONE line Ida's bubble shows. A beat's opening line, except on a counting task with
+ * several items: once she has moved on to a later item («Nächste Frage»), the bubble shows THAT item's own question — never the
+ * first item's line (it showed «Hör gut zu: Dreiundsechzig.» while the item was 47). Same rule as what is spoken
+ * (`missionNarration`: a later item says only its question).
+ */
+export function bubbleLine(a: MissionActiveView | null | undefined, seenParts: readonly string[] = []): string | null {
+  if (!a) return null;
+  if (a.status !== "active") return a.done[0]?.text ?? null;
+  const sv = a.kind === "solve" ? a.solve : null;
+  if (sv && sv.parts.length > 1) {
+    const resolved = sv.parts.filter((p) => p.status !== "open");
+    const last = resolved[resolved.length - 1] ?? null;
+    const waiting = last && !seenParts.includes(last.id) && sv.parts.some((p) => p.status === "open");
+    const current = waiting ? last : sv.parts.find((p) => p.status === "open") ?? null;
+    if (current && current.id !== sv.parts[0].id) return current.question;
+  }
+  return a.intro[0]?.text ?? null;
+}
+
+/**
  * Nov 22 (both children): the answer controls are locked while a line that answers what she just did is playing. `speaking` is the
  * player's own state, so a line that fails or has no recording («Aufnahme fehlt», «Ton fehlt») unlocks at once — never stuck.
  */

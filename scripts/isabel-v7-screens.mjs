@@ -418,6 +418,7 @@ async function isabel() {
   await settle(400);
   await idle();
   check("I.I73.ear-item-no-bags-before-the-answer", (await sel(page, "[data-testid='counters']").count()) === 0);
+  check("I.I73.bubble-shows-the-ear-items-own-line", (await textOf(page, "[data-testid='workshop-line']")) === "Siebenundvierzig Federn. Welche Zahl ist das?", await textOf(page, "[data-testid='workshop-line']"));
   await shot(page, "I73-by-ear-47-or-74");
   if (wrong) {
     // App-wide fix: the correction plays — the answers are locked; a tap on 47 while it plays does nothing.
@@ -425,6 +426,7 @@ async function isabel() {
     const locked = await page.waitForFunction(() => document.querySelector("[data-testid='workshop-answers']")?.dataset.locked === "feedback", null, { timeout: 4000 }).then(() => true).catch(() => false);
     const before = puts;
     const btn = await page.evaluate(() => { const b = document.querySelector("[data-testid='part-choice-47']"); const f = b?.closest("fieldset"); return { disabled: !!f?.disabled, opacity: f ? getComputedStyle(f).opacity : null }; });
+    check("I.I73.bubble-during-the-correction-is-the-47-item", (await textOf(page, "[data-testid='workshop-line']")) === "Siebenundvierzig Federn. Welche Zahl ist das?", await textOf(page, "[data-testid='workshop-line']"));
     await shot(page, "I73-LOCKED-while-the-correction-plays");
     await sel(page, "[data-testid='part-choice-47']").click({ force: true, timeout: 1500 }).catch(() => null);
     await settle(400);

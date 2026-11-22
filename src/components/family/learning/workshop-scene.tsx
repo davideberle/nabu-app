@@ -31,7 +31,7 @@ import { AssistantPortrait } from "@/components/family/assistant-portrait";
 import { SceneCompanion, type Act } from "./mission-world";
 import { Feedback, SolveTask, SpeakerIcon, type SceneTelemetry } from "./mission-scene";
 import { GardenerPortrait, WorkshopGarden, WorkshopPictureView, WorkshopRoom } from "./workshop-pictures";
-import { feedbackLock, line, missionNarration, missionSlot, narrated, NARRATION_UI } from "@/lib/family-learning-narration";
+import { bubbleLine, feedbackLock, line, missionNarration, missionSlot, narrated, NARRATION_UI } from "@/lib/family-learning-narration";
 import type { VoiceSlot } from "@/lib/family-voice-registry";
 import type { NarrationPlayer } from "@/lib/family-narration-player";
 import { NarrationControl, useNarration } from "./narration";
@@ -482,6 +482,7 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
 
   // The visible instruction: the beat's own short line(s) — the same words the narration says first.
   const lines = active ? (active.status === "active" ? active.intro : active.done) : [];
+  const bubble = bubbleLine(active, seenParts) ?? lines[0]?.text ?? "";
   return (
     <div className="grid gap-4 pb-16" style={{ color: INK }} data-testid="workshop-scene" data-narrated="true" data-step={active?.id ?? ""} data-kind={active?.kind ?? ""} data-status={active?.status ?? ""} data-narration={narration.status} data-narration-key={script?.key ?? ""} data-locked={locked ? "feedback" : undefined}>
       <figure className="flex flex-wrap items-center gap-4 rounded-3xl p-4" style={{ background: "#eef5e4" }} data-testid="workshop-bubble">
@@ -490,9 +491,10 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
         <div className="grid min-w-0 flex-1 gap-1" role="group" aria-label={`${who} sagt`}>
           <p className="text-sm font-bold uppercase tracking-wide" style={{ color: "#3d5a2a" }} data-testid="workshop-speaker">{who}</p>
           {/* Visible: the first short line only; every line is spoken (the narration is the instruction, the text is a reminder). */}
-          {lines.slice(0, 1).map((l, i) => (
-            <p key={`${active?.id}-${i}`} className="text-xl leading-snug sm:text-2xl" data-testid="workshop-line" data-fold="question">{l.text}</p>
-          ))}
+          {/* Nov 22: a counting task with several items shows the CURRENT item's line (`bubbleLine`), never the first item's. */}
+          {lines.length ? (
+            <p key={`${active?.id}-${bubble}`} className="text-xl leading-snug sm:text-2xl" data-testid="workshop-line" data-fold="question">{bubble}</p>
+          ) : null}
         </div>
         <NarrationControl status={narration.status} onReplay={narration.replay} />
       </figure>
