@@ -274,6 +274,20 @@ const ISABEL_MAP: Record<string, ObjectiveMapping> = {
   // build. The answers stay in her record; a content row can be added once the code is verified.
   "robin-facts-chick-food": notASkill("Knowing facts about robins (what a chick eats) — NMG content, outside the four strands of this report; not mapped on purpose until an exact Lehrplan 21 NMG code is verified."),
   "own-writing-sample-not-scored": notASkill("Her chick's name — her own writing, kept as a sample; never scored (any spelling is accepted)."),
+  // Nov 22 (Visit 7 «Wann kann Isa sehen?»): the number flip taught first, a compound word, ordering and sorting after a heard
+  // explanation (D.1.B.1.a: «einfache … Erklärungen zu bekannten Sachthemen … verstehen und ausführen (z.B. alltägliche Abläufe)»).
+  "tens-ones-number-words-taught": row("i-tens"),
+  "early-reading-compound-word": row("i-read", "fresh"),
+  "sequencing-pictures": row("i-listen", "fresh"),
+  "classification-egg-or-belly": row("i-listen", "fresh"),
+  "listening-reasoning-german-fact": row("i-listen", "fresh"),
+  "complete-to-target-within-10-easier": row("i-sums", "easier"),
+  // Not mapped on purpose (Nov 22): prior knowledge before any teaching, a robin fact recalled days later (NMG, as in Visit 6), and
+  // her first scored written word — kept in her record, but this report has no writing row and no Lehrplan 21 writing code was
+  // verified for this build (a row can be added once the code is verified on bs.lehrplan.ch).
+  "sequencing-pictures-prior-knowledge": notASkill("How a chick hatches, ordered BEFORE the explanation («Ich weiss es»): prior knowledge, recorded apart from the ordering after the explanation; NMG content, not a skill row."),
+  "delayed-fact-recall-chick-food": notASkill("A robin fact from the visit before (what chicks eat), asked again days later as a delayed check (time since teaching recorded). NMG content, outside the four strands of this report; not mapped on purpose until an exact Lehrplan 21 NMG code is verified."),
+  "writing-heard-word": notASkill("Her first scored written word from hearing (AUGE; case ignored; letter tiles after a miss are recorded help). Recorded in her record; this report has no writing row yet and no Lehrplan 21 writing code was verified for this build."),
   "materials-matching": notASkill("Matching materials (wood, glass, brick) — a science (NMG) task, outside the four strands of this report."),
   "own-choice-not-scored": notASkill("The child's own choice in the story — not scored by design."),
   "real-world-craft-parent-observed": notASkill("Real-world craft — the parent's observation, not a child answer."),

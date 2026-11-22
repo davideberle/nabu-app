@@ -210,7 +210,7 @@ describe("child-device access to the sprites", () => {
     for (const a of ASSETS) ok(isTrackerAllowedPath(assetUrl(a)), assetUrl(a));
     ok(!isTrackerAllowedPath("/family/home-map/other.png"));
     ok(!isTrackerAllowedPath("/family/home-map/"));
-    equal(ASSETS.length, 57); // Nov 18: +12 for Visit 11 (pond water, pump) and Visit 5 (birdhouse on the tree ×3 and with birds ×3, feeder ×3 + site); Nov 21: +4 for Visit 6 (chicks ×3, water bowl)
+    equal(ASSETS.length, 60); // Nov 18: +12 for Visit 11 (pond water, pump) and Visit 5 (birdhouse on the tree ×3 and with birds ×3, feeder ×3 + site); Nov 21: +4 for Visit 6 (chicks ×3, water bowl); Nov 22: +3 for Visit 7 (her chick peeking out ×3)
   });
 });
 
@@ -227,7 +227,7 @@ describe("1× ground for windows up to 1440 px", () => {
       deepStrictEqual([meta.width, meta.height], [a.size.w / 2, a.size.h / 2], a.id);
       ok(isTrackerAllowedPath(assetUrl1x(a)), assetUrl1x(a));
     }
-    equal(ALL_ASSET_URLS.length, 60);
+    equal(ALL_ASSET_URLS.length, 63);
     ok(!isTrackerAllowedPath("/family/home-map/s-dock-built@1x.png"));
   });
 });

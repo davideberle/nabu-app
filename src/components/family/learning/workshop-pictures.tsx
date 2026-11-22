@@ -10,6 +10,7 @@
 
 import type { MissionCounters, WorkshopPicture } from "@/lib/family-learning-mission-spec";
 import type { StaticImageData } from "next/image";
+import { cn } from "@/components/ui/nabu";
 import cozyRobin from "@/assets/family-learning/cozy/robin.webp";
 import cozyNest from "@/assets/family-learning/cozy/obj-nest.webp";
 import cozyHouse from "@/assets/family-learning/cozy/obj-house.webp";
@@ -61,6 +62,29 @@ import cozyChicksBlueWorms from "@/assets/family-learning/cozy/chicks-blue-worms
 import cozyChicksYellowSeeds from "@/assets/family-learning/cozy/chicks-yellow-seeds.webp";
 import cozyChicksYellowBerries from "@/assets/family-learning/cozy/chicks-yellow-berries.webp";
 import cozyChicksYellowWorms from "@/assets/family-learning/cozy/chicks-yellow-worms.webp";
+// Nov 22 — Isabel Visit 7 «Wann kann Isa sehen?» (Nabu's art, trimmed and fitted: choices 240 × 240, scenes 800 × 600).
+import cozyChicksDay4 from "@/assets/family-learning/cozy/chicks-day4.webp";
+import cozyHatch1Hole from "@/assets/family-learning/cozy/hatch-1-hole.webp";
+import cozyHatch2Crack from "@/assets/family-learning/cozy/hatch-2-crack.webp";
+import cozyHatch3Out from "@/assets/family-learning/cozy/hatch-3-out.webp";
+import cozyEizahn from "@/assets/family-learning/cozy/eizahn.webp";
+import cozyIceCreamCone from "@/assets/family-learning/cozy/ice-cream-cone.webp";
+import cozyTooth from "@/assets/family-learning/cozy/tooth.webp";
+import cozyAnimalRobin from "@/assets/family-learning/cozy/animal-robin.webp";
+import cozyAnimalTurtle from "@/assets/family-learning/cozy/animal-turtle.webp";
+import cozyAnimalDog from "@/assets/family-learning/cozy/animal-dog.webp";
+import cozyAnimalBaby from "@/assets/family-learning/cozy/animal-baby.webp";
+import cozyMilkBottle from "@/assets/family-learning/cozy/milk-bottle.webp";
+import cozyChickEyesOpenBeakOpen from "@/assets/family-learning/cozy/chick-eyes-open-beak-open.webp";
+import cozyChickEyesOpenBeakClosed from "@/assets/family-learning/cozy/chick-eyes-open-beak-closed.webp";
+import cozyChickEyesClosedBeakOpen from "@/assets/family-learning/cozy/chick-eyes-closed-beak-open.webp";
+import cozyChickEyesClosedBeakClosed from "@/assets/family-learning/cozy/chick-eyes-closed-beak-closed.webp";
+import cozyNextBathChick from "@/assets/family-learning/cozy/next-bath-chick.webp";
+// Nov 22: the end picture per roof (her chick peeks out, eyes open). Only blue is painted; red and yellow are PLACEHOLDERS (Visit 6's
+// end picture of that roof) until Nabu paints them.
+import cozyPeekRed from "@/assets/family-learning/cozy/peek-red.webp";
+import cozyPeekBlue from "@/assets/family-learning/cozy/peek-blue.webp";
+import cozyPeekYellow from "@/assets/family-learning/cozy/peek-yellow.webp";
 // Nov 18 (Isabel Visit 5, Santiago Visit 11): the new scene pictures in the same painted style.
 import cozyFoodSeeds from "@/assets/family-learning/cozy/food-seeds.webp";
 import cozyFoodBerries from "@/assets/family-learning/cozy/food-berries.webp";
@@ -934,7 +958,28 @@ function Shape({ id }: { id: WorkshopPicture }) {
     case "water-deep-grass":
     case "eggs-five":
     case "chicks-hatch":
+    // Nov 22 — Isabel Visit 7: painted (RASTER_PICTURES); this stand-in only draws if a file were missing.
+    case "chicks-day4":
+    case "hatch-1-hole":
+    case "hatch-2-crack":
+    case "hatch-3-out":
+    case "eizahn":
+    case "ice-cream-cone":
+    case "tooth":
+    case "animal-robin":
+    case "animal-turtle":
+    case "animal-dog":
+    case "animal-baby":
+    case "milk-bottle":
+    case "chick-eyes-open-beak-open":
+    case "chick-eyes-open-beak-closed":
+    case "chick-eyes-closed-beak-open":
+    case "chick-eyes-closed-beak-closed":
+    case "next-bath-chick":
       return <g><rect x={8} y={8} width={64} height={64} rx={12} fill="#f3ead8" stroke="#c9b28c" strokeWidth={2} /><ellipse cx={40} cy={44} rx={14} ry={18} fill="#f4efe2" stroke="#b9ad8f" strokeWidth={2} /></g>;
+    // Nov 22: a 5-Rappen coin (golden, «5»), drawn like the counters.
+    case "coin-five":
+      return <g><circle cx={40} cy={40} r={26} fill="#e6c766" stroke="#a8852e" strokeWidth={3} /><circle cx={40} cy={40} r={20} fill="none" stroke="#c9a54a" strokeWidth={1.5} /><text x={40} y={50} textAnchor="middle" fontSize={28} fontWeight={700} fill="#6b5216">5</text></g>;
     default: {
       // Exhaustive on purpose: a picture id in WORKSHOP_PICTURES without a drawing no longer compiles. It used to draw nothing.
       const missing: never = id;
@@ -946,6 +991,10 @@ function Shape({ id }: { id: WorkshopPicture }) {
 /** Isabel Visit 4: the birdhouse on the big tree beside the garden-house window, per roof colour (her IV10-ROOF choice). */
 const BIRDHOUSE_TREE_ART: Record<string, StaticImageData> = {
   // Isabel Visit 6: the chicks peek out of the birdhouse in her roof colour, her Visit 5 bowl on the board, water under the bush.
+  // Isabel Visit 7: her chick peeks out of the birdhouse with open eyes, in her roof colour (`peek-<roof>`).
+  "peek-red": cozyPeekRed,
+  "peek-blue": cozyPeekBlue,
+  "peek-yellow": cozyPeekYellow,
   "chicks-red-seeds": cozyChicksRedSeeds,
   "chicks-red-berries": cozyChicksRedBerries,
   "chicks-red-worms": cozyChicksRedWorms,
@@ -982,6 +1031,24 @@ const HARVEST_TABLE_ART: Record<string, string> = {
 // middleware) or a map-manifest file (already allowed for the child device). Ids not listed here keep their vector drawing.
 const MAP = "/family/home-map/";
 const RASTER_PICTURES: Partial<Record<WorkshopPicture, StaticImageData | string>> = {
+  // Nov 22 — Isabel Visit 7 (Nabu's art). `coin-five` stays drawn (like the counters).
+  "chicks-day4": cozyChicksDay4,
+  "hatch-1-hole": cozyHatch1Hole,
+  "hatch-2-crack": cozyHatch2Crack,
+  "hatch-3-out": cozyHatch3Out,
+  "eizahn": cozyEizahn,
+  "ice-cream-cone": cozyIceCreamCone,
+  "tooth": cozyTooth,
+  "animal-robin": cozyAnimalRobin,
+  "animal-turtle": cozyAnimalTurtle,
+  "animal-dog": cozyAnimalDog,
+  "animal-baby": cozyAnimalBaby,
+  "milk-bottle": cozyMilkBottle,
+  "chick-eyes-open-beak-open": cozyChickEyesOpenBeakOpen,
+  "chick-eyes-open-beak-closed": cozyChickEyesOpenBeakClosed,
+  "chick-eyes-closed-beak-open": cozyChickEyesClosedBeakOpen,
+  "chick-eyes-closed-beak-closed": cozyChickEyesClosedBeakClosed,
+  "next-bath-chick": cozyNextBathChick,
   // Nov 21 — Isabel Visit 6 «Das Küken schlüpft» (Nabu's art, trimmed and fitted: choices 240 × 240, scenes 800 × 600).
   "egg-blue": cozyEggBlue,
   "egg-dots": cozyEggDots,
@@ -1091,6 +1158,7 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
   const { a, b, op, unit, bundles } = counters;
   if (counters.layout === "weeks") return <WeekStrips counters={counters} caption={caption} />;
   if (counters.layout === "rows") return <TenRows counters={counters} caption={caption} />;
+  if (counters.layout === "strip") return <DayStrip counters={counters} caption={caption} />;
   // Nov 18: a missing-part question with closed bundles has its own picture below (what is there, then the empty places).
   if (bundles && counters.closed && !(counters.ask === "missing" && counters.frame)) {
     // Step 1 (S1-15): after counting one bundle, a bundle is drawn closed with its «10» — not every stick (or apple) again.
@@ -1098,11 +1166,14 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
     const loose = a % 10;
     // Nov 18: seeds come in small bags of ten, like the apples (Isabel Visit 5).
     const bag = counters.icon === "apple" || counters.icon === "seed" || counters.icon === "feather";
+    // Nov 22 (Isabel Visit 7): `appear` — the bags come one by one while Ida says the number, then the single ones (tens first).
+    const appear = (i: number, loose: boolean) => (counters.appear ? { className: "fl-appear", style: { animationDelay: `${loose ? APPEAR_START + tens * APPEAR_TEN + 300 + i * APPEAR_ONE : APPEAR_START + i * APPEAR_TEN}ms` } } : {});
     return (
-      <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={b} data-op={op} data-bundles="closed">
+      <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={b} data-op={op} data-bundles="closed" data-appear={counters.appear ? "true" : undefined}>
+        {counters.appear ? <style>{APPEAR_CSS}</style> : null}
         <div className="flex flex-wrap items-end gap-3" role="img" aria-label={`${tens} ${bag ? "Säcke" : "Bündel"} mit je 10 ${unit}${loose ? ` und ${loose} einzelne` : ""} und ${b} einzelne`}>
           {Array.from({ length: tens }, (_, i) => (
-            <svg key={`t${i}`} viewBox="0 0 64 80" className="h-20 w-16" aria-hidden data-part="closed-bundle">
+            <svg key={`t${i}`} viewBox="0 0 64 80" aria-hidden data-part="closed-bundle" {...appear(i, false)} className={cn("h-20 w-16", counters.appear && "fl-appear")}>
               {bag ? <path d="M10 22q22-14 44 0l6 50H4z" fill="#c9a26b" stroke={WOOD_DARK} strokeWidth={2} /> : <path d="M8 6h48v68H8z" fill={WOOD_LIGHT} stroke={WOOD_DARK} strokeWidth={2} />}
               {bag ? null : <rect x={6} y={34} width={52} height={8} rx={2} fill="#c0504d" />}
               {/* The «10» is written on the bag (the question says it); a tied bundle carries no number — she knows it from counting one. */}
@@ -1111,7 +1182,7 @@ export function Counters({ counters, caption = true }: { counters: MissionCounte
           ))}
           {Array.from({ length: loose + (op === "+" ? b : 0) }, (_, i) =>
             bag ? (
-              <svg key={`l${i}`} viewBox="0 0 40 40" className="h-12 w-12" aria-hidden data-part="loose">
+              <svg key={`l${i}`} viewBox="0 0 40 40" aria-hidden data-part="loose" {...appear(i, true)} className={cn("h-12 w-12", counters.appear && "fl-appear")}>
                 <CounterIcon icon={counters.icon === "seed" || counters.icon === "feather" ? counters.icon : "apple"} />
               </svg>
             ) : (
@@ -1290,6 +1361,38 @@ function WeekStrips({ counters, caption }: { counters: MissionCounters; caption:
   );
 }
 
+/** Nov 22 (Isabel Visit 7): the bags appear one by one (ms), then the single ones. Reduced motion: all at once. */
+const APPEAR_START = 500;
+const APPEAR_TEN = 420;
+const APPEAR_ONE = 320;
+const APPEAR_CSS = "@keyframes fl-appear{from{opacity:0;transform:translateY(10px) scale(.7)}to{opacity:1;transform:none}}.fl-appear{animation:fl-appear 380ms ease-out both}@media (prefers-reduced-motion: reduce){.fl-appear{animation:none}}";
+
+/**
+ * Nov 22 (Isabel Visit 7): ONE numbered day strip 1…`frame` — days 1…`a` are over (marked), the days still to come are empty with
+ * their number, so she can count on (6 → 14). Exact counts from the data.
+ */
+function DayStrip({ counters, caption }: { counters: MissionCounters; caption: boolean }) {
+  const { a, unit } = counters;
+  const total = counters.frame ?? a + counters.b;
+  const label = `${total} ${unit}: Tag 1 bis ${a} sind vorbei, ${total - a} sind noch leer`;
+  return (
+    <figure className="grid gap-2" data-testid="counters" data-a={a} data-b={counters.b} data-op={counters.op} data-layout="strip" data-frame={total}>
+      <div className="flex w-max flex-wrap gap-1 rounded-2xl border-4 p-1.5" style={{ borderColor: "#c9a26b", background: "#fffaf0" }} role="img" aria-label={label}>
+        {Array.from({ length: total }, (_, i) => {
+          const over = i < a;
+          return (
+            <svg key={i} viewBox="0 0 40 52" className="h-14 w-11" aria-hidden data-part={over ? "day" : "empty"}>
+              {over ? <g><CounterIcon icon="day" /><path d="M10 10l20 20M30 10L10 30" stroke="#8a6d46" strokeWidth={2.5} opacity={0.55} /></g> : <rect x={5} y={5} width={30} height={30} rx={6} fill="none" stroke="#b9a582" strokeWidth={2} strokeDasharray="4 4" />}
+              <text x={20} y={50} textAnchor="middle" fontSize={13} fontWeight={700} fill={over ? "#8a6d46" : "#3b2a17"}>{i + 1}</text>
+            </svg>
+          );
+        })}
+      </div>
+      <figcaption className={caption ? "text-base" : "sr-only"}>{label}</figcaption>
+    </figure>
+  );
+}
+
 /** Nov 21 (Isabel Visit 6): rows of ten (one row = one hour of about 10 flights). Exact count from the data; no numbers drawn. */
 function TenRows({ counters, caption }: { counters: MissionCounters; caption: boolean }) {
   const { a, unit } = counters;
@@ -1300,7 +1403,7 @@ function TenRows({ counters, caption }: { counters: MissionCounters; caption: bo
         {Array.from({ length: rows }, (_, r) => (
           <div key={r} className="flex w-max gap-1 rounded-xl px-1.5 py-0.5" style={{ background: r % 2 ? "#f3efe6" : "#eef5e4" }} data-part="row">
             {Array.from({ length: Math.min(10, a - r * 10) }, (_, k) => (
-              <svg key={k} viewBox="0 0 40 40" className="h-9 w-9" aria-hidden data-part="flight">
+              <svg key={k} viewBox="0 0 40 40" className={rows > 5 ? "h-7 w-7" : "h-9 w-9"} aria-hidden data-part="flight">
                 <CounterIcon icon={counters.icon ?? "flight"} />
               </svg>
             ))}
@@ -1355,6 +1458,9 @@ function CounterIcon({ icon }: { icon?: string }) {
       return <g>{[8, 15, 22, 29].map((x, i) => <circle key={x} cx={x} cy={i === 3 ? 18 : 24} r={i === 3 ? 6.5 : 5.5} fill={i === 3 ? "#8cc152" : "#9fd062"} stroke="#4f7a2a" strokeWidth={1} />)}<circle cx={31} cy={17} r={1.2} fill="#222" /></g>;
     case "day":
       return <g><rect x={4} y={4} width={32} height={32} rx={6} fill="#fff6dc" stroke="#c9a26b" strokeWidth={2} /><circle cx={20} cy={20} r={6} fill="#f7c948" /></g>;
+    // Nov 22 — Isabel Visit 7: a 5-Rappen coin
+    case "coin":
+      return <g><circle cx={20} cy={20} r={15} fill="#e6c766" stroke="#a8852e" strokeWidth={2} /><text x={20} y={26} textAnchor="middle" fontSize={16} fontWeight={700} fill="#6b5216">5</text></g>;
     case "flight":
       return <g><path d="M6 22q7-10 14-2q7-8 14 2q-7-3-14 3q-7-6-14-3z" fill="#8a5a3b" stroke="#5a3a24" strokeWidth={1} /><circle cx={20} cy={21} r={3.5} fill="#e8743b" /></g>;
     default:

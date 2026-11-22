@@ -3411,7 +3411,8 @@ export function buildChildView(state: MissionState, content: LearningContent, se
     vocabulary: options.vocabulary ? childVocabularyCue(buildVocabularyLedger(state, content, options.vocabulary), content, state) : null,
     wordbook: options.vocabulary ? childWordbook(buildVocabularyLedger(state, content, options.vocabulary), content, state, options.vocabulary) : null,
     nextStep: nextStepText(state, content, stage, now),
-    ...(content.child === "isabel" ? { visitText: visitTextFor(state, content, availability.visit) } : {}),
+    // Nov 22: a visit title may name her chick («Wann kann {chick} sehen?»); filled from her stored story choice (text only).
+    ...(content.child === "isabel" ? { visitText: fillStoryTokens(visitTextFor(state, content, availability.visit), state.story) } : {}),
     storyVoices: options.storyVoices ?? [],
     locations: content.locations,
     station: stationDef ? { themes: stationDef.themes, spots: stationDef.spots, theme: station.theme, spot: station.spot, built: station.built, lampLit: station.lampLit, lampAvailable: (state.base.supplies["lámpara"] ?? 0) > 0, reference: stationReference } : null,

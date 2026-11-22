@@ -6,7 +6,8 @@
 // Nov 18, 2026: the chess coach's closed German line set (de-female, `where: ["chess", …]`) is appended after both children's
 // lines — the learning lines and their ids are unchanged (family-chess-narration.test.ts pins them).
 // Nov 21, 2026: Isabel content v6 (Visit 6 «Das Küken schlüpft», v7); every earlier line keeps its id, text and voice.
-import isabelWorkshopV6 from "@/data/family-learning/content/isabel-workshop-v6.json";
+// Nov 22, 2026: Isabel content v7 (Visit 7 «Wann kann Isa sehen?», v8); same rule.
+import isabelWorkshopV7 from "@/data/family-learning/content/isabel-workshop-v7.json";
 import santiagoExpeditionV10 from "@/data/family-learning/content/santiago-expedition-v10.json";
 import { ADAPTIVE_CHESS_COACH_LINES_DE } from "@/data/adaptive-chess-coach/bundle.generated";
 import { withChessLines } from "./family-chess-narration";
@@ -18,10 +19,10 @@ import { pinPreviousVoices } from "./family-narration-voices";
 let cached: NarrationLine[] | null = null;
 export function servedNarrationCatalog(): NarrationLine[] {
   if (!cached) {
-    const isabel = narrationCatalog(asIsabelContent(isabelWorkshopV6)).map((l) => ({ ...l, child: "isabel" as const }));
+    const isabel = narrationCatalog(asIsabelContent(isabelWorkshopV7)).map((l) => ({ ...l, child: "isabel" as const }));
     const santiago = storyCatalog(asLearningContent(santiagoExpeditionV10), "santiago");
     // Nov 18: Ida's new voice starts with Isabel's Visit 5 — lines only the finished visits (and chess) speak keep the previous one.
-    cached = pinPreviousVoices(withChessLines([...isabel, ...santiago], ADAPTIVE_CHESS_COACH_LINES_DE), asIsabelContent(isabelWorkshopV6));
+    cached = pinPreviousVoices(withChessLines([...isabel, ...santiago], ADAPTIVE_CHESS_COACH_LINES_DE), asIsabelContent(isabelWorkshopV7));
   }
   return cached;
 }

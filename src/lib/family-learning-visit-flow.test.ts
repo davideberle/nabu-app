@@ -166,16 +166,34 @@ function walk(content: LearningContent, visit: string, seed: number | "first-try
       if (after?.status === "active" && res.length && after.solve!.parts.some((x) => x.status === "open")) seen = res;
     } else if (a.kind === "read" || a.kind === "listen") {
       const q = a.questions.find((x) => x.status === "open");
-      if (!q) {
-        weiter();
-        continue;
-      }
-      const answer = String(sd.questions?.find((x) => x.id === q.id)?.answer ?? "");
-      if (a.kind === "listen" && (a.listen?.completedPlays ?? 0) === 0) {
+      const pk = a.listen?.priorKnowledge ?? null;
+      const heard = (a.listen?.completedPlays ?? 0) > 0;
+      const play = () => {
         tryM({ a: "support", step: a.id, kind: "play" });
         tryM({ a: "listen-outcome", step: a.id, outcome: "recorded" });
+      };
+      // Nov 22 (Isabel Visit 7): «Ich weiss es» (a tap), then her ordering before the explanation; «Zeig es mir» is the play.
+      if (pk && !pk.claimed && (a.listen?.plays ?? 0) === 0 && seed !== "first-try" && r() < 0.5) {
+        tryM({ a: "support", step: a.id, kind: "prior-claim" });
+        settle(false);
+        continue;
       }
-      tryM({ a: "answer-question", step: a.id, question: q.id, value: seed === "first-try" || r() < 0.6 ? answer : pick((q.options ?? []).filter((o) => o !== answer)) ?? answer });
+      if (!q) {
+        // Right before the explanation: the step ends once she has heard it («Zeig es mir»).
+        if (a.kind === "listen" && pk && !heard) play();
+        else weiter();
+        settle(false);
+        continue;
+      }
+      const sq = sd.questions!.find((x) => x.id === q.id)!;
+      const answer = String(sq.answer);
+      const priorTurn = !!pk && pk.claimed && (a.listen?.plays ?? 0) === 0 && (q.prior ?? null) === null;
+      if (a.kind === "listen" && !heard && !a.listen?.optional && !priorTurn) {
+        play();
+        if (pk) settle(false);
+      }
+      const wrong = sq.kind === "order" ? (q.options ?? []).join("|") : sq.kind === "multi" ? (q.options ?? []).filter((o) => !answer.split("|").includes(o)).slice(0, 1).join("|") : sq.kind === "spell" ? answer.slice(0, -1) : pick((q.options ?? []).filter((o) => o !== answer)) ?? answer;
+      tryM({ a: "answer-question", step: a.id, question: q.id, value: seed === "first-try" || r() < 0.6 ? answer : wrong });
     } else weiter();
     settle(false);
   }

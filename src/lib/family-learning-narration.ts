@@ -40,7 +40,9 @@ export type NarrationLine = {
   voice?: "previous";
 };
 /** One screen's narration: `key` changes exactly when something new should be said (a new beat, a new answer, a new hint). */
-export type NarrationScript = { key: string; lines: NarrationLine[] };
+/** `feedback` (Nov 22): the lines answer what the child just did (a right/wrong answer, a hint, an explanation after a miss) — the
+ *  screen locks every answer control while they play (David, Nov 22: «she tapped 42 while the correction was still playing»). */
+export type NarrationScript = { key: string; lines: NarrationLine[]; feedback?: boolean };
 
 /** Fixed child-facing lines of the narrated screens (also the visible wording). */
 export const NARRATION_UI = {
@@ -137,6 +139,8 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
   const finished = a.status !== "active";
   const keyParts: (string | number)[] = [a.id, a.status];
   let out: NarrationLine[] = [];
+  // Nov 22: whether this script follows something she did (an answer, a pick, a hint) — the screen locks answers while it plays.
+  let feedback = finished;
   switch (a.kind) {
     case "story":
       out = lines(finished ? a.done.map((l) => l.text) : a.intro.map((l) => l.text));
@@ -151,6 +155,7 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
       const last = d?.picked[d.picked.length - 1] ?? null;
       keyParts.push(d?.chosen ?? "");
       if (d?.care) keyParts.push(d.picked.length);
+      feedback = feedback || (d?.picked.length ?? 0) > 0;
       out = chosen ? lines([chosen.feedback, ...(finished ? a.done.map((l) => l.text) : [])]) : d?.care && last && !last.viable ? lines([last.feedback]) : lines(a.intro.map((l) => l.text));
       break;
     }
@@ -163,6 +168,7 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
       const current = waiting ? null : sv.parts.find((p) => p.status === "open") ?? null;
       const first = sv.parts[0];
       if (waiting) {
+        feedback = true;
         keyParts.push(waiting.id, "waiting");
         out = lines([waiting.feedback ? stripRepeat(waiting.feedback.text) : null]);
       } else if (current) {
@@ -170,6 +176,7 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
         // The hint is the newest thing on screen when no answer came after it was opened.
         const hintLatest = !!lastHint && (lastHint.afterAttempts === undefined || lastHint.afterAttempts >= current.tries);
         keyParts.push(current.id, current.tries, current.phase, current.hints.length, lastHint?.check?.result ?? "");
+        feedback = current.tries > 0 || current.hints.length > 0 || current.phase === "taught";
         if (current.phase === "taught") out = lines([current.teach, NARRATION_UI.practiceNow, current.feedback?.tone === "practice-wrong" ? current.feedback.text : null]);
         else if (hintLatest && lastHint && (lastHint.check === null || lastHint.check.result === null)) out = lines([lastHint.text, lastHint.check?.prompt]);
         else if (hintLatest && lastHint?.check?.result) out = lines([lastHint.check.reply, current.question]);
@@ -185,6 +192,7 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
       const shown = a.letters?.shown ?? null;
       keyParts.push(q?.status ?? "", q?.tries ?? 0, shown ? "letters" : "");
       if (!q) break;
+      feedback = feedback || q.tries > 0 || q.status !== "open" || !!shown;
       if (q.status === "open") {
         // Before the attempt: the instruction only. The letters (and so the word) only after the recorded switch.
         if (shown) out = lines([shown.spoken, shown.teach, q.hint]);
@@ -198,6 +206,19 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
       const q = a.questions[0];
       keyParts.push(q?.status ?? "", q?.tries ?? 0);
       if (!q) break;
+      feedback = feedback || q.tries > 0 || q.status !== "open";
+      // Nov 22 (Isabel Visit 7): «Ich weiss es» / «Zeig es mir». Her ordering before the explanation gets its own short line; after
+      // the explanation (a completed play) she is asked to order. The explanation itself is the listening text (said once).
+      const pk = a.listen?.priorKnowledge ?? null;
+      if (pk) {
+        const heard = (a.listen?.completedPlays ?? 0) > 0 || !!a.listen?.transcriptShown;
+        keyParts.push(pk.claimed ? "claimed" : "", q.prior === true ? "prior-right" : q.prior === false ? "prior-wrong" : "", heard ? "heard" : "");
+        if (q.prior !== null && q.prior !== undefined) feedback = true;
+        if (q.status === "open") out = lines(q.tries ? [q.hint] : heard ? [pk.order] : q.prior === false ? [pk.wrong] : pk.claimed ? [pk.order] : a.intro.map((l) => l.text));
+        else if (q.prior === true) out = lines(finished ? a.done.map((l) => l.text) : [pk.right]);
+        else out = lines([q.status === "correct" ? NARRATION_UI.listenCorrect : a.givenLine ?? NARRATION_UI.listenGiven(q.shownAnswer ?? ""), ...(finished ? a.done.map((l) => l.text) : [])]);
+        break;
+      }
       if (q.status === "open") out = lines(q.tries ? [q.hint] : a.intro.map((l) => l.text));
       else out = lines([q.status === "correct" ? NARRATION_UI.listenCorrect : a.givenLine ?? NARRATION_UI.listenGiven(q.shownAnswer ?? ""), ...(finished ? a.done.map((l) => l.text) : [])]);
       break;
@@ -209,7 +230,15 @@ export function missionNarration(mission: MissionView, seenParts: readonly strin
       out = lines((finished ? a.done : a.intro).map((l) => l.text));
   }
   if (!out.length) return null;
-  return { key: `${mission.id}|${keyParts.join("|")}|${out.map((l) => l.id).join(",")}`, lines: out };
+  return { key: `${mission.id}|${keyParts.join("|")}|${out.map((l) => l.id).join(",")}`, lines: out, ...(feedback ? { feedback: true } : {}) };
+}
+
+/**
+ * Nov 22 (both children): the answer controls are locked while a line that answers what she just did is playing. `speaking` is the
+ * player's own state, so a line that fails or has no recording («Aufnahme fehlt», «Ton fehlt») unlocks at once — never stuck.
+ */
+export function feedbackLock(speaking: boolean, script: NarrationScript | null): boolean {
+  return speaking && !!script?.feedback;
 }
 
 /**
@@ -304,6 +333,10 @@ export function narrationCatalog(content: LearningContent): NarrationLine[] {
         add(s.letters?.spoken);
         add(s.letters?.teach);
       }
+      // Nov 22 (Isabel Visit 7): «Ich weiss es» — the lines after her first ordering and the request to order.
+      add(s.priorKnowledge?.right);
+      add(s.priorKnowledge?.wrong);
+      add(s.priorKnowledge?.order);
       if (s.kind === "listen") {
         add(NARRATION_UI.listenCorrect);
         // The listening sentence itself: played only on her explicit, recorded tap — never as automatic narration.

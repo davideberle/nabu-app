@@ -851,6 +851,7 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
   const spokenKey = spoken ? `${active.id}|${finished ? "done" : "intro"}|${replays}` : "";
   const [spokenDone, setSpokenDone] = useState<string | null>(null);
   const saying = !!spoken && spokenDone !== spokenKey;
+  const feedbackLock = saying && finished;
   useEffect(() => {
     if (!spoken) return;
     let alive = true;
@@ -879,11 +880,15 @@ function ScenePanel({ child, view, mission, active, busy, act, speech, placeLabe
         <img src={OUTCOME_ART[active.id].src} width={OUTCOME_ART[active.id].width} height={OUTCOME_ART[active.id].height} alt="" className="h-auto w-full max-w-[360px] self-center" data-testid="outcome-art" data-art={active.id} />
       ) : null}
       {storyLike ? <StoryTask active={active} busy={busy || saying} act={act} label={mission.presentation === "map" ? (active.kind === "outcome" ? "Fertig" : "Verstanden") : undefined} /> : null}
+      {/* Nov 22 (both children): while the character's line that follows his answer plays (the done line of a finished beat), every
+          answer control is locked and dimmed; «Weiter» already waits for it. Replay stays in the banner. */}
+      <fieldset disabled={feedbackLock} className={cn("m-0 grid min-w-0 gap-3 border-0 p-0", feedbackLock && "opacity-60")} data-testid="scene-answers" data-locked={feedbackLock ? "feedback" : "open"}>
       {custom && !storyLike ? custom : null}
       {!custom && (active.kind === "read" || active.kind === "listen") ? <QuestionTask child={child} active={active} busy={busy} act={act} speech={speech} characters={mission.characters} /> : null}
       {!custom && active.kind === "calc" ? <CalcTask active={active} busy={busy} act={act} /> : null}
       {!custom && active.kind === "choice" ? <ChoiceTask active={active} busy={busy} act={act} /> : null}
       {!custom && (active.kind === "produce" || active.kind === "recall") ? <ProduceTask active={active} busy={busy} act={act} /> : null}
+      </fieldset>
       {active.kind === "typing-block" && active.typing ? <TypingBlock block={active.typing} stepId={active.id} busy={busy} act={act} /> : null}
       {finished ? (
         <div className="grid gap-2" data-testid="scene-done">

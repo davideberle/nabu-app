@@ -31,7 +31,7 @@ import { AssistantPortrait } from "@/components/family/assistant-portrait";
 import { SceneCompanion, type Act } from "./mission-world";
 import { Feedback, SolveTask, SpeakerIcon, type SceneTelemetry } from "./mission-scene";
 import { GardenerPortrait, WorkshopGarden, WorkshopPictureView, WorkshopRoom } from "./workshop-pictures";
-import { line, missionNarration, missionSlot, narrated, NARRATION_UI } from "@/lib/family-learning-narration";
+import { feedbackLock, line, missionNarration, missionSlot, narrated, NARRATION_UI } from "@/lib/family-learning-narration";
 import type { VoiceSlot } from "@/lib/family-voice-registry";
 import type { NarrationPlayer } from "@/lib/family-narration-player";
 import { NarrationControl, useNarration } from "./narration";
@@ -46,7 +46,7 @@ const secondary = { background: "#f1e6d6", color: "#4a3420" } as const;
 const pictureButton = "grid min-h-36 w-40 place-items-center gap-1 rounded-3xl border-4 bg-white p-2 text-lg font-semibold disabled:opacity-50";
 
 /** Nov 21 (Isabel Visit 6): painted 800 × 600 scenes on story beats are shown large, not as an 80 px object. */
-const SCENE_PICTURES = new Set(["eggs-five", "chicks-hatch"]);
+const SCENE_PICTURES = new Set(["eggs-five", "chicks-hatch", "chicks-day4"]);
 
 export type WorkshopSceneProps = { child: ChildId; mission: MissionView; busy: boolean; act: Act; speech: ChildSpeechPlayer; telemetry: SceneTelemetry; /** Isabel Visit 2: the page's narration player (required for a narrated mission). */ narrator?: NarrationPlayer | null };
 
@@ -450,6 +450,10 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
   }, [active?.id, mission.screen]);
   const script = useMemo(() => missionNarration(mission, seenParts), [mission, seenParts]);
   const narration = useNarration(narrator, script, (name) => telemetry(name));
+  // Nov 22 (David: in Visit 6 she tapped 42 while «Noch nicht. Wir sagen zuerst die Zwei …» was still playing): while a line that
+  // answers what she just did plays, every answer control and «Weiter» is locked and dimmed. The replay control stays. A line that
+  // fails or is missing ends «speaking» (the player's status), so she is never stuck.
+  const locked = feedbackLock(narration.speaking, script);
 
   const [advancing, setAdvancing] = useState(false);
   const next = async () => {
@@ -479,7 +483,7 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
   // The visible instruction: the beat's own short line(s) — the same words the narration says first.
   const lines = active ? (active.status === "active" ? active.intro : active.done) : [];
   return (
-    <div className="grid gap-4 pb-16" style={{ color: INK }} data-testid="workshop-scene" data-narrated="true" data-step={active?.id ?? ""} data-kind={active?.kind ?? ""} data-status={active?.status ?? ""} data-narration={narration.status} data-narration-key={script?.key ?? ""}>
+    <div className="grid gap-4 pb-16" style={{ color: INK }} data-testid="workshop-scene" data-narrated="true" data-step={active?.id ?? ""} data-kind={active?.kind ?? ""} data-status={active?.status ?? ""} data-narration={narration.status} data-narration-key={script?.key ?? ""} data-locked={locked ? "feedback" : undefined}>
       <figure className="flex flex-wrap items-center gap-4 rounded-3xl p-4" style={{ background: "#eef5e4" }} data-testid="workshop-bubble">
         <GardenerPortrait name={who} className="h-20 w-20 shrink-0" />
         {mission.companion ? <SceneCompanion companion={mission.companion} /> : null}
@@ -500,7 +504,7 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
           ))}
         </h2>
         {active ? (
-          <NarratedTask child={child} mission={mission} active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} onNext={() => void next()} onSeen={setSeenParts} speaking={narration.speaking} />
+          <NarratedTask child={child} mission={mission} active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} onNext={() => void next()} onSeen={setSeenParts} speaking={narration.speaking} locked={locked} />
         ) : (
           <button type="button" className={btn} style={primary} disabled={busy || narration.speaking} onClick={() => void next()} data-testid="workshop-next" data-fold="primary">
             Weiter
@@ -511,7 +515,7 @@ function NarratedWorkshopScene({ child, mission, busy, act, telemetry, narrator 
   );
 }
 
-function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, onNext, onSeen, speaking = false }: { child: ChildId; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; narrator: NarrationPlayer; telemetry: SceneTelemetry; onNext: () => void; onSeen: (ids: string[]) => void; speaking?: boolean }) {
+function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, onNext, onSeen, speaking = false, locked = false }: { child: ChildId; mission: MissionView; active: MissionActiveView; busy: boolean; act: Act; narrator: NarrationPlayer; telemetry: SceneTelemetry; onNext: () => void; onSeen: (ids: string[]) => void; speaking?: boolean; /** Nov 22: a feedback line plays — answers locked. */ locked?: boolean }) {
   void child;
   const finished = active.status !== "active";
   const seen = useCallback((ids: string[]) => onSeen(ids), [onSeen]);
@@ -520,6 +524,14 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
       <div className={cn("grid gap-4", active.kind === "outcome" && mission.screen === "focused" && "items-start md:grid-cols-[minmax(0,400px)_minmax(0,1fr)]")} data-testid="workshop-story">
         {active.kind === "outcome" ? (
           <WorkshopGarden grown={active.picture?.id ?? null} label={active.recap ?? active.picture?.label ?? mission.title} compact={mission.screen === "focused"} name={active.storyName ?? null} />
+        ) : active.picture && active.storyName ? (
+          // Nov 22 (Isabel Visit 7): the story scene carries her chick's name as a TEXT tag (never spoken).
+          <div className="relative justify-self-start" data-testid="story-scene-named">
+            <WorkshopPictureView id={active.picture.id} className={SCENE_PICTURES.has(active.picture.id) ? "h-56 w-72" : "h-40 w-40"} />
+            <span className="absolute right-0 top-1 rounded-full border-2 px-3 py-1 text-xl font-bold shadow-sm" style={{ background: "#fffaf0", borderColor: "#c9a26b", color: "#5a3a1a" }} data-testid="story-name-tag">
+              🐣 {active.storyName}
+            </span>
+          </div>
         ) : active.picture ? (
           <WorkshopPictureView id={active.picture.id} className={SCENE_PICTURES.has(active.picture.id) ? "h-56 w-72" : mission.screen === "focused" ? "h-28 w-28" : "h-40 w-40"} />
         ) : null}
@@ -543,14 +555,16 @@ function NarratedTask({ child, mission, active, busy, act, narrator, telemetry, 
     );
   }
   return (
-    <div className="grid gap-5">
+    // Nov 22: a disabled fieldset locks every button and input of the task (answers, «Nächste Frage», «Weiter») while a feedback line
+    // plays; dimmed so she sees it is not her turn yet.
+    <fieldset disabled={locked} className={cn("m-0 grid min-w-0 gap-5 border-0 p-0 transition-opacity motion-reduce:transition-none", locked && "opacity-60")} data-testid="workshop-answers" data-locked={locked ? "feedback" : "open"}>
       {active.kind === "decide" && active.decide ? (active.decide.name ? <NameDecide active={active} busy={busy} act={act} /> : <NarratedDecide active={active} busy={busy} act={act} />) : null}
       {active.kind === "solve" && active.solve ? <SolveTask active={active} busy={busy} act={act} telemetry={telemetry} quiet onSeen={seen} /> : null}
       {active.kind === "read" ? <NarratedReadTask active={active} busy={busy} act={act} /> : null}
       {active.kind === "listen" ? <NarratedListen active={active} busy={busy} act={act} narrator={narrator} telemetry={telemetry} who={mission.characters[0]?.name ?? ""} slot={missionSlot(mission)} /> : null}
       {active.kind === "craft" && active.craft ? <NarratedCraft active={active} busy={busy} act={act} onDone={onNext} speaking={speaking} /> : null}
       {finished && active.kind !== "craft" ? <NextButton busy={busy} onNext={onNext} speaking={speaking} /> : null}
-    </div>
+    </fieldset>
   );
 }
 
@@ -640,6 +654,27 @@ function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; bu
   const sentence = !!active.sentence;
   const page = active.book ?? null;
   const placed = page && q && q.status !== "open" && q.resolved ? q.pictures?.[q.resolved] ?? null : null;
+  // Nov 22 (Isabel Visit 7): the book is introduced with last time's page; she turns the page to read the new one.
+  const [turned, setTurned] = useState(false);
+  const previous = page?.previous ?? null;
+  if (previous && !turned && q && q.status === "open" && !q.tries && !letters?.shown) {
+    return (
+      <div className="grid gap-4" data-testid="workshop-read" data-letters="no">
+        <div className="flex flex-wrap items-center gap-5 justify-self-start rounded-3xl border-4 p-4" style={{ borderColor: "#c9a26b", background: "#fffaf0" }} data-testid="growth-book" data-page={previous.page} data-previous="true">
+          <div className="grid h-36 w-36 place-items-center rounded-2xl border-4" style={{ borderColor: "#c9b28c" }} data-testid="growth-book-photo" data-filled="true">
+            <WorkshopPictureView id={previous.picture} className="h-32 w-32" />
+          </div>
+          <div className="grid gap-2">
+            <p className="text-lg font-semibold" style={{ color: "#7a4a22" }} data-testid="growth-book-title">Wachstumsbuch{active.storyName ? ` · ${active.storyName}` : ""} · Seite {previous.page}</p>
+            <p className="justify-self-start rounded-3xl border-4 px-6 py-3 font-mono text-4xl font-bold tracking-[0.12em]" style={{ borderColor: "#d9c6aa", background: "white" }} lang="de" data-testid="growth-book-previous-text">{previous.text}</p>
+          </div>
+        </div>
+        <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={busy} onClick={() => setTurned(true)} data-testid="book-turn" data-fold="primary">
+          Umblättern <span aria-hidden>📖 →</span>
+        </button>
+      </div>
+    );
+  }
   const word = (
     <p className={cn("justify-self-start rounded-3xl border-4 font-mono font-bold", sentence ? "px-6 py-3 text-5xl tracking-[0.12em]" : "px-8 py-4 text-6xl tracking-[0.3em]")} style={{ borderColor: "#d9c6aa", background: "white" }} lang="de" data-testid="read-word" data-sentence={sentence ? "true" : undefined}>
       {active.readText}
@@ -648,7 +683,8 @@ function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; bu
   return (
     <div className="grid gap-4" data-testid="workshop-read" data-letters={letters?.shown ? "shown" : "no"}>
       {page ? (
-        <div className="flex flex-wrap items-center gap-5 justify-self-start rounded-3xl border-4 p-4" style={{ borderColor: "#c9a26b", background: "#fffaf0" }} data-testid="growth-book" data-page={page.page}>
+        <div className={cn("flex flex-wrap items-center gap-5 justify-self-start rounded-3xl border-4 p-4", previous && "fl-page-turn")} style={{ borderColor: "#c9a26b", background: "#fffaf0" }} data-testid="growth-book" data-page={page.page}>
+          {previous ? <style>{PAGE_TURN_CSS}</style> : null}
           <div className="grid h-36 w-36 place-items-center rounded-2xl border-4 border-dashed" style={{ borderColor: "#c9b28c" }} data-testid="growth-book-photo" data-filled={placed ? "true" : "false"}>
             {placed ? <WorkshopPictureView id={placed} className="h-32 w-32" /> : <span className="text-5xl" aria-hidden>📷</span>}
           </div>
@@ -692,6 +728,8 @@ function NarratedReadTask({ active, busy, act }: { active: MissionActiveView; bu
   );
 }
 
+const PAGE_TURN_CSS = "@keyframes fl-page-turn{from{opacity:.2;transform:perspective(900px) rotateY(-70deg);transform-origin:left center}to{opacity:1;transform:none}}.fl-page-turn{animation:fl-page-turn 520ms ease-out both}@media (prefers-reduced-motion: reduce){.fl-page-turn{animation:none}}";
+
 /** Listening (narrated): the sentence is played only on her explicit tap, recorded first, through the SAME player (no overlap). */
 function NarratedListen({ active, busy, act, narrator, telemetry, who, slot }: { active: MissionActiveView; busy: boolean; act: Act; narrator: NarrationPlayer; telemetry: SceneTelemetry; who: string; slot: VoiceSlot | null }) {
   const listen = active.listen!;
@@ -709,12 +747,34 @@ function NarratedListen({ active, busy, act, narrator, telemetry, who, slot }: {
     const o = narrator.lastLineOutcome();
     await act({ a: "listen-outcome", step: active.id, outcome: result === "done" && (o === "recorded" || o === "device-de") ? o : "failed" });
   };
-  const canAnswer = listen.completedPlays > 0 || listen.transcriptShown;
+  // Nov 22 (Isabel Visit 7): «Ich weiss es» (she orders first: prior knowledge) or «Zeig es mir» (the explanation first). A word to
+  // write was said in the instruction, so it may be written without a play (`optional`); the ear repeats it.
+  const pk = listen.priorKnowledge ?? null;
+  const q0 = active.questions[0];
+  const heard = listen.completedPlays > 0 || listen.transcriptShown;
+  const choosing = !!pk && !pk.claimed && listen.plays === 0;
+  const priorPhase = !!pk && pk.claimed && listen.plays === 0 && (q0?.prior ?? null) === null;
+  const canAnswer = heard || !!listen.optional || priorPhase;
+  const answer = (q: MissionActiveView["questions"][number], value: string) => act({ a: "answer-question", step: active.id, question: q.id, value });
+  const ear = (
+    <button type="button" className={cn(btn, "min-h-20 justify-self-start px-8 text-2xl")} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" data-fold="primary" aria-label={pk ? pk.show : listen.plays ? "Nochmal anhören" : `${who} anhören`}>
+      <span aria-hidden className="text-3xl">👂</span> {playing ? "…" : pk ? pk.show : listen.plays ? "Nochmal" : "Anhören"}
+    </button>
+  );
   return (
-    <div className="grid gap-4" data-testid="workshop-listen">
-      <button type="button" className={cn(btn, "min-h-20 justify-self-start px-8 text-2xl")} style={primary} disabled={busy || playing} onClick={() => void play()} data-testid="listen-play" data-fold="primary" aria-label={listen.plays ? "Nochmal anhören" : `${who} anhören`}>
-        <span aria-hidden className="text-3xl">👂</span> {playing ? "…" : listen.plays ? "Nochmal" : "Anhören"}
-      </button>
+    <div className="grid gap-4" data-testid="workshop-listen" data-prior={pk ? (choosing ? "choose" : priorPhase ? "prior" : heard ? "after" : q0?.prior === false ? "prior-wrong" : q0?.prior === true ? "prior-right" : "wait") : undefined}>
+      {choosing ? (
+        <div className="flex flex-wrap gap-4" role="group" aria-label={active.intro[0]?.text ?? ""}>
+          <button type="button" className={cn(btn, "min-h-20 px-8 text-2xl")} style={secondary} disabled={busy} onClick={() => void act({ a: "support", step: active.id, kind: "prior-claim" })} data-testid="prior-know" data-fold="primary">
+            <span aria-hidden className="text-3xl">💡</span> {pk!.know}
+          </button>
+          {ear}
+        </div>
+      ) : priorPhase || (q0?.status !== "open" && active.status !== "active") || (q0?.status === "open" && !!listen.optional && !listen.plays) ? (
+        listen.optional && q0?.status === "open" ? ear : null
+      ) : (
+        ear
+      )}
       {listen.script ? (
         <p className="rounded-2xl px-4 py-3 text-lg" style={{ background: "#fff8e1" }} data-testid="listen-adult-read">
           <span className="block text-sm font-semibold uppercase tracking-wide">Für Erwachsene zum Vorlesen (zählt als Hilfe)</span>«{listen.script}»
@@ -726,22 +786,169 @@ function NarratedListen({ active, busy, act, narrator, telemetry, who, slot }: {
           ⚠ Ton fehlt. Für Erwachsene: vorlesen (zählt als Hilfe)
         </button>
       ) : null}
+      {pk && playing && q0?.order ? <OrderStrip q={q0} testId="order-taught" /> : null}
       {active.questions.map((q) => (
-        <div key={q.id} className="grid gap-2" data-testid={`question-${q.id}`} data-status={q.status}>
+        <div key={q.id} className="grid gap-2" data-testid={`question-${q.id}`} data-status={q.status} data-kind={q.kind}>
           {q.status === "open" ? (
-            <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
-              {(q.options ?? []).map((o, i) => (
-                <button key={o} type="button" className={pictureButton} style={{ borderColor: q.lastWrong === o ? "#c77c14" : "#d9c6aa" }} disabled={busy || !canAnswer} onClick={() => void act({ a: "answer-question", step: active.id, question: q.id, value: o })} data-testid={`pick-${q.id}-${o}`} aria-label={`Bild ${i + 1}`}>
-                  {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-28 w-28" /> : null}
-                </button>
-              ))}
-            </div>
+            pk && (playing || (!canAnswer && !choosing)) ? (
+              q.prior === false && !heard ? <Feedback tone="retry" text={pk.wrong} /> : null
+            ) : choosing ? null : q.kind === "order" ? (
+              <OrderBoard q={q} busy={busy} disabled={!canAnswer} submit={(v) => answer(q, v)} />
+            ) : q.kind === "multi" ? (
+              <MultiBoard q={q} busy={busy} disabled={!canAnswer} submit={(v) => answer(q, v)} />
+            ) : q.kind === "spell" ? (
+              <SpellBoard q={q} busy={busy} disabled={!canAnswer} submit={(v) => answer(q, v)} />
+            ) : (
+              <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
+                {(q.options ?? []).map((o, i) => (
+                  <button key={o} type="button" className={pictureButton} style={{ borderColor: q.lastWrong === o ? "#c77c14" : "#d9c6aa" }} disabled={busy || !canAnswer} onClick={() => void answer(q, o)} data-testid={`pick-${q.id}-${o}`} aria-label={`Bild ${i + 1}`}>
+                    {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-28 w-28" /> : null}
+                  </button>
+                ))}
+              </div>
+            )
           ) : (
-            <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? NARRATION_UI.listenCorrect : active.givenLine ?? NARRATION_UI.listenGiven(q.shownAnswer ?? "")} />
+            <div className="grid gap-3">
+              {q.kind === "order" && q.order ? <OrderStrip q={q} testId="order-solved" /> : null}
+              {q.kind === "multi" && q.resolved ? <div className="flex flex-wrap gap-3" data-testid="multi-solved">{(q.options ?? []).filter((o) => q.resolved!.split("|").includes(o)).map((o) => <span key={o} className="grid place-items-center rounded-3xl border-4 bg-white p-2" style={{ borderColor: "#3f7a3a" }}>{q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-24 w-24" /> : null}</span>)}</div> : null}
+              <Feedback tone={q.status === "correct" ? "success" : "taught"} text={q.status === "correct" ? (q.prior === true && active.status === "active" && pk ? pk.right : NARRATION_UI.listenCorrect) : active.givenLine ?? NARRATION_UI.listenGiven(q.shownAnswer ?? "")} />
+              {q.prior === true && active.status === "active" ? ear : null}
+            </div>
           )}
           {q.hint ? <Feedback tone="retry" text={q.hint} /> : null}
         </div>
       ))}
+    </div>
+  );
+}
+
+type QuestionView = MissionActiveView["questions"][number];
+
+/** Nov 22: the pictures in their right order, numbered (while the explanation plays, and once solved). */
+function OrderStrip({ q, testId }: { q: QuestionView; testId: string }) {
+  return (
+    <ol className="flex flex-wrap items-center gap-3" data-testid={testId}>
+      {(q.order ?? []).map((o, i) => (
+        <li key={o} className="grid justify-items-center gap-1">
+          <span className="grid h-9 w-9 place-items-center rounded-full text-xl font-bold text-white" style={{ background: "#3f7a3a" }}>{i + 1}</span>
+          <span className="grid place-items-center rounded-3xl border-4 bg-white p-2" style={{ borderColor: "#6f8f5a" }}>{q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-28 w-28" /> : null}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/**
+ * Nov 22 (Isabel Visit 7): ordering pictures — she taps the pictures one after the other; they land in the numbered places 1, 2, 3.
+ * A tap on a placed picture takes it (and the ones after it) back. The last place sends the ordering (one answer). After a miss
+ * the first picture is already in place (Ida showed it; recorded help).
+ */
+function OrderBoard({ q, busy, disabled, submit }: { q: QuestionView; busy: boolean; disabled: boolean; submit: (value: string) => Promise<unknown> }) {
+  const fixed = q.firstShown ? [q.firstShown] : [];
+  const [placed, setPlaced] = useState<string[]>(fixed);
+  const reset = `${q.tries}|${q.firstShown ?? ""}`;
+  useEffect(() => setPlaced(q.firstShown ? [q.firstShown] : []), [reset, q.firstShown]);
+  const opts = q.options ?? [];
+  const tap = (o: string) => {
+    if (placed.includes(o)) {
+      if (!fixed.includes(o)) setPlaced((p) => p.slice(0, p.indexOf(o)));
+      return;
+    }
+    const next = [...placed, o];
+    setPlaced(next);
+    if (next.length === opts.length) void submit(next.join("|"));
+  };
+  return (
+    <div className="grid gap-4" data-testid="order-board" data-placed={placed.join("|")}>
+      <ol className="flex flex-wrap gap-3" aria-label="Reihenfolge">
+        {opts.map((_, i) => {
+          const o = placed[i];
+          return (
+            <li key={i} className="grid justify-items-center gap-1" data-testid={`order-slot-${i + 1}`} data-filled={o ?? ""}>
+              <span className="grid h-9 w-9 place-items-center rounded-full text-xl font-bold text-white" style={{ background: o ? "#3f7a3a" : "#b9a582" }}>{i + 1}</span>
+              {o ? (
+                <button type="button" className="grid place-items-center rounded-3xl border-4 bg-white p-2" style={{ borderColor: fixed.includes(o) ? "#6f8f5a" : "#3f7a3a" }} disabled={busy || disabled || fixed.includes(o)} onClick={() => tap(o)} data-testid={`order-placed-${o}`} aria-label={`Platz ${i + 1}`}>
+                  {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-24 w-24" /> : null}
+                </button>
+              ) : (
+                <span className="grid h-[7.5rem] w-[7.5rem] place-items-center rounded-3xl border-4 border-dashed" style={{ borderColor: "#c9b28c" }} />
+              )}
+            </li>
+          );
+        })}
+      </ol>
+      <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
+        {opts.map((o, i) => (
+          <button key={o} type="button" className={pictureButton} style={{ borderColor: "#d9c6aa", opacity: placed.includes(o) ? 0.25 : 1 }} disabled={busy || disabled || placed.includes(o)} onClick={() => tap(o)} data-testid={`order-pick-${o}`} aria-label={`Bild ${i + 1}`}>
+            {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-28 w-28" /> : null}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Nov 22: several answers — she taps every picture that fits (tap again to undo), then «Fertig» (one answer). */
+function MultiBoard({ q, busy, disabled, submit }: { q: QuestionView; busy: boolean; disabled: boolean; submit: (value: string) => Promise<unknown> }) {
+  const [picked, setPicked] = useState<string[]>([]);
+  useEffect(() => setPicked([]), [q.tries]);
+  const opts = q.options ?? [];
+  return (
+    <div className="grid gap-4" data-testid="multi-board" data-picked={picked.join("|")}>
+      <div className="flex flex-wrap gap-3" role="group" aria-label={q.prompt} data-fold="input">
+        {opts.map((o, i) => {
+          const on = picked.includes(o);
+          return (
+            <button key={o} type="button" className={cn(pictureButton, "relative")} style={{ borderColor: on ? "#3f7a3a" : "#d9c6aa", background: on ? "#eef7e8" : "white" }} aria-pressed={on} disabled={busy || disabled} onClick={() => setPicked((p) => (on ? p.filter((x) => x !== o) : [...p, o]))} data-testid={`multi-${q.id}-${o}`} aria-label={`Bild ${i + 1}`}>
+              {q.pictures?.[o] ? <WorkshopPictureView id={q.pictures[o]} className="h-28 w-28" /> : null}
+              {on ? <span className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-full text-lg font-bold text-white" style={{ background: "#3f7a3a" }} aria-hidden>✓</span> : null}
+            </button>
+          );
+        })}
+      </div>
+      <button type="button" className={cn(btn, "justify-self-start")} style={primary} disabled={busy || disabled || !picked.length} onClick={() => void submit(picked.join("|"))} data-testid="multi-done" data-fold="primary">
+        <span aria-hidden>✓</span> Fertig
+      </button>
+    </div>
+  );
+}
+
+/**
+ * Nov 22: writing a heard word — letters only (she may type small or capital letters; shown as capitals). After a miss the letter
+ * tiles appear (the recorded help): a tap adds the letter, ⌫ takes the last one back.
+ */
+function SpellBoard({ q, busy, disabled, submit }: { q: QuestionView; busy: boolean; disabled: boolean; submit: (value: string) => Promise<unknown> }) {
+  const [value, setValue] = useState("");
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  useEffect(() => {
+    setValue("");
+    if (!q.tiles) inputRef.current?.focus({ preventScroll: true });
+  }, [q.tries, q.tiles]);
+  const clean = (v: string) => cleanStoryNameInput(v, 12);
+  return (
+    <div className="grid gap-4" data-testid="spell-board" data-tiles={q.tiles ? "shown" : "no"}>
+      <div className="flex flex-wrap items-center gap-4">
+        {q.picture ? <WorkshopPictureView id={q.picture} className="h-28 w-28" /> : null}
+        <form className="flex flex-wrap items-center gap-3" onSubmit={(e) => { e.preventDefault(); if (!busy && !disabled && clean(value)) void submit(clean(value)); }}>
+          <label htmlFor={`spell-${q.id}`} className="sr-only">{q.prompt}</label>
+          <input id={`spell-${q.id}`} ref={inputRef} value={value} onChange={(e) => setValue(clean(e.target.value))} readOnly={!!q.tiles} autoComplete="off" autoCorrect="off" autoCapitalize="characters" spellCheck={false} lang="de" className="h-20 w-72 rounded-2xl border-4 px-4 font-mono text-5xl font-bold uppercase tracking-[0.2em]" style={{ borderColor: "#d9c6aa" }} data-testid="spell-input" data-fold="input" />
+          <button type="submit" className={btn} style={primary} disabled={busy || disabled || !clean(value)} data-testid="spell-done" data-fold="primary">
+            <span aria-hidden>✓</span> Fertig
+          </button>
+        </form>
+      </div>
+      {q.tiles ? (
+        <div className="flex flex-wrap gap-3 rounded-2xl p-4" style={{ background: "#edf4e6" }} data-testid="spell-tiles">
+          {q.tiles.map((t, i) => (
+            <button key={`${t}${i}`} type="button" className="grid h-16 w-16 place-items-center rounded-2xl border-4 bg-white text-4xl font-bold" style={{ borderColor: "#d9c6aa" }} disabled={busy || disabled || value.length >= 12} onClick={() => setValue((v) => v + t)} data-testid={`spell-tile-${t}`}>
+              {t}
+            </button>
+          ))}
+          <button type="button" className="grid h-16 w-16 place-items-center rounded-2xl border-4 bg-white text-3xl" style={{ borderColor: "#d9c6aa" }} disabled={busy || disabled || !value} onClick={() => setValue((v) => v.slice(0, -1))} data-testid="spell-back" aria-label="Letzten Buchstaben löschen">
+            ⌫
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }

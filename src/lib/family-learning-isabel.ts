@@ -26,7 +26,7 @@ import { checkAdaptiveBudget, COUNTER_ICONS, WORKSHOP_PICTURES, type MissionDef,
 import { ASSISTANT_IDENTITIES, slotFitsCharacter } from "./family-voice-registry.ts";
 
 export const ISABEL_CONTENT_ID = "isabel-workshop";
-export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5, 6];
+export const ISABEL_CONTENT_VERSIONS: readonly number[] = [1, 2, 3, 4, 5, 6, 7];
 export const ISABEL_MISSION_ID = "MISSION-OLD-LILA-WORKSHOP";
 export const ISABEL_GARDEN_MISSION_ID = "MISSION-IDA-GARDEN";
 /** Step 1 (content v3): Isabel Visit 3 «Ernten und probieren» (internal visit id v4, learner-facing «Besuch 3»). */
@@ -39,6 +39,8 @@ export const ISABEL_BIRDS_MISSION_ID = "MISSION-IDA-BIRDS";
 export const ISABEL_FOOD_MISSION_ID = "MISSION-IDA-FOOD";
 /** Content v6 (Nov 21): Isabel Visit 6 «Das Küken schlüpft» (internal visit id v7, learner-facing «Besuch 6»), arc «Mein Küken». */
 export const ISABEL_CHICK_MISSION_ID = "MISSION-IDA-CHICK";
+/** Content v7 (Nov 22): Isabel Visit 7 «Wann kann Isa sehen?» (internal visit id v8, learner-facing «Besuch 7»), arc «Mein Küken». */
+export const ISABEL_CHICK_EYES_MISSION_ID = "MISSION-IDA-CHICK-EYES";
 export const EXPECTED_WORKSHOP_STEPS: readonly string[] = ["W1-HELLO", "W2-MAKE", "W3-MATERIALS", "W4-COUNT", "W5-TENS", "W6-TENS-AGAIN", "W7-EASIER", "W8-READ", "W9-LISTEN", "W10-CRAFT", "W11-ROOM"];
 export const EXPECTED_GARDEN_STEPS: readonly string[] = ["IG1-HELLO", "IG2-PLANT", "IG3-STICKS", "IG4-STICKS-AGAIN", "IG5-PLANTING", "IG6-PLANTING-EASIER", "IG7-READ", "IG8-LISTEN", "IG9-CRAFT", "IG10-GARDEN"];
 export const EXPECTED_HARVEST_STEPS: readonly string[] = ["IH1-HELLO", "IH2-PICK", "IH3-BUNDLE", "IH4-TENS", "IH5-TENS-AGAIN", "IH6-PLUS", "IH6H-BRIDGE", "IH6E-SMALL", "IH7-READ", "IH8-READ", "IH9-PHRASE", "IH10-LISTEN", "IH11-HARVEST"];
@@ -46,7 +48,8 @@ export const EXPECTED_HARVEST_STEPS: readonly string[] = ["IH1-HELLO", "IH2-PICK
 export const EXPECTED_BIRD_STEPS: readonly string[] = ["IV1-HELLO", "IV2-WARM", "IV2E-WARM-EASY", "IV2N-NEST", "IV3-WALLS", "IV3E-WALLS-EASY", "IV4-ENOUGH", "IV4E-ENOUGH-EASY", "IV4H-ENOUGH-MORE", "IV5-NAILS", "IV5E-NAILS-EASY", "IV5H-NAILS-MORE", "IV6-VOGEL", "IV7-HAUS", "IV8-PHRASE", "IV9-LISTEN", "IV10-ROOF", "IV11-HOME"];
 export const EXPECTED_FOOD_STEPS: readonly string[] = ["IF1-HELLO", "IF2-WARM", "IF2E-WARM-EASY", "IF2N-NEST", "IF3-SEEDS", "IF3E-SEEDS-EASY", "IF4-MORE", "IF4E-MORE-EASY", "IF4H-MORE-HARD", "IF5-AWAY", "IF5E-AWAY-EASY", "IF5H-AWAY-MORE", "IF6-FUTTER", "IF7-LISTEN", "IF8-FOOD", "IF9-EI", "IF10-HOME"];
 export const EXPECTED_CHICK_STEPS: readonly string[] = ["I61-PSST", "I62-FLIP", "I62E-FLIP-EASY", "I62H-FLIP-HARD", "I63-EGGS", "I64-MAMA", "I65-DAYS", "I65E-DAYS-EASY", "I65H-DAYS-LEFT", "I66-FOOD", "I66E-FOOD-EASY", "I66H-FOOD-HARD", "I67-KNACK", "I68-KUEKEN", "I69-NAME", "I610-FEED", "I611-FLIGHTS", "I611E-FLIGHTS-EASY", "I611H-FLIGHTS-MORE", "I612-WATER", "I613-BOOK", "I614-END"];
-export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS, ...EXPECTED_HARVEST_STEPS, ...EXPECTED_BIRD_STEPS, ...EXPECTED_FOOD_STEPS, ...EXPECTED_CHICK_STEPS];
+export const EXPECTED_CHICK_EYES_STEPS: readonly string[] = ["I71-PSST", "I72-RECALL", "I73-FLIP", "I73H-FLIP-HARD", "I74-HATCH", "I75-EIZAHN", "I76-EGG", "I77-MILK", "I78-COINS", "I78E-COINS-EASY", "I78H-COINS-MAMA", "I79-DAY6", "I710-DAYS", "I710E-DAYS-EASY", "I711-AUGE", "I712-BOOK", "I713-END"];
+export const ALL_ISABEL_STEP_IDS: readonly string[] = [...EXPECTED_WORKSHOP_STEPS, ...EXPECTED_GARDEN_STEPS, ...EXPECTED_HARVEST_STEPS, ...EXPECTED_BIRD_STEPS, ...EXPECTED_FOOD_STEPS, ...EXPECTED_CHICK_STEPS, ...EXPECTED_CHICK_EYES_STEPS];
 
 /** What each of Isabel's missions must be (by visit). The generic rules below apply to all of them. */
 type WorkshopSpec = {
@@ -58,7 +61,8 @@ type WorkshopSpec = {
   decide: string;
   /** The tens retrieval, its fresh application (only when the retrieval was not independent) and what follows that application. */
   tens: string;
-  tensAgain: string;
+  /** Nov 22 (Visit 7): null = no separate fresh tens check (the easier version is inside the taught step: the bags after a miss). */
+  tensAgain: string | null;
   /** The step that may only run when another one was not independent ([step, condition step]). */
   easier: [string, string];
   /** The world change prop that shows her choice. */
@@ -73,10 +77,18 @@ type WorkshopSpec = {
   sentences?: boolean;
   /** Nov 21 (Visit 6): the step where she names her chick (one own option; letters only; never spoken). */
   nameStep?: string;
-  /** Nov 21 (Visit 6): the care decision (exactly one right option; each wrong one has its reviewed explanation). */
-  care?: string;
+  /** Nov 21: the care decision (exactly one right option; each wrong one has its reviewed explanation). Nov 22: or several. */
+  care?: string | string[];
   /** Nov 21 (Visit 6): content first — the reviewed robin facts are checked (no blue eggs, no season stated). */
   facts?: boolean;
+  /** Nov 22 (Visit 7): a sentence to read may be up to this long (default 24 characters, 5 words). */
+  sentenceMax?: { chars: number; words: number };
+  /** Nov 22 (Visit 7): the new answer kinds (ordering pictures, several answers, writing a heard word) and «Ich weiss es». */
+  questionKinds?: boolean;
+  /** Nov 22 (Visit 7, David's feedback): a fact is said once per visit — no other line restates a fact line's core sentence. */
+  factOnce?: boolean;
+  /** Nov 22 (Visit 7): her chick's name is shown as text on the story scene and the end picture (no name step in this visit). */
+  chickNamed?: boolean;
 };
 const SPECS: readonly WorkshopSpec[] = [
   { id: ISABEL_MISSION_ID, visit: "v1", steps: EXPECTED_WORKSHOP_STEPS, character: { id: "lila", name: ISABEL_COMPANION }, place: "workshop", decide: "W2-MAKE", tens: "W5-TENS", tensAgain: "W6-TENS-AGAIN", easier: ["W7-EASIER", "W6-TENS-AGAIN"], worldProp: "room", narrated: false },
@@ -85,6 +97,7 @@ const SPECS: readonly WorkshopSpec[] = [
   { id: ISABEL_BIRDS_MISSION_ID, visit: "v5", steps: EXPECTED_BIRD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IV10-ROOF", tens: "IV2-WARM", tensAgain: "IV2E-WARM-EASY", easier: ["IV3E-WALLS-EASY", "IV3-WALLS"], worldProp: "garden", narrated: true, phrases: true, homeTask: true },
   { id: ISABEL_FOOD_MISSION_ID, visit: "v6", steps: EXPECTED_FOOD_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "IF8-FOOD", tens: "IF2-WARM", tensAgain: "IF2E-WARM-EASY", easier: ["IF3E-SEEDS-EASY", "IF3-SEEDS"], worldProp: "garden", narrated: true, phrases: true, homeTask: false },
   { id: ISABEL_CHICK_MISSION_ID, visit: "v7", steps: EXPECTED_CHICK_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "I610-FEED", tens: "I62-FLIP", tensAgain: "I62E-FLIP-EASY", easier: ["I66E-FOOD-EASY", "I66-FOOD"], worldProp: "garden", narrated: true, phrases: true, homeTask: false, sentences: true, nameStep: "I69-NAME", care: "I610-FEED", facts: true },
+  { id: ISABEL_CHICK_EYES_MISSION_ID, visit: "v8", steps: EXPECTED_CHICK_EYES_STEPS, character: { id: "ida", name: null }, place: "birdhouse", decide: "I72-RECALL", tens: "I73-FLIP", tensAgain: null, easier: ["I78E-COINS-EASY", "I78-COINS"], worldProp: "garden", narrated: true, phrases: true, homeTask: false, sentences: true, sentenceMax: { chars: 28, words: 6 }, care: ["I72-RECALL"], facts: true, questionKinds: true, factOnce: true, chickNamed: true },
 ];
 /** Nov 21: what a robin visit must never say (the draft's correction: Rotkehlchen eggs are not blue; the island's season stays open). */
 const BLUE_EGGS = /\bEier?\b[^.!?]*\bblau|\bblaue?n?\s+Eier?\b/i;
@@ -178,13 +191,52 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
     if (s.picture !== undefined && !picture(s.picture)) problems.push(`${sl}: unknown picture ${String(s.picture)}`);
     for (const q of Array.isArray(s.questions) ? s.questions.filter(isRecord) : []) {
       const options = Array.isArray(q.options) ? q.options.map(String) : [];
-      if (q.kind !== "pick" || options.length < 2 || !options.includes(String(q.answer))) problems.push(`${sl}/${String(q.id)}: a picture choice with the answer among its options`);
+      const kind = String(q.kind);
+      const answerParts = String(q.answer).split("|");
+      // Nov 22 (Visit 7): ordering pictures, several answers, writing a heard word — only where the visit's spec allows them.
+      if (kind !== "pick" && !(spec.questionKinds && ["order", "multi", "spell"].includes(kind))) problems.push(`${sl}/${String(q.id)}: a picture choice with the answer among its options`);
+      else if (kind === "pick" && (options.length < 2 || !options.includes(String(q.answer)))) problems.push(`${sl}/${String(q.id)}: a picture choice with the answer among its options`);
+      else if (kind === "order" && (options.length < 3 || answerParts.length !== options.length || [...answerParts].sort().join("|") !== [...options].sort().join("|") || options.join("|") === String(q.answer))) problems.push(`${sl}/${String(q.id)}: an ordering names every picture once (shown in another order than the answer)`);
+      else if (kind === "multi" && (options.length < 3 || !answerParts.length || answerParts.length >= options.length || options.filter((o) => answerParts.includes(o)).join("|") !== String(q.answer))) problems.push(`${sl}/${String(q.id)}: several answers: some (not all) options, written in option order`);
+      if (kind === "spell") {
+        const word = String(q.answer);
+        const tiles = Array.isArray(q.tiles) ? q.tiles.map(String) : [];
+        const rest = [...tiles];
+        let found = 0;
+        for (const ch of word.toUpperCase()) {
+          const i = rest.indexOf(ch);
+          if (i >= 0) {
+            rest.splice(i, 1);
+            found += 1;
+          }
+        }
+        if (!/^\p{Lu}{2,12}$/u.test(word) || options.length || found !== word.length || rest.length < 1 || tiles.some((t) => !/^\p{Lu}$/u.test(t))) problems.push(`${sl}/${String(q.id)}: a word to write (capital letters) with tiles: its letters plus others`);
+        if (s.kind !== "listen" || s.listenOptional !== true || !isRecord(s.text) || String(s.text.body).replace(/[.!?]/g, "").toUpperCase() !== word) problems.push(`${sl}/${String(q.id)}: a word to write is heard (a listening step whose sentence is the word)`);
+        const first = Array.isArray(s.intro) && isRecord(s.intro[0]) ? String(s.intro[0].text) : "";
+        if (new RegExp(word, "i").test(first)) problems.push(`${sl}/${String(q.id)}: writing from hearing — the visible line never shows the word`);
+        if (!(Array.isArray(s.intro) ? s.intro.filter(isRecord) : []).some((l) => new RegExp(`\\b${word}\\b`, "i").test(String(l.text)))) problems.push(`${sl}/${String(q.id)}: the word to write is said in the instruction`);
+      }
       if (options.some((o) => o.length > 40)) problems.push(`${sl}/${String(q.id)}: an option is longer than 40 characters (the answer op keeps 40)`);
+      if ((kind === "order" || kind === "multi") && options.join("|").length > 40) problems.push(`${sl}/${String(q.id)}: all options together are longer than 40 characters (the answer op keeps 40)`);
       const pics = isRecord(q.pictures) ? q.pictures : null;
-      if (!pics || options.some((o) => !picture(pics[o]))) problems.push(`${sl}/${String(q.id)}: every option needs its picture`);
+      if (kind !== "spell" && (!pics || options.some((o) => !picture(pics[o])))) problems.push(`${sl}/${String(q.id)}: every option needs its picture`);
       if (q.picture !== undefined && !picture(q.picture)) problems.push(`${sl}/${String(q.id)}: unknown picture`);
       if (!str(q.retryHint)) problems.push(`${sl}/${String(q.id)}: a neutral retry hint`);
     }
+    if (s.priorKnowledge !== undefined) {
+      // Nov 22: «Ich weiss es» / «Zeig es mir» on a listening step with one ordering; its lines are recorded (short, no placeholder).
+      const pk = isRecord(s.priorKnowledge) ? s.priorKnowledge : null;
+      const qs = Array.isArray(s.questions) ? s.questions.filter(isRecord) : [];
+      const pkLines = pk ? [pk.right, pk.wrong, pk.order] : [];
+      if (!spec.questionKinds || !pk || s.kind !== "listen" || qs.length !== 1 || qs[0].kind !== "order" || !str(pk.know) || !str(pk.show) || !str(pk.objective) || pk.objective === s.objective || pkLines.some((t) => !str(t) || String(t).length > MAX_LINE_CHARS || /[{}ß]/.test(String(t)))) problems.push(`${sl}: «Ich weiss es» belongs to a listening step with one ordering, short recorded lines and its own objective`);
+    }
+    if (s.listenOptional !== undefined && !(s.listenOptional === true && (Array.isArray(s.questions) ? s.questions.filter(isRecord) : []).some((q) => q.kind === "spell"))) problems.push(`${sl}: only a word to write may be answered without a play`);
+    if (s.book !== undefined) {
+      const b = isRecord(s.book) ? s.book : null;
+      const prev = b && isRecord(b.previous) ? b.previous : null;
+      if (!b || !Number.isInteger(b.page) || (b.previous !== undefined && (!prev || prev.page !== Number(b.page) - 1 || !str(prev.text) || !picture(prev.picture)))) problems.push(`${sl}: a growth-book page (the previous page, when shown, is the page before)`);
+    }
+    if (s.storyName !== undefined && (s.storyName !== "chickName" || (s.kind !== "outcome" && s.kind !== "story"))) problems.push(`${sl}: her chick's name is shown on a story scene or the end picture`);
     if (s.kind === "solve") {
       const parts = isRecord(s.solve) && Array.isArray(s.solve.parts) ? s.solve.parts.filter(isRecord) : [];
       if (!parts.length) problems.push(`${sl}: a counting task needs its questions`);
@@ -205,8 +257,9 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
       const body = isRecord(s.text) ? String(s.text.body ?? "") : "";
       const phrase = !!spec.phrases && /^\S+ \S+ \S+$|^\S+ \S+$/.test(body) && body.length <= 14;
       // Nov 21 (Visit 6): a first short sentence, marked as such, with word-by-word support.
-      const sentence = !!spec.sentences && s.sentence === true && body.length <= 24 && body.split(" ").length <= 5;
-      if (s.sentence !== undefined && !sentence) problems.push(`${sl}: a sentence to read is at most 24 characters and 5 words (from Visit 6 on)`);
+      const max = spec.sentenceMax ?? { chars: 24, words: 5 };
+      const sentence = !!spec.sentences && s.sentence === true && body.length <= max.chars && body.split(" ").length <= max.words;
+      if (s.sentence !== undefined && !sentence) problems.push(`${sl}: a sentence to read is at most ${max.chars} characters and ${max.words} words`);
       if (!body || (body.length > 8 && !phrase && !sentence)) problems.push(`${sl}: one short word to read${spec.phrases ? " (or a first short phrase)" : ""}`);
       const readWords = steps.filter((o) => o !== s && o.kind === "read" && isRecord(o.text)).map((o) => String((o.text as Record<string, unknown>).body).toUpperCase());
       const compoundOfRead = (w: string) => readWords.some((a) => readWords.some((b) => a + b === w.toUpperCase()));
@@ -233,7 +286,7 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
         // Nov 21: her chick's name — one own option, letters only (the engine refuses anything else), kept as a story choice.
         const n = d && isRecord(d.name) ? d.name : null;
         if (opts.length !== 1 || opts[0].own !== true || opts[0].viable !== true || !str(opts[0].feedback) || d?.storyKey !== "chickName" || !n || !Number.isInteger(n.pick) || (n.pick as number) < 2 || !picture(n.picture) || n.max !== 12) problems.push(`${sl}: the name step has one own option (letters only, at most 12), a picture to tap and the story key chickName`);
-      } else if (spec.care === s.id) {
+      } else if ((Array.isArray(spec.care) ? spec.care : [spec.care]).includes(String(s.id))) {
         // Nov 21: a care decision with consequences — exactly one right option; each wrong one explains why (spoken), she picks again.
         if (opts.length < 3 || opts.filter((o) => o.viable === true).length !== 1 || d?.singleViable !== true || !isRecord(d?.care) || !picture((d!.care as Record<string, unknown>).picture) || opts.some((o) => !picture(o.picture) || !str(o.feedback) || String(o.feedback).length > MAX_LINE_CHARS || /ß/.test(String(o.feedback)))) problems.push(`${sl}: a care decision has at least three pictured options, exactly one right, and a short explanation for each`);
       } else if (opts.length < 3 || opts.some((o) => o.viable !== true || !picture(o.picture) || !str(o.feedback))) problems.push(`${sl}: at least three pictured, equally valid things to make`);
@@ -262,10 +315,10 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
     }
   }
   const tens = byId.get(spec.tens);
-  const again = byId.get(spec.tensAgain);
   const [easierId, easierAfter] = spec.easier;
   const easier = byId.get(easierId);
-  if (!isRecord(again?.when) || again!.when.step !== spec.tens || !isRecord(again!.solve) || !isRecord(again!.solve.application) || again!.solve.application.of !== spec.tens) problems.push(`${label}: the fresh tens check follows ${spec.tens} only when that was not independent`);
+  const again = spec.tensAgain ? byId.get(spec.tensAgain) : null;
+  if (spec.tensAgain && (!isRecord(again?.when) || again!.when.step !== spec.tens || !isRecord(again!.solve) || !isRecord(again!.solve.application) || again!.solve.application.of !== spec.tens)) problems.push(`${label}: the fresh tens check follows ${spec.tens} only when that was not independent`);
   if (!isRecord(easier?.when) || easier!.when.step !== easierAfter) problems.push(`${label}: the easier path follows ${easierAfter} only when that was not independent`);
   if (tens && isRecord(tens.solve) && Array.isArray(tens.solve.parts) && !tens.solve.parts.every((p) => isRecord(p) && isRecord(p.counters) && p.counters.bundles === true)) problems.push(`${label}: ${spec.tens} shows ten-bundles`);
   // I2-03: a later visit's tens retrieval is FRESH — no quantity an earlier visit asked (Visit 1: 21 and 23).
@@ -291,6 +344,7 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
   if (!r || !Number.isInteger(r.maxPartAttempts) || (r.maxPartAttempts as number) < 3 || !Number.isInteger(r.maxPracticeAttempts) || !Number.isInteger(r.maxQuestionAttempts) || (r.maxQuestionAttempts as number) < 2) problems.push(`${label}: rules.maxPartAttempts (≥ 3), maxPracticeAttempts and maxQuestionAttempts (≥ 2) required`);
   const world = Array.isArray(m.world) ? m.world.filter(isRecord) : [];
   for (const w of world) if (w.prop !== spec.worldProp || !isRecord(w.choice) || w.choice.step !== spec.decide) problems.push(`${label}: a world change shows the ${spec.worldProp} element she chose`);
+  for (const w of world) if (w.picture !== undefined && !(w.picture === "peek" || picture(w.picture))) problems.push(`${label}: a world change's end picture is a known picture (or «peek»)`);
   if (spec.facts) {
     // Nov 21 (content first): every spoken or shown sentence of the visit, checked against the reviewed robin facts.
     const texts: string[] = [];
@@ -309,8 +363,86 @@ export function checkWorkshopMission(m: unknown, problems: string[], spec: Works
     }
     // The name is the child's own: it is shown as text only, so the outcome names the story key it shows.
     const outcomeStep = steps.find((x) => x.kind === "outcome");
-    if (spec.nameStep && outcomeStep?.storyName !== "chickName") problems.push(`${label}: the end picture shows her chick's name (storyName chickName)`);
+    if ((spec.nameStep || spec.chickNamed) && outcomeStep?.storyName !== "chickName") problems.push(`${label}: the end picture shows her chick's name (storyName chickName)`);
   }
+  if (spec.factOnce) for (const p of repeatedFacts(spokenUnits(m))) problems.push(`${label}: a fact is said once — «${p.fact}» (${p.where}) is said again in «${p.again}» (${p.againWhere})`);
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Nov 22 (Isabel Visit 7, David's feedback on Visit 6: «Mama/Papa on the eggs was explained twice and bored her»): a fact is said
+// once per visit. A fact line (`fact: true`, or a listening/reading text marked `fact`) may not have its core sentence restated in
+// any other line of the same visit. «Core»: the sentence's content words (4+ letters, without filler words, crude plural/case
+// endings folded); another sentence that carries ¾ or more of them is a restatement. Alternatives of one beat (its done line and
+// its outcome-specific done lines) are one place; everything else counts.
+// ---------------------------------------------------------------------------------------------------------------------
+
+export type SpokenUnit = { where: string; text: string; fact: boolean };
+const FILLER = new Set(["dein", "deine", "deinem", "deinen", "deiner", "sein", "seine", "seinem", "seinen", "seiner", "eine", "einen", "einem", "einer", "sind", "noch", "auch", "dann", "wenn", "aber", "nicht", "jetzt", "schon", "immer", "wieder", "alle", "alles", "sehr", "viel", "viele", "hier", "dort", "oder", "weil", "nach", "über", "unter", "ganz", "fast", "etwa", "genau", "richtig", "schau", "heute", "bald", "zuerst", "danach", "damit", "diese", "dieser", "dieses", "wird", "werden", "haben", "hast", "kann", "können", "macht", "machen"]);
+const fold = (w: string) => (w.length > 4 ? w.replace(/(en|n|e|s)$/u, "") : w);
+export function coreWords(sentence: string): string[] {
+  return [...new Set((sentence.toLowerCase().match(/\p{L}+/gu) ?? []).filter((w) => w.length >= 4 && !FILLER.has(w)).map(fold))];
+}
+const sentencesOf = (text: string) => text.split(/(?<=[.!?])\s+/u).map((x) => x.trim()).filter(Boolean);
+
+/** Every line a visit can say or show, with where it is and whether it is a fact line. */
+export function spokenUnits(m: Record<string, unknown>): SpokenUnit[] {
+  const out: SpokenUnit[] = [];
+  const steps = Array.isArray(m.steps) ? (m.steps as unknown[]).filter(isRecord) : [];
+  const line = (where: string, l: unknown) => {
+    if (isRecord(l) && str(l.text)) out.push({ where, text: String(l.text), fact: l.fact === true });
+  };
+  const text = (where: string, t: unknown, fact = false) => {
+    if (str(t)) out.push({ where, text: String(t), fact });
+  };
+  for (const st of steps) {
+    const id = String(st.id);
+    for (const [i, l] of (Array.isArray(st.intro) ? st.intro : []).entries()) line(`${id}/intro${i + 1}`, l);
+    for (const l of Array.isArray(st.done) ? st.done : []) line(`${id}/done`, l);
+    if (isRecord(st.doneBy)) for (const v of Object.values(st.doneBy)) for (const l of Array.isArray(v) ? v : []) line(`${id}/done`, l);
+    if (isRecord(st.text)) text(`${id}/text`, st.text.body, st.text.fact === true);
+    text(`${id}/given`, st.givenLine);
+    if (isRecord(st.ending)) {
+      text(`${id}/ending`, st.ending.success);
+      text(`${id}/ending`, st.ending.open);
+    }
+    if (isRecord(st.priorKnowledge)) for (const k of ["right", "wrong", "order"]) text(`${id}/${k}`, st.priorKnowledge[k]);
+    if (isRecord(st.letters)) {
+      text(`${id}/letters`, st.letters.spoken);
+      text(`${id}/letters`, st.letters.teach);
+    }
+    if (isRecord(st.decide)) for (const o of Array.isArray(st.decide.options) ? st.decide.options.filter(isRecord) : []) text(`${id}/${String(o.id)}`, o.feedback);
+    for (const q of Array.isArray(st.questions) ? st.questions.filter(isRecord) : []) {
+      text(`${id}/${String(q.id)}`, q.prompt);
+      text(`${id}/${String(q.id)}/retry`, q.retryHint);
+    }
+    for (const p of isRecord(st.solve) && Array.isArray(st.solve.parts) ? st.solve.parts.filter(isRecord) : []) {
+      for (const k of ["question", "recheck", "teach"]) text(`${id}/${String(p.id)}/${k}`, p[k]);
+      for (const h of Array.isArray(p.hints) ? p.hints.filter(isRecord) : []) text(`${id}/${String(p.id)}/${String(h.id)}`, h.text);
+    }
+  }
+  for (const w of Array.isArray(m.world) ? m.world.filter(isRecord) : []) text("world", w.label);
+  return out;
+}
+
+/** The restatements of fact lines: a fact sentence (2+ content words) whose content words reappear (¾ or more) elsewhere. */
+export function repeatedFacts(units: SpokenUnit[]): { fact: string; where: string; again: string; againWhere: string }[] {
+  const out: { fact: string; where: string; again: string; againWhere: string }[] = [];
+  for (const u of units.filter((x) => x.fact)) {
+    for (const f of sentencesOf(u.text)) {
+      const core = coreWords(f);
+      // A question inside a fact text («Was bekommt dein Küken?») states nothing.
+      if (core.length < 2 || f.endsWith("?")) continue;
+      for (const v of units) {
+        if (v.where === u.where) continue;
+        for (const s of sentencesOf(v.text)) {
+          const w = new Set(coreWords(s));
+          const shared = core.filter((x) => w.has(x)).length;
+          if (shared / core.length >= 0.75 && !out.some((o) => o.fact === f && o.again === s && o.againWhere === v.where)) out.push({ fact: f, where: u.where, again: s, againWhere: v.where });
+        }
+      }
+    }
+  }
+  return out;
 }
 
 /** Reconciles Isabel's content by its own rules (never Santiago's version inventory). */

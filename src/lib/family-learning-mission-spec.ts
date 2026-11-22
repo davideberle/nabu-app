@@ -32,15 +32,22 @@ export type MissionPlace = {
 export type MissionCharacter = { id: string; name: string; role: string; language: MissionLanguage; plate: string; /** A scene portrait file (public path) when the character has no island plate. */ portrait?: string; voice?: import("./family-voice-registry.ts").VoiceSlot };
 
 /** A line of a story beat or a character; `de` is the reviewed German translation (opening it is recorded as support). */
-export type MissionLine = { speaker: string | null; text: string; language: MissionLanguage; de?: string | null };
+export type MissionLine = { speaker: string | null; text: string; language: MissionLanguage; de?: string | null; /** Nov 22 (Isabel Visit 7): this line states a fact — said once per visit (content check). */ fact?: boolean };
 
 export type MissionQuestion = {
   id: string;
   prompt: string;
-  /** `pick` shows the reviewed options; `number` asks for a whole number. */
-  kind: "pick" | "number";
+  /**
+   * `pick` shows the reviewed options; `number` asks for a whole number. Nov 22 (Isabel Visit 7): `order` = she taps the pictured
+   * options one after the other (answer: the options in their right order, joined by «|»); `multi` = she taps every option that
+   * fits, then «Fertig» (answer: the right options in option order, joined by «|»); `spell` = she types a heard word (letters only,
+   * case ignored; after a miss the `tiles` appear, recorded help first).
+   */
+  kind: "pick" | "number" | "order" | "multi" | "spell";
   options?: string[];
   answer: string;
+  /** Nov 22 (`spell`): the letter tiles offered after a miss — the word's letters plus a few others, in display order. */
+  tiles?: string[];
   /** The fact this answer establishes for later steps (displayed in the child's notebook). */
   fact?: { key: string; label: string };
   /** Reviewed neutral hint after a first wrong answer. */
@@ -169,14 +176,14 @@ export type MissionPart = {
  * place-value mastery.
  */
 /** Isabel Visit 2: what one counter looks like (a garden thing); absent = the plain wooden block of Visit 1. */
-export const COUNTER_ICONS = ["block", "tulip", "strawberry", "pot", "seed", "apple", "carrot", "stick", "nail", "feather", "day", "caterpillar", "flight"] as const;
+export const COUNTER_ICONS = ["block", "tulip", "strawberry", "pot", "seed", "apple", "carrot", "stick", "nail", "feather", "day", "caterpillar", "flight", "coin"] as const;
 export type CounterIcon = (typeof COUNTER_ICONS)[number];
 /**
  * Exact visible quantities of one question. Visit 2 additions (never used by Visit 1): `icon`; `actor` (who takes away, for a
  * subtraction caption — Visit 1's caption keeps «Old Lila»); `frame` + `ask: "missing"` = a full frame of `frame` places with
  * `a` filled and `b` empty, asking for the missing part (`b`).
  */
-export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean; icon?: CounterIcon; actor?: string; frame?: number; ask?: "missing"; /** Step 1 (S1-15): full tens drawn as closed bundles (or bags of 10) marked «10» — not every piece. */ closed?: boolean; /** Nov 21 (Isabel Visit 6): `weeks` = days drawn as week strips of 7; `rows` = rows of ten (one row per hour). */ layout?: "weeks" | "rows" };
+export type MissionCounters = { a: number; b: number; op: "+" | "-"; unit: string; bundles?: boolean; icon?: CounterIcon; actor?: string; frame?: number; ask?: "missing"; /** Step 1 (S1-15): full tens drawn as closed bundles (or bags of 10) marked «10» — not every piece. */ closed?: boolean; /** Nov 21 (Isabel Visit 6): `weeks` = days drawn as week strips of 7; `rows` = rows of ten (one row per hour). Nov 22 (Visit 7): `strip` = one numbered day strip 1…`frame` (days 1…`a` marked). */ layout?: "weeks" | "rows" | "strip"; /** Nov 22 (Visit 7): the closed tens appear one by one, then the ones (taught while the number is said). */ appear?: boolean };
 
 /** Content v6: a reviewed problem with one question per part. */
 export type MissionSolve = {
@@ -283,6 +290,11 @@ export const WORKSHOP_PICTURES = [
   "eggs-five", "egg-dots", "egg-blue", "egg-white", "mama-on-eggs", "papa-on-eggs", "both-on-eggs", "chicks-hatch",
   "chick-naked", "chick-fluffy", "chick-redbreast", "food-caterpillars", "food-bread", "cake", "box",
   "water-flat-bush", "water-deep-bush", "water-flat-grass", "water-deep-grass", "next-eyes", "next-feathers", "next-fly",
+  // Nov 22 — Isabel Visit 7 «Wann kann Isa sehen?» (Nabu's art; `coin-five` is drawn in code like the counters)
+  "chicks-day4", "hatch-1-hole", "hatch-2-crack", "hatch-3-out", "eizahn", "ice-cream-cone", "tooth",
+  "animal-robin", "animal-turtle", "animal-dog", "animal-baby", "milk-bottle",
+  "chick-eyes-open-beak-open", "chick-eyes-open-beak-closed", "chick-eyes-closed-beak-open", "chick-eyes-closed-beak-closed",
+  "next-bath-chick", "coin-five",
 ] as const;
 export type WorkshopPicture = (typeof WORKSHOP_PICTURES)[number];
 
@@ -354,7 +366,7 @@ export type MissionStep = {
   /** Step 1 (S1-10): a real-world task for home — shown once at the end; the parent records it later (photo via Nabu). */
   home?: { text: string; parentNote: string };
   /** Read: the written text (shown, never read aloud). Listen: the audio script (played, never shown before the support is recorded). */
-  text?: { language: MissionLanguage; body: string; de?: string | null };
+  text?: { language: MissionLanguage; body: string; de?: string | null; /** Nov 22: a fact (said once per visit). */ fact?: boolean };
   questions?: MissionQuestion[];
   calc?: MissionCalc;
   choice?: { prompt: string; options: MissionChoiceOption[]; teach: string };
@@ -386,10 +398,20 @@ export type MissionStep = {
   recap?: boolean;
   /** Nov 21 (Isabel Visit 6): a short sentence to read (word-by-word support instead of letters). */
   sentence?: boolean;
-  /** Nov 21: a page of her growth book (her chick's name shows as text above the page). */
-  book?: { page: number };
-  /** Nov 21: the outcome shows this story name as text on the end picture (never in a spoken line). */
+  /** Nov 21: a page of her growth book (her chick's name shows as text above the page). Nov 22 (Visit 7): `previous` = the page
+   *  from last time, shown first; she turns the page to read this one. */
+  book?: { page: number; previous?: { page: number; text: string; picture: string } };
+  /** Nov 21: the outcome shows this story name as text on the end picture (never in a spoken line). Nov 22: also a story scene. */
   storyName?: "chickName";
+  /**
+   * Nov 22 (Isabel Visit 7, a listening step with an `order` question): «Ich weiss es» lets her order the pictures BEFORE the
+   * explanation (prior knowledge, recorded under `objective`), «Zeig es mir» plays the explanation first. After the explanation she
+   * orders them (after teaching, the step's own objective). `right` / `wrong` are said after her first ordering, `order` asks for
+   * the ordering. The explanation (the listening text) is said once, never repeated by these lines.
+   */
+  priorKnowledge?: { know: string; show: string; right: string; wrong: string; order: string; objective: string };
+  /** Nov 22 (a `spell` question): the word was said in the intro, so she may answer without tapping the ear first. */
+  listenOptional?: boolean;
   /** Supplies granted when the step ends (any outcome that lets the mission continue). */
   supplies?: Record<string, number>;
 };
@@ -404,6 +426,9 @@ export type MissionWorldChange = {
   label: string;
   /** Content v7: shown only when the child chose this option in the named decide step (the consequence of his own plan). */
   choice?: { step: string; option: string };
+  /** Nov 22 (Isabel Visit 7): the end picture of this choice when it differs from the option's own picture (`peek` = her chick
+   *  peeking out of the birdhouse in her roof colour). */
+  picture?: string;
 };
 
 export type MissionTypingBlock = {

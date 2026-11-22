@@ -192,7 +192,7 @@ export type MissionStepRun = {
   /** Listening: plays the device reported as failed (no completion event). */
   playFailures?: number;
   /** Per question: resolved and how. */
-  questions: Record<string, { status: "open" | "correct" | "given"; evidence: EvidenceCategory | null }>;
+  questions: Record<string, { status: "open" | "correct" | "given"; evidence: EvidenceCategory | null; /** Nov 22 (Visit 7): her ordering BEFORE the explanation («Ich weiss es»): right or not; absent = not tried. */ prior?: boolean }>;
   /** Calc/choice/produce phase shown to the child. */
   phase: "answer" | "clarified" | "represented" | "taught" | "repair" | "ask-meaning" | "exhausted" | "finished";
   /** Ambiguous repair: the candidate words the child may choose between. */
@@ -354,7 +354,7 @@ export type MissionAction =
   | { a: "choose"; step: string; option: string }
   | { a: "produce"; step: string; response: string; modality: "typed" | "word-bank" }
   | { a: "meaning"; step: string; word: string }
-  | { a: "support"; step: string; kind: "play" | "transcript" | "translation" | "word-bank" | "line-translation" | "letters"; line?: number }
+  | { a: "support"; step: string; kind: "play" | "transcript" | "translation" | "word-bank" | "line-translation" | "letters" | "prior-claim"; line?: number }
   /** Isabel's workshop: the wooden things she says she found at home (her own report, up to the step's count; never verified). */
   | { a: "craft-found"; step: string; items: string[] }
   /** Listening: what the device reported for the last requested play (`child-voice` / `browser` = playback completion event reported; `failed` = none). */
@@ -592,12 +592,14 @@ export function sanitizeStoryName(input: unknown): string | null {
  * Schildkröte». Display only: recorded lines never carry these tokens (the content validator refuses them), so nothing has to be
  * recorded for a name a child made up.
  */
-export function fillStoryTokens<T>(value: T, story: { turtleName?: { value: string } } | undefined): T {
+export function fillStoryTokens<T>(value: T, story: { turtleName?: { value: string }; chickName?: { value: string } } | undefined): T {
   if (value === null || value === undefined) return value;
   const json = JSON.stringify(value);
-  if (!json || !/\{[Tt]urtle\}/.test(json)) return value;
+  if (!json || !/\{([Tt]urtle|chick)\}/.test(json)) return value;
   const name = story?.turtleName?.value ?? null;
-  return JSON.parse(json.replaceAll("{turtle}", name ?? "die Schildkröte").replaceAll("{Turtle}", name ?? "Die Schildkröte")) as T;
+  // Nov 22 (Isabel Visit 7): the visit title names her chick («Wann kann {chick} sehen?») — shown text only, never a recorded line.
+  const chick = story?.chickName?.value ?? null;
+  return JSON.parse(json.replaceAll("{turtle}", name ?? "die Schildkröte").replaceAll("{Turtle}", name ?? "Die Schildkröte").replaceAll("{chick}", chick ?? "dein Küken")) as T;
 }
 
 function supportKinds(r: MissionStepRun) {
@@ -1059,6 +1061,54 @@ function boundedInt(value: unknown, max: number): number {
   return typeof value === "number" && Number.isFinite(value) ? Math.max(0, Math.min(max, Math.round(value))) : 0;
 }
 
+/**
+ * Nov 22 (Isabel Visit 7): what she answered, in the form the answer is written in — refused when it is not an answer at all.
+ * `order`: every option once, in her order; `multi`: the options she tapped, put in option order; `spell`: letters only, upper case.
+ */
+export function checkedAnswer(q: MissionQuestion, raw: string): string {
+  const opts = q.options ?? [];
+  if (q.kind === "pick") {
+    if (!opts.includes(raw)) throw new MissionOpError("invalid", "unknown option");
+    return normalizeAnswer(raw);
+  }
+  if (q.kind === "order") {
+    const seq = raw.split("|");
+    if (seq.length !== opts.length || new Set(seq).size !== seq.length || seq.some((x) => !opts.includes(x))) throw new MissionOpError("invalid", "an ordering names every picture once");
+    return seq.join("|");
+  }
+  if (q.kind === "multi") {
+    const picked = raw.split("|").filter(Boolean);
+    if (!picked.length || new Set(picked).size !== picked.length || picked.some((x) => !opts.includes(x))) throw new MissionOpError("invalid", "tap at least one picture");
+    return opts.filter((o) => picked.includes(o)).join("|");
+  }
+  if (q.kind === "spell") {
+    const word = raw.normalize("NFC").trim();
+    if (!/^\p{L}{1,12}$/u.test(word)) throw new MissionOpError("invalid", "letters only");
+    return word.toUpperCase();
+  }
+  return normalizeAnswer(raw);
+}
+/** The reviewed answer in the same form as `checkedAnswer`. */
+export function canonicalAnswer(q: MissionQuestion): string {
+  if (q.kind === "order" || q.kind === "multi") return q.answer;
+  if (q.kind === "spell") return q.answer.normalize("NFC").toUpperCase();
+  return normalizeAnswer(q.answer);
+}
+
+/**
+ * Ends a reading/listening step once every question is resolved. Nov 22: a step with «Ich weiss es» whose question she answered
+ * right BEFORE the explanation ends only after the explanation was heard (a completed play, or an adult read it — recorded help).
+ */
+function finishQuestionStep(state: MissionState, run: MissionRun, def: MissionDef, step: MissionStep, r: MissionStepRun, env: MissionEnv) {
+  if (r.status !== "active") return;
+  const all = (step.questions ?? []).every((x) => r.questions[x.id] && r.questions[x.id].status !== "open");
+  if (!all) return;
+  if (step.priorKnowledge && (r.completedPlays ?? 0) < 1 && !r.support.some((x) => x.kind === "transcript")) return;
+  const evs = (step.questions ?? []).map((x) => r.questions[x.id].evidence);
+  const outcome: EvidenceCategory = evs.every((e) => e === "independent") ? "independent" : evs.some((e) => e === "answer_exposed") ? "answer_exposed" : "supported";
+  finishStep(state, run, def, step, r, evs.some((e) => e === "answer_exposed") ? "taught" : "done", outcome, env);
+}
+
 export function applyMissionAction(state: MissionState, action: MissionAction, env: MissionEnv): Out {
   const def = missionDefFor(env.content, env.visit);
   if (!def) throw new MissionOpError("not-available", "this visit has no mission");
@@ -1125,6 +1175,18 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         result = { plays: r.plays, script: step.text?.body ?? null, language: step.text?.language ?? null };
         break;
       }
+      if (action.kind === "prior-claim") {
+        // Nov 22 (Isabel Visit 7): «Ich weiss es» — she orders the pictures before the explanation. Recorded as her own claim
+        // (never help); only before the explanation was played and before any ordering.
+        if (step.kind !== "listen" || !step.priorKnowledge) throw new MissionOpError("invalid", "no «Ich weiss es» on this step");
+        if (r.plays > 0 || r.attempts.length) throw new MissionOpError("not-allowed", "the explanation was already played or she has ordered");
+        if (!r.support.some((x) => x.kind === "prior-claim")) {
+          r.support.push({ kind: "prior-claim", at: env.nowIso, detail: "" });
+          support(records, env, def, step, "prior-claim", {});
+        }
+        result = { support: "prior-claim" };
+        break;
+      }
       if (action.kind === "transcript") {
         if (step.kind !== "listen") throw new MissionOpError("invalid", "only listening steps have a transcript");
         if (r.plays < 1) throw new MissionOpError("not-allowed", "listen first; the text is a help after listening");
@@ -1154,6 +1216,8 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       const kind = action.kind === "line-translation" ? "line-translation" : action.kind;
       if (!r.support.some((s) => s.kind === kind && s.detail === String(action.line ?? ""))) r.support.push({ kind, at: env.nowIso, detail: String(action.line ?? "") });
       support(records, env, def, step, kind, { line: action.line ?? null });
+      // Nov 22: an explanation she already ordered right before («Ich weiss es») ends once an adult read it (the sound failed).
+      if (kind === "transcript") finishQuestionStep(state, run, def, step, r, env);
       result = { support: kind };
       break;
     }
@@ -1171,26 +1235,43 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
       else r.completedPlays = (r.completedPlays ?? 0) + 1;
       // Device-reported (the server cannot hear): recorded for the parent, never as answer help.
       support(records, env, def, step, "listen-outcome", { outcome: action.outcome, play: reported + 1, reportedBy: "device" });
+      // Nov 22: «Ich weiss es» and right — the step ends once the explanation has played.
+      if (action.outcome !== "failed") finishQuestionStep(state, run, def, step, r, env);
       result = { completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0 };
       break;
     }
     case "answer-question": {
       const { step, r } = requireActive(run, def, action.step);
       if (step.kind !== "read" && step.kind !== "listen" && step.kind !== "match") throw new MissionOpError("invalid", "not a question step");
-      // A listening answer needs a play with a reported completion event — or the text, which is recorded help. A failed playback
-      // never unlocks answering on its own and never counts as listening.
-      if (step.kind === "listen" && (r.completedPlays ?? 0) < 1 && !r.support.some((s) => s.kind === "transcript")) throw new MissionOpError("not-allowed", "listen to the recording first (or open the text, which counts as help)");
       const q: MissionQuestion | undefined = step.questions?.find((x) => x.id === action.question);
       if (!q) throw new MissionOpError("invalid", "unknown question");
       const qs = (r.questions[q.id] = r.questions[q.id] ?? { status: "open", evidence: null });
       if (qs.status !== "open") throw new MissionOpError("not-allowed", "this question is answered");
+      // Nov 22 (Isabel Visit 7): «Ich weiss es» — one ordering BEFORE the explanation, recorded apart as prior knowledge.
+      const prior = !!step.priorKnowledge && r.plays === 0 && qs.prior === undefined && r.support.some((x) => x.kind === "prior-claim");
+      // A listening answer needs a play with a reported completion event — or the text, which is recorded help. A failed playback
+      // never unlocks answering on its own and never counts as listening. (Nov 22: a word said in the intro, `listenOptional`.)
+      if (step.kind === "listen" && !prior && !step.listenOptional && (r.completedPlays ?? 0) < 1 && !r.support.some((s) => s.kind === "transcript")) throw new MissionOpError("not-allowed", "listen to the recording first (or open the text, which counts as help)");
       const raw = String(action.value ?? "").slice(0, 40);
-      if (q.kind === "pick" && !(q.options ?? []).includes(raw)) throw new MissionOpError("invalid", "unknown option");
+      const given = checkedAnswer(q, raw);
       const tries = r.attempts.filter((a) => a.questionId === q.id);
-      const correct = normalizeAnswer(raw) === normalizeAnswer(q.answer);
-      const helped = r.support.some((s) => ["transcript", "translation", "letters"].includes(s.kind)) || (step.kind === "listen" && (r.completedPlays ?? 0) < 1);
+      const correct = given === canonicalAnswer(q);
+      if (prior) {
+        qs.prior = correct;
+        const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: `${q.id}:prior`, raw, correct, evidence: correct ? "independent" : "incorrect", support: ["prior-knowledge"], modality: "pick", kind: "answer" };
+        r.attempts.push(attempt);
+        attemptRow(records, env, def, step, attempt, step.text?.language ?? "de", step.priorKnowledge!.objective);
+        // Right before the explanation: the question is answered (prior knowledge); the explanation still plays, then the step ends.
+        if (correct) {
+          qs.status = "correct";
+          qs.evidence = "independent";
+        }
+        result = { correct, question: q.id, status: qs.status, prior: true };
+        break;
+      }
+      const helped = r.support.some((s) => ["transcript", "translation", "letters"].includes(s.kind)) || (step.kind === "listen" && !step.listenOptional && (r.completedPlays ?? 0) < 1);
       const evidence: EvidenceCategory = !correct ? "incorrect" : tries.length === 0 && !helped ? "independent" : "supported";
-      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: q.id, raw, correct, evidence, support: [...supportKindsForQuestion(r, q.id), ...(tries.length ? ["retry"] : [])], modality: q.kind === "pick" ? "pick" : "typed", kind: "answer" };
+      const attempt: MissionAttempt = { no: r.attempts.length + 1, at: env.nowIso, questionId: q.id, raw, correct, evidence, support: [...supportKindsForQuestion(r, q.id), ...(tries.length ? ["retry"] : []), ...(tries.length && q.kind === "order" ? ["first-shown"] : [])], modality: q.kind === "number" || q.kind === "spell" ? "typed" : "pick", kind: "answer" };
       r.attempts.push(attempt);
       attemptRow(records, env, def, step, attempt, step.text?.language ?? "de");
       if (correct) {
@@ -1205,13 +1286,15 @@ export function applyMissionAction(state: MissionState, action: MissionAction, e
         support(records, env, def, step, "answer-shown", { question: q.id });
         records.exposures.push({ taskId: taskId(def, step, q.id), taskVersion: step.version, kind: "answer_revealed", source: "mission-question-exhausted", at: env.nowIso });
         if (q.fact) run.facts[q.fact.key] = { value: q.answer, label: q.fact.label, source: "given", at: env.nowIso };
+      } else if (q.kind === "spell" && q.tiles && !r.support.some((x) => x.kind === "letters")) {
+        // Nov 22 (writing AUGE): after a miss the letter tiles appear — recorded help BEFORE they are shown.
+        r.support.push({ kind: "letters", at: env.nowIso, detail: "tiles" });
+        support(records, env, def, step, "letters", { word: q.answer, tiles: q.tiles, afterAttempts: tries.length + 1 });
+      } else if (q.kind === "order") {
+        // Nov 22 (ordering): after a miss Ida shows the first picture; she orders the rest (recorded help).
+        support(records, env, def, step, "first-shown", { question: q.id, first: q.answer.split("|")[0] });
       }
-      const all = (step.questions ?? []).every((x) => r.questions[x.id] && r.questions[x.id].status !== "open");
-      if (all) {
-        const evs = (step.questions ?? []).map((x) => r.questions[x.id].evidence);
-        const outcome: EvidenceCategory = evs.every((e) => e === "independent") ? "independent" : evs.some((e) => e === "answer_exposed") ? "answer_exposed" : "supported";
-        finishStep(state, run, def, step, r, evs.some((e) => e === "answer_exposed") ? "taught" : "done", outcome, env);
-      }
+      finishQuestionStep(state, run, def, step, r, env);
       result = { correct, question: q.id, status: qs.status };
       break;
     }
@@ -2089,8 +2172,8 @@ export type MissionActiveView = {
   done: { speaker: string | null; text: string; language: string; translated: string | null }[];
   /** Reading tasks: the text to read (never audio). Listening: the text ONLY after the transcript support was recorded. */
   readText: string | null;
-  listen: { language: string; plays: number; completedPlays: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean; noPictures?: boolean } | null;
-  questions: { id: string; prompt: string; kind: "pick" | "number"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null; picture?: string | null; pictures?: Record<string, string> | null; /** Nov 21: the right option once the question is resolved (her answer or the shown one) — never before. */ resolved?: string | null }[];
+  listen: { language: string; plays: number; completedPlays: number; failures: number; script: string | null; transcriptShown: boolean; translation: string | null; translationShown: boolean; noPictures?: boolean; /** Nov 22 (Visit 7): «Ich weiss es» / «Zeig es mir» and its reviewed lines; `claimed` = she chose «Ich weiss es». */ priorKnowledge?: { know: string; show: string; right: string; wrong: string; order: string; claimed: boolean }; /** Nov 22: the word was said in the intro; answering needs no play. */ optional?: boolean } | null;
+  questions: { id: string; prompt: string; kind: "pick" | "number" | "order" | "multi" | "spell"; options: string[] | null; status: "open" | "correct" | "given"; tries: number; hint: string | null; shownAnswer: string | null; lastWrong: string | null; picture?: string | null; pictures?: Record<string, string> | null; /** Nov 21: the right option once the question is resolved (her answer or the shown one) — never before. */ resolved?: string | null; /** Nov 22 (`order`): the right order once taught or resolved; the first picture Ida shows after a miss. */ order?: string[] | null; firstShown?: string | null; /** Nov 22 (`spell`): the letter tiles, only after the recorded help. */ tiles?: string[] | null; /** Nov 22: her ordering before the explanation (right / not right / not tried). */ prior?: boolean | null }[];
   calc: { prompt: string; fields: { key: string; label: string; correct: boolean | null; last: number | null }[]; clarification: string | null; representation: { text: string; total: number; perGroup: number; unit: string } | null; teach: string | null; tries: number } | null;
   choice: { prompt: string; options: { id: string; label: string }[]; picked: { id: string; feedback: string; best: boolean }[]; teach: string | null } | null;
   produce: { language: string; frame: string; instruction: string; wordBank: string[] | null; bankLocked: boolean; feedback: string | null; repairLine: string | null; askMeaning: { given: string; options: { word: string; meaningDe: string }[] } | null; shownSentence: string | null; tries: number; maxTries: number; lastResponse: string | null; practiceFeedback?: string | null; practiceLeft?: number } | null;
@@ -2125,8 +2208,8 @@ export type MissionActiveView = {
   warmup?: boolean;
   /** Nov 21 (Isabel Visit 6): the reading text is a short sentence (word-by-word support). */
   sentence?: boolean;
-  /** Nov 21: a page of her growth book. */
-  book?: { page: number } | null;
+  /** Nov 21: a page of her growth book (Nov 22: with the page from last time). */
+  book?: { page: number; previous?: { page: number; text: string; picture: string } } | null;
   /** Nov 21: her chick's name, shown as TEXT only (end picture, growth book) — never in a spoken line. */
   storyName?: string | null;
 };
@@ -2260,7 +2343,12 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     const qs = r.questions[q.id];
     const tries = r.attempts.filter((a) => a.questionId === q.id);
     const last = tries[tries.length - 1];
-    return { id: q.id, prompt: q.prompt, kind: q.kind, options: q.options ?? null, status: qs?.status ?? "open", tries: tries.length, hint: qs?.status === "open" && last && last.correct === false ? q.retryHint : null, shownAnswer: qs?.status === "given" ? q.answer : null, lastWrong: last && last.correct === false ? last.raw : null, ...(q.picture || q.pictures ? { picture: q.picture ?? null, pictures: q.pictures ?? null } : {}), ...(step.book && qs && qs.status !== "open" ? { resolved: q.answer } : {}) };
+    return { id: q.id, prompt: q.prompt, kind: q.kind, options: q.options ?? null, status: qs?.status ?? "open", tries: tries.length, hint: qs?.status === "open" && last && last.correct === false ? q.retryHint : null, shownAnswer: qs?.status === "given" ? q.answer : null, lastWrong: last && last.correct === false ? last.raw : null, ...(q.picture || q.pictures ? { picture: q.picture ?? null, pictures: q.pictures ?? null } : {}), ...((step.book || q.kind === "multi") && qs && qs.status !== "open" ? { resolved: q.answer } : {}),
+      // Nov 22 (Isabel Visit 7): the new answer kinds. The right order only once it was taught (the explanation played) or the
+      // question is resolved; the first picture after a miss; the letter tiles only after the recorded help; her ordering before.
+      ...(q.kind === "order" ? { order: r.plays > 0 || (qs && qs.status !== "open") ? q.answer.split("|") : null, firstShown: qs?.status === "open" && tries.length > 0 ? q.answer.split("|")[0] : null } : {}),
+      ...(q.kind === "spell" ? { tiles: has("letters") && q.tiles ? q.tiles : null } : {}),
+      ...(step.priorKnowledge ? { prior: qs?.prior ?? null } : {}) };
   });
   const answers = r.attempts.filter((a) => a.kind === "answer");
   const lastAnswer = answers[answers.length - 1];
@@ -2292,7 +2380,7 @@ function activeView(def: MissionDef, run: MissionRun, step: MissionStep, r: Miss
     produce = { language: p.language, frame: p.frame, instruction: p.instruction, wordBank: has("word-bank") ? p.wordBank : null, bankLocked: !!p.bankAfterAttempt && !answers.length, feedback, repairLine: r.repairLine ?? null, askMeaning: r.phase === "ask-meaning" ? r.pendingMeaning ?? null : null, shownSentence: has("answer-shown") ? p.accepted[0] : null, tries: answers.filter((x) => x.correct !== true).length, maxTries: def.rules.maxProduceAttempts, lastResponse: lastAnswer?.raw ?? null, practiceFeedback: r.status === "active" && lastPractice && lastPractice.correct !== true ? (practiceFails >= (def.rules.maxPracticeAttempts ?? 2) ? "Der Satz stimmt noch nicht ganz. Heb ihn fürs nächste Mal auf, dann üben wir ihn wieder." : "Noch nicht ganz gleich. Schau den Satz oben genau an und schreib ihn noch einmal.") : null, practiceLeft: Math.max(0, (def.rules.maxPracticeAttempts ?? 2) - practiceFails) };
   }
   const listen = step.kind === "listen" && step.text
-    ? { language: step.text.language, plays: r.plays, completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation"), ...(def.presentation === "map" ? { noPictures: true } : {}) }
+    ? { language: step.text.language, plays: r.plays, completedPlays: r.completedPlays ?? 0, failures: r.playFailures ?? 0, script: has("transcript") ? step.text.body : null, transcriptShown: has("transcript"), translation: has("translation") ? step.text.de ?? null : null, translationShown: has("translation"), ...(def.presentation === "map" ? { noPictures: true } : {}), ...(step.priorKnowledge ? { priorKnowledge: { know: step.priorKnowledge.know, show: step.priorKnowledge.show, right: step.priorKnowledge.right, wrong: step.priorKnowledge.wrong, order: step.priorKnowledge.order, claimed: has("prior-claim") } } : {}), ...(step.listenOptional ? { optional: true } : {}) }
     : null;
   return {
     id: step.id,
@@ -2505,8 +2593,10 @@ export function chosenOption(def: MissionDef, run: MissionRun, decideStep: strin
   const picked = [...r.attempts].reverse().find((a) => a.choice && step.decide!.options.some((o) => o.id === a.choice && o.viable));
   const o = picked ? step.decide.options.find((x) => x.id === picked.choice)! : null;
   // The room caption comes from the reviewed world change of that choice («Im Zimmer: ein Stuhl»), else the option label.
-  const room = o ? def.world.find((w) => w.choice?.step === decideStep && w.choice.option === o.id)?.label ?? o.label : null;
-  return o ? { id: o.id, label: o.label, picture: o.picture ?? null, room: room! } : null;
+  const w = o ? def.world.find((x) => x.choice?.step === decideStep && x.choice.option === o.id) : undefined;
+  const room = o ? w?.label ?? o.label : null;
+  // Nov 22 (Isabel Visit 7): the world change may name its own end picture (her chick peeking out), else the option's picture.
+  return o ? { id: o.id, label: o.label, picture: w?.picture ?? o.picture ?? null, room: room! } : null;
 }
 
 /**
@@ -2516,6 +2606,11 @@ export function chosenOption(def: MissionDef, run: MissionRun, decideStep: strin
  */
 export const BIRD_FOODS = ["seeds", "berries", "worms"] as const;
 export function storyPicture(picture: string | null, story: { roofColor?: { optionId?: string }; birdFood?: { optionId?: string } } | null | undefined): string | null {
+  // Nov 22 (Isabel Visit 7): her chick peeks out of the birdhouse with open eyes — in HER roof colour (`peek-<roof>`, fallback red).
+  if (picture === "peek") {
+    const roof = story?.roofColor?.optionId;
+    return `peek-${roof === "blue" || roof === "yellow" ? roof : "red"}`;
+  }
   // Nov 21 (Isabel Visit 6): her chicks in the birdhouse — in HER roof colour (Visit 4) with HER bowl food (Visit 5) on the board:
   // `chicks-<roof>-<food>`, read from her stored choices, never fixed. Without a stored choice, the map's fallbacks (red, seeds).
   if (picture === "food-caterpillars") {
@@ -2548,7 +2643,7 @@ function workshopActive(def: MissionDef, run: MissionRun, step: MissionStep, r: 
   if (step.kind === "outcome" && step.recap) out.recap = def.narration ? narratedWorkshopRecap(def, run) : workshopRecap(def, run);
   if (step.sentence) out.sentence = true;
   if (step.book) out.book = step.book;
-  // Nov 21: her chick's name as text (growth book page, end picture) — the stored story choice, never a recorded line.
+  // Nov 21: her chick's name as text (growth book page, end picture; Nov 22: a story scene) — the stored story choice, never a recorded line.
   if (step.storyName || step.book) out.storyName = story?.chickName?.value ?? null;
   return out;
 }
@@ -2749,7 +2844,7 @@ export function missionReport(state: MissionState, content: LearningContent, vis
     if (!r) continue;
     for (const a of r.attempts) {
       const outcome = a.correct === null ? (a.analysis?.kind === "ambiguous" ? "ambiguous" : "unscored") : a.correct ? "correct" : a.analysis?.kind === "spelling" ? "meaning-understood-spelling-wrong" : "incorrect";
-      objectives.push({ taskId: taskId(def, step, a.questionId), version: step.version, objective: a.kind === "practice" ? `${step.objective}-practice` : a.kind === "hint-check" ? `${step.objective}-hint-check` : step.objective, outcome, evidence: a.evidence, support: a.support, uncertainty: a.recall ? `recall: ${a.recall}` : a.analysis?.kind === "spelling" ? `verstanden als „${a.analysis.understood}“` : step.solve?.application && a.kind === "answer" ? "frische Anwendung am selben Tag — kein Nachweis für längerfristiges Behalten" : null });
+      objectives.push({ taskId: taskId(def, step, a.questionId), version: step.version, objective: a.kind === "practice" ? `${step.objective}-practice` : a.kind === "hint-check" ? `${step.objective}-hint-check` : step.priorKnowledge && a.support.includes("prior-knowledge") ? step.priorKnowledge.objective : step.objective, outcome, evidence: a.evidence, support: a.support, uncertainty: step.priorKnowledge && a.support.includes("prior-knowledge") ? "vor der Erklärung geordnet (Vorwissen, getrennt vom Ordnen nach der Erklärung)" : a.recall ? `recall: ${a.recall}` : a.analysis?.kind === "spelling" ? `verstanden als „${a.analysis.understood}“` : step.solve?.application && a.kind === "answer" ? "frische Anwendung am selben Tag — kein Nachweis für längerfristiges Behalten" : null });
     }
     const raws = r.attempts.map((a) => `${a.questionId ? `${a.questionId}: ` : ""}„${a.raw}“${a.correct === true ? " ✓" : a.correct === false ? " ✗" : " ?"}${a.analysis?.kind === "spelling" ? ` (verstanden: ${a.analysis.corrections.map((c) => `${c.given}→${c.meant}`).join(", ")})` : ""}${a.kind === "practice" ? " [nach gezeigter Antwort]" : a.kind === "hint-check" ? " [Frage im Hinweis]" : ""}${a.hintsBefore?.length && a.kind === "answer" ? ` [nach ${a.hintsBefore.join(", ")}]` : ""}`);
     whatHappened.push(`${step.id} ${step.title}: ${STATUS_DE[st[step.id]] ?? st[step.id]}${r.outcome ? ` (${r.outcome})` : ""}${raws.length ? ` — Versuche: ${raws.join("; ")}` : ""}${r.support.length ? ` — Hilfe: ${supportKinds(r).join(", ")}` : ""}${step.kind === "listen" ? ` — abgespielt: ${r.plays}×, davon mit gemeldetem Abspiel-Ende ${r.completedPlays ?? 0}×, ohne Abspiel-Ende ${r.playFailures ?? 0}× (Gerätemeldung, kein Nachweis, dass es zu hören war)` : ""}.`);
@@ -2946,6 +3041,10 @@ const SUPPORT_DE: Record<string, string> = {
   "spacing-correction": "eine Abstand-Korrektur gezeigt",
   clarification: "Erklärung",
   "tutor-content": "Hilfe im Gespräch mit Nokt",
+  // Nov 22 (Isabel Visit 7)
+  "prior-claim": "«Ich weiss es» gewählt: zuerst selbst geordnet, dann die Erklärung (Vorwissen, keine Hilfe)",
+  "prior-knowledge": "vor der Erklärung (Vorwissen)",
+  "first-shown": "das erste Bild wurde gezeigt",
 };
 
 /** Readable form of help carried over from an earlier question of the same problem. */

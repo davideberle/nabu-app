@@ -53,6 +53,7 @@ import isabelWorkshopV3 from "@/data/family-learning/content/isabel-workshop-v3.
 import isabelWorkshopV4 from "@/data/family-learning/content/isabel-workshop-v4.json";
 import isabelWorkshopV5 from "@/data/family-learning/content/isabel-workshop-v5.json";
 import isabelWorkshopV6 from "@/data/family-learning/content/isabel-workshop-v6.json";
+import isabelWorkshopV7 from "@/data/family-learning/content/isabel-workshop-v7.json";
 import { asIsabelContent } from "./family-learning-isabel";
 import type { ChildId } from "./family-assistant-turn";
 import { asLearningContent, type LearningContent } from "./family-learning-content";
@@ -136,10 +137,12 @@ export function isabelContentServed(): boolean {
 // Her content version 5 (Nov 18, «Die Vögel ziehen ein»): version 4 unchanged + visit `v6`. Rollback: FAMILY_LEARNING_ISABEL_CONTENT_CAP=4.
 // Her content version 6 (Nov 21, «Das Küken schlüpft»): version 5 unchanged + visit `v7`. Rollback: FAMILY_LEARNING_ISABEL_CONTENT_CAP=5
 // (a started v7 is parked untouched, every record readable; removing the cap resumes it).
-/** Isabel's served content version (6; 5, 4, 3, 2 or 1 under FAMILY_LEARNING_ISABEL_CONTENT_CAP). */
-export function servedIsabelContentVersion(): 1 | 2 | 3 | 4 | 5 | 6 {
+// Her content version 7 (Nov 22, «Wann kann Isa sehen?»): version 6 unchanged + visit `v8`. Rollback: FAMILY_LEARNING_ISABEL_CONTENT_CAP=6
+// (a started v8 is parked untouched, every record readable; removing the cap resumes it).
+/** Isabel's served content version (7; 6, 5, 4, 3, 2 or 1 under FAMILY_LEARNING_ISABEL_CONTENT_CAP). */
+export function servedIsabelContentVersion(): 1 | 2 | 3 | 4 | 5 | 6 | 7 {
   const cap = process.env.FAMILY_LEARNING_ISABEL_CONTENT_CAP;
-  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : cap === "4" ? 4 : cap === "5" ? 5 : 6;
+  return cap === "1" ? 1 : cap === "2" ? 2 : cap === "3" ? 3 : cap === "4" ? 4 : cap === "5" ? 5 : cap === "6" ? 6 : 7;
 }
 
 export function loadIsabelContent(): LearningContent {
@@ -147,7 +150,7 @@ export function loadIsabelContent(): LearningContent {
   if (isabelFailure) throw isabelFailure;
   try {
     const v = servedIsabelContentVersion();
-    cachedIsabel = asIsabelContent(v === 1 ? isabelWorkshopV1 : v === 2 ? isabelWorkshopV2 : v === 3 ? isabelWorkshopV3 : v === 4 ? isabelWorkshopV4 : v === 5 ? isabelWorkshopV5 : isabelWorkshopV6);
+    cachedIsabel = asIsabelContent(v === 1 ? isabelWorkshopV1 : v === 2 ? isabelWorkshopV2 : v === 3 ? isabelWorkshopV3 : v === 4 ? isabelWorkshopV4 : v === 5 ? isabelWorkshopV5 : v === 6 ? isabelWorkshopV6 : isabelWorkshopV7);
     return cachedIsabel;
   } catch (error) {
     isabelFailure = error instanceof Error ? error : new Error(String(error));
