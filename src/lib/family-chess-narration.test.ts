@@ -34,8 +34,8 @@ describe("chess coach narration lines", () => {
 
   it("adds each chess line once, in the de-female slot, tagged chess, name-free and recordable", () => {
     const chess = chessNarrationCatalog(LINES);
-    equal(chess.length, 30);
-    equal(new Set(chess.map(catalogKey)).size, 30, "no two chess keys share a recording");
+    equal(chess.length, 34); // 30 (Nov 18) + 4 (Nov 22: three resignations, «auf den Tipp gehört»)
+    equal(new Set(chess.map(catalogKey)).size, 34, "no two chess keys share a recording");
     for (const l of chess) {
       equal(l.slot, "de-female");
       ok(l.where?.[0] === "chess" && l.where[1].startsWith("chess:"));
@@ -46,8 +46,8 @@ describe("chess coach narration lines", () => {
       ok(!/ß/.test(l.text), "Swiss spelling");
     }
     const chars = catalogCharacters(chess);
-    equal(chars, 1394);
-    ok(chars < 1500);
+    equal(chars, 1531); // 1,394 (Nov 18) + 137 for the four Nov 22 lines
+    ok(chars < 1700);
   });
 
   it("refuses a chess line that duplicates a learning line in the same slot", () => {

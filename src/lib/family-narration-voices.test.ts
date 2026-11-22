@@ -79,7 +79,7 @@ describe("Ida's voice per visit (Nov 18)", () => {
 
   it("chess lines and lines only Visits 1–4 speak keep Ava after the switch", () => {
     const chess = deFemale.filter((l) => l.where?.[0] === "chess");
-    equal(chess.length, 30);
+    equal(chess.length, 34); // 30 (Nov 18) + 4 (Nov 22: three resignations, «auf den Tipp gehört»)
     for (const l of chess) equal(resolveLineVoice(l, ENV_SWITCHED)!.voiceId, AVA);
     const onlyOld = deFemale.filter((l) => l.child === "isabel" && !v6.has(catalogKey(l)));
     ok(onlyOld.length > 200);

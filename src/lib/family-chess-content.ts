@@ -61,3 +61,16 @@ export function appOrigin(headers: Headers, env: Record<string, string | undefin
   const proto = headers.get("x-forwarded-proto") ?? (/^(127\.0\.0\.1|localhost|\[::1\])(:|$)/.test(host) ? "http" : "https");
   return `${proto}://${host}`;
 }
+
+/**
+ * Nov 22, 2026: the inline config that lets the coach report its games (`window.__CHESS_RECORDS__`): the child-scoped record
+ * route, the bearer-renewal route, and a freshly minted `family-games` bearer for the lease's child. JSON made safe for an
+ * HTML script block. The game sends nothing when this is absent.
+ */
+export function chessRecordsScript(bearer: { token: string; expiresAt: number }): string {
+  const json = JSON.stringify({ endpoint: "/api/family/play/chess-games", sessionPath: "/api/family/games/session", token: bearer.token, expiresAt: bearer.expiresAt }).replace(
+    /[<\u2028\u2029]/g,
+    (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`,
+  );
+  return `<script data-chess-records>window.__CHESS_RECORDS__=Object.freeze(${json});</script>`;
+}

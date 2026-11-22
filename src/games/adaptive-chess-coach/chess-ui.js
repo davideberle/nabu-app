@@ -15,6 +15,11 @@
 // HTMLAudio (slowed, pitch preserved), one clip at a time. No map → silent
 // text. A missing clip → silence. Never the device's speech synthesis.
 //
+// Nov 22, 2026: beginner opponents resign when she is far ahead; an unfinished
+// game is judged by material once; every game is reported to the Companion App
+// (window.__CHESS_RECORDS__) through a small outbox; the stored profile is sent
+// once as an import. See chess-coach.js for the rules.
+//
 // The child plays White at the bottom. A small window.__chess hook is exposed
 // for automated verification (drive taps, read state, load positions); it does
 // nothing on its own.
@@ -154,6 +159,29 @@
 
   // The play guard freezes the page by dispatching `blur` and thaws with
   // `focus`: a clip never keeps talking over a frozen game.
+  function guardDead() {
+    try {
+      const g = window.__familyPlayGuard;
+      return !!(g && typeof g.isDead === "function" && g.isDead());
+    } catch {
+      return false;
+    }
+  }
+
+  // Nov 22, 2026: the play time ran out (the guard froze the page for good) →
+  // the game on the board is judged as unfinished, «time-out».
+  window.addEventListener("blur", () => {
+    if (guardDead() && gameLive) finishUnfinished("time-out", false);
+  });
+  // The page goes away (back to Games, reload, tab closed): best effort, keepalive.
+  window.addEventListener("pagehide", () => {
+    if (gameLive) finishUnfinished("page-left", true);
+  });
+  // Back from the browser's page cache: the same game simply goes on.
+  window.addEventListener("pageshow", (e) => {
+    if (e && e.persisted && session && !session._final && session.movesPlayed > 0) gameLive = true;
+  });
+
   window.addEventListener("blur", () => {
     if (guardFrozen()) {
       const keys = audioEl ? lastSpoken.slice() : null;
@@ -193,6 +221,185 @@
   })();
   const GAME_KEY = Coach.STORAGE_PREFIX + childId + ":game";
 
+  // ---- Server game records (Nov 22, 2026) --------------------------------
+  // When the Companion App injects `window.__CHESS_RECORDS__` ({ endpoint,
+  // sessionPath, token, expiresAt }), every game is reported to its child-scoped
+  // route with the `family-games` bearer: when it ends, when a new game replaces
+  // it, when the time runs out and (keepalive) when the page goes away. Each
+  // report waits in a small localStorage outbox until the server answered, so a
+  // lost report is sent the next time the coach opens. On the first open, the
+  // existing profile is sent once as `imported-from-browser` (read only — the
+  // profile itself is never rewritten for this). Without the config (standalone
+  // page, tests) nothing is sent. A failure never blocks play.
+  const RECORDS = (() => {
+    if (childId === "guest") return null;
+    try {
+      const r = window.__CHESS_RECORDS__;
+      if (r && typeof r === "object" && typeof r.endpoint === "string" && r.endpoint.startsWith("/") && typeof r.sessionPath === "string" && r.sessionPath.startsWith("/")) return r;
+    } catch {
+      /* ignore */
+    }
+    return null;
+  })();
+  const OUTBOX_KEY = Coach.STORAGE_PREFIX + childId + ":outbox";
+  const IMPORT_KEY = Coach.STORAGE_PREFIX + childId + ":imported";
+  const OUTBOX_LIMIT = 30;
+  let recToken = RECORDS && typeof RECORDS.token === "string" ? { token: RECORDS.token, expiresAt: Number(RECORDS.expiresAt) || 0 } : null;
+  let flushing = false;
+  const sentLog = []; // { id, seq, status } (verification aid)
+
+  function tokenFreshFor(ms) {
+    return !!(recToken && recToken.expiresAt - Date.now() > ms);
+  }
+
+  async function ensureToken() {
+    if (!RECORDS) return null;
+    if (tokenFreshFor(60_000)) return recToken.token;
+    try {
+      const r = await fetch(RECORDS.sessionPath, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ childId }),
+        credentials: "same-origin",
+        cache: "no-store",
+      });
+      if (!r.ok) return null;
+      const j = await r.json();
+      if (j && j.child === childId && typeof j.token === "string") {
+        recToken = { token: j.token, expiresAt: Number(j.expiresAt) || 0 };
+        return recToken.token;
+      }
+    } catch {
+      /* offline: try again later */
+    }
+    return null;
+  }
+
+  function readOutbox() {
+    if (!storage) return [];
+    try {
+      const list = JSON.parse(storage.getItem(OUTBOX_KEY) || "[]");
+      return Array.isArray(list) ? list.filter((e) => e && typeof e.id === "string" && typeof e.body === "string") : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function writeOutbox(list) {
+    if (!storage) return;
+    try {
+      if (list.length) storage.setItem(OUTBOX_KEY, JSON.stringify(list.slice(-OUTBOX_LIMIT)));
+      else storage.removeItem(OUTBOX_KEY);
+    } catch {
+      /* storage full: the report is lost, play goes on */
+    }
+  }
+
+  // One entry per game id (or "import"); a later report of the same game replaces the earlier one.
+  function outboxPut(id, seq, body) {
+    const list = readOutbox().filter((e) => !(e.id === id && (e.seq || 0) <= seq));
+    if (!list.some((e) => e.id === id)) list.push({ id, seq, body });
+    writeOutbox(list);
+  }
+
+  function outboxDone(id, seq) {
+    writeOutbox(readOutbox().filter((e) => !(e.id === id && (e.seq || 0) <= seq)));
+  }
+
+  async function sendEntry(entry, keepalive) {
+    if (!RECORDS) return false;
+    const token = keepalive ? (tokenFreshFor(5_000) ? recToken.token : null) : await ensureToken();
+    if (!token) return false;
+    let res;
+    try {
+      res = await fetch(RECORDS.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: "Bearer " + token },
+        body: entry.body,
+        keepalive: !!keepalive,
+        credentials: "same-origin",
+        cache: "no-store",
+      });
+    } catch {
+      return false;
+    }
+    sentLog.push({ id: entry.id, seq: entry.seq, status: res.status });
+    if (res.ok) {
+      outboxDone(entry.id, entry.seq);
+      if (entry.id === "import" && storage) {
+        try {
+          storage.setItem(IMPORT_KEY, JSON.stringify({ at: safeNowISO(), sent: true }));
+        } catch {
+          /* ignore */
+        }
+      }
+      return true;
+    }
+    if (res.status === 401) recToken = null;
+    // A body the server will never accept must not jam the outbox (a bug, not a network problem).
+    if (res.status === 400 || res.status === 409 || res.status === 413 || res.status === 422) outboxDone(entry.id, entry.seq);
+    return false;
+  }
+
+  async function flushOutbox() {
+    if (!RECORDS || flushing) return;
+    flushing = true;
+    try {
+      for (const entry of readOutbox()) {
+        const ok = await sendEntry(entry, false);
+        // Still pending (offline, server busy): stop here and try again later.
+        if (!ok && readOutbox().some((e) => e.id === entry.id && e.seq === entry.seq)) break;
+      }
+    } finally {
+      flushing = false;
+    }
+  }
+
+  function report(id, seq, record, keepalive) {
+    if (!RECORDS) return;
+    let body;
+    try {
+      body = JSON.stringify(record);
+    } catch {
+      return;
+    }
+    outboxPut(id, seq, body);
+    if (keepalive) {
+      sendEntry({ id, seq, body }, true);
+    } else {
+      flushOutbox();
+    }
+  }
+
+  // Report one game (after finishGame). `finished` is finishGame's result.
+  function reportGame(sess, finished, result, endReason, materialBalance, keepalive) {
+    sess.seq = (sess.seq || 0) + 1;
+    const record = Coach.gameRecord({ session: sess, finished, result, endReason, endedAt: safeNowISO(), materialBalance });
+    report(sess.gameId, sess.seq, record, keepalive);
+  }
+
+  // First open after the release: the existing profile, once, as it is stored.
+  function queueImportOnce() {
+    if (!RECORDS || !storage) return;
+    try {
+      if (storage.getItem(IMPORT_KEY)) return;
+      if (readOutbox().some((e) => e.id === "import")) return;
+      const raw = storage.getItem(Coach.storageKey(childId));
+      if (!raw) {
+        storage.setItem(IMPORT_KEY, JSON.stringify({ at: safeNowISO(), sent: false, reason: "no-profile" }));
+        return;
+      }
+      const parsed = JSON.parse(raw);
+      if (!parsed || parsed.childId !== childId) {
+        storage.setItem(IMPORT_KEY, JSON.stringify({ at: safeNowISO(), sent: false, reason: "other-child" }));
+        return;
+      }
+      outboxPut("import", 1, JSON.stringify(Coach.importRecord(childId, parsed)));
+    } catch {
+      /* unreadable profile: nothing to import */
+    }
+  }
+
   // ---- Mutable app state ------------------------------------------------
   let profile = Coach.loadProfile(storage, childId);
   let state = Engine.initialState();
@@ -210,6 +417,8 @@
   let hint = null; // { from, to }
   let pendingPromotion = null; // { from, to, resolve }
   let opponentRng = Math.random;
+  // True while a game is being played (counts active seconds; may be judged unfinished).
+  let gameLive = false;
   // Bumped whenever the board is replaced (new game, resume, start screen): a
   // pending opponent reply from the previous board must never play on the new one.
   let boardEpoch = 0;
@@ -465,6 +674,13 @@
       finishFromStatus(st);
       return;
     }
+    // Nov 22, 2026: a beginner opponent gives up right after her move when she
+    // is far ahead (≥ 9 points, at least 10 of her moves).
+    if (Coach.shouldResign(opponent, state, session.movesPlayed)) {
+      inputLocked = true;
+      endGame("opponent-resigned", "resignation");
+      return;
+    }
     inputLocked = true;
     opponentTurn();
   }
@@ -504,22 +720,93 @@
     } else {
       result = "draw";
     }
-    endGame(result);
+    const endReason = st.result === "checkmate" ? "checkmate" : st.result === "fifty-move" ? "fifty-move" : "stalemate";
+    endGame(result, endReason);
   }
 
-  function endGame(result) {
+  // A game that ended on the board (checkmate, stalemate, fifty moves) or by
+  // the opponent giving up. Counted once (finishGame keys on the game id).
+  function endGame(result, endReason) {
     const dateISO = safeNowISO();
-    const res = Coach.finishGame(profile, session, result, dateISO);
+    const material = Coach.materialBalance(state);
+    const res = Coach.finishGame(profile, session, result, dateISO, { endReason, materialBalance: material });
     profile = res.profile;
     Coach.saveProfile(storage, profile);
+    session._final = true;
+    gameLive = false;
+    reportGame(session, res, result, endReason, material, false);
     clearPersistedGame();
     opponent = Coach.opponentForLevel(profile.level);
     showRecap(result, res.recap);
   }
 
+  // Nov 22, 2026: a game that stops before it is decided — the time ran out,
+  // a new game replaces it, or the page goes away — is judged by material
+  // (lead ≥ 5 → a win for the level rules, anything else → no change). The
+  // live game stays saved, so «Weiterspielen» still works; a later finish of
+  // the same game replaces this judgement (finishGame, once per game id).
+  function finishUnfinished(endReason, keepalive) {
+    if (!session || session._final) return;
+    if (!(session.movesPlayed > 0)) return; // nothing played: not a game
+    if (session._appliedMoves === session.movesPlayed) {
+      // Already judged at this very position (e.g. time-out, then page hide).
+      if (keepalive) {
+        const pending = readOutbox().find((e) => e.id === session.gameId);
+        if (pending) sendEntry(pending, true);
+      }
+      return;
+    }
+    const material = Coach.materialBalance(state);
+    const res = Coach.finishGame(profile, session, "unfinished", safeNowISO(), { endReason, materialBalance: material });
+    profile = res.profile;
+    Coach.saveProfile(storage, profile);
+    session._appliedMoves = session.movesPlayed;
+    reportGame(session, res, "unfinished", endReason, material, keepalive);
+    persistGame();
+  }
+
+  // On open: a saved live game that was never judged (the page closed without
+  // a page-hide, or the game is from before Nov 22) is judged now as «page
+  // left» — once. «Weiterspielen» is still offered afterwards.
+  function judgeSavedGame() {
+    const g = readPersistedGame();
+    if (!g || !(g.movesPlayed > 0)) return;
+    if (typeof g.appliedMoves === "number" && g.appliedMoves === g.movesPlayed) return;
+    let saved;
+    try {
+      saved = Engine.parseFEN(g.fen);
+      if (Engine.findKing(saved.board, Engine.WHITE) < 0 || Engine.findKing(saved.board, Engine.BLACK) < 0) return;
+    } catch {
+      return; // corrupt: resumeGame discards it
+    }
+    const opp = Coach.opponentById(g.opponentId) || Coach.opponentForLevel(profile.level);
+    const concept = g.conceptId ? Coach.conceptById(g.conceptId) : null;
+    const s = Coach.startGame(profile, { opponent: opp, concept: concept || undefined, rng: Math.random });
+    Coach.restoreSessionCounters(s, g);
+    s.startLevel = typeof g.startLevel === "number" ? g.startLevel : profile.level;
+    const material = Coach.materialBalance(saved);
+    const res = Coach.finishGame(profile, s, "unfinished", safeNowISO(), { endReason: "page-left", materialBalance: material });
+    profile = res.profile;
+    Coach.saveProfile(storage, profile);
+    reportGame(s, res, "unfinished", "page-left", material, false);
+    // Keep the game resumable, now with its id and the judgement marker.
+    try {
+      storage.setItem(GAME_KEY, JSON.stringify({ ...g, gameId: s.gameId, seq: s.seq, appliedMoves: g.movesPlayed }));
+    } catch {
+      /* ignore */
+    }
+  }
+
   function showRecap(result, recap) {
     el("recap-title").textContent =
-      result === "win" ? "Gewonnen! 🎉" : result === "loss" ? "Gut gespielt!" : "Unentschieden!";
+      result === "opponent-resigned" && recap.resignText
+        ? recap.resignText + " 🎉"
+        : result === "win"
+          ? "Gewonnen! 🎉"
+          : result === "loss"
+            ? "Gut gespielt!"
+            : "Unentschieden!";
+    if (result === "opponent-resigned" && recap.resignText) setStatus(recap.resignText, true);
     el("recap-strength").textContent = recap.strength;
     el("recap-next").textContent = recap.nextIdea;
     el("recap-level").textContent = recap.levelReason;
@@ -531,25 +818,30 @@
       unlock.style.display = "none";
     }
     show("recap-overlay");
-    speak([recap.strengthKey, recap.nextKey]);
+    speak([recap.resignKey, recap.strengthKey, recap.nextKey].filter(Boolean));
   }
 
   // ---- Persistence of the live game -------------------------------------
   function persistGame() {
-    if (!storage || !session) return;
+    if (!storage || !session || session._final) return;
     try {
       storage.setItem(
         GAME_KEY,
         JSON.stringify({
           fen: Engine.toFEN(state),
+          gameId: session.gameId,
+          startedAt: session.startedAt,
           opponentId: session.opponentId,
           conceptId: session.concept ? session.concept.id : null,
           checkpointsUsed: session.checkpointsUsed,
-          blundersDetected: session.blundersDetected,
+          nudges: Coach.nudgesForRecord(session),
           hintsTaken: session.hintsTaken,
           movesPlayed: session.movesPlayed,
           capturesByChild: session.capturesByChild,
+          activeSeconds: session.activeSeconds,
           startLevel: session.startLevel,
+          seq: session.seq,
+          appliedMoves: typeof session._appliedMoves === "number" ? session._appliedMoves : null,
           lastMove: lastMove ? { from: lastMove.from, to: lastMove.to } : null,
         }),
       );
@@ -603,12 +895,11 @@
     opponent = Coach.opponentById(g.opponentId) || Coach.opponentForLevel(profile.level);
     const concept = g.conceptId ? Coach.conceptById(g.conceptId) : null;
     session = Coach.startGame(profile, { opponent, concept: concept || undefined, rng: Math.random });
-    session.checkpointsUsed = g.checkpointsUsed || 0;
-    session.blundersDetected = g.blundersDetected || 0;
-    session.hintsTaken = g.hintsTaken || 0;
-    session.movesPlayed = g.movesPlayed || 0;
-    session.capturesByChild = g.capturesByChild || 0;
+    // Same game id, nudges and counters as before (blobs from before Nov 22 included).
+    Coach.restoreSessionCounters(session, g);
     session.startLevel = g.startLevel ?? profile.level;
+    if (typeof g.appliedMoves === "number") session._appliedMoves = g.appliedMoves;
+    gameLive = true;
     lastMove =
       g.lastMove && typeof g.lastMove.from === "number"
         ? { from: g.lastMove.from, to: g.lastMove.to }
@@ -655,6 +946,9 @@
   }
 
   function beginNewGame() {
+    // The game still on the board (if any) is replaced: judge it as unfinished.
+    finishUnfinished("new-game", false);
+    gameLive = false;
     hideAllOverlays();
     profile = Coach.loadProfile(storage, childId);
     opponent = Coach.opponentForLevel(profile.level);
@@ -676,6 +970,8 @@
   function startPlaying() {
     hideAllOverlays();
     stopSpeaking();
+    if (session && !session.startedAt) session.startedAt = safeNowISO();
+    gameLive = true;
     inputLocked = false;
     setStatus("Du bist dran");
     render();
@@ -738,6 +1034,25 @@
   // ---- Boot -------------------------------------------------------------
   buildBoard();
   wire();
+  // Nov 22, 2026, in this order: (1) the one-time import reads the profile as
+  // it is stored, before anything below can change it; (2) a saved game that
+  // was never judged is judged once; (3) anything not yet delivered is sent.
+  queueImportOnce();
+  judgeSavedGame();
+  flushOutbox();
+  // Active play time of the game on the board: a second counts only while the
+  // page is visible and not frozen by the play guard (its timers stop then).
+  // Every minute the bearer is renewed early, so a page-hide report can carry it.
+  let tick = 0;
+  setInterval(() => {
+    tick += 1;
+    const onBoard = !el("start-overlay").classList.contains("show") && !el("concept-overlay").classList.contains("show");
+    if (gameLive && onBoard && session && !session._final && !guardFrozen() && document.visibilityState === "visible") session.activeSeconds += 1;
+    if (RECORDS && tick % 60 === 0) {
+      if (!tokenFreshFor(5 * 60_000)) ensureToken();
+      if (readOutbox().length) flushOutbox();
+    }
+  }, 1000);
   // The start screen offers "Resume last game" itself when one is persisted.
   openStart();
 
@@ -774,6 +1089,14 @@
       return out;
     },
     pendingCheckpoint: () => pendingCheckpoint,
+    // Nov 22, 2026: records, material, unfinished games.
+    material: () => Coach.materialBalance(state),
+    outbox: () => readOutbox().map((e) => ({ id: e.id, seq: e.seq, body: JSON.parse(e.body) })),
+    sent: () => sentLog.slice(),
+    recordsEnabled: () => !!RECORDS,
+    gameLive: () => gameLive,
+    finishUnfinished: (reason) => finishUnfinished(reason, false),
+    flush: () => flushOutbox(),
     keep: () => resolveCheckpoint("keep"),
     better: () => resolveCheckpoint("better"),
     spoken: () => spokenLog.slice(),

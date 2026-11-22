@@ -22,6 +22,8 @@ import type { FamilyBoardConfig, RewardRedemption } from "@/lib/family-db";
 import type { ChessStatusView, PlayPurchase } from "@/lib/family-play";
 import { CHESS_PURCHASE_REWARD_ID, PLAY_PURCHASE_REWARD_ID, formatPlayClock, occurrenceDateOf } from "@/lib/family-play";
 import { rewardDefinitions } from "@/data/family-routines";
+import type { ChessChildView } from "@/lib/family-chess-records";
+import { ChessGamesSection } from "./chess-games";
 
 const focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-500";
 const pill = cn("inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-primary px-4 py-2 text-sm font-semibold transition-colors", focusRing);
@@ -41,6 +43,8 @@ type Records = {
   purchases: (PlayPurchase & { week: string })[];
   config: FamilyBoardConfig;
   chess: Record<ChildId, ChessStatusView>;
+  /** Nov 22, 2026: chess games per child (null when they could not be read). */
+  chessGames?: Record<ChildId, ChessChildView> | null;
 };
 
 const childName = (id: string) => familyMembers.find((m) => m.id === id)?.displayName ?? id;
@@ -205,6 +209,9 @@ export function FamilyParentClient({ milestones }: { milestones: Milestone[] }) 
         </div>
         <p className="text-xs text-tertiary">Digital chess costs 🪙 1 for 15 minutes from the child&rsquo;s wallet, bought explicitly on Games; no activity is required that day. Game Studio stays 🪙 3 for 15 minutes; the real board is always free.</p>
       </section>
+
+      {/* 2b. Chess games — level, opponent and the last games per child (Nov 22, 2026) */}
+      <ChessGamesSection views={records ? (records.chessGames ?? null) : undefined} />
 
       {/* 3. Record a day for a child */}
       <section aria-label="Record for a child" className={card}>

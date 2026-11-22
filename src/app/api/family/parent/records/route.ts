@@ -5,6 +5,7 @@ import { CHILD_IDS } from "@/lib/family-assistant-turn";
 import { getBoardConfig, getCompletionsFromWeek, getRedemptionsFromWeek } from "@/lib/family-db";
 import { NO_STORE } from "@/lib/family-games-auth";
 import { chessStatusFor, getPurchasesFromWeek } from "@/lib/family-play-db";
+import { readChessViews } from "@/lib/family-chess-records-db";
 import { getDb } from "@/lib/db";
 import { FAMILY_WALLET_EPOCH_WEEK } from "@/lib/family-wallet";
 import { familyTodayInZurich } from "@/lib/date";
@@ -16,6 +17,9 @@ import { familyTodayInZurich } from "@/lib/date";
  * child's purchased chess allowance. Owner session only (middleware refuses
  * tracker-only sessions on the whole `/api/family/parent/` prefix; the handler
  * refuses every non-owner session itself). Read-only, never cached.
+ *
+ * Nov 22, 2026: plus `chessGames` — per child the current chess level and opponent (from the latest profile snapshot the
+ * coach reported), the last 20 games and the one-time browser import. A failure there yields `null`, never a broken page.
  */
 export async function GET() {
   const session = await auth();
@@ -30,8 +34,9 @@ export async function GET() {
     getBoardConfig(),
   ]);
   const chess = Object.fromEntries(await Promise.all(CHILD_IDS.map(async (child) => [child, await chessStatusFor(db, child)] as const)));
+  const chessGames = await readChessViews(db).catch(() => null);
   return NextResponse.json(
-    { generatedAt: now.toISOString(), today: familyTodayInZurich(now), epochWeek: FAMILY_WALLET_EPOCH_WEEK, completions, redemptions, purchases, config, chess },
+    { generatedAt: now.toISOString(), today: familyTodayInZurich(now), epochWeek: FAMILY_WALLET_EPOCH_WEEK, completions, redemptions, purchases, config, chess, chessGames },
     { headers: NO_STORE },
   );
 }

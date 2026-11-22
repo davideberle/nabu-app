@@ -14,16 +14,16 @@
       "bytes": 10872
     },
     "chess-coach.js": {
-      "sha256": "693608b462ca23e94689696e6e78a1a68120e7d79393706c1b527936dfe8e368",
-      "bytes": 20527
+      "sha256": "891f941686624e62690310fc7875762be43ca1b02d6a322242982744a84a408e",
+      "bytes": 40318
     },
     "chess-ui.js": {
-      "sha256": "113d6a30b86b610dae7068431b65820336d24c5951c7ca3f06e70e19517fa15b",
-      "bytes": 26701
+      "sha256": "fcf5f7f4a4cc03aae695806fbde3b521b03feff04884ce6836c1d3967d9c93b9",
+      "bytes": 40425
     },
     "chess-lines-de.js": {
-      "sha256": "7577ec5f93a6d036a75af3ff296ff4969fa2e3d25a6e90b1f382711d3aa617be",
-      "bytes": 3752
+      "sha256": "ed3dcd4c3c4e3117a47cfc7b9fb298b6f5764b31db0063405b1ea0363f9898a4",
+      "bytes": 4168
     }
   }
 }

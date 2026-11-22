@@ -12,7 +12,7 @@
 //     «Hallo Isabel! …» (chess-ui replaces the leading «Hallo!»), the clip says
 //     «Hallo! …»;
 //   - picture-first, simple German for a 6–7 year old; Swiss spelling (no «ß»);
-//   - small: the whole set stays well under 1,500 characters.
+//   - small: the whole set stays well under 1,700 characters (34 lines since Nov 22, 2026).
 // Changing any text changes its recording id — re-record after edits.
 // ===========================================================================
 
@@ -47,11 +47,17 @@
     // After the child's choice.
     "choice.keep": "Gut, du spielst deinen Zug.",
     "choice.better": "Schau: Diese Figur kann auf das grüne Feld.",
+    // Nov 22, 2026: a beginner opponent gives up when she is far ahead.
+    "resign.pip": "Pip gibt auf. Du hast gewonnen!",
+    "resign.waffles": "Sir Waffel gibt auf. Du hast gewonnen!",
+    "resign.bongo": "Bongo gibt auf. Du hast gewonnen!",
     // Recap: one strength + one next idea.
     "recap.win": "Du hast gewonnen! Super!",
     "recap.safe": "Du hast gut auf deine Figuren aufgepasst.",
     "recap.captures": "Du hast Figuren gefressen. Gut gesehen!",
     "recap.finished": "Du hast fertig gespielt. Toll!",
+    // Nov 22, 2026: following the coach is praised, never called a mistake.
+    "recap.listened": "Du hast auf den Tipp gehört. Super!",
     "next.safe-square": "Schau vor jedem Zug: Ist das Feld sicher?",
     "next.idea": "Übe weiter die Idee von heute.",
     "next.develop": "Hol am Anfang neue Figuren heraus.",

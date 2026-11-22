@@ -2,8 +2,9 @@ import { auth } from "@/auth";
 import { ADAPTIVE_CHESS_COACH_BUNDLE, ADAPTIVE_CHESS_COACH_LINES_DE } from "@/data/adaptive-chess-coach/bundle.generated";
 import { chessVoiceScript } from "@/lib/family-chess-narration";
 import { normalizeChildId } from "@/lib/family-child-shell";
-import { appOrigin, renderChessDocument } from "@/lib/family-chess-content";
-import { derivePlayKey, resolveStudioConfig, verifyPlayCredential } from "@/lib/family-games-token";
+import { appOrigin, chessRecordsScript, renderChessDocument } from "@/lib/family-chess-content";
+import { randomUUID } from "node:crypto";
+import { deriveGamesKey, derivePlayKey, mintChildGamesToken, resolveStudioConfig, verifyPlayCredential } from "@/lib/family-games-token";
 import { DAILY_CHESS_GAME_ID, PURCHASED_CHESS_BUDGET_DATE } from "@/lib/family-play";
 import { getLease } from "@/lib/family-play-db";
 import { guardScript } from "@/lib/family-play-guard";
@@ -37,6 +38,9 @@ function page(status: number, message: string, origin: string): Response {
  * Nov 18, 2026: after the guard, the document gets `window.__CHESS_VOICE__` — the coach's spoken line keys mapped to the
  * prerecorded clip route (/api/family/learning/narration/de-female/<line id>; same origin, so this frame's household session
  * cookie authenticates it; the CSP here sets only frame-ancestors, so same-origin media is allowed). Not recorded → 404 → silence.
+ *
+ * Nov 22, 2026: then `window.__CHESS_RECORDS__` — the game-record route, the session route and a child games bearer for
+ * the lease's child, so the coach can report its games (family-chess-records.ts).
  */
 export async function GET(request: Request, context: { params: Promise<{ asset: string }> }) {
   const { asset } = await context.params;
@@ -59,6 +63,13 @@ export async function GET(request: Request, context: { params: Promise<{ asset: 
   if (!lease || lease.personId !== child || lease.gameId !== DAILY_CHESS_GAME_ID || lease.budgetKind !== "chess") return page(403, "This chess link does not match your play session.", origin);
   if (lease.state !== "active") return page(410, "This chess session has ended. Go back to your Games page.", origin);
   if (lease.budgetDate !== PURCHASED_CHESS_BUDGET_DATE) return page(410, "Free daily chess has ended. Chess is now 1 coin for 15 minutes — go back to your Games page.", origin);
-  const html = renderChessDocument(ADAPTIVE_CHESS_COACH_BUNDLE, guardScript({ allowedOrigin: origin, leaseId: lease.id, beaconBase: studio.studioUrl }) + chessVoiceScript(ADAPTIVE_CHESS_COACH_LINES_DE));
+  // Nov 22, 2026: the game reports every game to /api/family/play/chess-games with a `family-games` bearer for the lease's
+  // child (the same one the Games page mints); it renews it itself through /api/family/games/session. No key → no reports.
+  const gamesKey = deriveGamesKey();
+  const records = gamesKey ? mintChildGamesToken(gamesKey, lease.personId, randomUUID(), Math.floor(Date.now() / 1000)) : null;
+  const html = renderChessDocument(
+    ADAPTIVE_CHESS_COACH_BUNDLE,
+    guardScript({ allowedOrigin: origin, leaseId: lease.id, beaconBase: studio.studioUrl }) + chessVoiceScript(ADAPTIVE_CHESS_COACH_LINES_DE) + (records ? chessRecordsScript(records) : ""),
+  );
   return new Response(html, { status: 200, headers: { ...NO_STORE, "Content-Type": "text/html; charset=utf-8", "Content-Security-Policy": `frame-ancestors ${origin}` } });
 }
